@@ -89,6 +89,7 @@ function tool(id){for(var i=0;i<DATA.tools.length;i++)if(DATA.tools[i].id===id)r
 var canEdit=false,isOwn=false,dirty=false,UNL={},T=null /* teacher session {t, codes} */,view={n:'home'},tab='view',otab='teachers';
 var ME=store.get('pt_me',null); /* {sec,name} */
 if(ME&&ME.pv){ME=null;store.set('pt_me',null)}
+(function(){try{var m=(location.hash||'').match(/me=([A-Za-z0-9_-]+)/);if(!m)return;var o=JSON.parse(b64d(m[1])),c=rcNorm(o.c),pc=String(o.p||'');Object.keys(DATA.secs).forEach(function(s){if(DATA.secs[s].h!==rcHash(s,c))return;var P=secPins(s,c);var nm=P&&Object.keys(P).filter(function(n){return String(P[n])===pc})[0];if(nm){ME={sec:s,name:nm,c:c,p:pc};store.set('pt_me',ME);window.__qr=1}});try{history.replaceState(null,'',location.pathname)}catch(e){}}catch(e){}})();
 var PVK=null;
 var PLAN=store.get('pt_plan',null);
 function planFromHash(){try{var m=(location.hash||'').match(/pl=([A-Za-z0-9_.-]+)/);if(m){var p=decodePlan(m[1]);if(p){PLAN=p;store.set('pt_plan',p)}}}catch(e){}}
@@ -294,6 +295,7 @@ $app.addEventListener('submit',function(e){e.preventDefault();
  if(e.target.id==='fPl'){var p=decodePlan(document.getElementById('plIn').value);if(!p){toast('الرمز غير صالح');return}PLAN=p;store.set('pt_plan',p);if(!planFor(ME)){toast('هذه الخطة ليست لشعبتك أو لاسمك');return}render();toast('طُبّقت الخطة')}
 });
 if(ME&&(location.hash||'').indexOf('pl=')>=0)view={n:'me'};
+if(ME&&window.__qr)view={n:'me'};
 render();
 (async function(){var us=await use('user');if(us){try{canEdit=!!(await us.canEdit());isOwn=!!(await us.isOwner())}catch(e){}if(canEdit)render()}})();
 })();
