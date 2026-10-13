@@ -196,7 +196,7 @@ tr.flag td{background:#FFF6DC}.flags{min-width:170px;font-size:.82rem;color:#8A5
 .K-warm{background:var(--sun);color:#5A3A00;box-shadow:0 5px 0 #D9A21C}
 .K-pass,.K-harf{background:var(--sky);box-shadow:0 5px 0 var(--navy)}.K-pass.P1,.K-harf.P1{background:var(--grass);box-shadow:0 5px 0 #168A4B}.K-harf.P2,.K-pass.P2{background:var(--tang);box-shadow:0 5px 0 #C96A00}.K-harf.P3,.K-pass.P3{background:var(--pink);box-shadow:0 5px 0 #C72C72}.K-harf.P4,.K-pass.P4{background:var(--grape);box-shadow:0 5px 0 #6236C9}
 .step.locked{filter:saturate(.8);opacity:.9}
-
+.pdel{display:inline-block;position:relative;animation:pdIn .6s ease both}.pdel::after{content:'👀';position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:2.4rem;animation:pdOut .4s ease both;animation-delay:inherit;pointer-events:none}@keyframes pdIn{from{opacity:0;transform:scale(.6)}to{opacity:1;transform:none}}@keyframes pdOut{from{opacity:.55}to{opacity:0;visibility:hidden}}.pdel>*{animation:pdIn2 .6s ease both;animation-delay:inherit}@keyframes pdIn2{from{opacity:0;transform:scale(.6)}to{opacity:1;transform:none}}.pdel{animation:none}
 /* Speaking tool additions: picture scenes, five-phase task stepper, sentence frames with a visible blank. */
 .linkb{background:none;border:0;padding:0;color:var(--navy);font-weight:700;text-decoration:underline;text-underline-offset:3px}
 .lvn{font-family:var(--ui)!important}
@@ -430,6 +430,7 @@ function rowsOf(w,kind){var p=parts_(w,kind),sep=(kind==='pyrs'||kind==='buildS'
 function stageKeys(u,si){var st=u.stages[si];if(!st)return[];var out=[];if(st.kind==='qa'&&st.text)out.push(akey(st.text));if(st.kind==='pass'){items(u,si).forEach(function(t){out.push(akey(t))});return uniq(out)}items(u,si).forEach(function(t){if(PYR[st.kind])out=out.concat(rowsOf(t,st.kind));else if(st.kind==='order')out=out.concat(t.split('|').map(akey));else out.push(akey(t))});return uniq(out)}
 function playWait(t){return new Promise(function(res){var a=DATA.audio[akey(t)];if(!a){setTimeout(res,1100);return}try{player.pause();player.src=a;player.currentTime=0;var done=false,fin=function(){if(!done){done=true;res()}};player.onended=fin;setTimeout(fin,6000);var p=player.play();if(p&&p.catch)p.catch(fin)}catch(e){res()}})}
 async function readAlong(){var rows=Array.prototype.slice.call(document.querySelectorAll('[data-row]'));for(var i=0;i<rows.length;i++){rows.forEach(function(r){r.classList.remove('on')});rows[i].classList.add('on');await playWait(rows[i].dataset.t)}rows.forEach(function(r){r.classList.remove('on')});var wl=document.querySelector('.wline');if(wl){wl.classList.add('on');setTimeout(function(){wl.classList.remove('on')},1200)}}
+var PD={k:'',t:0};function dpic(h,key){if(!DATA.picDelay||!h)return h;var n=Date.now();if(PD.k!==key)PD={k:key,t:n};var ms=Math.max(0,DATA.picDelay*1000-(n-PD.t));return ms<50?h:'<span class="pdel" style="animation-delay:'+ms+'ms">'+h+'</span>'}
 function picHTML(p,alt){p=String(p||'');if(!p)return '';if(p.charAt(0)==='@'){var src=DATA.img[p.slice(1)];return src?'<span class="pic"><img src="'+src+'" alt="'+esc(alt||'')+'"></span>':''}return '<span class="pic" aria-hidden="true">'+esc(p)+'</span>'}
 function me(){return current&&students[current]?students[current]:null}
 function save(){store.set('hr_students',students);store.set('hr_current',current)}
@@ -553,7 +554,7 @@ function vUnit(){
 function navHTML(u,si,it,lockNext){var last=view.i>=it.length-1;return '<div class="nav" style="margin-top:14px"><button class="btn ghost" data-a="prev" '+(view.i===0?'disabled':'')+'>السابق</button><button class="btn" data-a="next"'+(lockNext?' disabled':'')+'>'+(last?(quizable(u,si)?'إلى التحدي':'أنهيت'):'التالي')+I.next+'</button></div><p class="note center">'+(view.i+1)+' من '+it.length+'</p>'}
 function vPyr(u,si,st,it,t){
  var p=t.split('|'),kind=st.kind,ps=parts_(p[0],kind),rows=rowsOf(p[0],kind),w=(kind==='pyrs');
- var h='<div class="pyrc" lang="ar">'+(p[1]?picHTML(p[1],akey(t)):'')+'<div class="pyrbox">';
+ var h='<div class="pyrc" lang="ar">'+(p[1]?dpic(picHTML(p[1],akey(t)),t+'#'+view.i):'')+'<div class="pyrbox">';
  for(var k=0;k<ps.length;k++){h+='<button class="prow" data-a="row" data-row="'+k+'" data-t="'+esc(rows[k])+'" aria-label="'+esc(rows[k])+'">';for(var j=0;j<=k;j++)h+='<span class="sy s'+(j%4)+(w?' w':'')+'">'+esc(ps[j])+'</span>';h+='</button>'}
  h+='</div><div class="wline" data-a="play" data-t="'+esc(p[0])+'">'+esc(akey(p[0]))+'</div></div>';
  h+='<button class="btn listen" data-a="along">'+I.spk+'اقرأ معي من الأعلى إلى الأسفل</button><p class="note center" style="margin:6px 0 0">ثم اقرأ وحدك، والمس أي صف لتسمعه.</p>';
@@ -579,8 +580,8 @@ function vPractice(){
   return top()+'<p class="crumb">'+esc(u.title)+' · '+esc(st.name)+'</p><div class="bar" role="progressbar" aria-valuenow="'+pct0+'" aria-valuemin="0" aria-valuemax="100"><b style="width:'+pct0+'%"></b></div>'+body+navHTML(u,si,it,BUILD[st.kind]&&!bdone)}
  var pct=Math.round((view.i+1)/it.length*100),last=view.i>=it.length-1,b=bare(t),one=b.length<=1,parts=t.split('|'),world=st.kind==='world';
  var top_='';
- if(st.kind==='harf'&&u.pic)top_='<span class="kpic">'+picHTML(u.pic,u.picWord)+'<span>'+esc(u.picWord||'')+'</span></span>';
- if(world&&parts[1])top_=picHTML(parts[1],akey(t));
+ if(st.kind==='harf'&&u.pic)top_=dpic('<span class="kpic">'+picHTML(u.pic,u.picWord)+'<span>'+esc(u.picWord||'')+'</span></span>',t+'#'+view.i);
+ if(world&&parts[1])top_=dpic(picHTML(parts[1],akey(t)),t+'#'+view.i);
  var cls='card'+(world?' world':one?' one':(b.length>7?' long':''));
  return top()+'<p class="crumb">'+esc(u.title)+' · '+esc(st.name)+'</p>'+
  '<div class="bar" role="progressbar" aria-valuenow="'+pct+'" aria-valuemin="0" aria-valuemax="100"><b style="width:'+pct+'%"></b></div>'+
