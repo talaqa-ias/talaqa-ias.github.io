@@ -173,15 +173,15 @@ function decodeAll(txt){
   if(kind==='GM1'){var rg=row(o.n,o.c);rg.gm=rg.gm||{};var cw=rg.gm[o.w];if(!cw||cw.p<=o.p)rg.gm[o.w]={p:o.p,g:o.g,d:o.d};return}
   if(kind==='HR3'){(o.r||[]).forEach(function(x){var r=row(x.n,x.c);if(!r.bench.some(function(b){return b.d===x.d&&b.u===x.u&&b.v===x.v}))r.bench.push(x)});return}
   var r=row(o.n,o.c),t=tool(o.t),cur=r.tools[o.t];if(o.g)r.devs[o.g]=1;
-  var done=0,units=0,best=0;Object.keys(o.p||{}).forEach(function(u){var arr=o.p[u];units++;if(Array.isArray(arr))arr.forEach(function(v){if(kind==='SP2'||v>=0||v===-2)done++})});Object.keys(o.w||{}).forEach(function(u){best=Math.max(best,o.w[u].b||0)});
-  if(!cur||cur.d<=o.d)r.tools[o.t]={d:o.d,done:done,units:units,best:best,sl:o.sl,title:t?t.title:o.t}}catch(e){}});
+  var done=0,units=0,best=0;Object.keys(o.p||{}).forEach(function(u){var arr=o.p[u];units++;if(Array.isArray(arr))arr.forEach(function(v){if(kind==='SP2'||v>=0||v===-2)done++})});var vf=null;if(o.v){vf={t:0,a:0,n:0,o:0};Object.keys(o.p||{}).forEach(function(u){var arr=o.p[u],va=o.v[u]||[];if(Array.isArray(arr))arr.forEach(function(v,i){if(v>=0||v===-2){var f=va[i]||0;if(f===1)vf.t++;else if(f===2)vf.a++;else if(f===3)vf.n++;else vf.o++}})})}Object.keys(o.w||{}).forEach(function(u){best=Math.max(best,o.w[u].b||0)});
+  if(!cur||cur.d<=o.d)r.tools[o.t]={d:o.d,done:done,units:units,best:best,sl:o.sl,title:t?t.title:o.t,vf:vf}}catch(e){}});
  return Object.keys(S).map(function(k){return S[k]}).sort(function(a,b){return (a.c+a.n).localeCompare(b.c+b.n,'ar')});
 }
 function resTable(rows,mine){
  if(mine)rows=rows.filter(function(r){return tSecs().some(function(s){return nkey(s)===nkey(r.c)})});
  if(!rows.length)return '<p class="note">لا توجد نتائج بعد.</p>';
  return '<div class="tw"><table><thead><tr><th>الطالب</th><th>الشعبة</th><th>الأدوات المستخدمة</th><th>آخر قياس صفي</th><th>🎮 الألعاب</th><th>تنبيه</th></tr></thead><tbody>'+rows.map(function(r){var bm=r.bench.slice().sort(function(a,b){return a.d<b.d?1:-1})[0],fl=Object.keys(r.devs).length>1?'⚠️ أجهزة متعددة':'';
-  return '<tr'+(fl?' class="flag"':'')+'><td>'+esc(r.n)+'</td><td>'+esc(r.c)+'</td><td>'+Object.keys(r.tools).map(function(id){var x=r.tools[id];return '<div>'+esc(x.title)+': '+x.done+' درجة في '+x.units+' مستوى'+(x.best?' · ⏱️ '+x.best:'')+' <small class="note">'+esc(x.d)+'</small></div>'}).join('')+'</td><td>'+(bm?bm.v+' كلمة/دقيقة · '+bm.a+'% <small class="note">'+esc(bm.d)+'</small>':'—')+'</td><td>'+gmCell(r)+'</td><td class="note">'+fl+'</td></tr>'}).join('')+'</tbody></table></div>';
+  return '<tr'+(fl?' class="flag"':'')+'><td>'+esc(r.n)+'</td><td>'+esc(r.c)+'</td><td>'+Object.keys(r.tools).map(function(id){var x=r.tools[id];return '<div>'+esc(x.title)+': '+x.done+' درجة في '+x.units+' مستوى'+(x.best?' · ⏱️ '+x.best:'')+' <small class="note">'+esc(x.d)+'</small>'+(x.vf?'<div class="note" style="font-size:.82rem">✔️ بتحقق الأداة '+x.vf.t+' · 👤 بتأكيد بالغ '+x.vf.a+' · ⏭️ بلا تحقق '+x.vf.n+(x.vf.o?' · قبل التحديث '+x.vf.o:'')+'</div>':'')+'</div>'}).join('')+'</td><td>'+(bm?bm.v+' كلمة/دقيقة · '+bm.a+'% <small class="note">'+esc(bm.d)+'</small>':'—')+'</td><td>'+gmCell(r)+'</td><td class="note">'+fl+'</td></tr>'}).join('')+'</tbody></table></div>';
 }
 function gmCell(r){if(!r.gm)return '—';var w=Object.keys(r.gm).sort().pop(),x=r.gm[w];return '⭐ '+x.p+' نقطة · '+x.g+' لعبة <small class="note">'+esc(w)+'</small>'}
 function lastWeek(rows){var w='';rows.forEach(function(r){Object.keys(r.gm||{}).forEach(function(k){if(k>w)w=k})});return w}
