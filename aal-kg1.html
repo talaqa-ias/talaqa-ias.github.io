@@ -1,4 +1,4 @@
-<!doctype html><html lang="ar" dir="rtl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>طلاقة · أسمع وأتكلّم · KG1</title><link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Noto+Naskh+Arabic:wght@500;700&family=Tajawal:wght@500;700;800&display=swap" rel="stylesheet"><script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script><style>
+<!doctype html><html lang="ar" dir="rtl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>طلاقة · أسمع وأتكلّم · KG1</title><link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Noto+Naskh+Arabic:wght@500;700&family=Tajawal:wght@500;700;800&display=swap" rel="stylesheet"><script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script><script src="send.js"></script><style>
 :root{--ink:#1D2B4F;--blue:#3B6D95;--teal:#29BFCF;--gold:#E0A82E;--cream:#FFF7DD;--bg:#EAF6FB;--ok:#22B866;--bad:#E5484D;--card:#fff;--mut:#5B6B85;--sun:#FFC83D}
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}html,body{margin:0}
 body{background:var(--bg);color:var(--ink);font-family:Tajawal,system-ui,sans-serif;min-height:100vh;overflow-x:hidden}
@@ -203,11 +203,8 @@ function adultCheck(items){view.ad=view.ad||{};
 function vSend(){var l=L();return top('lesson')+'<h1>📤 إرسال التسجيلات</h1><div class="parent"><b>Send to the teacher:</b> this collects your child\'s recordings for this lesson into one file. On a phone you can share it straight to WhatsApp/Teams; otherwise it downloads and you can attach it.</div><p class="note" id="sinfo">…</p><button class="big ok" data-a="dosend">📤 أرسل · Share</button>'}
 function collect(){var l=L();return rkeys().then(function(ks){return ks.filter(function(k){return String(k).indexOf(l.id+':')===0})})}
 function doSend(){var l=L();collect().then(function(ks){if(!ks.length){toast('لا توجد تسجيلات بعد');return}
- if(!window.JSZip){toast('تعذّر التجهيز، تحقق من الإنترنت');return}
- var z=new JSZip(),man=[];Promise.all(ks.map(function(k){return rget(k).then(function(v){if(!v)return;var ext=(v.mime||'').indexOf('mp4')>=0?'m4a':'webm',fn=String(k).replace(/[:]/g,'_')+'.'+ext;z.file(fn,v.blob);man.push({file:fn,key:k,at:v.at})})})).then(function(){z.file('manifest.json',JSON.stringify({tool:'aal-kg1',lesson:l.id,progress:LS[l.id]||{},clips:man},null,1));return z.generateAsync({type:'blob'})}).then(function(b){
-  var name='talaqa_KG1_'+l.id+'_'+new Date().toISOString().slice(0,10)+'.zip',file=new File([b],name,{type:'application/zip'});
-  if(navigator.canShare&&navigator.canShare({files:[file]})){navigator.share({files:[file],title:'Talaqa recordings'}).catch(function(){})}
-  else{var a=document.createElement('a');a.href=URL.createObjectURL(b);a.download=name;document.body.appendChild(a);a.click();a.remove()}})})}
+ Promise.all(ks.map(function(k){return rget(k).then(function(v){if(!v)return null;var ext=(v.mime||'').indexOf('mp4')>=0?'m4a':'webm';return {name:String(k).replace(/[:]/g,'_')+'.'+ext,blob:v.blob}})})).then(function(bl){
+  var me=(window.__me||{});window.TalaqaSend.open({tool:'KG1-'+l.id,grade:'KG1',section:me.c||'',name:me.n||'',blobs:bl.filter(Boolean),extra:{progress:LS[l.id]||{}}})})})}
 /* ---- events ---- */
 document.addEventListener('click',function(e){var b=e.target.closest('[data-a]');if(!b)return;var a=b.dataset.a,l=view.l?L():null;
  switch(a){
@@ -252,6 +249,7 @@ document.addEventListener('click',function(e){var b=e.target.closest('[data-a]')
 });
 /* after recording a talk line, continue the dialogue */
 document.addEventListener('click',function(e){var b=e.target.closest('[data-a="rec"]');if(!b||!view||S()&&S().k!=='talk')return;},true);
+try{var pm=JSON.parse(localStorage.getItem('pt_me')||'null');window.__me=pm?{c:pm.sec||'',n:pm.name||''}:{}}catch(e){window.__me={}}
 render();
 })();
 </script></body></html>
