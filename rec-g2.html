@@ -35,9 +35,10 @@ footer{color:var(--mut);font-size:.85rem;text-align:center;margin:18px 0}
 <script>
 (function(){
 var D=JSON.parse(document.getElementById('seed').textContent),app=document.getElementById('app');
-var SP=null,I=0,REC=null,stream=null,chunks=[],actx=null,anal=null,raf=0,player=new Audio(),have={};
+var GRP='',SP=null,I=0,REC=null,stream=null,chunks=[],actx=null,anal=null,raf=0,player=new Audio(),have={};
 function esc(s){return String(s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
-function list(){return D.clips.filter(function(c){return c.speaker===SP})}
+function grp(c){return (c.use||'').split(' · ')[0].replace(/^محطة: .*|^إجابة .*|^بداية .*|^نهاية .*|^العد$/,'عام')}
+function list(){return D.clips.filter(function(c){return c.speaker===SP&&(!GRP||grp(c)===GRP)})}
 /* IndexedDB */
 var dbp=new Promise(function(res,rej){try{var r=indexedDB.open('talaqa_rec_g2',1);r.onupgradeneeded=function(){r.result.createObjectStore('clips')};r.onsuccess=function(){res(r.result)};r.onerror=function(){rej(r.error)}}catch(e){rej(e)}});
 function tx(mode){return dbp.then(function(db){return db.transaction('clips',mode).objectStore('clips')})}
@@ -49,9 +50,12 @@ function K(c){return c.speaker+':'+c.id}
 /* views */
 function vStart(){
  var n={};D.clips.forEach(function(c){n[c.speaker]=(n[c.speaker]||0)+1});
- app.innerHTML='<h1>🎙️ استوديو تسجيل طلاقة</h1><p class="lead">أصوات أداة «أتكلّم بالفصحى» · الصف الثاني · عربي A</p>'+
- '<div class="card"><h3 style="margin-top:0">قبل أن تبدأ</h3><ul class="tips"><li>غرفة هادئة: لا مكيّف عالٍ ولا أصوات في الخلفية.</li><li>الهاتف أو الحاسوب على بعد شبر تقريبًا من الفم.</li><li>اقرأ كما تتكلم مع طفل صغير: بوضوح وبطء قليل وابتسامة.</li><li>الحركات مكتوبة كاملة: اقرأ ما تراه، والكلمة المفردة تُقرأ بالوقف.</li><li>بعد كل تسجيل اضغط «استمع» وتأكد، ثم «التالي».</li></ul></div>'+
- '<div class="who">'+Object.keys(D.speakers).map(function(s){var done=D.clips.filter(function(c){return c.speaker===s&&have[K(c)]}).length;return '<button data-sp="'+s+'"><span>'+esc(D.speakers[s])+'<br><small>'+n[s]+' مقطعًا</small></span><span>'+done+' / '+n[s]+'</span></button>'}).join('')+'</div>';
+ app.innerHTML='<h1>🎙️ استوديو تسجيل طلاقة</h1><p class="lead">أصوات أداة «أسمع وأتكلّم» · الروضة الأولى (5 دروس) والروضة الثانية (3 وحدات)</p>'+
+ '<div class="card"><h3 style="margin-top:0">قبل أن تبدأ</h3><ul class="tips"><li>غرفة هادئة: لا مكيّف عالٍ ولا أصوات في الخلفية.</li><li>الهاتف أو الحاسوب على بعد شبر تقريبًا من الفم.</li><li>اقرأ كما تتكلم مع طفل صغير: بوضوح وبطء قليل وابتسامة.</li><li>الحركات مكتوبة كاملة: اقرأ ما تراه، والكلمة المفردة تُقرأ بالوقف.</li><li>بعد كل تسجيل اضغط «استمع» وتأكد، ثم «التالي».</li></ul></div>';
+ var gs=[];D.clips.forEach(function(c){var g=grp(c);if(gs.indexOf(g)<0)gs.push(g)});var inG=function(c){return !GRP||grp(c)===GRP};
+ app.innerHTML+='<div class="card"><b>اختر الدرس:</b> <div class="row" style="flex-wrap:wrap;gap:6px;margin-top:6px">'+[''].concat(gs).map(function(g){var cnt=D.clips.filter(function(c){return g?grp(c)===g:true}).length,dn=D.clips.filter(function(c){return (g?grp(c)===g:true)&&have[K(c)]}).length;return '<button class="btn '+(GRP===g?'':'ghost')+'" data-g="'+esc(g)+'">'+(g||'الكل')+' <small>'+dn+'/'+cnt+'</small></button>'}).join('')+'</div></div>';
+ app.innerHTML+='<div class="who">'+Object.keys(D.speakers).map(function(s){var tot=D.clips.filter(function(c){return c.speaker===s&&inG(c)}).length,done=D.clips.filter(function(c){return c.speaker===s&&inG(c)&&have[K(c)]}).length;return '<button data-sp="'+s+'"'+(tot?'':' disabled')+'><span>'+esc(D.speakers[s])+'<br><small>'+tot+' مقطعًا</small></span><span>'+done+' / '+tot+'</span></button>'}).join('')+'</div>';
+ app.querySelectorAll('[data-g]').forEach(function(b){b.onclick=function(){GRP=b.dataset.g;vStart()}});
  app.querySelectorAll('[data-sp]').forEach(function(b){b.onclick=function(){SP=b.dataset.sp;var L=list();I=Math.max(0,L.findIndex(function(c){return !have[K(c)]}));vClip()}});
 }
 function vClip(){
