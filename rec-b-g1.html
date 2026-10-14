@@ -50,11 +50,12 @@ function K(c){return c.speaker+':'+c.id}
 /* views */
 function vStart(){
  var n={};D.clips.forEach(function(c){n[c.speaker]=(n[c.speaker]||0)+1});
- app.innerHTML='<h1>🎙️ استوديو تسجيل طلاقة</h1><p class="lead">أصوات أداة «أسمع وأتكلّم» · العربية لغير الناطقين بها · الصف الأول · 10 دروس</p>'+
+ app.innerHTML='<h1>🎙️ استوديو تسجيل طلاقة</h1><p class="lead">أصوات أداة «أسمع وأتكلّم» · الروضة الأولى (5 دروس) والروضة الثانية (5 دروس · كتاب التمهيدي 2)</p>'+
  '<div class="card"><h3 style="margin-top:0">قبل أن تبدأ</h3><ul class="tips"><li>غرفة هادئة: لا مكيّف عالٍ ولا أصوات في الخلفية.</li><li>الهاتف أو الحاسوب على بعد شبر تقريبًا من الفم.</li><li>اقرأ كما تتكلم مع طفل صغير: بوضوح وبطء قليل وابتسامة.</li><li>الحركات مكتوبة كاملة: اقرأ ما تراه، والكلمة المفردة تُقرأ بالوقف.</li><li>بعد كل تسجيل اضغط «استمع» وتأكد، ثم «التالي».</li></ul></div>';
  var gs=[];D.clips.forEach(function(c){var g=grp(c);if(gs.indexOf(g)<0)gs.push(g)});var inG=function(c){return !GRP||grp(c)===GRP};
  app.innerHTML+='<div class="card"><b>اختر الدرس:</b> <div class="row" style="flex-wrap:wrap;gap:6px;margin-top:6px">'+[''].concat(gs).map(function(g){var cnt=D.clips.filter(function(c){return g?grp(c)===g:true}).length,dn=D.clips.filter(function(c){return (g?grp(c)===g:true)&&have[K(c)]}).length;return '<button class="btn '+(GRP===g?'':'ghost')+'" data-g="'+esc(g)+'">'+(g||'الكل')+' <small>'+dn+'/'+cnt+'</small></button>'}).join('')+'</div></div>';
  app.innerHTML+='<div class="who">'+Object.keys(D.speakers).map(function(s){var tot=D.clips.filter(function(c){return c.speaker===s&&inG(c)}).length,done=D.clips.filter(function(c){return c.speaker===s&&inG(c)&&have[K(c)]}).length;return '<button data-sp="'+s+'"'+(tot?'':' disabled')+'><span>'+esc(D.speakers[s])+'<br><small>'+tot+' مقطعًا</small></span><span>'+done+' / '+tot+'</span></button>'}).join('')+'</div>';
+ var nh=D.clips.filter(function(c){return have[K(c)]}).length;app.innerHTML+='<div class="card" style="text-align:center"><button class="btn" id="exp0"'+(nh?'':' disabled')+'>📦 تصدير كل التسجيلات ('+nh+')</button><div class="st" id="st"></div><div class="note">يُجهَّز التصدير في ملفات صغيرة (40 مقطعًا لكل ملف) تُنزَّل أو تُشارَك واحدًا واحدًا عبر واتساب/تيمز.</div></div>';var e0=$('exp0');if(e0)e0.onclick=exportZip;
  app.querySelectorAll('[data-g]').forEach(function(b){b.onclick=function(){GRP=b.dataset.g;vStart()}});
  app.querySelectorAll('[data-sp]').forEach(function(b){b.onclick=function(){SP=b.dataset.sp;var L=list();I=Math.max(0,L.findIndex(function(c){return !have[K(c)]}));vClip()}});
 }
@@ -100,13 +101,26 @@ function stopRec(){if(REC&&REC.state==='recording')REC.stop()}
 function stopAll(){try{player.pause()}catch(e){}stopRec()}
 function exportZip(){
  if(!window.JSZip){alert('تعذّر تحميل أداة الضغط. تأكد من الاتصال بالإنترنت.');return}
- setSt('… يجهّز الملف','');
- var zip=new JSZip(),man=[],L=D.clips.filter(function(c){return have[K(c)]});
- Promise.all(L.map(function(c){return get(K(c)).then(function(v){if(!v)return;var ext=(v.mime||'').indexOf('mp4')>=0?'m4a':(v.mime||'').indexOf('ogg')>=0?'ogg':'webm';var fn=c.id+'_'+c.speaker+'.'+ext;zip.file(fn,v.blob);man.push({file:fn,id:c.id,speaker:c.speaker,text:c.text,dur:v.dur,peak:v.peak,at:v.at,mime:v.mime})})})).then(function(){
-  zip.file('manifest.json',JSON.stringify({tool:'talaqa-aal-g1',exported:new Date().toISOString(),ua:navigator.userAgent,clips:man},null,1));
-  return zip.generateAsync({type:'blob'})}).then(function(b){var d=new Date(),p=function(n){return (n<10?'0':'')+n};
-  var a=document.createElement('a');a.href=URL.createObjectURL(b);a.download='talaqa_aal_g1_'+(SP||'all')+'_'+d.getFullYear()+p(d.getMonth()+1)+p(d.getDate())+'_'+p(d.getHours())+p(d.getMinutes())+'.zip';document.body.appendChild(a);a.click();a.remove();
-  setSt('✓ نُزِّل الملف ('+man.length+' مقطعًا). أرسله إلى رئيس القسم.','ok')}).catch(function(){setSt('تعذّر التصدير. حاول مرة أخرى.','bad')});
+ setSt('… يجهّز الملفات (قد يستغرق دقيقة على الهاتف)','');
+ var L=D.clips.filter(function(c){return have[K(c)]}),PART=40,parts=[];
+ for(var i=0;i<L.length;i+=PART)parts.push(L.slice(i,i+PART));
+ var d=new Date(),p=function(n){return (n<10?'0':'')+n},stamp=d.getFullYear()+p(d.getMonth()+1)+p(d.getDate())+'_'+p(d.getHours())+p(d.getMinutes()),out=[];
+ var box=document.getElementById('expbox');if(!box){box=document.createElement('div');box.id='expbox';box.style.cssText='margin:12px 0;display:grid;gap:8px';var st=$('st');(st?st.parentNode:app).insertBefore(box,st?st.nextSibling:null)}
+ box.innerHTML='';
+ (function one(k){
+  if(k>=parts.length){setSt('✓ جاهز: '+parts.length+' ملفات ('+L.length+' مقطعًا). نزّل أو شارك كل ملف على حدة وأرسلها إلى رئيس القسم.','ok');return}
+  var zip=new JSZip(),man=[];
+  Promise.all(parts[k].map(function(c){return get(K(c)).then(function(v){if(!v)return;var ext=(v.mime||'').indexOf('mp4')>=0?'m4a':(v.mime||'').indexOf('ogg')>=0?'ogg':'webm';var fn=c.id+'_'+c.speaker+'.'+ext;zip.file(fn,v.blob);man.push({file:fn,id:c.id,speaker:c.speaker,text:c.text,dur:v.dur,peak:v.peak,at:v.at,mime:v.mime})})})).then(function(){
+   zip.file('manifest.json',JSON.stringify({tool:'talaqa-aal-g1',part:k+1,parts:parts.length,exported:new Date().toISOString(),ua:navigator.userAgent,clips:man},null,1));
+   return zip.generateAsync({type:'blob',compression:'STORE'})}).then(function(b){
+   var fn='talaqa_aal_g1_'+(SP||'all')+'_'+stamp+'_part'+(k+1)+'of'+parts.length+'.zip',mb=(b.size/1048576).toFixed(1);
+   var row=document.createElement('div');row.className='row';row.style.justifyContent='flex-start';
+   var a=document.createElement('a');a.className='btn';a.href=URL.createObjectURL(b);a.download=fn;a.textContent='⬇️ الجزء '+(k+1)+' من '+parts.length+' · '+man.length+' مقطعًا · '+mb+' MB';row.appendChild(a);
+   var f;try{f=new File([b],fn,{type:'application/zip'})}catch(e){}
+   if(f&&navigator.canShare&&navigator.canShare({files:[f]})){var sb=document.createElement('button');sb.className='btn ghost';sb.textContent='📤 مشاركة';sb.onclick=function(){navigator.share({files:[f],title:fn}).catch(function(){})};row.appendChild(sb)}
+   box.appendChild(row);setSt('… جُهِّز '+(k+1)+' من '+parts.length,'');setTimeout(function(){one(k+1)},50)
+  }).catch(function(e){setSt('تعذّر تجهيز الجزء '+(k+1)+'. أعد المحاولة.','bad')})
+ })(0);
 }
 refreshHave().then(vStart,vStart);
 })();
