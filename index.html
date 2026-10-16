@@ -172,7 +172,8 @@ function makePlan(){
 /* ---- results ---- */
 function decodeAll(txt){
  var S={};function row(n,c){var k=nkey(n)+'|'+nkey(c);S[k]=S[k]||{n:n,c:c,tools:{},bench:[],devs:{}};return S[k]}
- (txt.match(/(HR[123]|SP2|GM1|AB1)\.[A-Za-z0-9_-]+/g)||[]).forEach(function(code){try{var kind=code.slice(0,3),o=JSON.parse(b64d(code.slice(4)));
+ (txt.match(/(HR[123]|SP2|GM1|AB[12])\.[A-Za-z0-9_-]+/g)||[]).forEach(function(code){try{var kind=code.slice(0,3),o=JSON.parse(b64d(code.slice(4)));
+  if(kind==='AB2'){var rb=row(o.n,o.c),tb=tool(o.t),cb=rb.tools[o.t],sb=0,db=0;Object.keys(o.p||{}).forEach(function(k){db++;(o.p[k]||[]).forEach(function(v){if(v)sb++})});if(!cb||cb.d<=o.d)rb.tools[o.t]={d:o.d,done:sb,units:db,acts:db,best:0,title:tb?tb.title:o.t,ab:2};return}
   if(kind==='AB1'){var ra=row(o.n,o.c),ta=tool(o.t),ca=ra.tools[o.t],st=0,ls=0,dn=0;Object.keys(o.p||{}).forEach(function(l){ls++;(o.p[l]||[]).forEach(function(v){if(v===2)st++;if(v)dn++})});if(!ca||ca.d<=o.d)ra.tools[o.t]={d:o.d,done:st,units:ls,acts:dn,best:0,title:ta?ta.title:o.t,ab:1};return}
   if(kind==='GM1'){var rg=row(o.n,o.c);rg.gm=rg.gm||{};var cw=rg.gm[o.w];if(!cw||cw.p<=o.p)rg.gm[o.w]={p:o.p,g:o.g,d:o.d};return}
   if(kind==='HR3'){(o.r||[]).forEach(function(x){var r=row(x.n,x.c);if(!r.bench.some(function(b){return b.d===x.d&&b.u===x.u&&b.v===x.v}))r.bench.push(x)});return}
@@ -202,7 +203,7 @@ function challenge(txt,mine){var rows=decodeAll(txt),W=lastWeek(rows);if(!W)retu
  h+='<section class="panel stack"><h3>نص الإعلان</h3><textarea class="in" rows="5" readonly id="annTx">'+esc(ann.join('\n'))+'</textarea><button class="btn small" data-a="copyann">📋 انسخ الإعلان</button><p class="note" style="margin:0">لا تُعلن أسماء الطلاب الأقل نقاطًا. الإعلان يذكر الشعب، و«نجوم الشعبة» للتشجيع داخل الصف.</p></section>';
  return h}
 function tCh(){var saved=store.get('pt_codes','');return '<p class="lead">ألصق رموز طلابك (ومن ضمنها رموز الألعاب GM1) في «📊 النتائج»، ثم ارجع هنا. لترتيب القسم كله يجمع المنسق رموز كل المعلمين.</p>'+challenge(saved,true)}
-function tRes(){var saved=store.get('pt_codes','');return '<p class="lead">'+(TB?'ألصق رموز الإنجاز (AB1) التي أرسلها أولياء الأمور من الأداة. تبقى على جهازك فقط.':'ألصق رموز الإنجاز (HR2 / SP2) ورموز القياس (HR3) التي أرسلها طلابك. تبقى على جهازك فقط.')+'</p><div class="panel stack"><textarea class="in mono" id="codesIn" rows="4" placeholder="'+(TB?'AB1....':'HR2.... SP2.... HR3....')+'">'+esc(saved)+'</textarea><button class="btn" data-a="decode">اعرض النتائج</button></div>'+resTable(decodeAll(saved),true)+'<p class="note">التفاصيل الكاملة لكل مستوى تظهر في «نتائج الطلاب» داخل الأداة نفسها عند لصق الرموز هناك.</p>'}
+function tRes(){var saved=store.get('pt_codes','');return '<p class="lead">'+(TB?'ألصق رموز الإنجاز (AB1 / AB2) التي أرسلها أولياء الأمور من الأداة. تبقى على جهازك فقط.':'ألصق رموز الإنجاز (HR2 / SP2) ورموز القياس (HR3) التي أرسلها طلابك. تبقى على جهازك فقط.')+'</p><div class="panel stack"><textarea class="in mono" id="codesIn" rows="4" placeholder="'+(TB?'AB1....':'HR2.... SP2.... HR3....')+'">'+esc(saved)+'</textarea><button class="btn" data-a="decode">اعرض النتائج</button></div>'+resTable(decodeAll(saved),true)+'<p class="note">التفاصيل الكاملة لكل مستوى تظهر في «نتائج الطلاب» داخل الأداة نفسها عند لصق الرموز هناك.</p>'}
 /* ---- owner ---- */
 function vOwner(){
  var h='<header class="top"><button class="chip" data-a="home">🏠 البداية</button><span class="chip dark">🛠️ لوحة المنسق</span></header><h1>لوحة المنسق</h1><p class="lead">تظهر لك وحدك من حسابك. غيّر المعلمين والشعب والأدوات، ثم «انشر التحديث».</p>';
