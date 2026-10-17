@@ -75,7 +75,7 @@ function saveRec(b,sec,who){
   }finally{lock.releaseLock()}
 }
 /* لتجهيز الأذونات مرة واحدة من المحرر: اختر authorize ثم Run */
-function authorize(){DriveApp.getRootFolder();SpreadsheetApp.getActive();UrlFetchApp.fetch(SITE,{muteHttpExceptions:true})}
+function authorize(){var f=DriveApp.createFolder('طلاقة-اختبار-الإذن');f.setTrashed(true);SpreadsheetApp.getActive();UrlFetchApp.fetch(SITE,{muteHttpExceptions:true})}
 
 /* ---------- ملخّص للمعلم أو المنسق ---------- */
 function doGet(e){
