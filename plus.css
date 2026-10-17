@@ -1,0 +1,57 @@
+/* طلاقة · طبقة التحفيز (plus.css) */
+.tq-wrap{margin:4px 0 18px}
+.tq-j{position:relative;background:#fff;border-radius:26px;padding:16px 16px 14px;box-shadow:0 6px 0 #D3E4F5;border:3px solid #FFE08A}
+.tq-hi{display:flex;align-items:center;gap:12px}
+.tq-falcon{width:92px;height:auto;flex:0 0 auto;animation:tqBob 3.2s ease-in-out infinite;transform-origin:50% 90%}
+.tq-bub{position:relative;flex:1;background:#FFF4D1;color:#5A3A00;border-radius:20px;padding:12px 14px;font-weight:800;font-size:1.12rem;line-height:1.5}
+.tq-bub:after{content:"";position:absolute;right:-9px;top:50%;margin-top:-9px;border-top:9px solid transparent;border-bottom:9px solid transparent;border-left:10px solid #FFF4D1}
+.tq-go{display:flex;width:100%;align-items:center;justify-content:center;margin:14px 0 4px;border:0;border-radius:20px;padding:16px 18px;min-height:64px;font:inherit;font-weight:800;font-size:1.3rem;color:#fff;background:#22B866;box-shadow:0 6px 0 #168A4B;cursor:pointer;animation:tqPulse 2.4s ease-in-out infinite;text-align:center;line-height:1.35}
+.tq-go:active{transform:translateY(4px);box-shadow:0 2px 0 #168A4B}
+.tq-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:12px}
+.tq-s{background:#F6FAFF;border-radius:16px;padding:8px 6px;text-align:center;display:flex;flex-direction:column;align-items:center;gap:0}
+.tq-n{font-size:1.35rem;font-weight:800;line-height:1.3}
+.tq-s small{color:#5B6B8C;font-weight:700;font-size:.82rem;line-height:1.3}
+.tq-rank .tq-n{font-size:1.6rem}
+.tq-bar{height:14px;background:#EAF0F8;border-radius:999px;margin-top:12px;overflow:hidden}
+.tq-bar i{display:block;height:100%;background:linear-gradient(90deg,#FFC83D,#FF9417);border-radius:999px;transition:width .6s}
+.tq-nx{margin:6px 0 0;text-align:center;color:#5B6B8C;font-weight:700;font-size:.92rem}
+.tq-week{display:flex;justify-content:space-between;gap:4px;margin-top:12px}
+.tq-week span{flex:1;display:flex;flex-direction:column;align-items:center;font-size:.72rem;font-weight:700;color:#8A97B2;background:#F6FAFF;border-radius:12px;padding:6px 2px}
+.tq-week span b{font-size:1.15rem;line-height:1.2;color:#C9D4E5}
+.tq-week span.on{background:#FFF0DC;color:#B35A00}
+.tq-week span.td{outline:2px dashed #FFC83D;outline-offset:-2px}
+.tq-j>.tq-mute{position:absolute;top:6px;left:6px}
+.tq-mute{border:0;background:transparent;font-size:1.1rem;cursor:pointer;padding:4px;opacity:.7}
+/* البطاقة التالية في شبكة المستويات */
+.ucard.tq-next{outline:5px solid #FFC83D;outline-offset:3px;animation:tqGlow 1.8s ease-in-out infinite}
+.ucard.tq-next:before{content:"👈 هنا";position:absolute;bottom:8px;left:8px;background:#FFC83D;color:#5A3A00;border-radius:999px;padding:2px 10px;font-size:.85rem;font-weight:800;z-index:2}
+.ucard.locked{padding-bottom:44px;filter:saturate(.55)}
+/* شريط التنقل في سطر واحد على الجوال */
+.shbar{gap:6px}
+.shbar button{padding:7px 11px;font-size:.92rem;white-space:nowrap}
+/* زر الرمز مكرر داخل الأداة؛ الشريط العلوي يجمع القراءة والتحدث والألعاب */
+#app-read [data-a="code"].btn,#app-speak [data-a="code"].btn{display:none}
+/* احتفال */
+.tq-cheer{position:fixed;left:50%;bottom:20px;transform:translateX(-50%);z-index:50;display:flex;align-items:center;gap:10px;background:#fff;border:3px solid #FFC83D;border-radius:24px;padding:8px 16px 8px 12px;box-shadow:0 10px 30px rgba(29,43,79,.25);animation:tqIn .35s cubic-bezier(.2,1.4,.4,1);max-width:calc(100% - 32px);direction:rtl}
+.tq-cheer .tq-falcon{width:64px;animation:tqHop .6s ease 2}
+.tq-cheer b{display:block;font-size:1.2rem;color:#1D2B4F;white-space:nowrap}
+.tq-cheer small{color:#5B6B8C;font-weight:700}
+.tq-cheer.out{opacity:0;transform:translate(-50%,20px);transition:.4s}
+.tq-burst{position:fixed;inset:0;pointer-events:none;z-index:49;overflow:hidden}
+.tq-burst i{position:absolute;top:-12px;width:10px;height:14px;border-radius:3px;animation:tqFall 1.8s ease-in forwards}
+@keyframes tqFall{to{top:105%;transform:rotate(540deg)}}
+@keyframes tqIn{from{transform:translate(-50%,60px);opacity:0}}
+@keyframes tqHop{50%{transform:translateY(-10px)}}
+@keyframes tqBob{50%{transform:translateY(-4px) rotate(-2deg)}}
+@keyframes tqPulse{50%{transform:scale(1.025)}}
+@keyframes tqGlow{50%{outline-color:#FF9417}}
+@media (prefers-reduced-motion:reduce){.tq-falcon,.tq-go,.ucard.tq-next{animation:none}}
+@media (max-width:380px){.tq-falcon{width:72px}.tq-bub{font-size:1rem}.tq-go{font-size:1.15rem}}
+.tq-c{padding:12px 14px}
+.tq-c .tq-falcon{width:76px}
+.tq-c .tq-go{margin:10px 0 2px}
+.tq-line{display:flex;align-items:center;justify-content:space-between;gap:6px;margin-top:10px;font-weight:800;font-size:.95rem;color:#5B6B8C;flex-wrap:wrap}
+.tq-line span{background:#F6FAFF;border-radius:999px;padding:4px 10px}
+.tq-line b{color:#1D2B4F}
+.tq-wrap+.place{display:none}
+.tq-hi{padding-left:18px}
