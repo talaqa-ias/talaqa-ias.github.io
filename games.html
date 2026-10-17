@@ -101,7 +101,7 @@ function home(){EP++;clearT();view='home';var g=gm();
  var h='<div class="top"><a class="chip" href="./">🏠 طلاقة</a><span class="chip">'+esc(ME.name)+' · '+esc(ME.sec)+'</span><span class="chip pts">⭐ '+g.p+' نقطة هذا الأسبوع</span></div>';
  h+='<h1>🎮 ساحة الألعاب</h1><p class="lead">العب وتعلّم. نقاطك تُضاف إلى شعبتك '+esc(ME.sec)+' في تحدي الصفوف.</p><div class="games">';
  GAMES[ST].forEach(function(x){var b=g.best[x[0]];h+='<button class="gm" style="--c:'+x[4]+';--d:'+x[5]+'" data-g="'+x[0]+'"><span class="ic">'+x[1]+'</span><strong>'+x[2]+'</strong><small>'+x[3]+'</small>'+(b?'<span class="best">أفضل نتيجة: '+b+'</span>':'')+'</button>'});
- h+='</div><div class="panel" style="margin-top:20px"><h3 style="margin:0 0 6px">🏆 تحدي الصفوف</h3><p class="note" style="margin:0 0 8px">في نهاية الأسبوع انسخ رمز الألعاب وأرسله إلى معلمك مع «رمز إنجازي»، فتُحسب نقاطك لشعبتك. يُحسب حتى '+CAP+' نقطة في اليوم.</p><textarea class="code" readonly id="gmc">'+esc(gmCode())+'</textarea><button class="btn small" id="cp" style="margin-top:8px">📋 انسخ رمز الألعاب</button></div>';
+ h+='</div><div class="panel" style="margin-top:20px"><h3 style="margin:0 0 6px">🏆 تحدي الصفوف</h3><p class="note" style="margin:0">✅ نقاطك تُضاف إلى شعبتك تلقائيًا. يُحسب حتى '+CAP+' نقطة في اليوم.</p><textarea class="code" readonly id="gmc" style="display:none">'+esc(gmCode())+'</textarea><button class="btn small" id="cp" style="display:none">📋</button></div>';
  $.innerHTML=h;
  $.querySelectorAll('.gm').forEach(function(b){b.onclick=function(){start(b.dataset.g)}});
  document.getElementById('cp').onclick=function(){var t=document.getElementById('gmc');t.select();try{navigator.clipboard.writeText(t.value)}catch(e){document.execCommand('copy')}toast('نُسخ الرمز')};

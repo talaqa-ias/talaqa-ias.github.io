@@ -93,10 +93,10 @@ function doGet(e){
     var key=sec+'|'+nm,o=st[key]||(st[key]={c:sec,n:nm,days:{},last:'',t:{}}),d=r[1]instanceof Date?Utilities.formatDate(r[1],'Asia/Dubai','yyyy-MM-dd'):String(r[1]);
     o.days[d]=1;if(d>o.last)o.last=d;
     var tl=r[4],k=r[5];if(tl==='v')continue;
-    var T=o.t[tl]||(o.t[tl]={k:{},u:{},d:'',g:0});
-    if(tl==='g'){T.g=Math.max(T.g,Number(r[6])||0)}else{T.k[k]=Math.max(T.k[k]||0,Number(r[6])||0);T.u[String(k).split('|')[0]]=1}
+    var T=o.t[tl]||(o.t[tl]={k:{},u:{},d:'',g:0,gw:{}});
+    if(tl==='g'){T.g=Math.max(T.g,Number(r[6])||0);T.gw[k]=Math.max(T.gw[k]||0,Number(r[6])||0)}else{T.k[k]=Math.max(T.k[k]||0,Number(r[6])||0);T.u[String(k).split('|')[0]]=1}
     if(d>T.d)T.d=d}
-  var list=Object.keys(st).map(function(key){var o=st[key],tools={};Object.keys(o.t).forEach(function(tl){var T=o.t[tl];tools[tl]={d:T.d,done:Object.keys(T.k).length,units:Object.keys(T.u).length,g:T.g}});return {c:o.c,n:o.n,last:o.last,days:Object.keys(o.days).length,tools:tools}});
+  var list=Object.keys(st).map(function(key){var o=st[key],tools={};Object.keys(o.t).forEach(function(tl){var T=o.t[tl];tools[tl]={d:T.d,done:Object.keys(T.k).length,units:Object.keys(T.u).length,g:T.g,gw:T.gw}});return {c:o.c,n:o.n,last:o.last,days:Object.keys(o.days).length,tools:tools}});
   return out({ok:true,at:new Date().toISOString(),rows:list});
 }
 
