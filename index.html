@@ -210,7 +210,8 @@ var LIVE=null,LIVEC='',LIVEQ=null,LIVEAT='',LIVEERR='';
 function liveLoad(q){LIVEQ=q;LIVEERR='';fetch('send-config.json',{cache:'no-store'}).then(function(r){return r.json()}).then(function(c){var u=String(c.progress||'');if(!u){LIVEERR='off';render();return null}
  return fetch(u+'?'+Object.keys(q).map(function(k){return k+'='+encodeURIComponent(q[k])}).join('&')).then(function(r){return r.json()})}).then(function(j){if(!j)return;if(!j.ok){LIVEERR=j.err||'err';render();return}
  var SID={};Object.keys(DATA.secs).forEach(function(sec){var c=(T&&T.codes&&T.codes[sec])||KN[sec];if(!c)return;(secOpen(sec,c)||[]).forEach(function(n){SID[sec+'|'+fnv('sid|'+sec+'|'+n+'|'+rcNorm(c))]=n})});
- LIVE=j.rows.filter(function(x){return SID[x.c+'|'+x.n]}).map(function(x){x.n=SID[x.c+'|'+x.n];return x}).map(function(x){var g=secOf(x.c),ts=toolsFor(g),o={n:x.n,c:x.c,tools:{},bench:[],devs:{},lv:x.last,days:x.days};
+ var NM={};Object.keys(SID).forEach(function(k){NM[k.split('|')[0]+'|'+nkey(SID[k])]=1});
+ LIVE=j.rows.filter(function(x){return SID[x.c+'|'+x.n]||NM[x.c+'|'+nkey(x.n)]}).map(function(x){if(SID[x.c+'|'+x.n])x.n=SID[x.c+'|'+x.n];return x}).map(function(x){var g=secOf(x.c),ts=toolsFor(g),o={n:x.n,c:x.c,tools:{},bench:[],devs:{},lv:x.last,days:x.days};
   [['r','read'],['s','speak']].forEach(function(p){var T=x.tools[p[0]];if(!T)return;var t=ts.filter(function(y){return y.kind===p[1]})[0];if(!t)return;o.tools[t.id]={d:T.d,done:T.done,units:T.units,best:0,title:t.title,live:1}});var Gm=x.tools.g;if(Gm&&Gm.gw){o.gm={};Object.keys(Gm.gw).forEach(function(w){o.gm[w]={p:Gm.gw[w],g:'',d:Gm.d}})}return o});
  LIVEC=(j.codes||[]).join('\n');LIVEAT=new Date().toTimeString().slice(0,5);render()}).catch(function(){LIVEERR='net';render()})}
 function liveMerge(rows){if(!LIVE)return rows;var by={};rows.forEach(function(r){by[nkey(r.n)+'|'+nkey(r.c)]=r});

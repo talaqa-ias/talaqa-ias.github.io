@@ -31,10 +31,12 @@ function secCodes(S){var pin=PropertiesService.getScriptProperties().getProperty
 function pinsOf(S,sec,code){var L=S.secs[sec];if(!L||!L.p||L.h!==fnv('rc|'+sec+'|'+code))return null;try{return JSON.parse(rcDec(code,sec,L.p))}catch(e){return null}}
 
 function sheet(){var ss=SpreadsheetApp.getActive(),sh=ss.getSheetByName(SHEET);
-  if(!sh){sh=ss.insertSheet(SHEET);sh.appendRow(['وقت الاستلام','التاريخ','الشعبة','معرّف الطالب (مستعار)','الأداة','المفتاح','القيمة','الصف']);sh.setFrozenRows(1);sh.setRightToLeft(true)}
+  if(!sh){sh=ss.insertSheet(SHEET);sh.appendRow(['وقت الاستلام','التاريخ','الشعبة','الطالب','الأداة','المفتاح','القيمة','الصف','النشاط']);sh.setFrozenRows(1);sh.setRightToLeft(true)}
+  else if(sh.getRange(1,4).getValue()!=='الطالب'){sh.getRange(1,4).setValue('الطالب');sh.getRange(1,9).setValue('النشاط')}
   return sh}
+var KIND={v:'زيارة',r:'قراءة',s:'تحدث',g:'ألعاب',a:'تسجيل صوتي'};
 /* رموز الإنجاز التفصيلية (سرعة القراءة، طريقة التحقق، القياس الصفي، تقييم التحدث) تُحفظ آخر نسخة منها */
-function codeSheet(){var ss=SpreadsheetApp.getActive(),sh=ss.getSheetByName('codes');if(!sh){sh=ss.insertSheet('codes');sh.appendRow(['وقت الاستلام','الشعبة','معرّف الطالب (مستعار)','النوع','الرمز التفصيلي']);sh.setFrozenRows(1);sh.setRightToLeft(true)}return sh}
+function codeSheet(){var ss=SpreadsheetApp.getActive(),sh=ss.getSheetByName('codes');if(!sh){sh=ss.insertSheet('codes');sh.appendRow(['وقت الاستلام','الشعبة','الطالب','النوع','الرمز التفصيلي']);sh.setFrozenRows(1);sh.setRightToLeft(true)}else if(sh.getRange(1,3).getValue()!=='الطالب')sh.getRange(1,3).setValue('الطالب');return sh}
 function out(o){return ContentService.createTextOutput(JSON.stringify(o)).setMimeType(ContentService.MimeType.JSON)}
 
 /* ---------- استقبال خطوات الطالب ---------- */
@@ -47,9 +49,9 @@ function doPost(e){
     if(!who||fnv('ap|'+sec+'|'+who+'|'+c+'|'+P[who])!==String(b.pf))return out({ok:false,err:'auth'});
     if(b.a==='rec')return saveRec(b,sec,who);
     var all=(b.ev||[]).slice(0,300),cs=all.filter(function(x){return x.t==='code'}),ev=all.filter(function(x){return x.t!=='code'});
-    if(cs.length){var lk=LockService.getScriptLock();lk.waitLock(20000);try{var cx=codeSheet();cs.forEach(function(x){cx.appendRow([new Date(),sec,String(b.sid),String(x.k||'').slice(0,4),String(x.c||'').slice(0,45000)])})}finally{lk.releaseLock()}}
+    if(cs.length){var lk=LockService.getScriptLock();lk.waitLock(20000);try{var cx=codeSheet();cs.forEach(function(x){cx.appendRow([new Date(),sec,who,String(x.k||'').slice(0,4),String(x.c||'').slice(0,45000)])})}finally{lk.releaseLock()}}
     if(!ev.length)return out({ok:true,n:cs.length});
-    var now=new Date(),rows=ev.map(function(x){return [now,String(x.d||'').slice(0,10),sec,String(b.sid),String(x.t||'').slice(0,12),String(x.k||'').slice(0,80),Number(x.v)||0,String(b.g||'').slice(0,4)]});
+    var now=new Date(),rows=ev.map(function(x){var t=String(x.t||'').slice(0,12);return [now,String(x.d||'').slice(0,10),sec,who,t,String(x.k||'').slice(0,80),Number(x.v)||0,String(b.g||'').slice(0,4),KIND[t]||t]});
     var lock=LockService.getScriptLock();lock.waitLock(20000);
     try{var sh=sheet();sh.getRange(sh.getLastRow()+1,1,rows.length,rows[0].length).setValues(rows)}finally{lock.releaseLock()}
     return out({ok:true,n:rows.length});
@@ -74,7 +76,7 @@ function saveRec(b,sec,who){
     var ss=SpreadsheetApp.getActive(),sh=ss.getSheetByName('recs');
     if(!sh){sh=ss.insertSheet('recs');sh.appendRow(['وقت الاستلام','الشعبة','الطالب','الأداة','المهمة','الجزء','رابط الملف']);sh.setFrozenRows(1);sh.setRightToLeft(true)}
     sh.appendRow([new Date(),sec,who,kind,clean(b.title),clean(b.part),file.getUrl()]);
-    var ev=sheet();ev.appendRow([new Date(),day,sec,String(b.sid),'a',clean(b.tool)+'|'+clean(b.title)+'|'+clean(b.part),1,String(b.g||'').slice(0,4)]);
+    var ev=sheet();ev.appendRow([new Date(),day,sec,who,'a',clean(b.tool)+'|'+clean(b.title)+'|'+clean(b.part),1,String(b.g||'').slice(0,4),'تسجيل صوتي: '+kind+' · '+clean(b.title)+(b.part?' · '+clean(b.part):'')]);
     return out({ok:true,url:file.getUrl()});
   }finally{lock.releaseLock()}
 }
