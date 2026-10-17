@@ -31,7 +31,7 @@ function secCodes(S){var pin=PropertiesService.getScriptProperties().getProperty
 function pinsOf(S,sec,code){var L=S.secs[sec];if(!L||!L.p||L.h!==fnv('rc|'+sec+'|'+code))return null;try{return JSON.parse(rcDec(code,sec,L.p))}catch(e){return null}}
 
 function sheet(){var ss=SpreadsheetApp.getActive(),sh=ss.getSheetByName(SHEET);
-  if(!sh){sh=ss.insertSheet(SHEET);sh.appendRow(['وقت الاستلام','التاريخ','الشعبة','الطالب','الأداة','المفتاح','القيمة','الصف']);sh.setFrozenRows(1);sh.setRightToLeft(true)}
+  if(!sh){sh=ss.insertSheet(SHEET);sh.appendRow(['وقت الاستلام','التاريخ','الشعبة','معرّف الطالب (مستعار)','الأداة','المفتاح','القيمة','الصف']);sh.setFrozenRows(1);sh.setRightToLeft(true)}
   return sh}
 function out(o){return ContentService.createTextOutput(JSON.stringify(o)).setMimeType(ContentService.MimeType.JSON)}
 
@@ -40,10 +40,11 @@ function doPost(e){
   try{
     var b=JSON.parse(e.postData.contents),S=seed(),sec=String(b.sec||''),K=secCodes(S),c=K[sec],P=c&&pinsOf(S,sec,c);
     if(!P){S=seed(true);K=secCodes(S);c=K[sec];P=c&&pinsOf(S,sec,c)}
-    var pin=P&&P[b.name];
-    if(!pin||fnv('ap|'+sec+'|'+b.name+'|'+c+'|'+pin)!==String(b.pf))return out({ok:false,err:'auth'});
+    /* لا أسماء في الجدول: الطالب يُعرَّف بمعرّف مستعار (sid) لا يفكّه إلا من يملك رمز الشعبة */
+    var who=P&&Object.keys(P).filter(function(n){return fnv('sid|'+sec+'|'+n+'|'+c)===String(b.sid)})[0];
+    if(!who||fnv('ap|'+sec+'|'+who+'|'+c+'|'+P[who])!==String(b.pf))return out({ok:false,err:'auth'});
     var ev=(b.ev||[]).slice(0,300);if(!ev.length)return out({ok:true,n:0});
-    var now=new Date(),rows=ev.map(function(x){return [now,String(x.d||'').slice(0,10),sec,b.name,String(x.t||'').slice(0,12),String(x.k||'').slice(0,80),Number(x.v)||0,String(b.g||'').slice(0,4)]});
+    var now=new Date(),rows=ev.map(function(x){return [now,String(x.d||'').slice(0,10),sec,String(b.sid),String(x.t||'').slice(0,12),String(x.k||'').slice(0,80),Number(x.v)||0,String(b.g||'').slice(0,4)]});
     var lock=LockService.getScriptLock();lock.waitLock(20000);
     try{var sh=sheet();sh.getRange(sh.getLastRow()+1,1,rows.length,rows[0].length).setValues(rows)}finally{lock.releaseLock()}
     return out({ok:true,n:rows.length});

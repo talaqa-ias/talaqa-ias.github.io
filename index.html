@@ -209,7 +209,8 @@ function tRes(){var saved=store.get('pt_codes','');return '<p class="lead">'+(TB
 var LIVE=null,LIVEQ=null,LIVEAT='',LIVEERR='';
 function liveLoad(q){LIVEQ=q;LIVEERR='';fetch('send-config.json',{cache:'no-store'}).then(function(r){return r.json()}).then(function(c){var u=String(c.progress||'');if(!u){LIVEERR='off';render();return null}
  return fetch(u+'?'+Object.keys(q).map(function(k){return k+'='+encodeURIComponent(q[k])}).join('&')).then(function(r){return r.json()})}).then(function(j){if(!j)return;if(!j.ok){LIVEERR=j.err||'err';render();return}
- LIVE=j.rows.map(function(x){var g=secOf(x.c),ts=toolsFor(g),o={n:x.n,c:x.c,tools:{},bench:[],devs:{},lv:x.last,days:x.days};
+ var SID={};Object.keys(DATA.secs).forEach(function(sec){var c=(T&&T.codes&&T.codes[sec])||KN[sec];if(!c)return;(secOpen(sec,c)||[]).forEach(function(n){SID[sec+'|'+fnv('sid|'+sec+'|'+n+'|'+rcNorm(c))]=n})});
+ LIVE=j.rows.filter(function(x){return SID[x.c+'|'+x.n]}).map(function(x){x.n=SID[x.c+'|'+x.n];return x}).map(function(x){var g=secOf(x.c),ts=toolsFor(g),o={n:x.n,c:x.c,tools:{},bench:[],devs:{},lv:x.last,days:x.days};
   [['r','read'],['s','speak']].forEach(function(p){var T=x.tools[p[0]];if(!T)return;var t=ts.filter(function(y){return y.kind===p[1]})[0];if(!t)return;o.tools[t.id]={d:T.d,done:T.done,units:T.units,best:0,title:t.title,live:1}});return o});
  LIVEAT=new Date().toTimeString().slice(0,5);render()}).catch(function(){LIVEERR='net';render()})}
 function liveMerge(rows){if(!LIVE)return rows;var by={};rows.forEach(function(r){by[nkey(r.n)+'|'+nkey(r.c)]=r});LIVE.forEach(function(l){var k=nkey(l.n)+'|'+nkey(l.c),r=by[k];if(!r){r={n:l.n,c:l.c,tools:{},bench:[],devs:{}};by[k]=r;rows.push(r)}r.lv=l.lv;r.days=l.days;Object.keys(l.tools).forEach(function(id){var a=r.tools[id],b=l.tools[id];if(!a||a.d<=b.d||a.done<b.done)r.tools[id]=b})});return rows}

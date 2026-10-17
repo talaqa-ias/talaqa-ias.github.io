@@ -1,4 +1,5 @@
 /* طلاقة · الإرسال التلقائي للتقدّم (sync.js)
+   لا يُرسل اسم الطالب ولا رموزه: يُرسل معرّفًا مستعارًا وبصمة تحقق فقط.
    يرسل خطوات الطالب المنجزة وزيارته اليومية إلى خادم المدرسة (Google Apps Script)
    دون أي رمز يرسله الطالب. يعمل فقط إذا وُضع رابط الخادم في send-config.json («progress»).
    إن انقطع الإنترنت تبقى الخطوات في الجهاز وتُرسل لاحقًا. */
@@ -43,7 +44,7 @@ function flush(){
   if(sent['v|'+today]==null)ev.push({t:'v',k:today,v:1,d:today});
   items(me).forEach(function(x){var id=x.t+'|'+x.k;if(sent[id]==null||(x.t!=='r'&&x.v>sent[id]))ev.push({t:x.t,k:x.k,v:x.v,d:today})});
   if(!ev.length)return;busy=true;
-  fetch(url,{method:'POST',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify({sec:me.sec,name:me.name,pf:fnv('ap|'+me.sec+'|'+me.name+'|'+me.c+'|'+me.p),g:GRADE||'',ev:ev}),keepalive:true})
+  fetch(url,{method:'POST',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify({sec:me.sec,sid:fnv('sid|'+me.sec+'|'+me.name+'|'+me.c),pf:fnv('ap|'+me.sec+'|'+me.name+'|'+me.c+'|'+me.p),g:GRADE||'',ev:ev}),keepalive:true})
    .then(function(r){return r.json()}).then(function(j){if(j&&j.ok){S=get('tq_sent',{})||{};var s2=S[key]||{};ev.forEach(function(x){s2[x.t==='v'?'v|'+x.k:x.t+'|'+x.k]=x.v});S[key]=s2;put('tq_sent',S)}else if(j&&j.err==='auth'){try{localStorage.removeItem('tq_auth')}catch(e){}}})
    .catch(function(){}).then(function(){busy=false})})}
 
