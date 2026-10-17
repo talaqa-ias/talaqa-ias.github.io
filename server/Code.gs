@@ -55,8 +55,12 @@ function doPost(e){
 function doGet(e){
   var q=e.parameter||{},S=seed(),allowed=null;
   if(q.a==='ping')return out({ok:true});
-  if(q.r==='own'){if(!S.own||fnv('own|'+String(q.k||''))!==S.own.h)return out({ok:false,err:'auth'});allowed=null}
-  else if(q.r==='t'){var t=(S.teachers||[]).filter(function(x){return x.id===q.id})[0];if(!t||fnv('tp|'+t.id+'|'+String(q.k||''))!==t.h)return out({ok:false,err:'auth'});allowed={};t.secs.forEach(function(s){allowed[s]=1})}
+  /* حماية من تخمين الرموز: 10 محاولات خاطئة تقفل 15 دقيقة */
+  var C=CacheService.getScriptCache(),fk='f_'+(q.r||'')+'_'+(q.id||''),fails=Number(C.get(fk)||0);
+  if(fails>=10)return out({ok:false,err:'locked'});
+  function bad(){C.put(fk,String(fails+1),900);return out({ok:false,err:'auth'})}
+  if(q.r==='own'){if(!S.own||fnv('own|'+String(q.k||''))!==S.own.h)return bad();allowed=null}
+  else if(q.r==='t'){var t=(S.teachers||[]).filter(function(x){return x.id===q.id})[0];if(!t||fnv('tp|'+t.id+'|'+String(q.k||''))!==t.h)return bad();allowed={};t.secs.forEach(function(s){allowed[s]=1})}
   else return out({ok:false,err:'role'});
   var v=sheet().getDataRange().getValues(),st={};
   for(var i=1;i<v.length;i++){var r=v[i],sec=r[2],nm=r[3];if(allowed&&!allowed[sec])continue;

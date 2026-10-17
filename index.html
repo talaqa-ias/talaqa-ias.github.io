@@ -246,7 +246,7 @@ function oTools(){
  return h;
 }
 function oRes(){var saved=store.get('pt_codes_all','');return '<p class="lead">ألصق كل الرموز التي وصلتك من المعلمين. تبقى على جهازك.</p><div class="panel stack"><textarea class="in mono" id="codesAll" rows="5">'+esc(saved)+'</textarea><div class="row"><button class="btn" data-a="decodeAll">اعرض النتائج</button><button class="btn ghost" data-a="tsvAll">انسخ الجدول إلى Excel</button></div></div>'+liveBar()+resTable(liveMerge(decodeAll(saved)),false)}
-function tsvAll(){var rows=decodeAll(store.get('pt_codes_all',''));var out=['الطالب\tالشعبة\tالأداة\tتاريخ الرمز\tالدرجات المنجزة\tالمستويات\tأفضل سرعة منزلية\tآخر قياس صفي (كلمة/دقيقة)\tدقة القياس %\tتاريخ القياس'];rows.forEach(function(r){var bm=r.bench.slice().sort(function(a,b){return a.d<b.d?1:-1})[0];var ids=Object.keys(r.tools);if(!ids.length)ids=[''];ids.forEach(function(id){var x=r.tools[id]||{};out.push([r.n,r.c,x.title||'',x.d||'',x.done||'',x.units||'',x.best||'',bm?bm.v:'',bm?bm.a:'',bm?bm.d:''].join('\t'))})});return out.join('\n')}
+function tsvAll(){var rows=liveMerge(decodeAll(store.get('pt_codes_all','')));var out=['الطالب\tالشعبة\tالأداة\tتاريخ الرمز\tالدرجات المنجزة\tالمستويات\tأفضل سرعة منزلية\tآخر قياس صفي (كلمة/دقيقة)\tدقة القياس %\tتاريخ القياس'];rows.forEach(function(r){var bm=r.bench.slice().sort(function(a,b){return a.d<b.d?1:-1})[0];var ids=Object.keys(r.tools);if(!ids.length)ids=[''];ids.forEach(function(id){var x=r.tools[id]||{};out.push([r.n,r.c,x.title||'',x.d||'',x.done||'',x.units||'',x.best||'',bm?bm.v:'',bm?bm.a:'',bm?bm.d:''].join('\t'))})});return out.join('\n')}
 
 /* ---- coordinator monitoring: roster vs received codes ---- */
 var KN=store.get('pt_known',{});
@@ -266,7 +266,7 @@ function oMon(){
  h+='<div class="row" style="margin-top:12px"><button class="btn ghost" data-a="montsv">انسخ جدول المتابعة إلى Excel</button></div><p class="note">«لم يستخدموا» تعني أنه لم يصلك رمز باسمهم، وقد يكون الطالب استخدم الأداة ولم يرسل الرمز. التنبيه الأصفر للشعب التي استخدم أقل من 40% من طلابها الأدوات.</p>';
  return h;
 }
-function monTsv(){var secs=Object.keys(DATA.secs).sort(),rows=decodeAll(store.get('pt_codes_all','')),byKey={};rows.forEach(function(r){byKey[nkey(r.n)+'|'+nkey(r.c)]=r});var out=['الشعبة\tالمعلم\tالطالب\tاستخدم الأداة؟\tالأدوات\tآخر تاريخ\tأفضل سرعة\tآخر قياس صفي'];secs.forEach(function(s){var ns=secNames(s);if(!ns)return;var t=DATA.teachers.filter(function(t){return t.secs.indexOf(s)>=0}).map(function(t){return t.name}).join('، ');ns.forEach(function(n){var r=byKey[nkey(n)+'|'+nkey(s)];if(!r){out.push([s,t,n,'لا','','','',''].join('\t'));return}var last='',best=0,tl=[];Object.keys(r.tools).forEach(function(id){var x=r.tools[id];tl.push(x.title);if(x.d>last)last=x.d;best=Math.max(best,x.best||0)});var bm=r.bench.slice().sort(function(a,b){return a.d<b.d?1:-1})[0];out.push([s,t,n,'نعم',tl.join(' / '),last,best||'',bm?bm.v+' ('+bm.a+'%)':''].join('\t'))})});return out.join('\n')}
+function monTsv(){var secs=Object.keys(DATA.secs).sort(),rows=liveMerge(decodeAll(store.get('pt_codes_all',''))),byKey={};rows.forEach(function(r){byKey[nkey(r.n)+'|'+nkey(r.c)]=r});var out=['الشعبة\tالمعلم\tالطالب\tاستخدم الأداة؟\tالأدوات\tآخر تاريخ\tأفضل سرعة\tآخر قياس صفي'];secs.forEach(function(s){var ns=secNames(s);if(!ns)return;var t=DATA.teachers.filter(function(t){return t.secs.indexOf(s)>=0}).map(function(t){return t.name}).join('، ');ns.forEach(function(n){var r=byKey[nkey(n)+'|'+nkey(s)];if(!r){out.push([s,t,n,'لا','','','',''].join('\t'));return}var last='',best=0,tl=[];Object.keys(r.tools).forEach(function(id){var x=r.tools[id];tl.push(x.title);if(x.d>last)last=x.d;best=Math.max(best,x.best||0)});var bm=r.bench.slice().sort(function(a,b){return a.d<b.d?1:-1})[0];out.push([s,t,n,'نعم',tl.join(' / '),last,best||'',bm?bm.v+' ('+bm.a+'%)':''].join('\t'))})});return out.join('\n')}
 /* ---- publish ---- */
 async function use(n){try{return window.claude&&window.claude.use?await window.claude.use(n):null}catch(e){return null}}
 function markDirty(){dirty=true;var b=document.getElementById('savebar');if(b)b.hidden=false}
@@ -346,4 +346,5 @@ render();
 })();
 </script>
 <script src="plus.js" defer></script>
+<script src="sync.js" defer></script>
 </body></html>
