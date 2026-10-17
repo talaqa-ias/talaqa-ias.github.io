@@ -33,6 +33,8 @@ function pinsOf(S,sec,code){var L=S.secs[sec];if(!L||!L.p||L.h!==fnv('rc|'+sec+'
 function sheet(){var ss=SpreadsheetApp.getActive(),sh=ss.getSheetByName(SHEET);
   if(!sh){sh=ss.insertSheet(SHEET);sh.appendRow(['وقت الاستلام','التاريخ','الشعبة','معرّف الطالب (مستعار)','الأداة','المفتاح','القيمة','الصف']);sh.setFrozenRows(1);sh.setRightToLeft(true)}
   return sh}
+/* رموز الإنجاز التفصيلية (سرعة القراءة، طريقة التحقق، القياس الصفي، تقييم التحدث) تُحفظ آخر نسخة منها */
+function codeSheet(){var ss=SpreadsheetApp.getActive(),sh=ss.getSheetByName('codes');if(!sh){sh=ss.insertSheet('codes');sh.appendRow(['وقت الاستلام','الشعبة','معرّف الطالب (مستعار)','النوع','الرمز التفصيلي']);sh.setFrozenRows(1);sh.setRightToLeft(true)}return sh}
 function out(o){return ContentService.createTextOutput(JSON.stringify(o)).setMimeType(ContentService.MimeType.JSON)}
 
 /* ---------- استقبال خطوات الطالب ---------- */
@@ -44,7 +46,9 @@ function doPost(e){
     var who=P&&Object.keys(P).filter(function(n){return fnv('sid|'+sec+'|'+n+'|'+c)===String(b.sid)})[0];
     if(!who||fnv('ap|'+sec+'|'+who+'|'+c+'|'+P[who])!==String(b.pf))return out({ok:false,err:'auth'});
     if(b.a==='rec')return saveRec(b,sec,who);
-    var ev=(b.ev||[]).slice(0,300);if(!ev.length)return out({ok:true,n:0});
+    var all=(b.ev||[]).slice(0,300),cs=all.filter(function(x){return x.t==='code'}),ev=all.filter(function(x){return x.t!=='code'});
+    if(cs.length){var lk=LockService.getScriptLock();lk.waitLock(20000);try{var cx=codeSheet();cs.forEach(function(x){cx.appendRow([new Date(),sec,String(b.sid),String(x.k||'').slice(0,4),String(x.c||'').slice(0,45000)])})}finally{lk.releaseLock()}}
+    if(!ev.length)return out({ok:true,n:cs.length});
     var now=new Date(),rows=ev.map(function(x){return [now,String(x.d||'').slice(0,10),sec,String(b.sid),String(x.t||'').slice(0,12),String(x.k||'').slice(0,80),Number(x.v)||0,String(b.g||'').slice(0,4)]});
     var lock=LockService.getScriptLock();lock.waitLock(20000);
     try{var sh=sheet();sh.getRange(sh.getLastRow()+1,1,rows.length,rows[0].length).setValues(rows)}finally{lock.releaseLock()}
@@ -97,7 +101,9 @@ function doGet(e){
     if(tl==='g'){T.g=Math.max(T.g,Number(r[6])||0);T.gw[k]=Math.max(T.gw[k]||0,Number(r[6])||0)}else{T.k[k]=Math.max(T.k[k]||0,Number(r[6])||0);T.u[String(k).split('|')[0]]=1}
     if(d>T.d)T.d=d}
   var list=Object.keys(st).map(function(key){var o=st[key],tools={};Object.keys(o.t).forEach(function(tl){var T=o.t[tl];tools[tl]={d:T.d,done:Object.keys(T.k).length,units:Object.keys(T.u).length,g:T.g,gw:T.gw}});return {c:o.c,n:o.n,last:o.last,days:Object.keys(o.days).length,tools:tools}});
-  return out({ok:true,at:new Date().toISOString(),rows:list});
+  var codes={},cs=SpreadsheetApp.getActive().getSheetByName('codes');
+  if(cs){var cv=cs.getDataRange().getValues();for(var j=1;j<cv.length;j++){var x=cv[j];if(allowed&&!allowed[x[1]]&&x[3]!=='HR3')continue;codes[x[1]+'|'+x[2]+'|'+x[3]+(x[3]==='HR3'?'|'+j:'')]=String(x[4])}}
+  return out({ok:true,at:new Date().toISOString(),rows:list,codes:Object.keys(codes).map(function(k){return codes[k]})});
 }
 
 /* ---------- الاحتفاظ: حذف ما قبل بداية العام الدراسي (يُشغَّل يدويًا أو بمؤقّت سنوي) ---------- */

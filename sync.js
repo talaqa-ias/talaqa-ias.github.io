@@ -34,6 +34,11 @@ function items(me){var out=[],H=(get('hr_students',{})||{})[me.name],P=(get('sp_
  if(P&&P.p)Object.keys(P.p).forEach(function(id){var s=P.p[id];if(s&&s.done){var r=s.sr||{};out.push({t:'s',k:id,v:(r.f||0)+(r.k||0)+(r.w||0)})}});
  var G=get('tg_gm',null);if(G&&G.who===me.sec+'|'+me.name&&G.p>0)out.push({t:'g',k:String(G.w||''),v:G.p});
  return out}
+/* الرموز التفصيلية نفسها التي كان الطالب ينسخها يدويًا: تُرسل تلقائيًا عند تغيّرها */
+function b64e(s){return btoa(unescape(encodeURIComponent(s))).replace(/\+/g,'-').replace(/\//g,'_').replace(/=+$/,'')}
+function codes(){var o=[];try{var r=window.__readCode&&window.__readCode();if(r)o.push(['HR2',r])}catch(e){}try{var s=window.__spkCode&&window.__spkCode();if(s)o.push(['SP2',s])}catch(e){}
+ try{var L=get('hr_bench',[]);if(L&&L.length)o.push(['HR3','HR3.'+b64e(JSON.stringify({t:'',k:'b',g:'',tn:get('hr_tn',''),r:L}))])}catch(e){}
+ return o.map(function(x){return {kind:x[0],c:x[1],h:fnv(x[1].replace(/"d":"\d{4}-\d\d-\d\d"/,''))}})}
 
 function cfg(){if(URL_!==null)return Promise.resolve(URL_);return fetch('send-config.json',{cache:'no-store'}).then(function(r){return r.json()}).then(function(c){URL_=String(c.progress||'');return URL_}).catch(function(){URL_='';return ''})}
 
@@ -45,9 +50,10 @@ function flush(){
   var key=me.sec+'|'+me.name,S=get('tq_sent',{})||{},sent=S[key]||{},today=ymd(),ev=[];
   if(sent['v|'+today]==null)ev.push({t:'v',k:today,v:1,d:today});
   items(me).forEach(function(x){var id=x.t+'|'+x.k;if(sent[id]==null||(x.t!=='r'&&x.v>sent[id]))ev.push({t:x.t,k:x.k,v:x.v,d:today})});
+  var CS=GRADE?codes():[];CS.forEach(function(x){if(sent['code|'+x.kind]!==x.h)ev.push({t:'code',k:x.kind,c:x.c,h:x.h})});
   if(!ev.length)return;busy=true;
   fetch(url,{method:'POST',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify({sec:me.sec,sid:fnv('sid|'+me.sec+'|'+me.name+'|'+me.c),pf:fnv('ap|'+me.sec+'|'+me.name+'|'+me.c+'|'+me.p),g:GRADE||'',ev:ev}),keepalive:true})
-   .then(function(r){return r.json()}).then(function(j){if(j&&j.ok){S=get('tq_sent',{})||{};var s2=S[key]||{};ev.forEach(function(x){s2[x.t==='v'?'v|'+x.k:x.t+'|'+x.k]=x.v});S[key]=s2;put('tq_sent',S)}else if(j&&j.err==='auth'){try{localStorage.removeItem('tq_auth')}catch(e){}}})
+   .then(function(r){return r.json()}).then(function(j){if(j&&j.ok){S=get('tq_sent',{})||{};var s2=S[key]||{};ev.forEach(function(x){if(x.t==='code')s2['code|'+x.k]=x.h;else s2[x.t==='v'?'v|'+x.k:x.t+'|'+x.k]=x.v});S[key]=s2;put('tq_sent',S)}else if(j&&j.err==='auth'){try{localStorage.removeItem('tq_auth')}catch(e){}}})
    .catch(function(){}).then(function(){busy=false})})}
 
 function boot(){setTimeout(flush,1500);setInterval(flush,30000);
