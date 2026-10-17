@@ -37,9 +37,11 @@ function items(me){var out=[],H=(get('hr_students',{})||{})[me.name],P=(get('sp_
 
 function cfg(){if(URL_!==null)return Promise.resolve(URL_);return fetch('send-config.json',{cache:'no-store'}).then(function(r){return r.json()}).then(function(c){URL_=String(c.progress||'');return URL_}).catch(function(){URL_='';return ''})}
 
+/* الإرسال تلقائي، فلا حاجة إلى أزرار «رمز إنجازي» اليدوية */
+function hideCodes(){if(document.getElementById('tq-auto-css'))return;var st=document.createElement('style');st.id='tq-auto-css';st.textContent='.shbar [data-t="code"],#app-read [data-a="code"].btn,#app-speak [data-a="code"].btn{display:none!important}';document.head.appendChild(st)}
 function flush(){
  if(busy)return;var me=who();if(!me)return;
- cfg().then(function(url){if(!url)return;
+ cfg().then(function(url){if(!url)return;hideCodes();
   var key=me.sec+'|'+me.name,S=get('tq_sent',{})||{},sent=S[key]||{},today=ymd(),ev=[];
   if(sent['v|'+today]==null)ev.push({t:'v',k:today,v:1,d:today});
   items(me).forEach(function(x){var id=x.t+'|'+x.k;if(sent[id]==null||(x.t!=='r'&&x.v>sent[id]))ev.push({t:x.t,k:x.k,v:x.v,d:today})});
