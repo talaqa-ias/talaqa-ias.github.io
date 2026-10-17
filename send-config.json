@@ -1,5 +1,7 @@
 {
  "google": "",
  "microsoft": "",
- "note": "ضع رابط Google Forms (سؤال رفع ملف) ورابط Microsoft Forms هنا. فارغ = غير مفعّل."
+ "note": "ضع رابط Google Forms (سؤال رفع ملف) ورابط Microsoft Forms هنا. فارغ = غير مفعّل.",
+ "progress": "https://script.google.com/macros/s/AKfycbymi7TZh3BYw1Yvi-H1LMm--3aMQHcjtbfq-MqxZCNV2b-F-obkzcy3LHiGPFq0Bbhw/exec",
+ "note_progress": "رابط خادم التفاعل التلقائي (Google Apps Script). فارغ = معطّل."
 }
