@@ -8,6 +8,12 @@
 (function(){
 'use strict';
 if(window.__tqPlus)return;window.__tqPlus=true;
+/* تشغيل تجريبي: يعمل فقط بعد فتح الرابط مرة واحدة مع ?tq=1 (ويُطفأ بـ ?tq=0) حتى يعتمده المنسق */
+try{var q=/[?&#]tq=([01])/.exec(location.search+location.hash);if(q){if(q[1]==='1')localStorage.setItem('tq_on','1');else localStorage.removeItem('tq_on')}}catch(e){}
+var ON=false;try{ON=localStorage.getItem('tq_on')==='1'}catch(e){}
+if(window.TQ_DEFAULT_ON)ON=true;
+if(!ON)return;
+(function(){var l=document.createElement('link');l.rel='stylesheet';l.href='plus.css';document.head.appendChild(l)})();
 
 /* ---------- أدوات صغيرة ---------- */
 function get(k,d){try{var v=localStorage.getItem(k);return v?JSON.parse(v):d}catch(e){return d}}
