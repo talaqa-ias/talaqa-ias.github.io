@@ -220,6 +220,45 @@ function liveMerge(rows){if(!LIVE)return rows;var by={};rows.forEach(function(r)
   Object.keys(x.devs||{}).forEach(function(d){r.devs[d]=1});Object.keys(x.dv||{}).forEach(function(t){r.dv=r.dv||{};r.dv[t]=r.dv[t]||{};Object.keys(x.dv[t]).forEach(function(g){r.dv[t][g]=1})});if(x.gm){r.gm=r.gm||{};Object.keys(x.gm).forEach(function(w){if(!r.gm[w]||r.gm[w].p<x.gm[w].p)r.gm[w]=x.gm[w]})}});LIVE.forEach(function(l){var k=nkey(l.n)+'|'+nkey(l.c),r=by[k];if(!r){r={n:l.n,c:l.c,tools:{},bench:[],devs:{}};by[k]=r;rows.push(r)}r.lv=l.lv;r.days=l.days;if(l.gm){r.gm=r.gm||{};Object.keys(l.gm).forEach(function(w){if(!r.gm[w]||r.gm[w].p<l.gm[w].p)r.gm[w]=l.gm[w]})}Object.keys(l.tools).forEach(function(id){var a=r.tools[id],b=l.tools[id];if(!a||(a.live&&(a.d<=b.d)))r.tools[id]=b})});return rows}
 function liveBar(){if(LIVEERR==='off')return '';if(LIVEERR)return '<p class="note" style="background:#FFE3E3;padding:8px 12px;border-radius:12px">تعذّر جلب التفاعل المباشر ('+esc(LIVEERR)+'). <button class="btn small ghost" data-a="live">أعد المحاولة</button></p>';if(!LIVE)return LIVEQ?'<p class="note">⏳ جارٍ جلب التفاعل المباشر…</p>':'';return '<p class="note" style="background:#DDF7E8;padding:8px 12px;border-radius:12px">🟢 تفاعل مباشر من أجهزة الطلاب · آخر تحديث '+esc(LIVEAT)+' <button class="btn small ghost" data-a="live">🔄 تحديث</button></p>'}
 
+/* ---- evidence report (Excel) ---- */
+function loadXLSX(){return window.XLSX?Promise.resolve():new Promise(function(ok,no){var sc=document.createElement('script');sc.src='https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js';sc.onload=ok;sc.onerror=no;document.head.appendChild(sc)})}
+function cleanN(s){return String(s||'').replace(/[\\/:*?"<>|#%]+/g,' ').replace(/\s+/g,' ').trim().slice(0,90)}
+function evidenceReport(){
+ if(!LIVEQ){toast('ادخل أولًا');return}
+ var btn=document.getElementById('repBtn');if(btn){btn.disabled=true;btn.textContent='⏳ يُجهَّز التقرير…'}
+ var q={};Object.keys(LIVEQ).forEach(function(k){q[k]=LIVEQ[k]});q.f='1';
+ Promise.all([loadXLSX(),fetch('send-config.json',{cache:'no-store'}).then(function(r){return r.json()}).then(function(c){return fetch(c.progress+'?'+Object.keys(q).map(function(k){return k+'='+encodeURIComponent(q[k])}).join('&'))}).then(function(r){return r.json()})]).then(function(a){
+  var j=a[1];if(!j||!j.ok)throw new Error(j&&j.err||'err');
+  var rows=liveMerge(decodeAll(store.get(T?'pt_codes':'pt_codes_all',''))),by={};rows.forEach(function(r){by[nkey(r.n)+'|'+nkey(r.c)]=r});
+  var SP={};String(LIVEC||'').split('\n').forEach(function(code){if(code.indexOf('SP2.')!==0)return;try{var o=JSON.parse(b64d(code.slice(4)));SP[nkey(o.n)+'|'+nkey(o.c)]=o}catch(e){}});
+  var wk=(function(){var d=new Date();d.setDate(d.getDate()-7);return d.toISOString().slice(0,10)})(),today_=today();
+  var secs=(T?tSecs():Object.keys(DATA.secs)).slice().sort(function(x,y){var gx=DATA.grades.map(function(g){return g.id}).indexOf(secOf(x)),gy=DATA.grades.map(function(g){return g.id}).indexOf(secOf(y));return gx-gy||x.localeCompare(y)});
+  var wb=XLSX.utils.book_new();wb.Workbook={Views:[{RTL:true}]};
+  var sum=[['تقرير أدلة طلاقة · قسم اللغة العربية'],['تاريخ الاستخراج: '+today_+'. المصدر: أجهزة الطلاب (تلقائيًا) والقياس الصفي الذي يجريه المعلمون.'],['تنبيه: أرقام الاستخدام والأداء داخل الأداة أدلة مساندة، والقياس الصفي والتسجيلات هي الأدلة المباشرة على مستوى الطلاقة.'],[],
+   ['المرحلة','الشعبة','المعلم','عدد الطلاب','تفاعلوا','نسبة التفاعل %','نشطون آخر 7 أيام','نسبة النشاط %','طلاب لهم قياس صفي','متوسط آخر قياس (كلمة/دقيقة)','متوسط الدقة %','عدد التسجيلات']];
+  secs.forEach(function(sec){
+   var ns=(T?roster(sec):secNames(sec))||[];if(!ns.length)return;var G=gradeOf(secOf(sec)),ts=toolsFor(secOf(sec)),rd=ts.filter(function(t){return t.kind==='read'})[0],sp=ts.filter(function(t){return t.kind==='speak'})[0];
+   var tch=DATA.teachers.filter(function(t){return t.secs.indexOf(sec)>=0}).map(function(t){return t.name}).join('، ');
+   var sh=[['الشعبة '+sec+' · '+(G?G.name:'')+' · '+tch],[],['الطالب','الحالة','أيام النشاط','آخر نشاط','درجات القراءة المنجزة','منها بتحقق الأداة','منها بتأكيد بالغ','بلا تحقق','أفضل سرعة في التدريب (كلمة/دقيقة)','آخر قياس صفي (كلمة/دقيقة)','دقة آخر قياس %','مستوى النص في القياس','تاريخ آخر قياس','مهام التحدث المنجزة','متوسط التقييم الذاتي للتحدث (من 3)','مهام سُجّلت بالصوت','عدد التسجيلات المرسلة','نقاط الألعاب (آخر أسبوع)','مجلد التسجيلات']];
+   var S={n:ns.length,u:0,w:0,b:0,bv:0,ba:0,rc:0};
+   ns.forEach(function(n){var r=by[nkey(n)+'|'+nkey(sec)],ls=r?lastOf(r):'',R=r&&rd&&r.tools[rd.id],P=r&&sp&&r.tools[sp.id],bm=r&&r.bench.slice().sort(function(a,b){return a.d<b.d?1:-1})[0],o=SP[nkey(n)+'|'+nkey(sec)],avg='',rec=0,spn=P?P.done:0;
+    if(o&&o.p){var t=0,c=0;Object.keys(o.p).forEach(function(k){var x=o.p[k];if(Array.isArray(x)){var v=(x[0]||0)+(x[1]||0)+(x[2]||0);if(v){t+=v/3;c++}if(x[3])rec++}});if(c)avg=Math.round(t/c*10)/10;spn=Math.max(spn,Object.keys(o.p).length)}
+    var gw=r&&r.gm?Object.keys(r.gm).sort().pop():'',gp=gw?r.gm[gw].p:'',nr=(j.recs||{})[sec+'|'+n]||0,fl=(j.folders||{})[sec+'|'+cleanN(n)]||'';
+    if(r)S.u++;if(ls&&ls>=wk)S.w++;if(bm){S.b++;S.bv+=bm.v||0;S.ba+=bm.a||0}S.rc+=nr;
+    sh.push([n,r?(ls>=wk?'نشط هذا الأسبوع':'أنجز سابقًا'):'لم يبدأ',r&&r.days||(r?1:0),ls||'',R?R.done:0,R&&R.vf?R.vf.t:'',R&&R.vf?R.vf.a:'',R&&R.vf?R.vf.n:'',R&&R.best||'',bm?bm.v:'',bm?bm.a:'',bm&&rd&&rd.levels&&rd.levels[bm.u]?rd.levels[bm.u].t:(bm?bm.u:''),bm?bm.d:'',spn||0,avg,rec,nr,gp,fl])});
+   var ws=XLSX.utils.aoa_to_sheet(sh);ws['!cols']=[{wch:26},{wch:16},{wch:10},{wch:12},{wch:12},{wch:12},{wch:12},{wch:10},{wch:16},{wch:16},{wch:12},{wch:20},{wch:12},{wch:12},{wch:16},{wch:12},{wch:12},{wch:12},{wch:16}];
+   for(var i=3;i<sh.length;i++){var cl=XLSX.utils.encode_cell({r:i,c:18}),u=ws[cl]&&ws[cl].v;if(u&&/^https?:/.test(u))ws[cl]={t:'s',v:'افتح المجلد',l:{Target:u}}}
+   ws['!autofilter']={ref:'A3:S'+sh.length};
+   XLSX.utils.book_append_sheet(wb,ws,sec.slice(0,31));
+   var pc=function(a,b){return b?Math.round(a/b*100):0};
+   sum.push([G?G.name:'',sec,tch,S.n,S.u,pc(S.u,S.n),S.w,pc(S.w,S.n),S.b,S.b?Math.round(S.bv/S.b):'',S.b?Math.round(S.ba/S.b):'',S.rc])});
+  var w0=XLSX.utils.aoa_to_sheet(sum);w0['!cols']=[{wch:14},{wch:10},{wch:26},{wch:12},{wch:10},{wch:14},{wch:16},{wch:14},{wch:16},{wch:22},{wch:14},{wch:14}];
+  XLSX.utils.book_append_sheet(wb,w0,'ملخص');wb.SheetNames.unshift(wb.SheetNames.pop());
+  wb.Workbook.Sheets=wb.SheetNames.map(function(){return {}});
+  XLSX.writeFile(wb,'تقرير أدلة طلاقة '+(T?T.t.name+' ':'')+today_+'.xlsx');toast('نُزِّل التقرير ✓')
+ }).catch(function(e){toast('تعذّر تجهيز التقرير ('+(e&&e.message||'')+')')}).then(function(){var b=document.getElementById('repBtn');if(b){b.disabled=false;b.textContent='📥 تقرير الأدلة (Excel)'}})}
+function repBtn(){return LIVEQ?'<div class="row" style="margin:0 0 14px"><button class="btn" id="repBtn" data-a="evrep">📥 تقرير الأدلة (Excel)</button></div>':''}
+
 /* ---- owner ---- */
 var OWN=false;
 function vOin(){return '<header class="top"><button class="chip" data-a="home">🏠 البداية</button></header><h1>🛠️ دخول المنسق</h1><p class="lead">متابعة تفاعل الطلاب ونتائج القسم كله.</p><form class="panel stack" id="fOwn" style="max-width:420px"><label class="f" for="oPin">رمز المنسق<input class="in code" id="oPin" type="password" autocomplete="off" required inputmode="numeric" pattern="[0-9]*" maxlength="8" placeholder="••••••"></label><button class="btn" type="submit">ادخل</button></form>'}
@@ -264,7 +303,7 @@ function tMon(){
   ns.forEach(function(n){var r=by[nkey(n)+'|'+nkey(s)],ls=r?lastOf(r):'',a=r&&rd&&r.tools[rd.id],b=r&&sp&&r.tools[sp.id];L.push({n:n,u:!!r,ls:ls,w:!!(ls&&ls>=wk),rd:a?a.done:0,sp:b?b.done:0});if(r)tot.u++;if(ls&&ls>=wk)tot.w++});
   tot.n+=ns.length;L.sort(function(x,y){return (x.u-y.u)||(y.ls>x.ls?1:y.ls<x.ls?-1:0)||x.n.localeCompare(y.n,'ar')});parts.push({s:s,L:L})});
  var pc=function(a,b){return b?Math.round(a/b*100):0};
- var h='<div class="kpis"><div class="kpi"><b>'+tot.n+'</b><small>طالبًا في شعبي</small></div><div class="kpi ok"><b>'+tot.u+'</b><small>أنجزوا ('+pc(tot.u,tot.n)+'%)</small></div><div class="kpi wk"><b>'+tot.w+'</b><small>نشطون آخر 7 أيام ('+pc(tot.w,tot.n)+'%)</small></div><div class="kpi no"><b>'+(tot.n-tot.u)+'</b><small>لم يبدؤوا بعد</small></div></div>'+liveBar();
+ var h='<div class="kpis"><div class="kpi"><b>'+tot.n+'</b><small>طالبًا في شعبي</small></div><div class="kpi ok"><b>'+tot.u+'</b><small>أنجزوا ('+pc(tot.u,tot.n)+'%)</small></div><div class="kpi wk"><b>'+tot.w+'</b><small>نشطون آخر 7 أيام ('+pc(tot.w,tot.n)+'%)</small></div><div class="kpi no"><b>'+(tot.n-tot.u)+'</b><small>لم يبدؤوا بعد</small></div></div>'+liveBar()+repBtn();
  parts.forEach(function(P){var u=P.L.filter(function(x){return x.u}).length,p=pc(u,P.L.length);
   h+='<section class="panel"><div class="row" style="justify-content:space-between"><h3 style="margin:0">'+esc(P.s)+'</h3><span class="pill'+(p<40?' n':'')+'">'+u+' من '+P.L.length+' · '+p+'%</span></div><div style="height:10px;background:#E6EEF8;border-radius:6px;margin:10px 0"><div style="height:100%;width:'+p+'%;background:'+(p>=70?'var(--grass)':p>=40?'var(--sun)':'var(--coral)')+';border-radius:6px"></div></div>'+
   '<div class="tw"><table><thead><tr><th>الطالب</th><th>الحالة</th><th>📖 القراءة</th><th>🗣️ التحدث</th><th>آخر نشاط</th></tr></thead><tbody>'+P.L.map(function(x){return '<tr'+(x.u?'':' class="flag"')+'><td>'+esc(x.n)+'</td><td style="white-space:nowrap">'+(x.u?(x.w?'✅ نشط':'🟡 أنجز سابقًا'):'⏳ لم يبدأ')+'</td><td>'+(x.rd?x.rd+' درجة':'—')+'</td><td>'+(x.sp?x.sp+' مهمة':'—')+'</td><td>'+esc(x.ls||'—')+'</td></tr>'}).join('')+'</tbody></table></div></section>'});
@@ -279,7 +318,7 @@ function oMon(){
  secs.forEach(function(s){var ns=secNames(s);if(!ns)return;var g=secOf(s);G[g]=G[g]||[];var used=[],not=[],last='';ns.forEach(function(n){var r=byKey[nkey(n)+'|'+nkey(s)];if(r){used.push(n);var ls='';Object.keys(r.tools).forEach(function(id){if(r.tools[id].d>ls)ls=r.tools[id].d});r.bench.forEach(function(b){if(b.d>ls)ls=b.d});if(r.lv&&r.lv>ls)ls=r.lv;Object.keys(r.gm||{}).forEach(function(w){if(r.gm[w].d&&r.gm[w].d>ls)ls=r.gm[w].d});if(ls>last)last=ls;if(ls>=wk)tot.w++}else not.push(n)});G[g].push({s:s,n:ns.length,u:used.length,not:not,last:last});tot.n+=ns.length;tot.u+=used.length});
  if(!Object.keys(G).length)return h+'<p class="note">افتح الشعب أولًا.</p>';
  var pcu=tot.n?Math.round(tot.u/tot.n*100):0,pcw=tot.n?Math.round(tot.w/tot.n*100):0;
- h='<div class="kpis"><div class="kpi"><b>'+tot.n+'</b><small>طالبًا في القسم</small></div><div class="kpi ok"><b>'+tot.u+'</b><small>تفاعلوا ('+pcu+'%)</small></div><div class="kpi wk"><b>'+tot.w+'</b><small>نشطون آخر 7 أيام ('+pcw+'%)</small></div><div class="kpi no"><b>'+(tot.n-tot.u)+'</b><small>لم يتفاعلوا بعد</small></div></div>'+liveBar()+''+h;
+ h='<div class="kpis"><div class="kpi"><b>'+tot.n+'</b><small>طالبًا في القسم</small></div><div class="kpi ok"><b>'+tot.u+'</b><small>تفاعلوا ('+pcu+'%)</small></div><div class="kpi wk"><b>'+tot.w+'</b><small>نشطون آخر 7 أيام ('+pcw+'%)</small></div><div class="kpi no"><b>'+(tot.n-tot.u)+'</b><small>لم يتفاعلوا بعد</small></div></div>'+liveBar()+repBtn()+h;
  h+='<section class="panel"><h3>الصورة العامة</h3><div class="g3">'+DATA.grades.filter(function(g){return G[g.id]}).map(function(g){var n=0,u=0;G[g.id].forEach(function(x){n+=x.n;u+=x.u});var pc=n?Math.round(u/n*100):0;return '<div class="sec" style="flex-direction:column;align-items:flex-start"><strong>'+g.icon+' '+esc(g.name)+'</strong><span>'+u+' من '+n+' طالبًا ('+pc+'%)</span><div style="height:10px;width:100%;background:#E6EEF8;border-radius:6px"><div style="height:100%;width:'+pc+'%;background:'+(pc>=70?'var(--grass)':pc>=40?'var(--sun)':'var(--coral)')+';border-radius:6px"></div></div></div>'}).join('')+'</div><p style="margin:12px 0 0"><strong>القسم كله: '+tot.u+' من '+tot.n+' طالبًا ('+(tot.n?Math.round(tot.u/tot.n*100):0)+'%) أرسلوا رمزًا واحدًا على الأقل.</strong></p></section>';
  h+='<div class="tw"><table><thead><tr><th>الشعبة</th><th>المعلم</th><th>الطلاب</th><th>استخدموا</th><th>%</th><th>آخر نشاط</th><th>لم يستخدموا بعد</th></tr></thead><tbody>'+DATA.grades.filter(function(g){return G[g.id]}).map(function(g){return G[g.id].map(function(x){var pc=Math.round(x.u/x.n*100),t=DATA.teachers.filter(function(t){return t.secs.indexOf(x.s)>=0}).map(function(t){return t.name}).join('، ');return '<tr'+(pc<40?' class="flag"':'')+'><td>'+esc(x.s)+'</td><td>'+esc(t)+'</td><td>'+x.n+'</td><td>'+x.u+'</td><td><span class="pill'+(pc<40?' n':'')+'">'+pc+'%</span></td><td>'+esc(x.last||'—')+'</td><td style="white-space:normal;max-width:360px">'+(x.not.length?x.not.map(esc).join('، '):'✓ الجميع')+'</td></tr>'}).join('')}).join('')+'</tbody></table></div>';
  h+='<div class="row" style="margin-top:12px"><button class="btn ghost" data-a="montsv">انسخ جدول المتابعة إلى Excel</button></div><p class="note">«لم يستخدموا» تعني أنه لم يصل منهم أي نشاط بعد. التنبيه الأصفر للشعب التي استخدم أقل من 40% من طلابها الأدوات.</p>';
@@ -310,6 +349,7 @@ $app.addEventListener('click',function(e){var b=e.target.closest('[data-a]');if(
  case 'own':view={n:'owner'};render();break;
  case 'oin':view={n:OWN||canEdit?'owner':'oin'};render();break;
  case 'live':if(LIVEQ)liveLoad(LIVEQ);break;
+ case 'evrep':evidenceReport();break;
  case 'oout':LIVE=null;LIVEQ=null;OWN=false;view={n:'home'};render();break;
  case 'otab':otab=b.dataset.t;render();break;
  case 'copy':copyText(b.dataset.v);break;

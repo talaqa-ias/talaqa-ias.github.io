@@ -103,7 +103,12 @@ function doGet(e){
   var list=Object.keys(st).map(function(key){var o=st[key],tools={};Object.keys(o.t).forEach(function(tl){var T=o.t[tl];tools[tl]={d:T.d,done:Object.keys(T.k).length,units:Object.keys(T.u).length,g:T.g,gw:T.gw}});return {c:o.c,n:o.n,last:o.last,days:Object.keys(o.days).length,tools:tools}});
   var codes={},cs=SpreadsheetApp.getActive().getSheetByName('codes');
   if(cs){var cv=cs.getDataRange().getValues();for(var j=1;j<cv.length;j++){var x=cv[j];if(allowed&&!allowed[x[1]]&&x[3]!=='HR3')continue;codes[x[1]+'|'+x[2]+'|'+x[3]+(x[3]==='HR3'?'|'+j:'')]=String(x[4])}}
-  return out({ok:true,at:new Date().toISOString(),rows:list,codes:Object.keys(codes).map(function(k){return codes[k]})});
+  var res={ok:true,at:new Date().toISOString(),rows:list,codes:Object.keys(codes).map(function(k){return codes[k]})};
+  if(q.f==='1'){var fl={},rc={},rs=SpreadsheetApp.getActive().getSheetByName('recs');
+    if(rs){var rv=rs.getDataRange().getValues(),seen={};for(var m=1;m<rv.length;m++){var y=rv[m];if(allowed&&!allowed[y[1]])continue;var uk=y[1]+'|'+y[2]+'|'+y[3]+'|'+y[4]+'|'+y[5];if(seen[uk])continue;seen[uk]=1;rc[y[1]+'|'+y[2]]=(rc[y[1]+'|'+y[2]]||0)+1}}
+    var rt=DriveApp.getFoldersByName(ROOT);if(rt.hasNext()){var R=rt.next(),si=R.getFolders();while(si.hasNext()){var sf=si.next(),sn=sf.getName();if(allowed&&!allowed[sn])continue;var pi=sf.getFolders();while(pi.hasNext()){var pf=pi.next();fl[sn+'|'+pf.getName()]=pf.getUrl()}}}
+    res.folders=fl;res.recs=rc}
+  return out(res);
 }
 
 /* ---------- الاحتفاظ: حذف ما قبل بداية العام الدراسي (يُشغَّل يدويًا أو بمؤقّت سنوي) ---------- */
