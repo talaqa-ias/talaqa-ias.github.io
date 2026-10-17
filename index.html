@@ -178,7 +178,7 @@ function decodeAll(txt){
   if(kind==='AB1'){var ra=row(o.n,o.c),ta=tool(o.t),ca=ra.tools[o.t],st=0,ls=0,dn=0;Object.keys(o.p||{}).forEach(function(l){ls++;(o.p[l]||[]).forEach(function(v){if(v===2)st++;if(v)dn++})});if(!ca||ca.d<=o.d)ra.tools[o.t]={d:o.d,done:st,units:ls,acts:dn,best:0,title:ta?ta.title:o.t,ab:1};return}
   if(kind==='GM1'){var rg=row(o.n,o.c);rg.gm=rg.gm||{};var cw=rg.gm[o.w];if(!cw||cw.p<=o.p)rg.gm[o.w]={p:o.p,g:o.g,d:o.d};return}
   if(kind==='HR3'){(o.r||[]).forEach(function(x){var r=row(x.n,x.c);if(!r.bench.some(function(b){return b.d===x.d&&b.u===x.u&&b.v===x.v}))r.bench.push(x)});return}
-  var r=row(o.n,o.c),t=tool(o.t),cur=r.tools[o.t];if(o.g)r.devs[o.g]=1;
+  var r=row(o.n,o.c),t=tool(o.t),cur=r.tools[o.t];if(o.g){r.devs[o.g]=1;r.dv=r.dv||{};(r.dv[o.t]=r.dv[o.t]||{})[o.g]=1}
   var done=0,units=0,best=0;Object.keys(o.p||{}).forEach(function(u){var arr=o.p[u];units++;if(Array.isArray(arr))arr.forEach(function(v){if(kind==='SP2'||v>=0||v===-2)done++})});var vf=null;if(o.v){vf={t:0,a:0,n:0,o:0};Object.keys(o.p||{}).forEach(function(u){var arr=o.p[u],va=o.v[u]||[];if(Array.isArray(arr))arr.forEach(function(v,i){if(v>=0||v===-2){var f=va[i]||0;if(f===1)vf.t++;else if(f===2)vf.a++;else if(f===3)vf.n++;else vf.o++}})})}Object.keys(o.w||{}).forEach(function(u){best=Math.max(best,o.w[u].b||0)});
   if(!cur||cur.d<=o.d)r.tools[o.t]={d:o.d,done:done,units:units,best:best,sl:o.sl,title:t?t.title:o.t,vf:vf}}catch(e){}});
  return Object.keys(S).map(function(k){return S[k]}).sort(function(a,b){return (a.c+a.n).localeCompare(b.c+b.n,'ar')});
@@ -186,7 +186,7 @@ function decodeAll(txt){
 function resTable(rows,mine){
  if(mine)rows=rows.filter(function(r){return tSecs().some(function(s){return nkey(s)===nkey(r.c)})});
  if(!rows.length)return '<p class="note">لا توجد نتائج بعد.</p>';
- return '<div class="tw"><table><thead><tr><th>الطالب</th><th>الشعبة</th><th>الأدوات المستخدمة</th>'+(TB?'':'<th>آخر قياس صفي</th><th>🎮 الألعاب</th>')+'<th>تنبيه</th></tr></thead><tbody>'+rows.map(function(r){var bm=r.bench.slice().sort(function(a,b){return a.d<b.d?1:-1})[0],fl=Object.keys(r.devs).length>1?'⚠️ أجهزة متعددة':'';
+ return '<div class="tw"><table><thead><tr><th>الطالب</th><th>الشعبة</th><th>الأدوات المستخدمة</th>'+(TB?'':'<th>آخر قياس صفي</th><th>🎮 الألعاب</th>')+'<th>تنبيه</th></tr></thead><tbody>'+rows.map(function(r){var bm=r.bench.slice().sort(function(a,b){return a.d<b.d?1:-1})[0],fl=Object.keys(r.dv||{}).some(function(t){return Object.keys(r.dv[t]).length>1})?'⚠️ أجهزة متعددة':'';
   return '<tr'+(fl?' class="flag"':'')+'><td>'+esc(r.n)+'</td><td>'+esc(r.c)+'</td><td>'+Object.keys(r.tools).map(function(id){var x=r.tools[id];return '<div>'+esc(x.title)+': '+(x.ab?'⭐ '+x.done+' نجمة · '+x.acts+' نشاطًا في '+x.units+' درس':x.done+' درجة في '+x.units+' مستوى')+(x.best?' · ⏱️ '+x.best:'')+' <small class="note">'+esc(x.d)+'</small>'+(x.vf?'<div class="note" style="font-size:.82rem">✔️ بتحقق الأداة '+x.vf.t+' · 👤 بتأكيد بالغ '+x.vf.a+' · ⏭️ بلا تحقق '+x.vf.n+(x.vf.o?' · قبل التحديث '+x.vf.o:'')+'</div>':'')+'</div>'}).join('')+'</td>'+(TB?'':'<td>'+(bm?bm.v+' كلمة/دقيقة · '+bm.a+'% <small class="note">'+esc(bm.d)+'</small>':'—')+'</td><td>'+gmCell(r)+'</td>')+'<td class="note">'+fl+'</td></tr>'}).join('')+'</tbody></table></div>';
 }
 function gmCell(r){if(!r.gm)return '—';var w=Object.keys(r.gm).sort().pop(),x=r.gm[w];return '⭐ '+x.p+' نقطة · '+x.g+' لعبة <small class="note">'+esc(w)+'</small>'}
@@ -206,14 +206,18 @@ function challenge(txt,mine){var rows=liveMerge(decodeAll(txt)),W=lastWeek(rows)
 function tCh(){var saved=store.get('pt_codes','');return liveBar()+challenge(saved,true)}
 function tRes(){var saved=store.get('pt_codes','');return '<p class="lead">✅ كل شيء يصل تلقائيًا من أجهزة الطلاب، دون أي رموز.</p>'+liveBar()+resTable(liveMerge(decodeAll(saved)),true)}
 /* ---- live progress (Google Apps Script) ---- */
-var LIVE=null,LIVEQ=null,LIVEAT='',LIVEERR='';
+var LIVE=null,LIVEC='',LIVEQ=null,LIVEAT='',LIVEERR='';
 function liveLoad(q){LIVEQ=q;LIVEERR='';fetch('send-config.json',{cache:'no-store'}).then(function(r){return r.json()}).then(function(c){var u=String(c.progress||'');if(!u){LIVEERR='off';render();return null}
  return fetch(u+'?'+Object.keys(q).map(function(k){return k+'='+encodeURIComponent(q[k])}).join('&')).then(function(r){return r.json()})}).then(function(j){if(!j)return;if(!j.ok){LIVEERR=j.err||'err';render();return}
  var SID={};Object.keys(DATA.secs).forEach(function(sec){var c=(T&&T.codes&&T.codes[sec])||KN[sec];if(!c)return;(secOpen(sec,c)||[]).forEach(function(n){SID[sec+'|'+fnv('sid|'+sec+'|'+n+'|'+rcNorm(c))]=n})});
  LIVE=j.rows.filter(function(x){return SID[x.c+'|'+x.n]}).map(function(x){x.n=SID[x.c+'|'+x.n];return x}).map(function(x){var g=secOf(x.c),ts=toolsFor(g),o={n:x.n,c:x.c,tools:{},bench:[],devs:{},lv:x.last,days:x.days};
   [['r','read'],['s','speak']].forEach(function(p){var T=x.tools[p[0]];if(!T)return;var t=ts.filter(function(y){return y.kind===p[1]})[0];if(!t)return;o.tools[t.id]={d:T.d,done:T.done,units:T.units,best:0,title:t.title,live:1}});var Gm=x.tools.g;if(Gm&&Gm.gw){o.gm={};Object.keys(Gm.gw).forEach(function(w){o.gm[w]={p:Gm.gw[w],g:'',d:Gm.d}})}return o});
- LIVEAT=new Date().toTimeString().slice(0,5);render()}).catch(function(){LIVEERR='net';render()})}
-function liveMerge(rows){if(!LIVE)return rows;var by={};rows.forEach(function(r){by[nkey(r.n)+'|'+nkey(r.c)]=r});LIVE.forEach(function(l){var k=nkey(l.n)+'|'+nkey(l.c),r=by[k];if(!r){r={n:l.n,c:l.c,tools:{},bench:[],devs:{}};by[k]=r;rows.push(r)}r.lv=l.lv;r.days=l.days;if(l.gm){r.gm=r.gm||{};Object.keys(l.gm).forEach(function(w){if(!r.gm[w]||r.gm[w].p<l.gm[w].p)r.gm[w]=l.gm[w]})}Object.keys(l.tools).forEach(function(id){var a=r.tools[id],b=l.tools[id];if(!a||a.d<=b.d||a.done<b.done)r.tools[id]=b})});return rows}
+ LIVEC=(j.codes||[]).join('\n');LIVEAT=new Date().toTimeString().slice(0,5);render()}).catch(function(){LIVEERR='net';render()})}
+function liveMerge(rows){if(!LIVE)return rows;var by={};rows.forEach(function(r){by[nkey(r.n)+'|'+nkey(r.c)]=r});
+ if(LIVEC)decodeAll(LIVEC).forEach(function(x){var k=nkey(x.n)+'|'+nkey(x.c),r=by[k];if(!r){by[k]=x;rows.push(x);return}
+  Object.keys(x.tools).forEach(function(id){var a=r.tools[id],b=x.tools[id];if(!a||a.d<=b.d)r.tools[id]=b});
+  x.bench.forEach(function(bm){if(!r.bench.some(function(q){return q.d===bm.d&&q.u===bm.u&&q.v===bm.v}))r.bench.push(bm)});
+  Object.keys(x.devs||{}).forEach(function(d){r.devs[d]=1});Object.keys(x.dv||{}).forEach(function(t){r.dv=r.dv||{};r.dv[t]=r.dv[t]||{};Object.keys(x.dv[t]).forEach(function(g){r.dv[t][g]=1})});if(x.gm){r.gm=r.gm||{};Object.keys(x.gm).forEach(function(w){if(!r.gm[w]||r.gm[w].p<x.gm[w].p)r.gm[w]=x.gm[w]})}});LIVE.forEach(function(l){var k=nkey(l.n)+'|'+nkey(l.c),r=by[k];if(!r){r={n:l.n,c:l.c,tools:{},bench:[],devs:{}};by[k]=r;rows.push(r)}r.lv=l.lv;r.days=l.days;if(l.gm){r.gm=r.gm||{};Object.keys(l.gm).forEach(function(w){if(!r.gm[w]||r.gm[w].p<l.gm[w].p)r.gm[w]=l.gm[w]})}Object.keys(l.tools).forEach(function(id){var a=r.tools[id],b=l.tools[id];if(!a||(a.live&&(a.d<=b.d)))r.tools[id]=b})});return rows}
 function liveBar(){if(LIVEERR==='off')return '';if(LIVEERR)return '<p class="note" style="background:#FFE3E3;padding:8px 12px;border-radius:12px">تعذّر جلب التفاعل المباشر ('+esc(LIVEERR)+'). <button class="btn small ghost" data-a="live">أعد المحاولة</button></p>';if(!LIVE)return LIVEQ?'<p class="note">⏳ جارٍ جلب التفاعل المباشر…</p>':'';return '<p class="note" style="background:#DDF7E8;padding:8px 12px;border-radius:12px">🟢 تفاعل مباشر من أجهزة الطلاب · آخر تحديث '+esc(LIVEAT)+' <button class="btn small ghost" data-a="live">🔄 تحديث</button></p>'}
 
 /* ---- owner ---- */
