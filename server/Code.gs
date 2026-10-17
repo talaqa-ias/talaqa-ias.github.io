@@ -43,6 +43,7 @@ function doPost(e){
     /* لا أسماء في الجدول: الطالب يُعرَّف بمعرّف مستعار (sid) لا يفكّه إلا من يملك رمز الشعبة */
     var who=P&&Object.keys(P).filter(function(n){return fnv('sid|'+sec+'|'+n+'|'+c)===String(b.sid)})[0];
     if(!who||fnv('ap|'+sec+'|'+who+'|'+c+'|'+P[who])!==String(b.pf))return out({ok:false,err:'auth'});
+    if(b.a==='rec')return saveRec(b,sec,who);
     var ev=(b.ev||[]).slice(0,300);if(!ev.length)return out({ok:true,n:0});
     var now=new Date(),rows=ev.map(function(x){return [now,String(x.d||'').slice(0,10),sec,String(b.sid),String(x.t||'').slice(0,12),String(x.k||'').slice(0,80),Number(x.v)||0,String(b.g||'').slice(0,4)]});
     var lock=LockService.getScriptLock();lock.waitLock(20000);
@@ -50,6 +51,31 @@ function doPost(e){
     return out({ok:true,n:rows.length});
   }catch(err){return out({ok:false,err:String(err)})}
 }
+
+/* ---------- التسجيلات الصوتية: مجلد لكل شعبة، وبداخله مجلد لكل طالب ---------- */
+var ROOT='طلاقة · تسجيلات الطلاب';
+function folder(parent,name){var it=parent?parent.getFoldersByName(name):DriveApp.getFoldersByName(name);return it.hasNext()?it.next():(parent?parent.createFolder(name):DriveApp.createFolder(name))}
+function clean(s){return String(s||'').replace(/[\\/:*?"<>|#%]+/g,' ').replace(/\s+/g,' ').trim().slice(0,90)}
+function saveRec(b,sec,who){
+  var mime=String(b.mime||'audio/webm'),ext=mime.indexOf('mp4')>=0||mime.indexOf('m4a')>=0?'m4a':mime.indexOf('ogg')>=0?'ogg':'webm';
+  var bytes=Utilities.base64Decode(String(b.b64||''));if(!bytes.length||bytes.length>8*1024*1024)return out({ok:false,err:'size'});
+  var day=Utilities.formatDate(new Date(),'Asia/Dubai','yyyy-MM-dd');
+  var kind=b.tool==='read'?'القراءة':'التحدث';
+  var name=clean(who)+' · '+sec+' · '+kind+' · '+clean(b.title)+(b.part?' · '+clean(b.part):'')+' · '+day+'.'+ext;
+  var lock=LockService.getScriptLock();lock.waitLock(25000);
+  try{
+    var dir=folder(folder(folder(null,ROOT),sec),clean(who));
+    var old=dir.getFilesByName(name);while(old.hasNext())old.next().setTrashed(true);
+    var file=dir.createFile(Utilities.newBlob(bytes,mime.split(';')[0],name));
+    var ss=SpreadsheetApp.getActive(),sh=ss.getSheetByName('recs');
+    if(!sh){sh=ss.insertSheet('recs');sh.appendRow(['وقت الاستلام','الشعبة','الطالب','الأداة','المهمة','الجزء','رابط الملف']);sh.setFrozenRows(1);sh.setRightToLeft(true)}
+    sh.appendRow([new Date(),sec,who,kind,clean(b.title),clean(b.part),file.getUrl()]);
+    var ev=sheet();ev.appendRow([new Date(),day,sec,String(b.sid),'a',clean(b.tool)+'|'+clean(b.title)+'|'+clean(b.part),1,String(b.g||'').slice(0,4)]);
+    return out({ok:true,url:file.getUrl()});
+  }finally{lock.releaseLock()}
+}
+/* لتجهيز الأذونات مرة واحدة من المحرر: اختر authorize ثم Run */
+function authorize(){DriveApp.getRootFolder();SpreadsheetApp.getActive();UrlFetchApp.fetch(SITE,{muteHttpExceptions:true})}
 
 /* ---------- ملخّص للمعلم أو المنسق ---------- */
 function doGet(e){
