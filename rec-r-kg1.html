@@ -35,6 +35,8 @@ footer{color:var(--mut);font-size:.85rem;text-align:center;margin:18px 0}
 <script>
 (function(){
 var D=JSON.parse(document.getElementById('seed').textContent),app=document.getElementById('app');
+var WP=(location.hash.match(/w=(\d+)-(\d+)/)||[]),PARTN=(location.hash.match(/p=(\d+)/)||[])[1]||'';if(WP.length){var wa=+WP[1],wb=+WP[2];D.clips=D.clips.filter(function(c){var g=(c.use||'').split(' · ')[0],n=g==='الروتين الثابت'?0:+((g.match(/\d+/)||[-1])[0]);return n>=wa&&n<=wb})}
+window.addEventListener('hashchange',function(){location.reload()});
 var GRP='',SP=null,I=0,REC=null,stream=null,chunks=[],actx=null,anal=null,raf=0,player=new Audio(),have={};
 function esc(s){return String(s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
 function grp(c){return (c.use||'').split(' · ')[0].replace(/^محطة: .*|^إجابة .*|^بداية .*|^نهاية .*|^العد$/,'عام')}
@@ -50,7 +52,7 @@ function K(c){return c.speaker+':'+c.id}
 /* views */
 function vStart(){
  var n={};D.clips.forEach(function(c){n[c.speaker]=(n[c.speaker]||0)+1});
- app.innerHTML='<h1>🎙️ استوديو تسجيل طلاقة</h1><p class="lead">أصوات «روتين التحدّث» · العربية لغير الناطقين بها · الروضة الأولى KG1. ابدئي بـ«الروتين الثابت» ثم الأسبوع 1 فالأسبوع 2… (الأجزاء الثابتة أولًا لأنها تتكرر في كل الجمل).</p>'+
+ app.innerHTML='<h1>🎙️ استوديو تسجيل طلاقة'+(PARTN?' · الجزء '+PARTN:'')+'</h1>'+(WP.length?'<p class="lead" style="background:#fff7d6;padding:8px 12px;border-radius:10px"><b>هذا الرابط للجزء '+PARTN+' فقط</b>: '+(wa===0?'الروتين الثابت و':'')+'الأسبوع '+Math.max(wa,1)+(wb>Math.max(wa,1)?' إلى '+wb:'')+'. سجّلي مقاطعه ثم صدّريها وأرسليها.</p>':'')+'<p class="lead">أصوات «روتين التحدّث» · العربية لغير الناطقين بها · الروضة الأولى KG1. ابدئي بـ«الروتين الثابت» ثم الأسبوع 1 فالأسبوع 2… (الأجزاء الثابتة أولًا لأنها تتكرر في كل الجمل).</p>'+
  '<div class="card"><h3 style="margin-top:0">قبل أن تبدأ</h3><ul class="tips"><li>غرفة هادئة: لا مكيّف عالٍ ولا أصوات في الخلفية.</li><li>الهاتف أو الحاسوب على بعد شبر تقريبًا من الفم.</li><li>اقرأ كما تتكلم مع طفل صغير: بوضوح وبطء قليل وابتسامة.</li><li>الحركات مكتوبة كاملة: اقرأ ما تراه، والكلمة المفردة تُقرأ بالوقف.</li><li>بعد كل تسجيل اضغط «استمع» وتأكد، ثم «التالي».</li></ul></div>';
  var gs=[];D.clips.forEach(function(c){var g=grp(c);if(gs.indexOf(g)<0)gs.push(g)});var inG=function(c){return !GRP||grp(c)===GRP};
  app.innerHTML+='<div class="card"><b>اختر الدرس:</b> <div class="row" style="flex-wrap:wrap;gap:6px;margin-top:6px">'+[''].concat(gs).map(function(g){var cnt=D.clips.filter(function(c){return g?grp(c)===g:true}).length,dn=D.clips.filter(function(c){return (g?grp(c)===g:true)&&have[K(c)]}).length;return '<button class="btn '+(GRP===g?'':'ghost')+'" data-g="'+esc(g)+'">'+(g||'الكل')+' <small>'+dn+'/'+cnt+'</small></button>'}).join('')+'</div></div>';
@@ -111,9 +113,9 @@ function exportZip(){
   if(k>=parts.length){setSt('✓ جاهز: '+parts.length+' ملفات ('+L.length+' مقطعًا). نزّل أو شارك كل ملف على حدة وأرسلها إلى رئيس القسم.','ok');return}
   var zip=new JSZip(),man=[];
   Promise.all(parts[k].map(function(c){return get(K(c)).then(function(v){if(!v)return;var ext=(v.mime||'').indexOf('mp4')>=0?'m4a':(v.mime||'').indexOf('ogg')>=0?'ogg':'webm';var fn=c.id+'_'+c.speaker+'.'+ext;zip.file(fn,v.blob);man.push({file:fn,id:c.id,speaker:c.speaker,text:c.text,dur:v.dur,peak:v.peak,at:v.at,mime:v.mime})})})).then(function(){
-   zip.file('manifest.json',JSON.stringify({tool:'talaqa-r-kg1',part:k+1,parts:parts.length,exported:new Date().toISOString(),ua:navigator.userAgent,clips:man},null,1));
+   zip.file('manifest.json',JSON.stringify({sel:location.hash,tool:'talaqa-r-kg1',part:k+1,parts:parts.length,exported:new Date().toISOString(),ua:navigator.userAgent,clips:man},null,1));
    return zip.generateAsync({type:'blob',compression:'STORE'})}).then(function(b){
-   var fn='talaqa_rkg1_'+(SP||'all')+'_'+stamp+'_part'+(k+1)+'of'+parts.length+'.zip',mb=(b.size/1048576).toFixed(1);
+   var fn='talaqa_rkg1_'+(PARTN?'J'+PARTN+'_':'')+(SP||'all')+'_'+stamp+'_part'+(k+1)+'of'+parts.length+'.zip',mb=(b.size/1048576).toFixed(1);
    var row=document.createElement('div');row.className='row';row.style.justifyContent='flex-start';
    var a=document.createElement('a');a.className='btn';a.href=URL.createObjectURL(b);a.download=fn;a.textContent='⬇️ الجزء '+(k+1)+' من '+parts.length+' · '+man.length+' مقطعًا · '+mb+' MB';row.appendChild(a);
    var f;try{f=new File([b],fn,{type:'application/zip'})}catch(e){}
