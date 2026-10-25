@@ -58,27 +58,63 @@ function doPost(e){
   }catch(err){return out({ok:false,err:String(err)})}
 }
 
-/* ---------- التسجيلات الصوتية: مجلد لكل شعبة، وبداخله مجلد لكل طالب ---------- */
+/* ---------- التسجيلات الصوتية ----------
+   Drive: «طلاقة · تسجيلات الطلاب» ← المرحلة ← الشعبة ← الطالب ← القراءة/التحدث ← «المهمة · المحاولة N · التاريخ»
+   الجدول: ورقة recs (كل التسجيلات)، وورقة لكل مرحلة فيها سطر لكل (طالب، مهمة) وأعمدة المحاولة 1، 2، 3… */
 var ROOT='طلاقة · تسجيلات الطلاب';
+function gradeName(sec){var s=String(sec||'').toUpperCase();if(/^KG/.test(s))return 'الروضة';var m=s.match(/^G(\d)/);return m?({'1':'الصف الأول','2':'الصف الثاني','3':'الصف الثالث','4':'الصف الرابع','5':'الصف الخامس'})[m[1]]||('الصف '+m[1]):'أخرى'}
 function folder(parent,name){var it=parent?parent.getFoldersByName(name):DriveApp.getFoldersByName(name);return it.hasNext()?it.next():(parent?parent.createFolder(name):DriveApp.createFolder(name))}
+function studentDir(sec,who,kind){return folder(folder(folder(folder(folder(null,ROOT),gradeName(sec)),sec),clean(who)),kind)}
 function clean(s){return String(s||'').replace(/[\\/:*?"<>|#%]+/g,' ').replace(/\s+/g,' ').trim().slice(0,90)}
+function recSheet(){var ss=SpreadsheetApp.getActive(),sh=ss.getSheetByName('recs');
+  if(!sh){sh=ss.insertSheet('recs');sh.appendRow(['وقت الاستلام','الشعبة','الطالب','الأداة','المهمة','الجزء','رابط الملف','المحاولة','المرحلة']);sh.setFrozenRows(1);sh.setRightToLeft(true)}
+  else if(sh.getRange(1,8).getValue()!=='المحاولة'){sh.getRange(1,8).setValue('المحاولة');sh.getRange(1,9).setValue('المرحلة')}
+  return sh}
+/* رقم المحاولة = عدد التسجيلات السابقة للمهمة نفسها (والجزء نفسه) + 1 */
+function nextAttempt(sh,sec,who,kind,title,part){var v=sh.getDataRange().getValues(),n=0;for(var i=1;i<v.length;i++){var r=v[i];if(r[1]===sec&&r[2]===who&&r[3]===kind&&r[4]===title&&String(r[5]||'')===String(part||''))n++}return n+1}
+/* ورقة المرحلة: سطر لكل (طالب، أداة، مهمة، جزء) وعمود لكل محاولة */
+function gradeSheet(g){var ss=SpreadsheetApp.getActive(),sh=ss.getSheetByName(g);
+  if(!sh){sh=ss.insertSheet(g);sh.appendRow(['الطالب','الشعبة','الأداة','المهمة','الجزء','المحاولة 1','المحاولة 2','المحاولة 3']);sh.setFrozenRows(1);sh.setFrozenColumns(0);sh.setRightToLeft(true);sh.getRange(1,1,1,8).setFontWeight('bold')}
+  return sh}
+function gradeUpsert(sec,who,kind,title,part,attempt,day,url){
+  var sh=gradeSheet(gradeName(sec)),v=sh.getDataRange().getValues(),row=-1;
+  for(var i=1;i<v.length;i++){var r=v[i];if(r[0]===who&&r[1]===sec&&r[2]===kind&&r[3]===title&&String(r[4]||'')===String(part||'')){row=i+1;break}}
+  if(row<0){sh.appendRow([who,sec,kind,title,part||'']);row=sh.getLastRow()}
+  var col=5+attempt,last=sh.getLastColumn();
+  if(col>last){for(var c=last+1;c<=col;c++)sh.getRange(1,c).setValue('المحاولة '+(c-5)).setFontWeight('bold')}
+  sh.getRange(row,col).setRichTextValue(SpreadsheetApp.newRichTextValue().setText(day).setLinkUrl(url).build());
+}
 function saveRec(b,sec,who){
   var mime=String(b.mime||'audio/webm'),ext=mime.indexOf('mp4')>=0||mime.indexOf('m4a')>=0?'m4a':mime.indexOf('ogg')>=0?'ogg':'webm';
   var bytes=Utilities.base64Decode(String(b.b64||''));if(!bytes.length||bytes.length>8*1024*1024)return out({ok:false,err:'size'});
   var day=Utilities.formatDate(new Date(),'Asia/Dubai','yyyy-MM-dd');
-  var kind=b.tool==='read'?'القراءة':'التحدث';
-  var name=clean(who)+' · '+sec+' · '+kind+' · '+clean(b.title)+(b.part?' · '+clean(b.part):'')+' · '+day+'.'+ext;
+  var kind=b.tool==='read'?'القراءة':'التحدث',title=clean(b.title),part=clean(b.part);
   var lock=LockService.getScriptLock();lock.waitLock(25000);
   try{
-    var dir=folder(folder(folder(null,ROOT),sec),clean(who));
-    var old=dir.getFilesByName(name);while(old.hasNext())old.next().setTrashed(true);
+    var sh=recSheet(),attempt=nextAttempt(sh,sec,who,kind,title,part);
+    var name=title+(part?' · '+part:'')+' · المحاولة '+attempt+' · '+day+'.'+ext;
+    var dir=studentDir(sec,who,kind);
     var file=dir.createFile(Utilities.newBlob(bytes,mime.split(';')[0],name));
-    var ss=SpreadsheetApp.getActive(),sh=ss.getSheetByName('recs');
-    if(!sh){sh=ss.insertSheet('recs');sh.appendRow(['وقت الاستلام','الشعبة','الطالب','الأداة','المهمة','الجزء','رابط الملف']);sh.setFrozenRows(1);sh.setRightToLeft(true)}
-    sh.appendRow([new Date(),sec,who,kind,clean(b.title),clean(b.part),file.getUrl()]);
-    var ev=sheet();ev.appendRow([new Date(),day,sec,who,'a',clean(b.tool)+'|'+clean(b.title)+'|'+clean(b.part),1,String(b.g||'').slice(0,4),'تسجيل صوتي: '+kind+' · '+clean(b.title)+(b.part?' · '+clean(b.part):'')]);
-    return out({ok:true,url:file.getUrl()});
+    sh.appendRow([new Date(),sec,who,kind,title,part,file.getUrl(),attempt,gradeName(sec)]);
+    gradeUpsert(sec,who,kind,title,part,attempt,day,file.getUrl());
+    var ev=sheet();ev.appendRow([new Date(),day,sec,who,'a',clean(b.tool)+'|'+title+'|'+part,attempt,String(b.g||'').slice(0,4),'تسجيل صوتي: '+kind+' · '+title+(part?' · '+part:'')+' · المحاولة '+attempt]);
+    return out({ok:true,url:file.getUrl(),attempt:attempt});
   }finally{lock.releaseLock()}
+}
+/* ---------- نقل التسجيلات القديمة إلى البنية الجديدة (يُشغَّل مرة واحدة من المحرر: reorganizeExisting ثم Run) ---------- */
+function reorganizeExisting(){
+  var sh=recSheet(),v=sh.getDataRange().getValues(),seen={},moved=0;
+  for(var i=1;i<v.length;i++){var r=v[i];if(r[7])continue; /* له محاولة = منقول */
+    var sec=r[1],who=r[2],kind=r[3],title=r[4],part=String(r[5]||''),url=String(r[6]||''),k=[sec,who,kind,title,part].join('|');
+    seen[k]=(seen[k]||0)+1;var attempt=seen[k],idm=url.match(/\/d\/([^/]+)/);
+    var day=r[0]instanceof Date?Utilities.formatDate(r[0],'Asia/Dubai','yyyy-MM-dd'):String(r[0]).slice(0,10);
+    if(idm){try{var f=DriveApp.getFileById(idm[1]),ext=(f.getName().match(/\.(\w+)$/)||['','webm'])[1];f.setName(title+(part?' · '+part:'')+' · المحاولة '+attempt+' · '+day+'.'+ext);f.moveTo(studentDir(sec,who,kind));moved++}catch(e){}}
+    sh.getRange(i+1,8).setValue(attempt);sh.getRange(i+1,9).setValue(gradeName(sec));
+    gradeUpsert(sec,who,kind,title,part,attempt,day,url);
+  }
+  /* حذف مجلدات الشعب القديمة الفارغة تحت الجذر */
+  var rt=DriveApp.getFoldersByName(ROOT);if(rt.hasNext()){var R=rt.next(),it=R.getFolders();while(it.hasNext()){var sf=it.next();if(/^(KG|G)\d/i.test(sf.getName())&&!sf.getFiles().hasNext()){var sub=sf.getFolders(),empty=true;while(sub.hasNext()){var p=sub.next();if(p.getFiles().hasNext()||p.getFolders().hasNext()){empty=false;break}}if(empty)sf.setTrashed(true)}}}
+  Logger.log('moved '+moved+' files');
 }
 /* لتجهيز الأذونات مرة واحدة من المحرر: اختر authorize ثم Run */
 function authorize(){var f=DriveApp.createFolder('طلاقة-اختبار-الإذن');f.setTrashed(true);SpreadsheetApp.getActive();UrlFetchApp.fetch(SITE,{muteHttpExceptions:true})}
@@ -107,9 +143,12 @@ function doGet(e){
   if(cs){var cv=cs.getDataRange().getValues();for(var j=1;j<cv.length;j++){var x=cv[j];if(allowed&&!allowed[x[1]]&&x[3]!=='HR3')continue;codes[x[1]+'|'+x[2]+'|'+x[3]+(x[3]==='HR3'?'|'+j:'')]=String(x[4])}}
   var res={ok:true,at:new Date().toISOString(),rows:list,codes:Object.keys(codes).map(function(k){return codes[k]})};
   if(q.f==='1'){var fl={},rc={},rs=SpreadsheetApp.getActive().getSheetByName('recs');
-    if(rs){var rv=rs.getDataRange().getValues(),seen={};for(var m=1;m<rv.length;m++){var y=rv[m];if(allowed&&!allowed[y[1]])continue;var uk=y[1]+'|'+y[2]+'|'+y[3]+'|'+y[4]+'|'+y[5];if(seen[uk])continue;seen[uk]=1;rc[y[1]+'|'+y[2]]=(rc[y[1]+'|'+y[2]]||0)+1}}
-    var rt=DriveApp.getFoldersByName(ROOT);if(rt.hasNext()){var R=rt.next(),si=R.getFolders();while(si.hasNext()){var sf=si.next(),sn=sf.getName();if(allowed&&!allowed[sn])continue;var pi=sf.getFolders();while(pi.hasNext()){var pf=pi.next();fl[sn+'|'+pf.getName()]=pf.getUrl()}}}
-    res.folders=fl;res.recs=rc}
+    if(rs){var rv=rs.getDataRange().getValues(),seen={};for(var m=1;m<rv.length;m++){var y=rv[m];if(allowed&&!allowed[y[1]])continue;rc[y[1]+'|'+y[2]]=(rc[y[1]+'|'+y[2]]||0)+1}}
+    var rt=DriveApp.getFoldersByName(ROOT);if(rt.hasNext()){var R=rt.next(),gi=R.getFolders();while(gi.hasNext()){var gf=gi.next(),si=/^(KG|G)\d/i.test(gf.getName())?[gf]:null,sl=[];if(si)sl=si;else{var x=gf.getFolders();while(x.hasNext())sl.push(x.next())}
+      sl.forEach(function(sf){var sn=sf.getName();if(allowed&&!allowed[sn])return;var pi=sf.getFolders();while(pi.hasNext()){var pf=pi.next();fl[sn+'|'+pf.getName()]=pf.getUrl()}})}}
+    res.folders=fl;res.recs=rc;
+    if(rs){var rl={},rv2=rs.getDataRange().getValues();for(var m2=1;m2<rv2.length;m2++){var y2=rv2[m2];if(allowed&&!allowed[y2[1]])continue;var kk=y2[1]+'|'+y2[2];(rl[kk]=rl[kk]||[]).push({k:y2[3],t:y2[4]+(y2[5]?' · '+y2[5]:''),a:y2[7]||'',d:y2[0]instanceof Date?Utilities.formatDate(y2[0],'Asia/Dubai','yyyy-MM-dd'):String(y2[0]).slice(0,10)})}res.recl=rl}}
+  if(q.d==='1'){var EV={};for(var i2=1;i2<v.length;i2++){var r2=v[i2];if(r2[4]==='v')continue;if(allowed&&!allowed[r2[2]])continue;var k2=r2[2]+'|'+r2[3],L2=EV[k2]=EV[k2]||[];var d2=r2[1]instanceof Date?Utilities.formatDate(r2[1],'Asia/Dubai','yyyy-MM-dd'):String(r2[1]);L2.push({d:d2,a:String(r2[8]||r2[4])+(r2[4]==='a'?'':' · '+String(r2[5]||'').replace(/\|/g,' › '))});if(L2.length>80)L2.shift()}res.ev=EV}
   return out(res);
 }
 
