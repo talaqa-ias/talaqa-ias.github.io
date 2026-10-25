@@ -14,11 +14,7 @@ function rcNorm(s){return String(s||'').toUpperCase().replace(/[^A-Z0-9]/g,'')}
 var PAGE=/grade-([a-z0-9]+)\.html/i.exec(location.pathname),GRADE=PAGE?PAGE[1].toUpperCase():null;
 var URL_=null,busy=false;
 
-/* التقط رمزي الدخول عند الدخول من صفحة الصف أو البوابة */
-document.addEventListener('submit',function(e){var f=e.target;if(!f||!f.id)return;
- var c=null,p=null;if(f.id==='shSec'){c=(document.getElementById('shRc')||{}).value;p=(document.getElementById('shPc')||{}).value}
- else if(f.id==='fSec'){c=(document.getElementById('secIn')||{}).value;p=(document.getElementById('pinIn')||{}).value}
- if(c&&p)put('tq_auth',{c:rcNorm(c),p:String(p).replace(/[^0-9]/g,'')})},true);
+/* رمزا الدخول يحفظهما نموذج الدخول نفسه في tq_auth (رمز الشعبة = اسمها، والرمز الشخصي = الرقم المدرسي) */
 
 function who(){
  var me=null;if(GRADE){var g=get('gs_me_'+GRADE,null);if(g&&g.name&&g.sec!=='معاينة')me={name:g.name,sec:g.sec}}
