@@ -97,7 +97,7 @@ function unsent(items){var S=sentMap();return items.filter(function(x){return S[
 var sending=false;
 function send(cur){
  if(sending)return;var me=cur.me;
- if(!me.c||!me.p){toast('ادخل من بوابة طلاقة برمز شعبتك ورمزك الشخصي أولًا، ثم أعد الإرسال.');return}
+ if(!me.c||!me.p){toast('ادخل من بوابة طلاقة برقمك المدرسي أولًا، ثم أعد الإرسال.');return}
  var pre=R?finish():Promise.resolve();
  pre.then(cfg).then(function(url){if(!url){toast('الإرسال غير مفعّل بعد. أخبر معلمك.');return}
   list(cur).then(function(items){var todo=unsent(items);if(!items.length){toast('لا توجد تسجيلات في هذه المهمة بعد');return}if(!todo.length){toast('أُرسلت كل تسجيلات هذه المهمة من قبل ✓');return}
