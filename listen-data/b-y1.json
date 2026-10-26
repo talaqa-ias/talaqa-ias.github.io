@@ -1,0 +1,1511 @@
+{
+"texts": [
+{
+"id": "b-y1-1a",
+"lv": 1,
+"title": "الْأَلْوَانُ وَالْأَعْدَادُ",
+"kind": "اسمع واختر",
+"out": "يتعرّف الألوان والأرقام من واحد إلى عشرة وأصناف الطعام",
+"listens": 3,
+"qs": [
+{
+"type": "word",
+"say": "أَحْمَرُ",
+"q": "اسْمَعْ وَاخْتَرِ الصُّورَةَ.",
+"opts": [
+{
+"t": "أَحْمَرُ",
+"e": "🔴",
+"img": "aal/img/w_ahmar.webp"
+},
+{
+"t": "أَصْفَرُ",
+"e": "🟡",
+"img": "aal/img/b_asfar.webp"
+},
+{
+"t": "أَزْرَقُ",
+"e": "🔵",
+"img": "aal/img/kw01.webp"
+}
+],
+"a": 0,
+"id": "q1",
+"au": "listen-data/audio/b-y1/b-y1-1a-q1.mp3",
+"sau": "listen-data/audio/b-y1/b-y1-1a-q1-s.mp3"
+},
+{
+"type": "word",
+"say": "أَزْرَقُ",
+"q": "اسْمَعْ وَاخْتَرِ الصُّورَةَ.",
+"opts": [
+{
+"t": "أَزْرَقُ",
+"e": "🔵",
+"img": "aal/img/kw01.webp"
+},
+{
+"t": "أَخْضَرُ",
+"e": "🟢",
+"img": "aal/img/kw25.webp"
+},
+{
+"t": "أَسْوَدُ",
+"e": "⚫",
+"img": "aal/img/b_aswad.webp"
+}
+],
+"a": 0,
+"id": "q2",
+"au": "listen-data/audio/b-y1/b-y1-1a-q2.mp3",
+"sau": "listen-data/audio/b-y1/b-y1-1a-q2-s.mp3"
+},
+{
+"type": "word",
+"say": "أَخْضَرُ",
+"q": "اسْمَعْ وَاخْتَرِ الصُّورَةَ.",
+"opts": [
+{
+"t": "أَخْضَرُ",
+"e": "🟢",
+"img": "aal/img/kw25.webp"
+},
+{
+"t": "أَحْمَرُ",
+"e": "🔴",
+"img": "aal/img/w_ahmar.webp"
+},
+{
+"t": "أَبْيَضُ",
+"e": "⚪",
+"img": "aal/img/b_abyad.webp"
+}
+],
+"a": 0,
+"id": "q3",
+"au": "listen-data/audio/b-y1/b-y1-1a-q3.mp3",
+"sau": "listen-data/audio/b-y1/b-y1-1a-q3-s.mp3"
+},
+{
+"type": "word",
+"say": "أَصْفَرُ",
+"q": "اسْمَعْ وَاخْتَرِ الصُّورَةَ.",
+"opts": [
+{
+"t": "أَصْفَرُ",
+"e": "🟡",
+"img": "aal/img/b_asfar.webp"
+},
+{
+"t": "أَسْوَدُ",
+"e": "⚫",
+"img": "aal/img/b_aswad.webp"
+},
+{
+"t": "أَزْرَقُ",
+"e": "🔵",
+"img": "aal/img/kw01.webp"
+}
+],
+"a": 0,
+"id": "q4",
+"au": "listen-data/audio/b-y1/b-y1-1a-q4.mp3",
+"sau": "listen-data/audio/b-y1/b-y1-1a-q4-s.mp3"
+},
+{
+"type": "word",
+"say": "أَسْوَدُ",
+"q": "اسْمَعْ وَاخْتَرِ الصُّورَةَ.",
+"opts": [
+{
+"t": "أَسْوَدُ",
+"e": "⚫",
+"img": "aal/img/b_aswad.webp"
+},
+{
+"t": "أَبْيَضُ",
+"e": "⚪",
+"img": "aal/img/b_abyad.webp"
+},
+{
+"t": "أَحْمَرُ",
+"e": "🔴",
+"img": "aal/img/w_ahmar.webp"
+}
+],
+"a": 0,
+"id": "q5",
+"au": "listen-data/audio/b-y1/b-y1-1a-q5.mp3",
+"sau": "listen-data/audio/b-y1/b-y1-1a-q5-s.mp3"
+},
+{
+"type": "word",
+"say": "ثَلَاثَةٌ",
+"q": "اسْمَعْ وَاخْتَرِ الصُّورَةَ.",
+"opts": [
+{
+"t": "ثَلَاثَةٌ",
+"e": "3️⃣"
+},
+{
+"t": "ثَمَانِيَةٌ",
+"e": "8️⃣"
+},
+{
+"t": "خَمْسَةٌ",
+"e": "5️⃣"
+}
+],
+"a": 0,
+"id": "q6",
+"au": "listen-data/audio/b-y1/b-y1-1a-q6.mp3",
+"sau": "listen-data/audio/b-y1/b-y1-1a-q6-s.mp3"
+},
+{
+"type": "word",
+"say": "سَبْعَةٌ",
+"q": "اسْمَعْ وَاخْتَرِ الصُّورَةَ.",
+"opts": [
+{
+"t": "سَبْعَةٌ",
+"e": "7️⃣"
+},
+{
+"t": "أَرْبَعَةٌ",
+"e": "4️⃣"
+},
+{
+"t": "وَاحِدٌ",
+"e": "1️⃣"
+}
+],
+"a": 0,
+"id": "q7",
+"au": "listen-data/audio/b-y1/b-y1-1a-q7.mp3",
+"sau": "listen-data/audio/b-y1/b-y1-1a-q7-s.mp3"
+},
+{
+"type": "word",
+"say": "اثْنَانِ",
+"q": "اسْمَعْ وَاخْتَرِ الصُّورَةَ.",
+"opts": [
+{
+"t": "اثْنَانِ",
+"e": "2️⃣"
+},
+{
+"t": "سِتَّةٌ",
+"e": "6️⃣"
+},
+{
+"t": "تِسْعَةٌ",
+"e": "9️⃣"
+}
+],
+"a": 0,
+"id": "q8",
+"au": "listen-data/audio/b-y1/b-y1-1a-q8.mp3",
+"sau": "listen-data/audio/b-y1/b-y1-1a-q8-s.mp3"
+},
+{
+"type": "word",
+"say": "عَشَرَةٌ",
+"q": "اسْمَعْ وَاخْتَرِ الصُّورَةَ.",
+"opts": [
+{
+"t": "عَشَرَةٌ",
+"e": "🔟"
+},
+{
+"t": "ثَلَاثَةٌ",
+"e": "3️⃣"
+},
+{
+"t": "سَبْعَةٌ",
+"e": "7️⃣"
+}
+],
+"a": 0,
+"id": "q9",
+"au": "listen-data/audio/b-y1/b-y1-1a-q9.mp3",
+"sau": "listen-data/audio/b-y1/b-y1-1a-q9-s.mp3"
+},
+{
+"type": "word",
+"say": "تِسْعَةٌ",
+"q": "اسْمَعْ وَاخْتَرِ الصُّورَةَ.",
+"opts": [
+{
+"t": "تِسْعَةٌ",
+"e": "9️⃣"
+},
+{
+"t": "خَمْسَةٌ",
+"e": "5️⃣"
+},
+{
+"t": "اثْنَانِ",
+"e": "2️⃣"
+}
+],
+"a": 0,
+"id": "q10",
+"au": "listen-data/audio/b-y1/b-y1-1a-q10.mp3",
+"sau": "listen-data/audio/b-y1/b-y1-1a-q10-s.mp3"
+}
+],
+"tau": "listen-data/audio/b-y1/b-y1-1a-title.mp3",
+"done": "ar-QA-AmalNeural"
+},
+{
+"id": "b-y1-1b",
+"lv": 1,
+"title": "الطَّعَامُ وَالْأُسْرَةُ",
+"kind": "اسمع واختر",
+"out": "يتعرّف الألوان والأرقام من واحد إلى عشرة وأصناف الطعام",
+"listens": 3,
+"qs": [
+{
+"type": "word",
+"say": "تُفَّاحَةٌ",
+"q": "اسْمَعْ وَاخْتَرِ الصُّورَةَ.",
+"opts": [
+{
+"t": "تُفَّاحَةٌ",
+"e": "🍎",
+"img": "aal/img/w_tuffah.webp"
+},
+{
+"t": "مَوْزٌ",
+"e": "🍌",
+"img": "aal/img/kw44.webp"
+},
+{
+"t": "بَيْضَةٌ",
+"e": "🥚",
+"img": "aal/img/w_bayd.webp"
+}
+],
+"a": 0,
+"id": "q1",
+"au": "listen-data/audio/b-y1/b-y1-1b-q1.mp3",
+"sau": "listen-data/audio/b-y1/b-y1-1b-q1-s.mp3"
+},
+{
+"type": "word",
+"say": "خُبْزٌ",
+"q": "اسْمَعْ وَاخْتَرِ الصُّورَةَ.",
+"opts": [
+{
+"t": "خُبْزٌ",
+"e": "🍞",
+"img": "aal/img/kw22.webp"
+},
+{
+"t": "جُبْنٌ",
+"e": "🧀",
+"img": "aal/img/kw14.webp"
+},
+{
+"t": "سَمَكٌ",
+"e": "🐟",
+"img": "aal/img/kw45.webp"
+}
+],
+"a": 0,
+"id": "q2",
+"au": "listen-data/audio/b-y1/b-y1-1b-q2.mp3",
+"sau": "listen-data/audio/b-y1/b-y1-1b-q2-s.mp3"
+},
+{
+"type": "word",
+"say": "حَلِيبٌ",
+"q": "اسْمَعْ وَاخْتَرِ الصُّورَةَ.",
+"opts": [
+{
+"t": "حَلِيبٌ",
+"e": "🥛",
+"img": "aal/img/kw18.webp"
+},
+{
+"t": "مَاءٌ",
+"e": "💧",
+"img": "aal/img/kw87.webp"
+},
+{
+"t": "عَصِيرٌ",
+"e": "🧃",
+"img": "aal/img/fd_asir.webp"
+}
+],
+"a": 0,
+"id": "q3",
+"au": "listen-data/audio/b-y1/b-y1-1b-q3.mp3",
+"sau": "listen-data/audio/b-y1/b-y1-1b-q3-s.mp3"
+},
+{
+"type": "word",
+"say": "مَوْزٌ",
+"q": "اسْمَعْ وَاخْتَرِ الصُّورَةَ.",
+"opts": [
+{
+"t": "مَوْزٌ",
+"e": "🍌",
+"img": "aal/img/kw44.webp"
+},
+{
+"t": "تُفَّاحَةٌ",
+"e": "🍎",
+"img": "aal/img/w_tuffah.webp"
+},
+{
+"t": "خُبْزٌ",
+"e": "🍞",
+"img": "aal/img/kw22.webp"
+}
+],
+"a": 0,
+"id": "q4",
+"au": "listen-data/audio/b-y1/b-y1-1b-q4.mp3",
+"sau": "listen-data/audio/b-y1/b-y1-1b-q4-s.mp3"
+},
+{
+"type": "word",
+"say": "سَمَكٌ",
+"q": "اسْمَعْ وَاخْتَرِ الصُّورَةَ.",
+"opts": [
+{
+"t": "سَمَكٌ",
+"e": "🐟",
+"img": "aal/img/kw45.webp"
+},
+{
+"t": "بَيْضَةٌ",
+"e": "🥚",
+"img": "aal/img/w_bayd.webp"
+},
+{
+"t": "جُبْنٌ",
+"e": "🧀",
+"img": "aal/img/kw14.webp"
+}
+],
+"a": 0,
+"id": "q5",
+"au": "listen-data/audio/b-y1/b-y1-1b-q5.mp3",
+"sau": "listen-data/audio/b-y1/b-y1-1b-q5-s.mp3"
+},
+{
+"type": "word",
+"say": "أُمٌّ",
+"q": "اسْمَعْ وَاخْتَرِ الصُّورَةَ.",
+"opts": [
+{
+"t": "أُمٌّ",
+"e": "👩",
+"img": "aal/img/w_umm.webp"
+},
+{
+"t": "أَبٌ",
+"e": "👨",
+"img": "aal/img/w_ab.webp"
+},
+{
+"t": "جَدَّةٌ",
+"e": "👵",
+"img": "aal/img/w_jadda.webp"
+}
+],
+"a": 0,
+"id": "q6",
+"au": "listen-data/audio/b-y1/b-y1-1b-q6.mp3",
+"sau": "listen-data/audio/b-y1/b-y1-1b-q6-s.mp3"
+},
+{
+"type": "word",
+"say": "أَبٌ",
+"q": "اسْمَعْ وَاخْتَرِ الصُّورَةَ.",
+"opts": [
+{
+"t": "أَبٌ",
+"e": "👨",
+"img": "aal/img/w_ab.webp"
+},
+{
+"t": "أَخٌ",
+"e": "👦",
+"img": "aal/img/w_akh.webp"
+},
+{
+"t": "جَدٌّ",
+"e": "👴",
+"img": "aal/img/w_jadd.webp"
+}
+],
+"a": 0,
+"id": "q7",
+"au": "listen-data/audio/b-y1/b-y1-1b-q7.mp3",
+"sau": "listen-data/audio/b-y1/b-y1-1b-q7-s.mp3"
+},
+{
+"type": "word",
+"say": "أُخْتٌ",
+"q": "اسْمَعْ وَاخْتَرِ الصُّورَةَ.",
+"opts": [
+{
+"t": "أُخْتٌ",
+"e": "👧",
+"img": "aal/img/w_ukht.webp"
+},
+{
+"t": "أَخٌ",
+"e": "👦",
+"img": "aal/img/w_akh.webp"
+},
+{
+"t": "طِفْلٌ",
+"e": "👶"
+}
+],
+"a": 0,
+"id": "q8",
+"au": "listen-data/audio/b-y1/b-y1-1b-q8.mp3",
+"sau": "listen-data/audio/b-y1/b-y1-1b-q8-s.mp3"
+},
+{
+"type": "word",
+"say": "جَدٌّ",
+"q": "اسْمَعْ وَاخْتَرِ الصُّورَةَ.",
+"opts": [
+{
+"t": "جَدٌّ",
+"e": "👴",
+"img": "aal/img/w_jadd.webp"
+},
+{
+"t": "أَبٌ",
+"e": "👨",
+"img": "aal/img/w_ab.webp"
+},
+{
+"t": "طِفْلٌ",
+"e": "👶"
+}
+],
+"a": 0,
+"id": "q9",
+"au": "listen-data/audio/b-y1/b-y1-1b-q9.mp3",
+"sau": "listen-data/audio/b-y1/b-y1-1b-q9-s.mp3"
+},
+{
+"type": "word",
+"say": "جَدَّةٌ",
+"q": "اسْمَعْ وَاخْتَرِ الصُّورَةَ.",
+"opts": [
+{
+"t": "جَدَّةٌ",
+"e": "👵",
+"img": "aal/img/w_jadda.webp"
+},
+{
+"t": "أُمٌّ",
+"e": "👩",
+"img": "aal/img/w_umm.webp"
+},
+{
+"t": "أُخْتٌ",
+"e": "👧",
+"img": "aal/img/w_ukht.webp"
+}
+],
+"a": 0,
+"id": "q10",
+"au": "listen-data/audio/b-y1/b-y1-1b-q10.mp3",
+"sau": "listen-data/audio/b-y1/b-y1-1b-q10-s.mp3"
+}
+],
+"tau": "listen-data/audio/b-y1/b-y1-1b-title.mp3",
+"done": "ar-QA-AmalNeural"
+},
+{
+"id": "b-y1-2a",
+"lv": 2,
+"title": "أَصْوَاتُ الْحُرُوفِ",
+"kind": "اسمع واختر",
+"out": "يميّز أصوات الحروف في سياق كلمات مألوفة",
+"listens": 3,
+"qs": [
+{
+"type": "sound",
+"say": "بَابٌ",
+"q": "بِأَيِّ حَرْفٍ تَبْدَأُ الْكَلِمَةُ؟",
+"opts": [
+{
+"t": "ب"
+},
+{
+"t": "ت"
+},
+{
+"t": "ن"
+}
+],
+"a": 0,
+"id": "q1",
+"au": "listen-data/audio/b-y1/b-y1-2a-q1.mp3",
+"sau": "listen-data/audio/b-y1/b-y1-2a-q1-s.mp3"
+},
+{
+"type": "sound",
+"say": "شَمْسٌ",
+"q": "بِأَيِّ حَرْفٍ تَبْدَأُ الْكَلِمَةُ؟",
+"opts": [
+{
+"t": "ش"
+},
+{
+"t": "س"
+},
+{
+"t": "ر"
+}
+],
+"a": 0,
+"id": "q2",
+"au": "listen-data/audio/b-y1/b-y1-2a-q2.mp3",
+"sau": "listen-data/audio/b-y1/b-y1-2a-q2-s.mp3"
+},
+{
+"type": "sound",
+"say": "مَوْزٌ",
+"q": "بِأَيِّ حَرْفٍ تَبْدَأُ الْكَلِمَةُ؟",
+"opts": [
+{
+"t": "م"
+},
+{
+"t": "ن"
+},
+{
+"t": "ل"
+}
+],
+"a": 0,
+"id": "q3",
+"au": "listen-data/audio/b-y1/b-y1-2a-q3.mp3",
+"sau": "listen-data/audio/b-y1/b-y1-2a-q3-s.mp3"
+},
+{
+"type": "sound",
+"say": "قَلَمٌ",
+"q": "بِأَيِّ حَرْفٍ تَبْدَأُ الْكَلِمَةُ؟",
+"opts": [
+{
+"t": "ق"
+},
+{
+"t": "ف"
+},
+{
+"t": "ك"
+}
+],
+"a": 0,
+"id": "q4",
+"au": "listen-data/audio/b-y1/b-y1-2a-q4.mp3",
+"sau": "listen-data/audio/b-y1/b-y1-2a-q4-s.mp3"
+},
+{
+"type": "sound",
+"say": "دَجَاجَةٌ",
+"q": "بِأَيِّ حَرْفٍ تَبْدَأُ الْكَلِمَةُ؟",
+"opts": [
+{
+"t": "د"
+},
+{
+"t": "ر"
+},
+{
+"t": "و"
+}
+],
+"a": 0,
+"id": "q5",
+"au": "listen-data/audio/b-y1/b-y1-2a-q5.mp3",
+"sau": "listen-data/audio/b-y1/b-y1-2a-q5-s.mp3"
+},
+{
+"type": "sound",
+"say": "فِيلٌ",
+"q": "بِأَيِّ حَرْفٍ تَبْدَأُ الْكَلِمَةُ؟",
+"opts": [
+{
+"t": "ف"
+},
+{
+"t": "ب"
+},
+{
+"t": "ث"
+}
+],
+"a": 0,
+"id": "q6",
+"au": "listen-data/audio/b-y1/b-y1-2a-q6.mp3",
+"sau": "listen-data/audio/b-y1/b-y1-2a-q6-s.mp3"
+},
+{
+"type": "sound",
+"say": "بَابْ",
+"q": "كَمْ مَقْطَعًا فِي الْكَلِمَةِ؟",
+"opts": [
+{
+"t": "مَقْطَعٌ وَاحِدٌ",
+"e": "1️⃣"
+},
+{
+"t": "مَقْطَعَانِ",
+"e": "2️⃣"
+},
+{
+"t": "ثَلَاثَةُ مَقَاطِعَ",
+"e": "3️⃣"
+}
+],
+"a": 0,
+"id": "q7",
+"au": "listen-data/audio/b-y1/b-y1-2a-q7.mp3",
+"sau": "listen-data/audio/b-y1/b-y1-2a-q7-s.mp3"
+},
+{
+"type": "sound",
+"say": "قَلَمْ",
+"q": "كَمْ مَقْطَعًا فِي الْكَلِمَةِ؟",
+"opts": [
+{
+"t": "مَقْطَعَانِ",
+"e": "2️⃣"
+},
+{
+"t": "مَقْطَعٌ وَاحِدٌ",
+"e": "1️⃣"
+},
+{
+"t": "ثَلَاثَةُ مَقَاطِعَ",
+"e": "3️⃣"
+}
+],
+"a": 0,
+"id": "q8",
+"au": "listen-data/audio/b-y1/b-y1-2a-q8.mp3",
+"sau": "listen-data/audio/b-y1/b-y1-2a-q8-s.mp3"
+},
+{
+"type": "sound",
+"say": "سَمَكَةْ",
+"q": "كَمْ مَقْطَعًا فِي الْكَلِمَةِ؟",
+"opts": [
+{
+"t": "ثَلَاثَةُ مَقَاطِعَ",
+"e": "3️⃣"
+},
+{
+"t": "مَقْطَعَانِ",
+"e": "2️⃣"
+},
+{
+"t": "مَقْطَعٌ وَاحِدٌ",
+"e": "1️⃣"
+}
+],
+"a": 0,
+"id": "q9",
+"au": "listen-data/audio/b-y1/b-y1-2a-q9.mp3",
+"sau": "listen-data/audio/b-y1/b-y1-2a-q9-s.mp3"
+},
+{
+"type": "sound",
+"say": "كِتَابْ",
+"q": "كَمْ مَقْطَعًا فِي الْكَلِمَةِ؟",
+"opts": [
+{
+"t": "مَقْطَعَانِ",
+"e": "2️⃣"
+},
+{
+"t": "ثَلَاثَةُ مَقَاطِعَ",
+"e": "3️⃣"
+},
+{
+"t": "مَقْطَعٌ وَاحِدٌ",
+"e": "1️⃣"
+}
+],
+"a": 0,
+"id": "q10",
+"au": "listen-data/audio/b-y1/b-y1-2a-q10.mp3",
+"sau": "listen-data/audio/b-y1/b-y1-2a-q10-s.mp3"
+}
+],
+"tau": "listen-data/audio/b-y1/b-y1-2a-title.mp3",
+"done": "ar-QA-AmalNeural"
+},
+{
+"id": "b-y1-2b",
+"lv": 2,
+"title": "التَّحِيَّةُ وَالشُّكْرُ",
+"kind": "اسمع واختر",
+"out": "يفهم العبارات الشائعة في التحية",
+"listens": 3,
+"qs": [
+{
+"type": "word",
+"say": "صَبَاحُ الْخَيْرِ",
+"q": "اسْمَعْ وَاخْتَرِ الصُّورَةَ.",
+"opts": [
+{
+"t": "صَبَاحُ الْخَيْرِ",
+"e": "🌅"
+},
+{
+"t": "مَسَاءُ الْخَيْرِ",
+"e": "🌆"
+},
+{
+"t": "مَعَ السَّلَامَةِ",
+"e": "👋"
+}
+],
+"a": 0,
+"id": "q1",
+"au": "listen-data/audio/b-y1/b-y1-2b-q1.mp3",
+"sau": "listen-data/audio/b-y1/b-y1-2b-q1-s.mp3"
+},
+{
+"type": "word",
+"say": "مَسَاءُ الْخَيْرِ",
+"q": "اسْمَعْ وَاخْتَرِ الصُّورَةَ.",
+"opts": [
+{
+"t": "مَسَاءُ الْخَيْرِ",
+"e": "🌆"
+},
+{
+"t": "صَبَاحُ الْخَيْرِ",
+"e": "🌅"
+},
+{
+"t": "شُكْرًا",
+"e": "🙏"
+}
+],
+"a": 0,
+"id": "q2",
+"au": "listen-data/audio/b-y1/b-y1-2b-q2.mp3",
+"sau": "listen-data/audio/b-y1/b-y1-2b-q2-s.mp3"
+},
+{
+"type": "word",
+"say": "شُكْرًا لَكَ",
+"q": "اسْمَعْ وَاخْتَرِ الصُّورَةَ.",
+"opts": [
+{
+"t": "شُكْرًا",
+"e": "🙏"
+},
+{
+"t": "مَرْحَبًا",
+"e": "🙋"
+},
+{
+"t": "تُصْبِحُ عَلَى خَيْرٍ",
+"e": "😴"
+}
+],
+"a": 0,
+"id": "q3",
+"au": "listen-data/audio/b-y1/b-y1-2b-q3.mp3",
+"sau": "listen-data/audio/b-y1/b-y1-2b-q3-s.mp3"
+},
+{
+"type": "word",
+"say": "مَعَ السَّلَامَةِ",
+"q": "اسْمَعْ وَاخْتَرِ الصُّورَةَ.",
+"opts": [
+{
+"t": "مَعَ السَّلَامَةِ",
+"e": "👋"
+},
+{
+"t": "السَّلَامُ عَلَيْكُمْ",
+"e": "🤝"
+},
+{
+"t": "شُكْرًا",
+"e": "🙏"
+}
+],
+"a": 0,
+"id": "q4",
+"au": "listen-data/audio/b-y1/b-y1-2b-q4.mp3",
+"sau": "listen-data/audio/b-y1/b-y1-2b-q4-s.mp3"
+},
+{
+"type": "word",
+"say": "السَّلَامُ عَلَيْكُمْ",
+"q": "اسْمَعْ وَاخْتَرِ الصُّورَةَ.",
+"opts": [
+{
+"t": "السَّلَامُ عَلَيْكُمْ",
+"e": "🤝"
+},
+{
+"t": "تُصْبِحُ عَلَى خَيْرٍ",
+"e": "😴"
+},
+{
+"t": "مَسَاءُ الْخَيْرِ",
+"e": "🌆"
+}
+],
+"a": 0,
+"id": "q5",
+"au": "listen-data/audio/b-y1/b-y1-2b-q5.mp3",
+"sau": "listen-data/audio/b-y1/b-y1-2b-q5-s.mp3"
+},
+{
+"type": "word",
+"say": "مَرْحَبًا بِكَ",
+"q": "اسْمَعْ وَاخْتَرِ الصُّورَةَ.",
+"opts": [
+{
+"t": "مَرْحَبًا",
+"e": "🙋"
+},
+{
+"t": "مَعَ السَّلَامَةِ",
+"e": "👋"
+},
+{
+"t": "أَنَا بِخَيْرٍ",
+"e": "👍"
+}
+],
+"a": 0,
+"id": "q6",
+"au": "listen-data/audio/b-y1/b-y1-2b-q6.mp3",
+"sau": "listen-data/audio/b-y1/b-y1-2b-q6-s.mp3"
+},
+{
+"type": "word",
+"say": "أَهْلًا وَسَهْلًا",
+"q": "اسْمَعْ وَاخْتَرِ الصُّورَةَ.",
+"opts": [
+{
+"t": "أَهْلًا وَسَهْلًا",
+"e": "🤗"
+},
+{
+"t": "تُصْبِحُ عَلَى خَيْرٍ",
+"e": "😴"
+},
+{
+"t": "كَيْفَ حَالُكَ؟",
+"e": "❓"
+}
+],
+"a": 0,
+"id": "q7",
+"au": "listen-data/audio/b-y1/b-y1-2b-q7.mp3",
+"sau": "listen-data/audio/b-y1/b-y1-2b-q7-s.mp3"
+},
+{
+"type": "word",
+"say": "تُصْبِحُ عَلَى خَيْرٍ",
+"q": "اسْمَعْ وَاخْتَرِ الصُّورَةَ.",
+"opts": [
+{
+"t": "تُصْبِحُ عَلَى خَيْرٍ",
+"e": "😴"
+},
+{
+"t": "صَبَاحُ الْخَيْرِ",
+"e": "🌅"
+},
+{
+"t": "شُكْرًا",
+"e": "🙏"
+}
+],
+"a": 0,
+"id": "q8",
+"au": "listen-data/audio/b-y1/b-y1-2b-q8.mp3",
+"sau": "listen-data/audio/b-y1/b-y1-2b-q8-s.mp3"
+},
+{
+"type": "word",
+"say": "كَيْفَ حَالُكَ؟",
+"q": "اسْمَعْ وَاخْتَرِ الصُّورَةَ.",
+"opts": [
+{
+"t": "كَيْفَ حَالُكَ؟",
+"e": "❓"
+},
+{
+"t": "أَنَا بِخَيْرٍ",
+"e": "👍"
+},
+{
+"t": "مَعَ السَّلَامَةِ",
+"e": "👋"
+}
+],
+"a": 0,
+"id": "q9",
+"au": "listen-data/audio/b-y1/b-y1-2b-q9.mp3",
+"sau": "listen-data/audio/b-y1/b-y1-2b-q9-s.mp3"
+},
+{
+"type": "word",
+"say": "أَنَا بِخَيْرٍ",
+"q": "اسْمَعْ وَاخْتَرِ الصُّورَةَ.",
+"opts": [
+{
+"t": "أَنَا بِخَيْرٍ",
+"e": "👍"
+},
+{
+"t": "كَيْفَ حَالُكَ؟",
+"e": "❓"
+},
+{
+"t": "السَّلَامُ عَلَيْكُمْ",
+"e": "🤝"
+}
+],
+"a": 0,
+"id": "q10",
+"au": "listen-data/audio/b-y1/b-y1-2b-q10.mp3",
+"sau": "listen-data/audio/b-y1/b-y1-2b-q10-s.mp3"
+}
+],
+"tau": "listen-data/audio/b-y1/b-y1-2b-title.mp3",
+"done": "ar-QA-AmalNeural"
+},
+{
+"id": "b-y1-3a",
+"lv": 3,
+"title": "تَعْلِيمَاتُ الصَّفِّ",
+"kind": "اسمع واختر",
+"out": "يفهم الكلمات المفردة المرتبطة بحركة أو صورة",
+"listens": 3,
+"qs": [
+{
+"type": "word",
+"say": "اجْلِسْ",
+"q": "اسْمَعْ وَاخْتَرِ الصُّورَةَ.",
+"opts": [
+{
+"t": "اجْلِسْ",
+"e": "🪑"
+},
+{
+"t": "قُمْ",
+"e": "🧍"
+},
+{
+"t": "اكْتُبْ",
+"e": "✍️"
+}
+],
+"a": 0,
+"id": "q1",
+"au": "listen-data/audio/b-y1/b-y1-3a-q1.mp3",
+"sau": "listen-data/audio/b-y1/b-y1-3a-q1-s.mp3"
+},
+{
+"type": "word",
+"say": "قُمْ",
+"q": "اسْمَعْ وَاخْتَرِ الصُّورَةَ.",
+"opts": [
+{
+"t": "قُمْ",
+"e": "🧍"
+},
+{
+"t": "اجْلِسْ",
+"e": "🪑"
+},
+{
+"t": "انْظُرْ",
+"e": "👀"
+}
+],
+"a": 0,
+"id": "q2",
+"au": "listen-data/audio/b-y1/b-y1-3a-q2.mp3",
+"sau": "listen-data/audio/b-y1/b-y1-3a-q2-s.mp3"
+},
+{
+"type": "word",
+"say": "افْتَحِ الْكِتَابَ",
+"q": "اسْمَعْ وَاخْتَرِ الصُّورَةَ.",
+"opts": [
+{
+"t": "افْتَحِ الْكِتَابَ",
+"e": "📖"
+},
+{
+"t": "أَغْلِقِ الْبَابَ",
+"e": "🚪"
+},
+{
+"t": "لَوِّنْ",
+"e": "🖍️"
+}
+],
+"a": 0,
+"id": "q3",
+"au": "listen-data/audio/b-y1/b-y1-3a-q3.mp3",
+"sau": "listen-data/audio/b-y1/b-y1-3a-q3-s.mp3"
+},
+{
+"type": "word",
+"say": "أَغْلِقِ الْبَابَ",
+"q": "اسْمَعْ وَاخْتَرِ الصُّورَةَ.",
+"opts": [
+{
+"t": "أَغْلِقِ الْبَابَ",
+"e": "🚪"
+},
+{
+"t": "افْتَحِ الْكِتَابَ",
+"e": "📖"
+},
+{
+"t": "امْسَحِ السَّبُّورَةَ",
+"e": "🧽"
+}
+],
+"a": 0,
+"id": "q4",
+"au": "listen-data/audio/b-y1/b-y1-3a-q4.mp3",
+"sau": "listen-data/audio/b-y1/b-y1-3a-q4-s.mp3"
+},
+{
+"type": "word",
+"say": "اكْتُبْ",
+"q": "اسْمَعْ وَاخْتَرِ الصُّورَةَ.",
+"opts": [
+{
+"t": "اكْتُبْ",
+"e": "✍️"
+},
+{
+"t": "اسْمَعْ",
+"e": "👂"
+},
+{
+"t": "لَوِّنْ",
+"e": "🖍️"
+}
+],
+"a": 0,
+"id": "q5",
+"au": "listen-data/audio/b-y1/b-y1-3a-q5.mp3",
+"sau": "listen-data/audio/b-y1/b-y1-3a-q5-s.mp3"
+},
+{
+"type": "word",
+"say": "اسْمَعْ",
+"q": "اسْمَعْ وَاخْتَرِ الصُّورَةَ.",
+"opts": [
+{
+"t": "اسْمَعْ",
+"e": "👂"
+},
+{
+"t": "انْظُرْ",
+"e": "👀"
+},
+{
+"t": "اكْتُبْ",
+"e": "✍️"
+}
+],
+"a": 0,
+"id": "q6",
+"au": "listen-data/audio/b-y1/b-y1-3a-q6.mp3",
+"sau": "listen-data/audio/b-y1/b-y1-3a-q6-s.mp3"
+},
+{
+"type": "word",
+"say": "انْظُرْ",
+"q": "اسْمَعْ وَاخْتَرِ الصُّورَةَ.",
+"opts": [
+{
+"t": "انْظُرْ",
+"e": "👀"
+},
+{
+"t": "اسْمَعْ",
+"e": "👂"
+},
+{
+"t": "اجْلِسْ",
+"e": "🪑"
+}
+],
+"a": 0,
+"id": "q7",
+"au": "listen-data/audio/b-y1/b-y1-3a-q7.mp3",
+"sau": "listen-data/audio/b-y1/b-y1-3a-q7-s.mp3"
+},
+{
+"type": "word",
+"say": "ارْفَعْ يَدَكَ",
+"q": "اسْمَعْ وَاخْتَرِ الصُّورَةَ.",
+"opts": [
+{
+"t": "ارْفَعْ يَدَكَ",
+"e": "✋"
+},
+{
+"t": "قُمْ",
+"e": "🧍"
+},
+{
+"t": "افْتَحِ الْكِتَابَ",
+"e": "📖"
+}
+],
+"a": 0,
+"id": "q8",
+"au": "listen-data/audio/b-y1/b-y1-3a-q8.mp3",
+"sau": "listen-data/audio/b-y1/b-y1-3a-q8-s.mp3"
+},
+{
+"type": "word",
+"say": "لَوِّنْ",
+"q": "اسْمَعْ وَاخْتَرِ الصُّورَةَ.",
+"opts": [
+{
+"t": "لَوِّنْ",
+"e": "🖍️"
+},
+{
+"t": "اكْتُبْ",
+"e": "✍️"
+},
+{
+"t": "امْسَحِ السَّبُّورَةَ",
+"e": "🧽"
+}
+],
+"a": 0,
+"id": "q9",
+"au": "listen-data/audio/b-y1/b-y1-3a-q9.mp3",
+"sau": "listen-data/audio/b-y1/b-y1-3a-q9-s.mp3"
+},
+{
+"type": "word",
+"say": "امْسَحِ السَّبُّورَةَ",
+"q": "اسْمَعْ وَاخْتَرِ الصُّورَةَ.",
+"opts": [
+{
+"t": "امْسَحِ السَّبُّورَةَ",
+"e": "🧽"
+},
+{
+"t": "أَغْلِقِ الْبَابَ",
+"e": "🚪"
+},
+{
+"t": "ارْفَعْ يَدَكَ",
+"e": "✋"
+}
+],
+"a": 0,
+"id": "q10",
+"au": "listen-data/audio/b-y1/b-y1-3a-q10.mp3",
+"sau": "listen-data/audio/b-y1/b-y1-3a-q10-s.mp3"
+}
+],
+"tau": "listen-data/audio/b-y1/b-y1-3a-title.mp3",
+"done": "ar-QA-AmalNeural"
+},
+{
+"id": "b-y1-3b",
+"lv": 3,
+"title": "جِسْمِي وَالطَّقْسُ",
+"kind": "اسمع واختر",
+"out": "يفهم الكلمات المفردة المرتبطة بحركة أو صورة",
+"listens": 3,
+"qs": [
+{
+"type": "word",
+"say": "عَيْنٌ",
+"q": "اسْمَعْ وَاخْتَرِ الصُّورَةَ.",
+"opts": [
+{
+"t": "عَيْنٌ",
+"e": "👁️",
+"img": "aal/img/w_ayn.webp"
+},
+{
+"t": "أُذُنٌ",
+"e": "👂",
+"img": "aal/img/w_udhun.webp"
+},
+{
+"t": "فَمٌ",
+"e": "👄",
+"img": "aal/img/w_fam.webp"
+}
+],
+"a": 0,
+"id": "q1",
+"au": "listen-data/audio/b-y1/b-y1-3b-q1.mp3",
+"sau": "listen-data/audio/b-y1/b-y1-3b-q1-s.mp3"
+},
+{
+"type": "word",
+"say": "أُذُنٌ",
+"q": "اسْمَعْ وَاخْتَرِ الصُّورَةَ.",
+"opts": [
+{
+"t": "أُذُنٌ",
+"e": "👂",
+"img": "aal/img/w_udhun.webp"
+},
+{
+"t": "أَنْفٌ",
+"e": "👃",
+"img": "aal/img/w_anf.webp"
+},
+{
+"t": "يَدٌ",
+"e": "✋",
+"img": "aal/img/kw97.webp"
+}
+],
+"a": 0,
+"id": "q2",
+"au": "listen-data/audio/b-y1/b-y1-3b-q2.mp3",
+"sau": "listen-data/audio/b-y1/b-y1-3b-q2-s.mp3"
+},
+{
+"type": "word",
+"say": "أَنْفٌ",
+"q": "اسْمَعْ وَاخْتَرِ الصُّورَةَ.",
+"opts": [
+{
+"t": "أَنْفٌ",
+"e": "👃",
+"img": "aal/img/w_anf.webp"
+},
+{
+"t": "عَيْنٌ",
+"e": "👁️",
+"img": "aal/img/w_ayn.webp"
+},
+{
+"t": "رِجْلٌ",
+"e": "🦵",
+"img": "aal/img/w_rijl.webp"
+}
+],
+"a": 0,
+"id": "q3",
+"au": "listen-data/audio/b-y1/b-y1-3b-q3.mp3",
+"sau": "listen-data/audio/b-y1/b-y1-3b-q3-s.mp3"
+},
+{
+"type": "word",
+"say": "يَدٌ",
+"q": "اسْمَعْ وَاخْتَرِ الصُّورَةَ.",
+"opts": [
+{
+"t": "يَدٌ",
+"e": "✋",
+"img": "aal/img/kw97.webp"
+},
+{
+"t": "رِجْلٌ",
+"e": "🦵",
+"img": "aal/img/w_rijl.webp"
+},
+{
+"t": "فَمٌ",
+"e": "👄",
+"img": "aal/img/w_fam.webp"
+}
+],
+"a": 0,
+"id": "q4",
+"au": "listen-data/audio/b-y1/b-y1-3b-q4.mp3",
+"sau": "listen-data/audio/b-y1/b-y1-3b-q4-s.mp3"
+},
+{
+"type": "word",
+"say": "رِجْلٌ",
+"q": "اسْمَعْ وَاخْتَرِ الصُّورَةَ.",
+"opts": [
+{
+"t": "رِجْلٌ",
+"e": "🦵",
+"img": "aal/img/w_rijl.webp"
+},
+{
+"t": "يَدٌ",
+"e": "✋",
+"img": "aal/img/kw97.webp"
+},
+{
+"t": "أُذُنٌ",
+"e": "👂",
+"img": "aal/img/w_udhun.webp"
+}
+],
+"a": 0,
+"id": "q5",
+"au": "listen-data/audio/b-y1/b-y1-3b-q5.mp3",
+"sau": "listen-data/audio/b-y1/b-y1-3b-q5-s.mp3"
+},
+{
+"type": "word",
+"say": "مَطَرٌ",
+"q": "اسْمَعْ وَاخْتَرِ الصُّورَةَ.",
+"opts": [
+{
+"t": "مَطَرٌ",
+"e": "🌧️",
+"img": "aal/img/wx_matar.webp"
+},
+{
+"t": "شَمْسٌ",
+"e": "☀️",
+"img": "aal/img/kw49.webp"
+},
+{
+"t": "رِيَاحٌ",
+"e": "🌬️"
+}
+],
+"a": 0,
+"id": "q6",
+"au": "listen-data/audio/b-y1/b-y1-3b-q6.mp3",
+"sau": "listen-data/audio/b-y1/b-y1-3b-q6-s.mp3"
+},
+{
+"type": "word",
+"say": "شَمْسٌ",
+"q": "اسْمَعْ وَاخْتَرِ الصُّورَةَ.",
+"opts": [
+{
+"t": "شَمْسٌ",
+"e": "☀️",
+"img": "aal/img/kw49.webp"
+},
+{
+"t": "غُيُومٌ",
+"e": "☁️"
+},
+{
+"t": "مَطَرٌ",
+"e": "🌧️",
+"img": "aal/img/wx_matar.webp"
+}
+],
+"a": 0,
+"id": "q7",
+"au": "listen-data/audio/b-y1/b-y1-3b-q7.mp3",
+"sau": "listen-data/audio/b-y1/b-y1-3b-q7-s.mp3"
+},
+{
+"type": "word",
+"say": "غُيُومٌ",
+"q": "اسْمَعْ وَاخْتَرِ الصُّورَةَ.",
+"opts": [
+{
+"t": "غُيُومٌ",
+"e": "☁️"
+},
+{
+"t": "رِيَاحٌ",
+"e": "🌬️"
+},
+{
+"t": "شَمْسٌ",
+"e": "☀️",
+"img": "aal/img/kw49.webp"
+}
+],
+"a": 0,
+"id": "q8",
+"au": "listen-data/audio/b-y1/b-y1-3b-q8.mp3",
+"sau": "listen-data/audio/b-y1/b-y1-3b-q8-s.mp3"
+},
+{
+"type": "word",
+"say": "الْجَوُّ حَارٌّ",
+"q": "اسْمَعْ وَاخْتَرِ الصُّورَةَ.",
+"opts": [
+{
+"t": "الْجَوُّ حَارٌّ",
+"e": "🥵"
+},
+{
+"t": "الْجَوُّ بَارِدٌ",
+"e": "🥶"
+},
+{
+"t": "مَطَرٌ",
+"e": "🌧️",
+"img": "aal/img/wx_matar.webp"
+}
+],
+"a": 0,
+"id": "q9",
+"au": "listen-data/audio/b-y1/b-y1-3b-q9.mp3",
+"sau": "listen-data/audio/b-y1/b-y1-3b-q9-s.mp3"
+},
+{
+"type": "word",
+"say": "الْجَوُّ بَارِدٌ",
+"q": "اسْمَعْ وَاخْتَرِ الصُّورَةَ.",
+"opts": [
+{
+"t": "الْجَوُّ بَارِدٌ",
+"e": "🥶"
+},
+{
+"t": "الْجَوُّ حَارٌّ",
+"e": "🥵"
+},
+{
+"t": "شَمْسٌ",
+"e": "☀️",
+"img": "aal/img/kw49.webp"
+}
+],
+"a": 0,
+"id": "q10",
+"au": "listen-data/audio/b-y1/b-y1-3b-q10.mp3",
+"sau": "listen-data/audio/b-y1/b-y1-3b-q10-s.mp3"
+}
+],
+"tau": "listen-data/audio/b-y1/b-y1-3b-title.mp3",
+"done": "ar-QA-AmalNeural"
+}
+],
+"set": "b-y1",
+"name": "العربية ب · السنة الأولى",
+"levels": {
+"1": "المستوى 1 · أبدأ",
+"2": "المستوى 2 · أتقدّم",
+"3": "المستوى 3 · أتميّز"
+},
+"ver": "v1 · 26 أكتوبر 2026"
+}
