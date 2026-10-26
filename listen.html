@@ -1,0 +1,203 @@
+<!doctype html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>طلاقة · أستمع وأفهم</title>
+<link rel="icon" href="img/icon.png">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Baloo+Bhaijaan+2:wght@500;700;800&family=Noto+Naskh+Arabic:wght@500;700&display=swap');
+:root{--bg:#EAF6FF;--card:#FFFFFF;--ink:#1D2B4F;--muted:#5B6B8C;--line:#D3E4F5;--soft:#FFF4D1;--sky:#2F9BF0;--grass:#22B866;--sun:#FFC83D;--coral:#FF6B6B;--grape:#8E5CF7;--ok-soft:#DDF7E8;--bad-soft:#FFE3E3;
+ --ui:"Baloo Bhaijaan 2","Segoe UI",Tahoma,sans-serif;--read:"Noto Naskh Arabic","Traditional Arabic",serif;color-scheme:light}
+html,body{background:var(--bg);color:var(--ink)}
+body{margin:0;font-family:var(--ui);font-size:17px;line-height:1.55;direction:rtl;padding-inline:16px;padding-block:0 120px}
+*{box-sizing:border-box}#app{max-width:820px;margin-inline:auto}
+button{font:inherit;color:inherit;cursor:pointer}
+:focus-visible{outline:4px solid var(--sun);outline-offset:2px}
+h1{font-size:1.8rem;margin:6px 0 2px;font-weight:800}h2{font-size:1.3rem;margin:0 0 8px;font-weight:800}
+.lead{color:var(--muted);margin:0 0 14px}
+.top{display:flex;align-items:center;gap:8px;padding-block:14px;flex-wrap:wrap}
+.chip{border:2px solid var(--line);background:#fff;border-radius:999px;padding:6px 14px;font-weight:700;text-decoration:none;color:var(--ink)}
+.card{background:var(--card);border:2px solid var(--line);border-radius:22px;padding:16px;margin:12px 0;box-shadow:0 5px 0 var(--line)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:0;border-radius:18px;padding:12px 22px;font-weight:800;font-size:1.1rem;background:var(--grass);color:#fff;min-height:52px;box-shadow:0 5px 0 #168A4B}
+.btn.alt{background:#fff;color:var(--ink);border:2px solid var(--line);box-shadow:0 4px 0 var(--line)}
+.btn.sm{min-height:42px;padding:8px 16px;font-size:1rem}
+.btn[disabled]{opacity:.45;cursor:not-allowed}
+.row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.lvls{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}
+.lv{border:3px solid var(--line);border-radius:20px;background:#fff;padding:12px;box-shadow:0 5px 0 var(--line)}
+.lv.cur{border-color:var(--grass);background:#F2FBF5}.lv.lock{opacity:.5}
+.lv h3{margin:0 0 6px;font-size:1.15rem}
+.tx{display:flex;justify-content:space-between;align-items:center;gap:8px;width:100%;text-align:right;border:2px solid var(--line);background:#fff;border-radius:14px;padding:8px 12px;margin-top:8px;font-weight:700}
+.badge{border-radius:999px;padding:0 10px;font-size:.9rem;background:var(--ok-soft);color:#168A4B}
+.badge.mid{background:var(--soft);color:#8A5A00}.badge.low{background:var(--bad-soft);color:#B42323}
+.big{width:140px;height:140px;border-radius:50%;border:0;background:var(--sky);color:#fff;font-size:3.4rem;box-shadow:0 7px 0 #1B6FB3;display:grid;place-items:center;margin:8px auto}
+.big[disabled]{background:#9DB6CF;box-shadow:0 7px 0 #7F98B0}
+.big.on{animation:pulse 1.2s infinite}
+@keyframes pulse{50%{transform:scale(1.05)}}
+.cnt{text-align:center;color:var(--muted);font-weight:700}
+.q{font-size:1.35rem;font-weight:800;font-family:var(--read);line-height:1.9}
+.opts{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin-top:10px}
+.opt{display:flex;align-items:center;gap:10px;border:3px solid var(--line);background:#fff;border-radius:18px;padding:12px;text-align:right;box-shadow:0 4px 0 var(--line);font-family:var(--read);font-size:1.2rem;font-weight:700}
+.ow{display:flex;gap:6px;align-items:stretch}.ow .opt{flex:1;min-width:0}.ow .spk{flex:0 0 auto;font-size:1.3rem;padding:0 12px;border-radius:14px}
+.opt .em{font-size:2rem;line-height:1}
+.opt.sel{border-color:var(--sky);background:#EAF4FF;box-shadow:0 4px 0 var(--sky)}
+.opt .n{margin-inline-start:auto;background:var(--sky);color:#fff;border-radius:50%;width:30px;height:30px;display:grid;place-items:center;font-family:var(--ui);font-size:1rem}
+.spk{border:0;background:var(--soft);border-radius:12px;padding:4px 10px;font-size:1.1rem}
+.prog{display:flex;gap:6px;justify-content:center;margin:6px 0}.prog i{width:22px;height:8px;border-radius:4px;background:var(--line)}.prog i.d{background:var(--grass)}.prog i.c{background:var(--sky)}
+.scene{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:10px}
+.it{position:relative;min-height:96px;border:3px solid var(--line);background:#fff;border-radius:18px;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:6px;font-weight:700;font-size:.9rem;text-align:center}
+.it .em{font-size:2.4rem;line-height:1.1;border-radius:50%;padding:6px}
+.it.zone{border-style:dashed;background:#F7FBFF;color:var(--muted)}
+.it.sel{border-color:var(--sky);box-shadow:0 0 0 4px #BFE0FF}
+.it.flash{animation:fl .5s}@keyframes fl{50%{background:var(--soft)}}
+.it .put{position:absolute;inset-block-start:4px;inset-inline-start:6px;font-size:1.6rem}
+.it.gone .em{opacity:.15}
+.sw{display:flex;gap:10px;justify-content:center;margin-top:12px;flex-wrap:wrap}
+.sw button{width:64px;height:64px;border-radius:50%;border:4px solid #fff;box-shadow:0 0 0 3px var(--line);font-size:.75rem;font-weight:800;color:#1D2B4F}
+.sw button.sel{box-shadow:0 0 0 5px var(--ink)}
+.text{font-family:var(--read);font-size:1.3rem;line-height:2.1;background:#FBFDFF;border-radius:14px;padding:12px}
+.res{font-size:3rem;font-weight:800;text-align:center}
+.tbl{width:100%;border-collapse:collapse}.tbl td{border-bottom:1px solid var(--line);padding:6px}
+.ok{color:#168A4B;font-weight:800}.bad{color:#C93535;font-weight:800}
+.note{color:var(--muted);font-size:.95rem}
+@media (max-width:520px){.scene{grid-template-columns:repeat(4,1fr);gap:6px}.it{min-height:80px;font-size:.75rem}.it .em{font-size:1.9rem}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important}}
+</style></head><body>
+<div id="app"></div>
+<script src="nav.js"></script>
+<script>
+(function(){'use strict';
+function get(k,d){try{var v=localStorage.getItem(k);return v?JSON.parse(v):d}catch(e){return d}}
+function put(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}
+function esc(s){return String(s==null?'':s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
+function shuf(a){a=a.slice();for(var i=a.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1)),t=a[i];a[i]=a[j];a[j]=t}return a}
+function fnv(s){var h=0x811c9dc5;for(var i=0;i<s.length;i++){h^=s.charCodeAt(i);h=Math.imul(h,16777619)>>>0}return h.toString(16)}
+function ymd(){var d=new Date();return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0')}
+var $app=document.getElementById('app'),player=new Audio(),onEnd=null;
+player.addEventListener('ended',function(){var f=onEnd;onEnd=null;if(f)f()});
+function play(a,cb){if(!a)return;try{player.pause();onEnd=cb||null;player.src=a;player.currentTime=0;var p=player.play();if(p&&p.catch)p.catch(function(){})}catch(e){}}
+
+/* ---------- الطالب ---------- */
+var ME=get('pt_me',null);
+function gradeOf(sec){sec=String(sec||'');if(/^KG/i.test(sec))return 'kg';var m=/^G(\d)/i.exec(sec);return m?'g'+m[1]:null}
+var qs=new URLSearchParams(location.search),PREV=qs.get('g');
+var G=PREV||(ME&&!ME.pv?gradeOf(ME.sec):null);
+var KEY='ls|'+(PREV?'preview|'+PREV:(ME?ME.sec+'|'+ME.name:''));
+var ST=get(KEY,null)||{lv:1,done:{}};
+function save(){put(KEY,ST)}
+
+/* ---------- الإرسال إلى خادم المدرسة ---------- */
+var URL_=null;
+function cfg(){if(URL_!==null)return Promise.resolve(URL_);return fetch('send-config.json',{cache:'no-store'}).then(function(r){return r.json()}).then(function(c){URL_=String(c.progress||'');return URL_}).catch(function(){URL_='';return ''})}
+var Q=get('ls_q',[]);
+function send(ev){if(PREV||!ME||!ME.c||!ME.p)return;ev.d=ymd();Q.push(ev);put('ls_q',Q);flush()}
+var busy=false;
+function flush(){if(busy||!Q.length||!ME||!ME.c)return;busy=true;var batch=Q.slice(0,50);
+ cfg().then(function(url){if(!url){busy=false;return}
+  return fetch(url,{method:'POST',headers:{'Content-Type':'text/plain;charset=utf-8'},keepalive:true,body:JSON.stringify({sec:ME.sec,sid:fnv('sid|'+ME.sec+'|'+ME.name+'|'+ME.c),pf:fnv('ap|'+ME.sec+'|'+ME.name+'|'+ME.c+'|'+ME.p),g:(G||'').toUpperCase(),ev:batch})})
+   .then(function(r){return r.json()}).then(function(j){if(j&&j.ok){Q=Q.slice(batch.length);put('ls_q',Q)}}).catch(function(){}).then(function(){busy=false})})}
+setInterval(flush,30000);document.addEventListener('visibilitychange',function(){if(document.visibilityState==='hidden')flush()});
+
+var D=null,T=null,R=null;/* D: بيانات الصف، T: النص الحالي، R: حالة المحاولة */
+function top(){return '<div class="top"><a class="chip" href="index.html">→ أدواتي</a>'+(T?'<button class="chip" data-a="home">🎧 كل النصوص</button>':'')+'<span class="chip" style="margin-inline-start:auto">'+(PREV?'معاينة · '+esc(PREV.toUpperCase()):esc(ME&&ME.name||''))+'</span></div>'}
+function lvName(l){return (D.levels&&D.levels[l])||('المستوى '+l)}
+function band(p){return p>=80?'':p>=50?' mid':' low'}
+
+function vHome(){var h=top()+'<h1>🎧 أستمع وأفهم</h1><p class="lead">أستمع إلى النص جيدًا، ثم أجيب عن الأسئلة. في كل مستوى نصوص، وحين أحصل على 80% أنتقل إلى المستوى التالي.</p><div class="lvls">';
+ [1,2,3].forEach(function(l){var tx=D.texts.filter(function(t){return t.lv===l}),lock=l>ST.lv&&!PREV;
+  h+='<div class="lv'+(l===ST.lv?' cur':'')+(lock?' lock':'')+'"><h3>'+(lock?'🔒 ':l<ST.lv?'✅ ':'⭐ ')+esc(lvName(l))+'</h3>';
+  tx.forEach(function(t){var d=ST.done[t.id];h+='<button class="tx" data-a="open" data-t="'+t.id+'"'+(lock?' disabled':'')+'><span>'+esc(t.title)+' <small class="note">· '+esc(t.kind)+'</small></span>'+(d?'<span class="badge'+band(d.p)+'">'+d.p+'%</span>':'<span class="note">جديد</span>')+'</button>'});
+  if(!tx.length)h+='<p class="note">قريبًا</p>';h+='</div>'});
+ return h+'</div>'}
+
+/* ---------- المحاولة ---------- */
+function start(id){T=D.texts.filter(function(t){return t.id===id})[0];
+ R={ph:T.pre?'pre':'listen',heard:0,qi:0,ans:{},pre:null,seq:[],dlog:[],dsel:null,dcol:{},dput:{},dheard:0,order:{}};
+ T.qs.forEach(function(q){if(q.type!=='seq')R.order[q.id]=shuf(q.opts.map(function(_,i){return i}))});render()}
+function graded(){return T.qs.filter(function(q){return q.a!==null&&q.a!==undefined})}
+function prog(){var n=T.qs.length+(T.dir?1:0),c=R.ph==='q'?R.qi:R.ph==='dir'?T.qs.length:R.ph==='res'?n:-1,h='<div class="prog">';for(var i=0;i<n;i++)h+='<i class="'+(i<c?'d':i===c?'c':'')+'"></i>';return h+'</div>'}
+function listenBox(){var max=T.listens||2,left=max-R.heard;return '<div class="card" style="text-align:center"><button class="big'+(R.playing?' on':'')+'" data-a="listen"'+(left<=0?' disabled':'')+' aria-label="استمع إلى النص">🎧</button><p class="cnt">'+(left>0?'يمكنك الاستماع '+(left===max?max+' مرات':'مرة أخرى ('+left+' متبقية)'):'انتهت مرات الاستماع')+'</p></div>'}
+function optBtn(o,act,i,sel,num){return '<div class="ow"><button class="opt'+(sel?' sel':'')+'" data-a="'+act+'" data-i="'+i+'">'+(o.e?'<span class="em">'+o.e+'</span>':'')+'<span>'+esc(o.t)+'</span>'+(num?'<span class="n">'+num+'</span>':'')+'</button>'+(o.au?'<button class="spk" data-a="say" data-au="'+esc(o.au)+'" aria-label="استمع إلى الخيار">🔊</button>':'')+'</div>'}
+function optHtml(q,i,sel,num){return optBtn(q.opts[i],'ans',i,sel,num)}
+
+function vPre(){var p=T.pre;return top()+'<h1>'+esc(T.title)+' <button class="spk" data-a="say" data-au="'+esc(T.tau||'')+'">🔊</button></h1><p class="lead">قبل الاستماع: أتوقّع</p><div class="card"><p class="q">'+esc(p.q)+' <button class="spk" data-a="say" data-au="'+esc(p.au||'')+'">🔊</button></p><div class="opts">'+p.opts.map(function(o,i){return optBtn(o,'pre',i,R.pre===i)}).join('')+'</div><p class="note">لا يوجد توقّع خاطئ. بعد الاستماع نعرف إن كان توقّعك قريبًا من القصة.</p><div class="row" style="margin-top:10px"><button class="btn" data-a="go-listen"'+(R.pre===null?' disabled':'')+'>أنا جاهز للاستماع ←</button></div></div>'}
+
+function vListen(){return top()+'<h1>'+esc(T.title)+'</h1><p class="lead">اضغط 🎧 واستمع جيدًا. لن ترى النص مكتوبًا قبل أن تنتهي من الأسئلة.</p>'+listenBox()+'<div class="row" style="justify-content:center"><button class="btn" data-a="go-q"'+(R.heard<1?' disabled':'')+'>أنا جاهز للأسئلة ←</button></div>'}
+
+function vQ(){var q=T.qs[R.qi],a=R.ans[q.id],h=top()+prog()+'<div class="card"><p class="q">'+esc(q.q)+' <button class="spk" data-a="say" data-au="'+esc(q.au||'')+'">🔊</button></p>';
+ if(q.type==='seq'){var s=R.seq;h+='<p class="note">اضغط الأحداث بالترتيب: الأول ثم الثاني ثم الثالث.</p><div class="opts">'+q.opts.map(function(_,i){return optHtml(q,i,s.indexOf(i)>=0,s.indexOf(i)>=0?s.indexOf(i)+1:0)}).join('')+'</div>'+(s.length?'<div class="row" style="margin-top:8px"><button class="btn alt sm" data-a="seq-reset">↺ ابدأ الترتيب من جديد</button></div>':'')}
+ else h+='<div class="opts">'+R.order[q.id].map(function(i){return optHtml(q,i,a===i)}).join('')+'</div>';
+ if(q.type==='opinion')h+='<p class="note">هذا رأيك، ولا توجد إجابة خاطئة.</p>';
+ var ready=q.type==='seq'?R.seq.length===q.opts.length:a!==undefined;
+ h+='<div class="row" style="margin-top:12px"><button class="btn" data-a="next"'+(ready?'':' disabled')+'>التالي ←</button></div></div>';
+ var left=(T.listens||2)-R.heard;if(left>0)h+='<p class="note" style="text-align:center">نسيت شيئًا؟ <button class="btn alt sm" data-a="listen">🎧 استمع مرة أخرى ('+left+')</button></p>';
+ return h}
+
+function vDir(){var d=T.dir,h=top()+prog()+'<div class="card"><p class="q">اسمع ونفّذ <button class="spk" data-a="dsay"'+(R.dheard>=2?' disabled':'')+'>🔊 '+(R.dheard?'أعد ('+(2-R.dheard)+')':'استمع')+'</button></p><p class="note">'+(d.colors.length?'لتلوين شيء: اضغط اللون ثم الشيء. ':'')+(d.items.some(function(x){return x.move})?'لنقل شيء: اضغطه ثم اضغط المكان. ':'')+'للضغط على شيء: اضغطه مرة واحدة.</p><div class="scene">';
+ d.items.forEach(function(x){var gone=Object.keys(R.dput).some(function(k){return k===x.id}),inside=Object.keys(R.dput).filter(function(k){return R.dput[k]===x.id}).map(function(k){return d.items.filter(function(y){return y.id===k})[0].e}).join('');
+  var col=R.dcol[x.id];h+='<button class="it'+(x.zone===1?' zone':'')+(R.dsel&&R.dsel.m===x.id?' sel':'')+(gone?' gone':'')+'" data-a="it" data-id="'+x.id+'">'+(inside?'<span class="put">'+inside+'</span>':'')+(x.zone===1?'<span class="em" style="opacity:.35">⬚</span>':'<span class="em" style="'+(col?'background:'+col:'')+'">'+x.e+'</span>')+'<span>'+esc(x.l)+'</span></button>'});
+ h+='</div>';if(d.colors.length)h+='<div class="sw">'+d.colors.map(function(c){return '<button data-a="col" data-c="'+c.id+'" class="'+(R.dsel&&R.dsel.c===c.id?'sel':'')+'" style="background:'+c.c+'" aria-label="'+esc(c.l)+'">'+esc(c.l)+'</button>'}).join('')+'</div>';
+ h+='<div class="row" style="margin-top:12px"><button class="btn" data-a="dir-done"'+(R.dlog.length?'':' disabled')+'>انتهيت ←</button><button class="btn alt sm" data-a="dir-reset">↺ ابدأ من جديد</button></div></div>';return h}
+
+/* ---------- التصحيح ---------- */
+function dirScore(){var st=T.dir.steps,j=0,ok=0;st.forEach(function(s){for(;j<R.dlog.length;j++){var a=R.dlog[j];if(a.do===s.do&&a.t===s.t&&(s.do!=='color'||a.c===s.c)&&(s.do!=='put'||a.o===s.o)){ok++;j++;return}}});return {ok:ok,n:st.length}}
+function grade(){var by={},pts=0,max=0,rows=[];
+ graded().forEach(function(q){var a=R.ans[q.id],right=q.type==='seq'?JSON.stringify(R.seqAns&&R.seqAns[q.id])===JSON.stringify(q.a):a===q.a;
+  var tp=q.type;by[tp]=by[tp]||[0,0];by[tp][1]++;if(right){by[tp][0]++;pts++}max++;rows.push({q:q,right:right})});
+ if(T.dir){var ds=dirScore();by.dir=[ds.ok,ds.n];pts+=ds.ok/ds.n;max++}
+ return {p:Math.round(100*pts/max),by:by,rows:rows}}
+
+function vRes(){var g=R.g,p=g.p,h=top()+prog()+'<div class="card"><p class="res">'+(p>=80?'🌟 ':p>=50?'👍 ':'💪 ')+p+'%</p>';
+ if(p>=80)h+='<p class="lead" style="text-align:center">أحسنت! فهمت النص جيدًا.'+(T.lv===ST.lv&&ST.lv<3?' فُتح لك المستوى التالي.':'')+'</p>';
+ else if(p>=50)h+='<p class="lead" style="text-align:center">جيد. جرّب نصًّا آخر من المستوى نفسه، أو أعد هذا النص.</p>';
+ else h+='<p class="lead" style="text-align:center">لا بأس. استمع إلى النص مرة أخرى وهو مكتوب أمامك، وسيساعدك معلمك.</p>';
+ h+='<table class="tbl">'+Object.keys(g.by).map(function(k){var v=g.by[k];return '<tr><td>'+esc(D.types[k]||k)+'</td><td class="'+(v[0]===v[1]?'ok':'bad')+'">'+v[0]+' من '+v[1]+'</td></tr>'}).join('')+'</table>';
+ if(T.pre)h+='<p class="note" style="margin-top:10px">🔮 توقّعك قبل الاستماع: «'+esc(T.pre.opts[R.pre].t)+'»'+(R.pre===T.pre.fit?' وكان قريبًا من القصة. 👏':'، والقصة كانت عن: «'+esc(T.pre.opts[T.pre.fit].t)+'».')+'</p>';
+ h+='</div><div class="card"><h2>النص مكتوبًا <button class="spk" data-a="say" data-au="'+esc(T.au||'')+'">🔊</button></h2><p class="text">'+esc(T.text)+'</p></div><div class="card"><h2>إجاباتي</h2>';
+ g.rows.forEach(function(r){var q=r.q;h+='<p>'+(r.right?'<span class="ok">✔</span> ':'<span class="bad">✘</span> ')+esc(q.q)+'<br><small class="note">الإجابة: '+(q.type==='seq'?q.a.map(function(i){return esc(q.opts[i].t)}).join(' ← '):esc(q.opts[q.a].t))+'</small></p>'});
+ if(T.dir){var ds=g.by.dir;h+='<p>'+(ds[0]===ds[1]?'<span class="ok">✔</span> ':'<span class="bad">✘</span> ')+'التوجيهات: '+ds[0]+' من '+ds[1]+' خطوات<br><small class="note">'+esc(T.dir.say)+'</small></p>'}
+ h+='</div><div class="row"><button class="btn" data-a="home">🎧 كل النصوص</button><button class="btn alt" data-a="open" data-t="'+T.id+'">↺ أعد هذا النص</button></div>';return h}
+
+function finish(){R.g=grade();R.ph='res';var p=R.g.p,old=ST.done[T.id];
+ ST.done[T.id]={p:Math.max(p,old?old.p:0),last:p,n:(old?old.n:0)+1,d:ymd()};
+ if(p>=80&&T.lv===ST.lv&&ST.lv<3)ST.lv++;save();
+ var by={};Object.keys(R.g.by).forEach(function(k){by[k]=R.g.by[k]});
+ send({t:'ls',k:T.id+'|L'+T.lv,v:p});
+ send({t:'code',k:'LST',c:JSON.stringify({id:T.id,title:T.title,lv:T.lv,p:p,by:by,heard:R.heard,pre:R.pre,op:T.qs.filter(function(q){return q.type==='opinion'}).map(function(q){return q.opts[R.ans[q.id]]?q.opts[R.ans[q.id]].t:''})})});
+ render()}
+
+function render(){var h;if(!G)h=top()+'<h1>🎧 أستمع وأفهم</h1><div class="card"><p>ادخل أولًا من صفحة طلاقة برقمك المدرسي، ثم افتح الأداة من «أدواتي».</p><a class="btn" href="index.html">الذهاب إلى طلاقة</a></div>';
+ else if(!D)h=top()+'<p class="lead">جارٍ التحميل…</p>';
+ else if(!T)h=vHome();
+ else h={pre:vPre,listen:vListen,q:vQ,dir:vDir,res:vRes}[R.ph]();
+ $app.innerHTML=h}
+
+document.addEventListener('click',function(e){var b=e.target.closest('[data-a]');if(!b)return;var a=b.dataset.a;
+ if(a==='say'){play(b.dataset.au);return}
+ if(a==='home'){player.pause();T=null;R=null;render();window.scrollTo(0,0);return}
+ if(a==='open'){start(b.dataset.t);window.scrollTo(0,0);return}
+ if(!R)return;
+ if(a==='pre'){R.pre=+b.dataset.i;render();return}
+ if(a==='go-listen'){R.ph='listen';render();return}
+ if(a==='listen'){if(R.heard>=(T.listens||2))return;R.heard++;R.playing=true;render();play(T.au,function(){R.playing=false;render()});return}
+ if(a==='go-q'){player.pause();R.playing=false;R.ph='q';R.qi=0;render();window.scrollTo(0,0);return}
+ if(a==='ans'){var q=T.qs[R.qi],i=+b.dataset.i;if(q.type==='seq'){if(R.seq.indexOf(i)<0)R.seq.push(i)}else R.ans[q.id]=i;render();return}
+ if(a==='seq-reset'){R.seq=[];render();return}
+ if(a==='next'){var q2=T.qs[R.qi];if(q2.type==='seq'){R.seqAns=R.seqAns||{};R.seqAns[q2.id]=R.seq.slice();R.seq=[]}
+  player.pause();if(R.qi<T.qs.length-1)R.qi++;else if(T.dir)R.ph='dir';else return finish();render();window.scrollTo(0,0);return}
+ if(a==='dsay'){if(R.dheard>=2)return;R.dheard++;play(T.dir.au);render();return}
+ if(a==='col'){R.dsel={c:b.dataset.c};render();return}
+ if(a==='it'){var id=b.dataset.id,it=T.dir.items.filter(function(x){return x.id===id})[0],s=R.dsel;
+  if(s&&s.c){R.dcol[id]=T.dir.colors.filter(function(c){return c.id===s.c})[0].c;R.dlog.push({do:'color',t:id,c:s.c});R.dsel=null}
+  else if(s&&s.m){if(it.zone){R.dput[s.m]=id;R.dlog.push({do:'put',o:s.m,t:id})}else R.dlog.push({do:'tap',t:id});R.dsel=null}
+  else if(it.move&&!R.dput[id])R.dsel={m:id};
+  else if(it.zone!==1){R.dlog.push({do:'tap',t:id});b.classList.add('flash')}
+  render();return}
+ if(a==='dir-reset'){R.dlog=[];R.dsel=null;R.dcol={};R.dput={};render();return}
+ if(a==='dir-done'){finish();window.scrollTo(0,0);return}
+});
+
+render();
+if(G)fetch('listen-data/'+G+'.json',{cache:'no-store'}).then(function(r){if(!r.ok)throw 0;return r.json()}).then(function(j){D=j;render()}).catch(function(){$app.innerHTML=top()+'<h1>🎧 أستمع وأفهم</h1><div class="card"><p>نصوص الاستماع لصفك قيد الإعداد، وستصل قريبًا.</p></div>'});
+})();
+</script>
+<script src="brand.js"></script>
+</body></html>
