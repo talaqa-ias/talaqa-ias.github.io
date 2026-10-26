@@ -17,10 +17,10 @@ function rcDec(code,sec,x){var b=Utilities.base64Decode(x),k=rcStream(code,sec,b
 function rcNorm(s){return String(s||'').toUpperCase().replace(/[^A-Z0-9]/g,'')}
 
 /* ---------- بيانات الموقع (تُحدَّث تلقائيًا كل ساعة) ---------- */
-function seed(force){
-  var c=CacheService.getScriptCache(),k='seed_v1';
+function seed(force,port){
+  var c=CacheService.getScriptCache(),k='seed_v1'+(port==='B'?'_b':'');
   if(!force){var hit=c.get(k);if(hit)return JSON.parse(hit)}
-  var html=UrlFetchApp.fetch(SITE+'?t='+Date.now(),{muteHttpExceptions:true}).getContentText('UTF-8');
+  var html=UrlFetchApp.fetch((port==='B'?SITE.replace(/index\.html$/,'b/index.html'):SITE)+'?t='+Date.now(),{muteHttpExceptions:true}).getContentText('UTF-8');
   var m=html.match(/<script type="application\/json" id="seed">([\s\S]*?)<\/script>/);
   var d=JSON.parse(m[1]);var s={secs:d.secs,teachers:d.teachers,own:d.own||null};
   try{c.put(k,JSON.stringify(s),3600)}catch(e){}
@@ -42,7 +42,8 @@ function out(o){return ContentService.createTextOutput(JSON.stringify(o)).setMim
 /* ---------- استقبال خطوات الطالب ---------- */
 function doPost(e){
   try{
-    var b=JSON.parse(e.postData.contents),S=seed(),sec=String(b.sec||''),K=secCodes(S),c=K[sec],P=c&&pinsOf(S,sec,c);
+    var b0=JSON.parse(e.postData.contents);if(b0.a==='score')return saveScore(b0);
+    var b=b0,S=seed(),sec=String(b.sec||''),K=secCodes(S),c=K[sec],P=c&&pinsOf(S,sec,c);
     if(!P){S=seed(true);K=secCodes(S);c=K[sec];P=c&&pinsOf(S,sec,c)}
     /* لا أسماء في الجدول: الطالب يُعرَّف بمعرّف مستعار (sid) لا يفكّه إلا من يملك رمز الشعبة */
     var who=P&&Object.keys(P).filter(function(n){return fnv('sid|'+sec+'|'+n+'|'+c)===String(b.sid)})[0];
@@ -57,6 +58,27 @@ function doPost(e){
     return out({ok:true,n:rows.length});
   }catch(err){return out({ok:false,err:String(err)})}
 }
+
+
+/* ---------- التقييم بسلالم القسم (المعلم أو المنسق) ----------
+   ورقة scores: سطر لكل تقييم: الطالب، المهارة، المهمة، مستوى كل معيار، المجموع، ملاحظة المعلم */
+function scoreSheet(){var ss=SpreadsheetApp.getActive(),sh=ss.getSheetByName('scores');
+  if(!sh){sh=ss.insertSheet('scores');sh.appendRow(['وقت التقييم','التاريخ','الشعبة','الطالب','المقيّم','المهارة','المهمة','السلّم','مستويات المعايير','المجموع','من','ملاحظة','نسخة السلّم','الدليل']);sh.setFrozenRows(1);sh.setRightToLeft(true);sh.getRange(1,1,1,14).setFontWeight('bold')}
+  return sh}
+function staffAuth(S,r,id,k){
+  if(r==='own'){if(S.own&&fnv('own|'+String(k||''))===S.own.h)return {name:'منسق القسم',allowed:null};return null}
+  var t=(S.teachers||[]).filter(function(x){return x.id===id})[0];if(!t||fnv('tp|'+t.id+'|'+String(k||''))!==t.h)return null;
+  var al={};t.secs.forEach(function(s){al[s]=1});return {name:t.name,allowed:al}}
+function saveScore(b){
+  var B=b.port==='B',S=seed(false,B?'B':''),who=staffAuth(S,b.r,b.id,b.k);if(!who)return out({ok:false,err:'auth'});
+  var sec=String(b.sec||'');if(who.allowed&&!who.allowed[sec])return out({ok:false,err:'sec'});
+  var K=secCodes(S),c=K[sec],P=c&&pinsOf(S,sec,c),n=String(b.n||'');if(!P||!P[n]){S=seed(true,B?'B':'');K=secCodes(S);c=K[sec];P=c&&pinsOf(S,sec,c)}if(!P||!P[n])return out({ok:false,err:'student'});if(B)sec=sec+' · ب';
+  var day=Utilities.formatDate(new Date(),'Asia/Dubai','yyyy-MM-dd'),lv=(b.lv||[]).map(function(x){return x==null?'-':String(x)}).join(' ');
+  var lock=LockService.getScriptLock();lock.waitLock(20000);
+  try{scoreSheet().appendRow([new Date(),day,sec,n,who.name,clean(b.sk),clean(b.task),clean(b.rub),lv,Number(b.tot)||0,Number(b.max)||0,String(b.note||'').slice(0,500),clean(b.ver),String(b.ev||'').slice(0,300)]);
+    sheet().appendRow([new Date(),day,sec,n,'rb',clean(b.sk)+'|'+clean(b.task),Number(b.tot)||0,String(b.g||'').slice(0,4),'تقييم بالسلّم: '+clean(b.sk)+' · '+(Number(b.tot)||0)+' من '+(Number(b.max)||0)])}
+  finally{lock.releaseLock()}
+  return out({ok:true})}
 
 /* ---------- التسجيلات الصوتية ----------
    Drive: «طلاقة · تسجيلات الطلاب» ← المرحلة ← الشعبة ← الطالب ← القراءة/التحدث ← «المهمة · المحاولة N · التاريخ»
@@ -147,8 +169,13 @@ function doGet(e){
     var rt=DriveApp.getFoldersByName(ROOT);if(rt.hasNext()){var R=rt.next(),gi=R.getFolders();while(gi.hasNext()){var gf=gi.next(),si=/^(KG|G)\d/i.test(gf.getName())?[gf]:null,sl=[];if(si)sl=si;else{var x=gf.getFolders();while(x.hasNext())sl.push(x.next())}
       sl.forEach(function(sf){var sn=sf.getName();if(allowed&&!allowed[sn])return;var pi=sf.getFolders();while(pi.hasNext()){var pf=pi.next();fl[sn+'|'+pf.getName()]=pf.getUrl()}})}}
     res.folders=fl;res.recs=rc;
-    if(rs){var rl={},rv2=rs.getDataRange().getValues();for(var m2=1;m2<rv2.length;m2++){var y2=rv2[m2];if(allowed&&!allowed[y2[1]])continue;var kk=y2[1]+'|'+y2[2];(rl[kk]=rl[kk]||[]).push({k:y2[3],t:y2[4]+(y2[5]?' · '+y2[5]:''),a:y2[7]||'',d:y2[0]instanceof Date?Utilities.formatDate(y2[0],'Asia/Dubai','yyyy-MM-dd'):String(y2[0]).slice(0,10)})}res.recl=rl}}
+    if(rs){var rl={},rv2=rs.getDataRange().getValues();for(var m2=1;m2<rv2.length;m2++){var y2=rv2[m2];if(allowed&&!allowed[y2[1]])continue;var kk=y2[1]+'|'+y2[2];(rl[kk]=rl[kk]||[]).push({k:y2[3],t:y2[4]+(y2[5]?' · '+y2[5]:''),a:y2[7]||'',u:String(y2[6]||''),d:y2[0]instanceof Date?Utilities.formatDate(y2[0],'Asia/Dubai','yyyy-MM-dd'):String(y2[0]).slice(0,10)})}res.recl=rl}}
   if(q.d==='1'){var EV={};for(var i2=1;i2<v.length;i2++){var r2=v[i2];if(r2[4]==='v')continue;if(allowed&&!allowed[r2[2]])continue;var k2=r2[2]+'|'+r2[3],L2=EV[k2]=EV[k2]||[];var d2=r2[1]instanceof Date?Utilities.formatDate(r2[1],'Asia/Dubai','yyyy-MM-dd'):String(r2[1]);L2.push({d:d2,a:String(r2[8]||r2[4])+(r2[4]==='a'?'':' · '+String(r2[5]||'').replace(/\|/g,' › '))});if(L2.length>80)L2.shift()}res.ev=EV}
+  if(q.w==='1'){var wr=[],cs2=SpreadsheetApp.getActive().getSheetByName('codes');
+    if(cs2){var cv2=cs2.getDataRange().getValues();for(var w2=1;w2<cv2.length;w2++){var y=cv2[w2];if(y[3]!=='WRT')continue;if(allowed&&!allowed[y[1]])continue;wr.push({c:y[1],n:y[2],d:y[0] instanceof Date?Utilities.formatDate(y[0],'Asia/Dubai','yyyy-MM-dd'):String(y[0]).slice(0,10),x:String(y[4])})}}
+    res.wr=wr.slice(-1500);var sc=[],ss2=SpreadsheetApp.getActive().getSheetByName('scores');
+    if(ss2){var sv=ss2.getDataRange().getValues();for(var s2=1;s2<sv.length;s2++){var z=sv[s2];if(allowed&&!allowed[z[2]])continue;sc.push({d:z[1] instanceof Date?Utilities.formatDate(z[1],'Asia/Dubai','yyyy-MM-dd'):String(z[1]),c:z[2],n:z[3],by:z[4],sk:z[5],task:z[6],rub:z[7],lv:String(z[8]),tot:z[9],max:z[10],note:z[11]})}}
+    res.sc=sc.slice(-3000)}
   return out(res);
 }
 
