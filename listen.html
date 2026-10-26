@@ -38,6 +38,10 @@ h1{font-size:1.8rem;margin:6px 0 2px;font-weight:800}h2{font-size:1.3rem;margin:
 .opt{display:flex;align-items:center;gap:10px;border:3px solid var(--line);background:#fff;border-radius:18px;padding:12px;text-align:right;box-shadow:0 4px 0 var(--line);font-family:var(--read);font-size:1.2rem;font-weight:700}
 .ow{display:flex;gap:6px;align-items:stretch}.ow .opt{flex:1;min-width:0}.ow .spk{flex:0 0 auto;font-size:1.3rem;padding:0 12px;border-radius:14px}
 .opt .em{font-size:2rem;line-height:1}
+.opt.pic{justify-content:center;min-height:96px}.opt.pic .em{font-size:3.4rem}.opt.ltr{font-size:2rem;justify-content:center}
+.opts.pics{grid-template-columns:repeat(3,1fr);gap:10px}.opts.pics .opt{flex-direction:column;padding:10px 6px}.opts.pics .opt .ck{margin:0}
+.oi{width:100%;max-width:120px;aspect-ratio:1;object-fit:contain}.oi.sm{width:52px;flex:0 0 52px}
+.stim{display:flex;justify-content:center;margin:6px 0 4px}.stim .big{width:110px;height:110px;font-size:2.6rem;margin:0}
 .opt.sel{border-color:var(--sky);background:#EAF4FF;box-shadow:0 4px 0 var(--sky)}
 .opt .n{margin-inline-start:auto;background:var(--sky);color:#fff;border-radius:50%;width:30px;height:30px;display:grid;place-items:center;font-family:var(--ui);font-size:1rem}
 .spk{border:0;background:var(--soft);border-radius:12px;padding:4px 10px;font-size:1.1rem}
@@ -96,8 +100,14 @@ function play(a,cb){if(!a)return;try{player.pause();onEnd=cb||null;player.src=a;
 var ME=get('pt_me',null);
 function gradeOf(sec){sec=String(sec||'');if(/^KG/i.test(sec))return 'kg';var m=/^G(\d)/i.exec(sec);return m?'g'+m[1]:null}
 var qs=new URLSearchParams(location.search),PREV=qs.get('g');
-var G=PREV||(ME&&!ME.pv?gradeOf(ME.sec):null);
-var KEY='ls|'+(PREV?'preview|'+PREV:(ME?ME.sec+'|'+ME.name:''));
+var TRK=qs.get('t')==='b'?'b':'a';
+function setOf(sec){sec=String(sec||'').toUpperCase();var k=/^KG(\d)/.exec(sec),m=/^G(\d)/.exec(sec);
+ if(TRK==='b'){var y=k?1:m?+m[1]:0;return y?'b-y'+Math.min(5,y):null}
+ return k?'kg'+k[1]:m?'g'+m[1]:null}
+var G=PREV||(ME&&!ME.pv?setOf(ME.sec):null);
+var YOUNG=/^(kg|b-y1|b-y2)/.test(G||'');
+var TYPES={detail:'معلومة وتفصيل',char:'الشخصيات',event:'الأحداث',seq:'ترتيب الأحداث',inout:'ورد أم لم يرد',main:'الفكرة العامة',title:'اختيار العنوان',infer:'الاستنتاج',opinion:'الرأي',moral:'المغزى',purpose:'غاية المتحدث',view:'وجهة نظر المتحدث',factop:'حقيقة أم رأي',compare:'الموازنة',summary:'التلخيص',ending:'الخاتمة البديلة',vocab:'معنى الكلمة من السياق',word:'اسمع واختر',sound:'الصوت والحرف',intone:'سؤال أم خبر',dir:'تنفيذ التوجيهات',pre:'التنبؤ'};
+var KEY='ls|'+TRK+'|'+(PREV?'preview|'+PREV:(ME?ME.sec+'|'+ME.name:''));
 var ST=get(KEY,null)||{lv:1,done:{}};
 function save(){put(KEY,ST)}
 
@@ -127,14 +137,15 @@ function vHome(){var h=top()+'<h1>🎧 أستمع وأفهم</h1><p class="lead"
 
 /* ---------- المحاولة ---------- */
 function start(id){T=D.texts.filter(function(t){return t.id===id})[0];
- R={ph:T.pre?'pre':'listen',heard:0,qi:0,ans:{},pre:null,seq:[],dlog:[],dsel:null,dcol:{},dput:{},dheard:0,order:{}};
- T.qs.forEach(function(q){if(q.type!=='seq')R.order[q.id]=shuf(q.opts.map(function(_,i){return i}))});render()}
+ R={ph:T.pre?'pre':(T.au?'listen':'q'),heard:0,qi:0,ans:{},pre:null,seq:[],dlog:[],dsel:null,dcol:{},dput:{},dheard:0,order:{},auto:{}};
+ T.qs.forEach(function(q){R.order[q.id]=shuf(q.opts.map(function(_,i){return i}))});render();autoQ()}
+function autoQ(){if(!R||R.ph!=='q')return;var q=T.qs[R.qi];if(R.auto[q.id])return;R.auto[q.id]=1;var a=q.sau||(YOUNG?q.au:null);if(a)setTimeout(function(){play(a)},350)}
 function graded(){return T.qs.filter(function(q){return q.a!==null&&q.a!==undefined})}
 function prog(){var n=T.qs.length+(T.dir?1:0),c=R.ph==='q'?R.qi:R.ph==='dir'?T.qs.length:R.ph==='res'?n:-1,h='<div class="prog">';for(var i=0;i<n;i++)h+='<i class="'+(i<c?'d':i===c?'c':'')+'"></i>';return h+'</div>'}
 function hero(){return '<div class="hero"><h1>'+esc(T.title)+'</h1>'+(T.tau?'<button class="spk" data-a="say" data-au="'+esc(T.tau)+'" aria-label="استمع إلى العنوان">🔊</button>':'')+'<span class="pill">'+esc(lvName(T.lv))+'</span><span class="pill k">'+esc(T.kind)+'</span></div>'}
 function listenBox0(){var max=T.listens||2,left=max-R.heard;return '<div class="card" style="text-align:center"><button class="big'+(R.playing?' on':'')+'" data-a="listen"'+(left<=0?' disabled':'')+' aria-label="استمع إلى النص">🎧</button><p class="cnt">'+(left>0?'يمكنك الاستماع '+(left===max?max+' مرات':'مرة أخرى ('+left+' متبقية)'):'انتهت مرات الاستماع')+'</p></div>'}
-function optBtn(o,act,i,sel,num){return '<div class="ow"><button class="opt'+(sel?' sel':'')+'" data-a="'+act+'" data-i="'+i+'">'+(o.e?'<span class="em">'+o.e+'</span>':'')+'<span>'+esc(o.t)+'</span>'+(num?'<span class="n">'+num+'</span>':(act==='ans'||act==='pre'?'<span class="ck"></span>':''))+'</button>'+(o.au?'<button class="spk" data-a="say" data-au="'+esc(o.au)+'" aria-label="استمع إلى الخيار">🔊</button>':'')+'</div>'}
-function optHtml(q,i,sel,num){return optBtn(q.opts[i],'ans',i,sel,num)}
+function optBtn(o,act,i,sel,num){return '<div class="ow"><button class="opt'+(sel?' sel':'')+'" data-a="'+act+'" data-i="'+i+'">'+(o.img?'<img class="oi sm" src="'+esc(o.img)+'" alt="" loading="lazy">':o.e?'<span class="em">'+o.e+'</span>':'')+'<span>'+esc(o.t)+'</span>'+(num?'<span class="n">'+num+'</span>':(act==='ans'||act==='pre'?'<span class="ck"></span>':''))+'</button>'+(o.au?'<button class="spk" data-a="say" data-au="'+esc(o.au)+'" aria-label="استمع إلى الخيار">🔊</button>':'')+'</div>'}
+function optHtml(q,i,sel,num){var o=q.opts[i];if(q.say){if(o.e)return '<div class="ow"><button class="opt pic'+(sel?' sel':'')+'" data-a="ans" data-i="'+i+'" aria-label="خيار '+(i+1)+'">'+(o.img?'<img class="oi" src="'+esc(o.img)+'" alt="" loading="lazy">':'<span class="em">'+o.e+'</span>')+'<span class="ck"></span></button></div>';return '<div class="ow"><button class="opt ltr'+(sel?' sel':'')+'" data-a="ans" data-i="'+i+'"><span>'+esc(o.t)+'</span><span class="ck"></span></button></div>'}return optBtn(o,'ans',i,sel,num)}
 
 function vPre(){var p=T.pre;return top()+'<h1>'+esc(T.title)+' <button class="spk" data-a="say" data-au="'+esc(T.tau||'')+'">🔊</button></h1><p class="lead">قبل الاستماع: أتوقّع</p><div class="card"><p class="q">'+esc(p.q)+' <button class="spk" data-a="say" data-au="'+esc(p.au||'')+'">🔊</button></p><div class="opts">'+p.opts.map(function(o,i){return optBtn(o,'pre',i,R.pre===i)}).join('')+'</div><p class="note">لا يوجد توقّع خاطئ. بعد الاستماع نعرف إن كان توقّعك قريبًا من القصة.</p><div class="row" style="margin-top:10px"><button class="btn" data-a="go-listen"'+(R.pre===null?' disabled':'')+'>أنا جاهز للاستماع ←</button></div></div>'}
 
@@ -142,10 +153,10 @@ function listenBox(){var max=T.listens||2,left=max-R.heard;return '<div class="c
 function qList(){return '<ol class="qlist">'+T.qs.map(function(q,i){return '<li><span class="num">'+(i+1)+'</span><span>'+esc(q.q)+'</span>'+(q.au?'<button class="spk" data-a="say" data-au="'+esc(q.au)+'" aria-label="استمع إلى السؤال">🔊</button>':'')+'</li>'}).join('')+(T.dir?'<li><span class="num">'+(T.qs.length+1)+'</span><span>وفي النهاية: أسمع توجيهًا وأنفّذه.</span></li>':'')+'</ol>'}
 function vListen(){return top()+hero()+'<p class="lead">'+(R.heard?'استمعت إلى النص. أجب عن الأسئلة الآن، ويمكنك الاستماع مرة أخرى أثناء الإجابة.':'1) اقرأ الأسئلة أو استمع إليها. 2) اضغط 🎧 واستمع إلى النص لتجد الإجابات.')+'</p>'+listenBox()+'<div class="card"><h2>الأسئلة التي ستجيب عنها</h2>'+qList()+'<p class="note">الخيارات تظهر بعد الاستماع. النص المكتوب يظهر في النهاية.</p></div><div class="row" style="justify-content:center"><button class="btn" data-a="go-q"'+(R.heard<1||R.playing?' disabled':'')+'>أجيب عن الأسئلة ←</button></div>'}
 
-function mini(){var left=(T.listens||2)-R.heard;return '<div class="mini">'+prog()+'<button class="btn alt sm" data-a="listen"'+(left<=0||R.playing?' disabled':'')+'>'+(R.playing?'🔉 أستمع…':'🎧 النص ('+left+')')+'</button></div>'+(R.playing?'<div class="pbar" style="max-width:none"><i id="pbar"></i></div>':'')}
-function vQ(){var q=T.qs[R.qi],a=R.ans[q.id],h=top()+mini()+'<div class="card"><p class="note" style="margin:0">السؤال '+(R.qi+1)+' من '+T.qs.length+'</p><p class="q">'+esc(q.q)+' <button class="spk" data-a="say" data-au="'+esc(q.au||'')+'">🔊</button></p>';
- if(q.type==='seq'){var s=R.seq;h+='<p class="note">اضغط الأحداث بالترتيب: الأول ثم الثاني ثم الثالث.</p><div class="opts">'+q.opts.map(function(_,i){return optHtml(q,i,s.indexOf(i)>=0,s.indexOf(i)>=0?s.indexOf(i)+1:0)}).join('')+'</div>'+(s.length?'<div class="row" style="margin-top:8px"><button class="btn alt sm" data-a="seq-reset">↺ ابدأ الترتيب من جديد</button></div>':'')}
- else h+='<div class="opts">'+R.order[q.id].map(function(i){return optHtml(q,i,a===i)}).join('')+'</div>';
+function mini(){var left=(T.listens||2)-R.heard;if(!T.au)return '<div class="mini">'+prog()+'</div>';return '<div class="mini">'+prog()+'<button class="btn alt sm" data-a="listen"'+(left<=0||R.playing?' disabled':'')+'>'+(R.playing?'🔉 أستمع…':'🎧 النص ('+left+')')+'</button></div>'+(R.playing?'<div class="pbar" style="max-width:none"><i id="pbar"></i></div>':'')}
+function vQ(){var q=T.qs[R.qi],a=R.ans[q.id],h=top()+mini()+'<div class="card"><p class="note" style="margin:0">السؤال '+(R.qi+1)+' من '+T.qs.length+'</p><p class="q">'+esc(q.q)+(q.au?' <button class="spk" data-a="say" data-au="'+esc(q.au)+'" aria-label="استمع إلى السؤال">🔊</button>':'')+'</p>'+(q.sau?'<div class="stim"><button class="big" data-a="say" data-au="'+esc(q.sau)+'" aria-label="استمع">🔊</button></div><p class="cnt">اضغط 🔊 لتسمع مرة أخرى</p>':'');
+ if(q.type==='seq'){var s=R.seq;h+='<p class="note">اضغط الأحداث بالترتيب: الأول ثم الثاني ثم الثالث.</p><div class="opts">'+R.order[q.id].map(function(i){return optHtml(q,i,s.indexOf(i)>=0,s.indexOf(i)>=0?s.indexOf(i)+1:0)}).join('')+'</div>'+(s.length?'<div class="row" style="margin-top:8px"><button class="btn alt sm" data-a="seq-reset">↺ ابدأ الترتيب من جديد</button></div>':'')}
+ else h+='<div class="opts'+(q.say&&q.opts[0].e?' pics':q.say?' pics t':'')+'">'+R.order[q.id].map(function(i){return optHtml(q,i,a===i)}).join('')+'</div>';
  if(q.type==='opinion')h+='<p class="note">هذا رأيك، ولا توجد إجابة خاطئة.</p>';
  var ready=q.type==='seq'?R.seq.length===q.opts.length:a!==undefined;
  h+='<div class="row" style="margin-top:12px"><button class="btn" data-a="next"'+(ready?'':' disabled')+'>التالي ←</button></div></div>';
@@ -170,10 +181,10 @@ function vRes(){var g=R.g,p=g.p,h=top()+prog()+'<div class="card"><p class="res"
  if(p>=80)h+='<p class="lead" style="text-align:center">أحسنت! فهمت النص جيدًا.'+(T.lv===ST.lv&&ST.lv<3?' فُتح لك المستوى التالي.':'')+'</p>';
  else if(p>=50)h+='<p class="lead" style="text-align:center">جيد. جرّب نصًّا آخر من المستوى نفسه، أو أعد هذا النص.</p>';
  else h+='<p class="lead" style="text-align:center">لا بأس. استمع إلى النص مرة أخرى وهو مكتوب أمامك، وسيساعدك معلمك.</p>';
- h+='<table class="tbl">'+Object.keys(g.by).map(function(k){var v=g.by[k];return '<tr><td>'+esc(D.types[k]||k)+'</td><td class="'+(v[0]===v[1]?'ok':'bad')+'">'+v[0]+' من '+v[1]+'</td></tr>'}).join('')+'</table>';
+ h+='<table class="tbl">'+Object.keys(g.by).map(function(k){var v=g.by[k];return '<tr><td>'+esc(TYPES[k]||(D.types||{})[k]||k)+'</td><td class="'+(v[0]===v[1]?'ok':'bad')+'">'+v[0]+' من '+v[1]+'</td></tr>'}).join('')+'</table>';
  if(T.pre)h+='<p class="note" style="margin-top:10px">🔮 توقّعك قبل الاستماع: «'+esc(T.pre.opts[R.pre].t)+'»'+(R.pre===T.pre.fit?' وكان قريبًا من القصة. 👏':'، والقصة كانت عن: «'+esc(T.pre.opts[T.pre.fit].t)+'».')+'</p>';
- h+='</div><div class="card"><h2>النص مكتوبًا <button class="spk" data-a="say" data-au="'+esc(T.au||'')+'">🔊</button></h2><p class="text">'+esc(T.text)+'</p></div><div class="card"><h2>إجاباتي</h2>';
- g.rows.forEach(function(r){var q=r.q;h+='<p>'+(r.right?'<span class="ok">✔</span> ':'<span class="bad">✘</span> ')+esc(q.q)+'<br><small class="note">الإجابة: '+(q.type==='seq'?q.a.map(function(i){return esc(q.opts[i].t)}).join(' ← '):esc(q.opts[q.a].t))+'</small></p>'});
+ h+='</div>'+(T.text?'<div class="card"><h2>النص مكتوبًا <button class="spk" data-a="say" data-au="'+esc(T.au||'')+'">🔊</button></h2><p class="text">'+esc(T.text).replace(/\n/g,'<br>')+'</p></div>':'')+'<div class="card"><h2>إجاباتي</h2>';
+ g.rows.forEach(function(r){var q=r.q;h+='<p>'+(r.right?'<span class="ok">✔</span> ':'<span class="bad">✘</span> ')+esc(q.q)+(q.say?' <small class="note">(سمعتَ: '+esc(q.say)+')</small>':'')+'<br><small class="note">الإجابة: '+(q.type==='seq'?q.a.map(function(i){return esc(q.opts[i].t)}).join(' ← '):esc(q.opts[q.a].t))+'</small></p>'});
  if(T.dir){var ds=g.by.dir;h+='<p>'+(ds[0]===ds[1]?'<span class="ok">✔</span> ':'<span class="bad">✘</span> ')+'التوجيهات: '+ds[0]+' من '+ds[1]+' خطوات<br><small class="note">'+esc(T.dir.say)+'</small></p>'}
  h+='</div><div class="row"><button class="btn" data-a="home">🎧 كل النصوص</button><button class="btn alt" data-a="open" data-t="'+T.id+'">↺ أعد هذا النص</button></div>';return h}
 
@@ -182,7 +193,7 @@ function finish(){R.g=grade();R.ph='res';var p=R.g.p,old=ST.done[T.id];
  if(p>=80&&T.lv===ST.lv&&ST.lv<3)ST.lv++;save();
  var by={};Object.keys(R.g.by).forEach(function(k){by[k]=R.g.by[k]});
  send({t:'ls',k:T.id+'|L'+T.lv,v:p});
- send({t:'code',k:'LST',c:JSON.stringify({id:T.id,title:T.title,lv:T.lv,p:p,by:by,heard:R.heard,pre:R.pre,op:T.qs.filter(function(q){return q.type==='opinion'}).map(function(q){return q.opts[R.ans[q.id]]?q.opts[R.ans[q.id]].t:''})})});
+ send({t:'code',k:'LST',c:JSON.stringify({id:T.id,set:G,out:T.out||'',title:T.title,lv:T.lv,p:p,by:by,heard:R.heard,pre:R.pre,op:T.qs.filter(function(q){return q.type==='opinion'}).map(function(q){return q.opts[R.ans[q.id]]?q.opts[R.ans[q.id]].t:''})})});
  render()}
 
 function render(){var h;if(!G)h=top()+'<h1>🎧 أستمع وأفهم</h1><div class="card"><p>ادخل أولًا من صفحة طلاقة برقمك المدرسي، ثم افتح الأداة من «أدواتي».</p><a class="btn" href="index.html">الذهاب إلى طلاقة</a></div>';
@@ -197,13 +208,13 @@ document.addEventListener('click',function(e){var b=e.target.closest('[data-a]')
  if(a==='open'){start(b.dataset.t);window.scrollTo(0,0);return}
  if(!R)return;
  if(a==='pre'){R.pre=+b.dataset.i;render();return}
- if(a==='go-listen'){R.ph='listen';render();return}
+ if(a==='go-listen'){R.ph=T.au?'listen':'q';render();autoQ();return}
  if(a==='listen'){if(R.heard>=(T.listens||2))return;R.heard++;R.playing=true;render();play(T.au,function(){R.playing=false;render()});return}
- if(a==='go-q'){player.pause();R.playing=false;R.ph='q';R.qi=0;render();window.scrollTo(0,0);return}
+ if(a==='go-q'){player.pause();R.playing=false;R.ph='q';R.qi=0;render();autoQ();window.scrollTo(0,0);return}
  if(a==='ans'){var q=T.qs[R.qi],i=+b.dataset.i;if(q.type==='seq'){if(R.seq.indexOf(i)<0)R.seq.push(i)}else R.ans[q.id]=i;render();return}
  if(a==='seq-reset'){R.seq=[];render();return}
  if(a==='next'){var q2=T.qs[R.qi];if(q2.type==='seq'){R.seqAns=R.seqAns||{};R.seqAns[q2.id]=R.seq.slice();R.seq=[]}
-  player.pause();if(R.qi<T.qs.length-1)R.qi++;else if(T.dir)R.ph='dir';else return finish();render();window.scrollTo(0,0);return}
+  player.pause();if(R.qi<T.qs.length-1)R.qi++;else if(T.dir)R.ph='dir';else return finish();render();autoQ();window.scrollTo(0,0);return}
  if(a==='dsay'){if(R.dheard>=2)return;R.dheard++;play(T.dir.au);render();return}
  if(a==='col'){R.dsel={c:b.dataset.c};render();return}
  if(a==='it'){var id=b.dataset.id,it=T.dir.items.filter(function(x){return x.id===id})[0],s=R.dsel;

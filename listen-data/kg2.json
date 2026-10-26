@@ -1,0 +1,950 @@
+{
+"texts": [
+{
+"id": "kg2-1a",
+"lv": 1,
+"title": "اسْمَعْ وَاخْتَرِ الصُّورَةَ",
+"kind": "اسمع واختر",
+"out": "يسمع ويختار صورًا وحروفًا وكلمات بسيطة",
+"listens": 3,
+"qs": [
+{
+"type": "word",
+"say": "قِطٌّ",
+"q": "اسْمَعْ وَاخْتَرِ الصُّورَةَ.",
+"opts": [
+{
+"t": "قِطٌّ",
+"e": "🐈",
+"img": "aal/img/an_qitta.webp"
+},
+{
+"t": "كَلْبٌ",
+"e": "🐕"
+},
+{
+"t": "أَرْنَبٌ",
+"e": "🐇",
+"img": "aal/img/w_arnab.webp"
+}
+],
+"a": 0,
+"id": "q1",
+"au": "listen-data/audio/kg2/kg2-1a-q1.mp3",
+"sau": "listen-data/audio/kg2/kg2-1a-q1-s.mp3"
+},
+{
+"type": "word",
+"say": "جَمَلٌ",
+"q": "اسْمَعْ وَاخْتَرِ الصُّورَةَ.",
+"opts": [
+{
+"t": "جَمَلٌ",
+"e": "🐪",
+"img": "aal/img/kw12.webp"
+},
+{
+"t": "حِصَانٌ",
+"e": "🐎",
+"img": "aal/img/kw16.webp"
+},
+{
+"t": "بَقَرَةٌ",
+"e": "🐄"
+}
+],
+"a": 0,
+"id": "q2",
+"au": "listen-data/audio/kg2/kg2-1a-q2.mp3",
+"sau": "listen-data/audio/kg2/kg2-1a-q2-s.mp3"
+},
+{
+"type": "word",
+"say": "مَوْزٌ",
+"q": "اسْمَعْ وَاخْتَرِ الصُّورَةَ.",
+"opts": [
+{
+"t": "مَوْزٌ",
+"e": "🍌",
+"img": "aal/img/kw44.webp"
+},
+{
+"t": "تُفَّاحٌ",
+"e": "🍎",
+"img": "aal/img/w_tuffah.webp"
+},
+{
+"t": "عِنَبٌ",
+"e": "🍇"
+}
+],
+"a": 0,
+"id": "q3",
+"au": "listen-data/audio/kg2/kg2-1a-q3.mp3",
+"sau": "listen-data/audio/kg2/kg2-1a-q3-s.mp3"
+},
+{
+"type": "word",
+"say": "خُبْزٌ",
+"q": "اسْمَعْ وَاخْتَرِ الصُّورَةَ.",
+"opts": [
+{
+"t": "خُبْزٌ",
+"e": "🍞",
+"img": "aal/img/kw22.webp"
+},
+{
+"t": "جُبْنٌ",
+"e": "🧀",
+"img": "aal/img/kw14.webp"
+},
+{
+"t": "بَيْضٌ",
+"e": "🥚",
+"img": "aal/img/w_bayd.webp"
+}
+],
+"a": 0,
+"id": "q4",
+"au": "listen-data/audio/kg2/kg2-1a-q4.mp3",
+"sau": "listen-data/audio/kg2/kg2-1a-q4-s.mp3"
+},
+{
+"type": "word",
+"say": "بَابٌ",
+"q": "اسْمَعْ وَاخْتَرِ الصُّورَةَ.",
+"opts": [
+{
+"t": "بَابٌ",
+"e": "🚪",
+"img": "aal/img/w_bab.webp"
+},
+{
+"t": "كُرْسِيٌّ",
+"e": "🪑",
+"img": "aal/img/kw48.webp"
+},
+{
+"t": "سَرِيرٌ",
+"e": "🛏️",
+"img": "aal/img/w_sarir.webp"
+}
+],
+"a": 0,
+"id": "q5",
+"au": "listen-data/audio/kg2/kg2-1a-q5.mp3",
+"sau": "listen-data/audio/kg2/kg2-1a-q5-s.mp3"
+},
+{
+"type": "word",
+"say": "مِفْتَاحٌ",
+"q": "اسْمَعْ وَاخْتَرِ الصُّورَةَ.",
+"opts": [
+{
+"t": "مِفْتَاحٌ",
+"e": "🔑"
+},
+{
+"t": "قَلَمٌ",
+"e": "✏️",
+"img": "aal/img/kw76.webp"
+},
+{
+"t": "كِتَابٌ",
+"e": "📖",
+"img": "aal/img/kw80.webp"
+}
+],
+"a": 0,
+"id": "q6",
+"au": "listen-data/audio/kg2/kg2-1a-q6.mp3",
+"sau": "listen-data/audio/kg2/kg2-1a-q6-s.mp3"
+},
+{
+"type": "word",
+"say": "شَمْسٌ",
+"q": "اسْمَعْ وَاخْتَرِ الصُّورَةَ.",
+"opts": [
+{
+"t": "شَمْسٌ",
+"e": "☀️",
+"img": "aal/img/kw49.webp"
+},
+{
+"t": "قَمَرٌ",
+"e": "🌙",
+"img": "aal/img/s_qamar.webp"
+},
+{
+"t": "نَجْمَةٌ",
+"e": "⭐",
+"img": "aal/img/s_najma.webp"
+}
+],
+"a": 0,
+"id": "q7",
+"au": "listen-data/audio/kg2/kg2-1a-q7.mp3",
+"sau": "listen-data/audio/kg2/kg2-1a-q7-s.mp3"
+},
+{
+"type": "word",
+"say": "صَقْرٌ",
+"q": "اسْمَعْ وَاخْتَرِ الصُّورَةَ.",
+"opts": [
+{
+"t": "صَقْرٌ",
+"e": "🦅"
+},
+{
+"t": "بُومَةٌ",
+"e": "🦉"
+},
+{
+"t": "بَطَّةٌ",
+"e": "🦆",
+"img": "aal/img/duck.webp"
+}
+],
+"a": 0,
+"id": "q8",
+"au": "listen-data/audio/kg2/kg2-1a-q8.mp3",
+"sau": "listen-data/audio/kg2/kg2-1a-q8-s.mp3"
+},
+{
+"type": "word",
+"say": "سُلَحْفَاةٌ",
+"q": "اسْمَعْ وَاخْتَرِ الصُّورَةَ.",
+"opts": [
+{
+"t": "سُلَحْفَاةٌ",
+"e": "🐢"
+},
+{
+"t": "سَمَكَةٌ",
+"e": "🐟",
+"img": "aal/img/kw45.webp"
+},
+{
+"t": "ضِفْدَعٌ",
+"e": "🐸"
+}
+],
+"a": 0,
+"id": "q9",
+"au": "listen-data/audio/kg2/kg2-1a-q9.mp3",
+"sau": "listen-data/audio/kg2/kg2-1a-q9-s.mp3"
+},
+{
+"type": "word",
+"say": "نَخْلَةٌ",
+"q": "اسْمَعْ وَاخْتَرِ الصُّورَةَ.",
+"opts": [
+{
+"t": "نَخْلَةٌ",
+"e": "🌴"
+},
+{
+"t": "وَرْدَةٌ",
+"e": "🌹"
+},
+{
+"t": "صَبَّارٌ",
+"e": "🌵"
+}
+],
+"a": 0,
+"id": "q10",
+"au": "listen-data/audio/kg2/kg2-1a-q10.mp3",
+"sau": "listen-data/audio/kg2/kg2-1a-q10-s.mp3"
+}
+],
+"tau": "listen-data/audio/kg2/kg2-1a-title.mp3",
+"done": "ar-QA-AmalNeural"
+},
+{
+"id": "kg2-1b",
+"lv": 1,
+"title": "الْحَرْفُ وَالْكَلِمَةُ",
+"kind": "اسمع واختر",
+"out": "يسمع ويختار صورًا وحروفًا وكلمات بسيطة",
+"listens": 3,
+"qs": [
+{
+"type": "sound",
+"say": "بَطَّةٌ",
+"q": "بِأَيِّ حَرْفٍ تَبْدَأُ الْكَلِمَةُ؟",
+"opts": [
+{
+"t": "ب"
+},
+{
+"t": "م"
+},
+{
+"t": "ر"
+}
+],
+"a": 0,
+"id": "q1",
+"au": "listen-data/audio/kg2/kg2-1b-q1.mp3",
+"sau": "listen-data/audio/kg2/kg2-1b-q1-s.mp3"
+},
+{
+"type": "sound",
+"say": "سَمَكَةٌ",
+"q": "بِأَيِّ حَرْفٍ تَبْدَأُ الْكَلِمَةُ؟",
+"opts": [
+{
+"t": "س"
+},
+{
+"t": "ل"
+},
+{
+"t": "ج"
+}
+],
+"a": 0,
+"id": "q2",
+"au": "listen-data/audio/kg2/kg2-1b-q2.mp3",
+"sau": "listen-data/audio/kg2/kg2-1b-q2-s.mp3"
+},
+{
+"type": "sound",
+"say": "مَوْزٌ",
+"q": "بِأَيِّ حَرْفٍ تَبْدَأُ الْكَلِمَةُ؟",
+"opts": [
+{
+"t": "م"
+},
+{
+"t": "ك"
+},
+{
+"t": "ع"
+}
+],
+"a": 0,
+"id": "q3",
+"au": "listen-data/audio/kg2/kg2-1b-q3.mp3",
+"sau": "listen-data/audio/kg2/kg2-1b-q3-s.mp3"
+},
+{
+"type": "sound",
+"say": "رُمَّانٌ",
+"q": "بِأَيِّ حَرْفٍ تَبْدَأُ الْكَلِمَةُ؟",
+"opts": [
+{
+"t": "ر"
+},
+{
+"t": "ح"
+},
+{
+"t": "ل"
+}
+],
+"a": 0,
+"id": "q4",
+"au": "listen-data/audio/kg2/kg2-1b-q4.mp3",
+"sau": "listen-data/audio/kg2/kg2-1b-q4-s.mp3"
+},
+{
+"type": "sound",
+"say": "فِيلٌ",
+"q": "بِأَيِّ حَرْفٍ تَبْدَأُ الْكَلِمَةُ؟",
+"opts": [
+{
+"t": "ف"
+},
+{
+"t": "د"
+},
+{
+"t": "س"
+}
+],
+"a": 0,
+"id": "q5",
+"au": "listen-data/audio/kg2/kg2-1b-q5.mp3",
+"sau": "listen-data/audio/kg2/kg2-1b-q5-s.mp3"
+},
+{
+"type": "word",
+"say": "بَابٌ",
+"q": "اسْمَعْ وَاخْتَرِ الْكَلِمَةَ.",
+"opts": [
+{
+"t": "بَابٌ"
+},
+{
+"t": "تُوتٌ"
+},
+{
+"t": "دُبٌّ"
+}
+],
+"a": 0,
+"id": "q6",
+"au": "listen-data/audio/kg2/kg2-1b-q6.mp3",
+"sau": "listen-data/audio/kg2/kg2-1b-q6-s.mp3"
+},
+{
+"type": "word",
+"say": "أُمٌّ",
+"q": "اسْمَعْ وَاخْتَرِ الْكَلِمَةَ.",
+"opts": [
+{
+"t": "أُمٌّ"
+},
+{
+"t": "بَيْتٌ"
+},
+{
+"t": "وَرْدٌ"
+}
+],
+"a": 0,
+"id": "q7",
+"au": "listen-data/audio/kg2/kg2-1b-q7.mp3",
+"sau": "listen-data/audio/kg2/kg2-1b-q7-s.mp3"
+},
+{
+"type": "word",
+"say": "تَمْرٌ",
+"q": "اسْمَعْ وَاخْتَرِ الْكَلِمَةَ.",
+"opts": [
+{
+"t": "تَمْرٌ"
+},
+{
+"t": "لَبَنٌ"
+},
+{
+"t": "فِيلٌ"
+}
+],
+"a": 0,
+"id": "q8",
+"au": "listen-data/audio/kg2/kg2-1b-q8.mp3",
+"sau": "listen-data/audio/kg2/kg2-1b-q8-s.mp3"
+},
+{
+"type": "word",
+"say": "قَلَمٌ",
+"q": "اسْمَعْ وَاخْتَرِ الْكَلِمَةَ.",
+"opts": [
+{
+"t": "قَلَمٌ"
+},
+{
+"t": "بَيْتٌ"
+},
+{
+"t": "شَمْسٌ"
+}
+],
+"a": 0,
+"id": "q9",
+"au": "listen-data/audio/kg2/kg2-1b-q9.mp3",
+"sau": "listen-data/audio/kg2/kg2-1b-q9-s.mp3"
+}
+],
+"tau": "listen-data/audio/kg2/kg2-1b-title.mp3",
+"done": "ar-QA-AmalNeural"
+},
+{
+"id": "kg2-2a",
+"lv": 2,
+"title": "خَلِيفَةُ فِي الْمَزْرَعَةِ",
+"kind": "قصة",
+"out": "يُصغي إلى المادة المسموعة ويعيد ترتيب أحداث قصة سمعها",
+"listens": 3,
+"text": "ذَهَبَ خَلِيفَةُ مَعَ جَدِّهِ إِلَى الْمَزْرَعَةِ. أَوَّلًا أَطْعَمَ خَلِيفَةُ الدَّجَاجَ. ثُمَّ سَقَى النَّخْلَةَ بِالْمَاءِ. وَبَعْدَ ذٰلِكَ جَلَسَ مَعَ جَدِّهِ تَحْتَ النَّخْلَةِ، وَأَكَلَا التَّمْرَ اللَّذِيذَ. قَالَ الْجَدُّ: أَنْتَ مُسَاعِدٌ رَائِعٌ يَا خَلِيفَةُ!",
+"qs": [
+{
+"type": "seq",
+"q": "رَتِّبِ الْأَحْدَاثَ كَمَا سَمِعْتَهَا.",
+"opts": [
+{
+"t": "أَطْعَمَ خَلِيفَةُ الدَّجَاجَ",
+"e": "🐔",
+"au": "listen-data/audio/kg2/kg2-2a-q1-o0.mp3"
+},
+{
+"t": "سَقَى النَّخْلَةَ بِالْمَاءِ",
+"e": "💧",
+"au": "listen-data/audio/kg2/kg2-2a-q1-o1.mp3"
+},
+{
+"t": "أَكَلَ التَّمْرَ مَعَ جَدِّهِ",
+"e": "🌴",
+"au": "listen-data/audio/kg2/kg2-2a-q1-o2.mp3"
+}
+],
+"a": [
+0,
+1,
+2
+],
+"id": "q1",
+"au": "listen-data/audio/kg2/kg2-2a-q1.mp3"
+},
+{
+"type": "char",
+"q": "مَعَ مَنْ ذَهَبَ خَلِيفَةُ إِلَى الْمَزْرَعَةِ؟",
+"opts": [
+{
+"t": "مَعَ جَدِّهِ",
+"e": "👴",
+"au": "listen-data/audio/kg2/kg2-2a-q2-o0.mp3"
+},
+{
+"t": "مَعَ أَبِيهِ",
+"e": "👨",
+"au": "listen-data/audio/kg2/kg2-2a-q2-o1.mp3"
+},
+{
+"t": "مَعَ أُخْتِهِ",
+"e": "👧",
+"au": "listen-data/audio/kg2/kg2-2a-q2-o2.mp3"
+}
+],
+"a": 0,
+"id": "q2",
+"au": "listen-data/audio/kg2/kg2-2a-q2.mp3"
+},
+{
+"type": "detail",
+"q": "مَاذَا أَطْعَمَ خَلِيفَةُ؟",
+"opts": [
+{
+"t": "الدَّجَاجَ",
+"e": "🐔",
+"au": "listen-data/audio/kg2/kg2-2a-q3-o0.mp3",
+"img": "aal/img/w_dajaja.webp"
+},
+{
+"t": "الْبَقَرَةَ",
+"e": "🐄",
+"au": "listen-data/audio/kg2/kg2-2a-q3-o1.mp3"
+},
+{
+"t": "الْقِطَّةَ",
+"e": "🐈",
+"au": "listen-data/audio/kg2/kg2-2a-q3-o2.mp3",
+"img": "aal/img/an_qitta.webp"
+}
+],
+"a": 0,
+"id": "q3",
+"au": "listen-data/audio/kg2/kg2-2a-q3.mp3"
+},
+{
+"type": "detail",
+"q": "أَيْنَ جَلَسَ خَلِيفَةُ وَجَدُّهُ؟",
+"opts": [
+{
+"t": "تَحْتَ النَّخْلَةِ",
+"e": "🌴",
+"au": "listen-data/audio/kg2/kg2-2a-q4-o0.mp3"
+},
+{
+"t": "فِي الْبَيْتِ",
+"e": "🏠",
+"au": "listen-data/audio/kg2/kg2-2a-q4-o1.mp3"
+},
+{
+"t": "عِنْدَ الْبَحْرِ",
+"e": "🌊",
+"au": "listen-data/audio/kg2/kg2-2a-q4-o2.mp3"
+}
+],
+"a": 0,
+"id": "q4",
+"au": "listen-data/audio/kg2/kg2-2a-q4.mp3"
+}
+],
+"au": "listen-data/audio/kg2/kg2-2a-text.mp3",
+"tau": "listen-data/audio/kg2/kg2-2a-title.mp3",
+"done": "ar-QA-AmalNeural"
+},
+{
+"id": "kg2-2b",
+"lv": 2,
+"title": "نُورَةُ فِي الصَّبَاحِ",
+"kind": "قصة",
+"out": "يُصغي إلى المادة المسموعة ويعيد ترتيب أحداث قصة سمعها",
+"listens": 3,
+"text": "اسْتَيْقَظَتْ نُورَةُ فِي الصَّبَاحِ. غَسَلَتْ وَجْهَهَا، ثُمَّ رَتَّبَتْ سَرِيرَهَا. بَعْدَ ذٰلِكَ دَخَلَتِ الْمَطْبَخَ، وَسَاعَدَتْ أُمَّهَا فِي إِعْدَادِ الْفُطُورِ. وَضَعَتْ نُورَةُ الْخُبْزَ وَالْجُبْنَ عَلَى الطَّاوِلَةِ. شَكَرَتِ الْأُمُّ نُورَةَ وَقَبَّلَتْهَا.",
+"qs": [
+{
+"type": "seq",
+"q": "رَتِّبِ الْأَحْدَاثَ كَمَا سَمِعْتَهَا.",
+"opts": [
+{
+"t": "غَسَلَتْ نُورَةُ وَجْهَهَا",
+"e": "🧼",
+"au": "listen-data/audio/kg2/kg2-2b-q1-o0.mp3"
+},
+{
+"t": "رَتَّبَتْ سَرِيرَهَا",
+"e": "🛏️",
+"au": "listen-data/audio/kg2/kg2-2b-q1-o1.mp3"
+},
+{
+"t": "سَاعَدَتْ أُمَّهَا فِي الْمَطْبَخِ",
+"e": "🍳",
+"au": "listen-data/audio/kg2/kg2-2b-q1-o2.mp3"
+}
+],
+"a": [
+0,
+1,
+2
+],
+"id": "q1",
+"au": "listen-data/audio/kg2/kg2-2b-q1.mp3"
+},
+{
+"type": "detail",
+"q": "مَتَى اسْتَيْقَظَتْ نُورَةُ؟",
+"opts": [
+{
+"t": "فِي الصَّبَاحِ",
+"e": "🌅",
+"au": "listen-data/audio/kg2/kg2-2b-q2-o0.mp3"
+},
+{
+"t": "فِي اللَّيْلِ",
+"e": "🌙",
+"au": "listen-data/audio/kg2/kg2-2b-q2-o1.mp3"
+},
+{
+"t": "فِي الْمَسَاءِ",
+"e": "🌇",
+"au": "listen-data/audio/kg2/kg2-2b-q2-o2.mp3"
+}
+],
+"a": 0,
+"id": "q2",
+"au": "listen-data/audio/kg2/kg2-2b-q2.mp3"
+},
+{
+"type": "char",
+"q": "مَنْ سَاعَدَتْ نُورَةُ؟",
+"opts": [
+{
+"t": "أُمَّهَا",
+"e": "👩",
+"au": "listen-data/audio/kg2/kg2-2b-q3-o0.mp3"
+},
+{
+"t": "جَدَّتَهَا",
+"e": "👵",
+"au": "listen-data/audio/kg2/kg2-2b-q3-o1.mp3"
+},
+{
+"t": "أُخْتَهَا",
+"e": "👧",
+"au": "listen-data/audio/kg2/kg2-2b-q3-o2.mp3"
+}
+],
+"a": 0,
+"id": "q3",
+"au": "listen-data/audio/kg2/kg2-2b-q3.mp3"
+},
+{
+"type": "detail",
+"q": "مَاذَا وَضَعَتْ نُورَةُ عَلَى الطَّاوِلَةِ؟",
+"opts": [
+{
+"t": "الْخُبْزَ وَالْجُبْنَ",
+"e": "🍞",
+"au": "listen-data/audio/kg2/kg2-2b-q4-o0.mp3"
+},
+{
+"t": "الْمَوْزَ وَالْعِنَبَ",
+"e": "🍌",
+"au": "listen-data/audio/kg2/kg2-2b-q4-o1.mp3"
+},
+{
+"t": "الْأَرُزَّ وَالسَّمَكَ",
+"e": "🍚",
+"au": "listen-data/audio/kg2/kg2-2b-q4-o2.mp3"
+}
+],
+"a": 0,
+"id": "q4",
+"au": "listen-data/audio/kg2/kg2-2b-q4.mp3"
+}
+],
+"au": "listen-data/audio/kg2/kg2-2b-text.mp3",
+"tau": "listen-data/audio/kg2/kg2-2b-title.mp3",
+"done": "ar-QA-AmalNeural"
+},
+{
+"id": "kg2-3a",
+"lv": 3,
+"title": "فِي عِيدِ الِاتِّحَادِ",
+"kind": "قصة",
+"out": "يُصغي إلى المادة المسموعة ويعيد ترتيب أحداث قصة سمعها",
+"listens": 3,
+"text": "فِي عِيدِ الِاتِّحَادِ، لَبِسَ سَيْفٌ ثَوْبًا أَبْيَضَ، وَلَبِسَتْ أُخْتُهُ مَيْثَاءُ فُسْتَانًا جَمِيلًا. أَوَّلًا رَسَمَا عَلَمَ الْإِمَارَاتِ وَلَوَّنَاهُ. ثُمَّ ذَهَبَا مَعَ أَبِيهِمَا إِلَى الْحَدِيقَةِ، وَرَفَعَا الْعَلَمَ عَالِيًا. وَفِي الْمَسَاءِ شَاهَدَتِ الْأُسْرَةُ الْأَلْعَابَ النَّارِيَّةَ فِي السَّمَاءِ. صَفَّقَ سَيْفٌ وَمَيْثَاءُ، وَقَالَا: نُحِبُّ وَطَنَنَا الْإِمَارَاتِ!",
+"qs": [
+{
+"type": "seq",
+"q": "رَتِّبِ الْأَحْدَاثَ كَمَا سَمِعْتَهَا.",
+"opts": [
+{
+"t": "رَسَمَا الْعَلَمَ وَلَوَّنَاهُ",
+"e": "🎨",
+"au": "listen-data/audio/kg2/kg2-3a-q1-o0.mp3"
+},
+{
+"t": "رَفَعَا الْعَلَمَ فِي الْحَدِيقَةِ",
+"e": "🚩",
+"au": "listen-data/audio/kg2/kg2-3a-q1-o1.mp3"
+},
+{
+"t": "شَاهَدُوا الْأَلْعَابَ النَّارِيَّةَ",
+"e": "🎆",
+"au": "listen-data/audio/kg2/kg2-3a-q1-o2.mp3"
+}
+],
+"a": [
+0,
+1,
+2
+],
+"id": "q1",
+"au": "listen-data/audio/kg2/kg2-3a-q1.mp3"
+},
+{
+"type": "detail",
+"q": "مَاذَا لَبِسَ سَيْفٌ؟",
+"opts": [
+{
+"t": "ثَوْبًا أَبْيَضَ",
+"e": "⚪",
+"au": "listen-data/audio/kg2/kg2-3a-q2-o0.mp3"
+},
+{
+"t": "قَمِيصًا أَزْرَقَ",
+"e": "🔵",
+"au": "listen-data/audio/kg2/kg2-3a-q2-o1.mp3"
+},
+{
+"t": "مِعْطَفًا أَسْوَدَ",
+"e": "⚫",
+"au": "listen-data/audio/kg2/kg2-3a-q2-o2.mp3"
+}
+],
+"a": 0,
+"id": "q2",
+"au": "listen-data/audio/kg2/kg2-3a-q2.mp3"
+},
+{
+"type": "detail",
+"q": "إِلَى أَيْنَ ذَهَبَ سَيْفٌ وَمَيْثَاءُ مَعَ أَبِيهِمَا؟",
+"opts": [
+{
+"t": "إِلَى الْحَدِيقَةِ",
+"e": "🌳",
+"au": "listen-data/audio/kg2/kg2-3a-q3-o0.mp3"
+},
+{
+"t": "إِلَى الْبَحْرِ",
+"e": "🌊",
+"au": "listen-data/audio/kg2/kg2-3a-q3-o1.mp3"
+},
+{
+"t": "إِلَى السُّوقِ",
+"e": "🛒",
+"au": "listen-data/audio/kg2/kg2-3a-q3-o2.mp3"
+}
+],
+"a": 0,
+"id": "q3",
+"au": "listen-data/audio/kg2/kg2-3a-q3.mp3"
+},
+{
+"type": "infer",
+"q": "بِمَاذَا شَعَرَ سَيْفٌ وَمَيْثَاءُ فِي الْعِيدِ؟",
+"opts": [
+{
+"t": "بِالْفَرَحِ",
+"e": "😄",
+"au": "listen-data/audio/kg2/kg2-3a-q4-o0.mp3"
+},
+{
+"t": "بِالْحُزْنِ",
+"e": "😢",
+"au": "listen-data/audio/kg2/kg2-3a-q4-o1.mp3"
+},
+{
+"t": "بِالْخَوْفِ",
+"e": "😨",
+"au": "listen-data/audio/kg2/kg2-3a-q4-o2.mp3"
+}
+],
+"a": 0,
+"id": "q4",
+"au": "listen-data/audio/kg2/kg2-3a-q4.mp3"
+},
+{
+"type": "word",
+"say": "عَلَمٌ",
+"q": "اسْمَعْ وَاخْتَرِ الصُّورَةَ.",
+"opts": [
+{
+"t": "عَلَمٌ",
+"e": "🚩",
+"img": "aal/img/kw66.webp"
+},
+{
+"t": "قَلَمٌ",
+"e": "✏️",
+"img": "aal/img/kw76.webp"
+},
+{
+"t": "جَمَلٌ",
+"e": "🐪",
+"img": "aal/img/kw12.webp"
+}
+],
+"a": 0,
+"id": "q5",
+"au": "listen-data/audio/kg2/kg2-3a-q5.mp3",
+"sau": "listen-data/audio/kg2/kg2-3a-q5-s.mp3"
+}
+],
+"au": "listen-data/audio/kg2/kg2-3a-text.mp3",
+"tau": "listen-data/audio/kg2/kg2-3a-title.mp3",
+"done": "ar-QA-AmalNeural"
+},
+{
+"id": "kg2-3b",
+"lv": 3,
+"title": "رَاشِدٌ وَالسُّلَحْفَاةُ",
+"kind": "قصة",
+"out": "يُصغي إلى المادة المسموعة ويعيد ترتيب أحداث قصة سمعها",
+"listens": 3,
+"text": "ذَهَبَ رَاشِدٌ وَأُمُّهُ إِلَى الشَّاطِئِ. بَنَى رَاشِدٌ قَلْعَةً مِنَ الرَّمْلِ. فَجْأَةً رَأَى سُلَحْفَاةً صَغِيرَةً عَلَى الرَّمْلِ، وَحَوْلَهَا أَكْيَاسٌ بِلَاسْتِيكِيَّةٌ. جَمَعَ رَاشِدٌ الْأَكْيَاسَ، وَوَضَعَهَا فِي سَلَّةِ الْمُهْمَلَاتِ. ثُمَّ مَشَتِ السُّلَحْفَاةُ بِبُطْءٍ حَتَّى دَخَلَتِ الْبَحْرَ. ابْتَسَمَتِ الْأُمُّ وَقَالَتْ: أَحْسَنْتَ يَا رَاشِدُ، الْبَحْرُ النَّظِيفُ بَيْتٌ آمِنٌ لِلسُّلَحْفَاةِ.",
+"qs": [
+{
+"type": "seq",
+"q": "رَتِّبِ الْأَحْدَاثَ كَمَا سَمِعْتَهَا.",
+"opts": [
+{
+"t": "بَنَى رَاشِدٌ قَلْعَةً مِنَ الرَّمْلِ",
+"e": "🏰",
+"au": "listen-data/audio/kg2/kg2-3b-q1-o0.mp3"
+},
+{
+"t": "جَمَعَ الْأَكْيَاسَ",
+"e": "🛍️",
+"au": "listen-data/audio/kg2/kg2-3b-q1-o1.mp3"
+},
+{
+"t": "دَخَلَتِ السُّلَحْفَاةُ الْبَحْرَ",
+"e": "🐢",
+"au": "listen-data/audio/kg2/kg2-3b-q1-o2.mp3"
+}
+],
+"a": [
+0,
+1,
+2
+],
+"id": "q1",
+"au": "listen-data/audio/kg2/kg2-3b-q1.mp3"
+},
+{
+"type": "detail",
+"q": "مَاذَا رَأَى رَاشِدٌ عَلَى الرَّمْلِ؟",
+"opts": [
+{
+"t": "سُلَحْفَاةً صَغِيرَةً",
+"e": "🐢",
+"au": "listen-data/audio/kg2/kg2-3b-q2-o0.mp3"
+},
+{
+"t": "سَمَكَةً كَبِيرَةً",
+"e": "🐟",
+"au": "listen-data/audio/kg2/kg2-3b-q2-o1.mp3"
+},
+{
+"t": "سَرَطَانًا صَغِيرًا",
+"e": "🦀",
+"au": "listen-data/audio/kg2/kg2-3b-q2-o2.mp3"
+}
+],
+"a": 0,
+"id": "q2",
+"au": "listen-data/audio/kg2/kg2-3b-q2.mp3"
+},
+{
+"type": "detail",
+"q": "أَيْنَ وَضَعَ رَاشِدٌ الْأَكْيَاسَ؟",
+"opts": [
+{
+"t": "فِي سَلَّةِ الْمُهْمَلَاتِ",
+"e": "🗑️",
+"au": "listen-data/audio/kg2/kg2-3b-q3-o0.mp3"
+},
+{
+"t": "فِي الْبَحْرِ",
+"e": "🌊",
+"au": "listen-data/audio/kg2/kg2-3b-q3-o1.mp3",
+"img": "aal/img/p_bahr.webp"
+},
+{
+"t": "فِي السَّيَّارَةِ",
+"e": "🚗",
+"au": "listen-data/audio/kg2/kg2-3b-q3-o2.mp3"
+}
+],
+"a": 0,
+"id": "q3",
+"au": "listen-data/audio/kg2/kg2-3b-q3.mp3"
+},
+{
+"type": "infer",
+"q": "لِمَاذَا جَمَعَ رَاشِدٌ الْأَكْيَاسَ؟",
+"opts": [
+{
+"t": "لِيُسَاعِدَ السُّلَحْفَاةَ",
+"e": "🐢",
+"au": "listen-data/audio/kg2/kg2-3b-q4-o0.mp3"
+},
+{
+"t": "لِيَلْعَبَ بِهَا",
+"e": "🎈",
+"au": "listen-data/audio/kg2/kg2-3b-q4-o1.mp3"
+},
+{
+"t": "لِيَبْنِيَ بِهَا قَلْعَةً",
+"e": "🏰",
+"au": "listen-data/audio/kg2/kg2-3b-q4-o2.mp3"
+}
+],
+"a": 0,
+"id": "q4",
+"au": "listen-data/audio/kg2/kg2-3b-q4.mp3"
+}
+],
+"au": "listen-data/audio/kg2/kg2-3b-text.mp3",
+"tau": "listen-data/audio/kg2/kg2-3b-title.mp3",
+"done": "ar-QA-AmalNeural"
+}
+],
+"set": "kg2",
+"name": "الروضة 2",
+"levels": {
+"1": "المستوى 1 · أبدأ",
+"2": "المستوى 2 · أتقدّم",
+"3": "المستوى 3 · أتميّز"
+},
+"ver": "v1 · 26 أكتوبر 2026"
+}
