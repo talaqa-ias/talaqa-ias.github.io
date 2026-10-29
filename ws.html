@@ -5,11 +5,12 @@
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Baloo+Bhaijaan+2:wght@500;700;800&family=Noto+Naskh+Arabic:wght@500;700&display=swap');
 :root{--bg:#EAF6FF;--card:#FFFFFF;--ink:#1D2B4F;--muted:#5B6B8C;--line:#D3E4F5;--soft:#FFF4D1;--sky:#2F9BF0;--grass:#22B866;--sun:#FFC83D;--coral:#FF6B6B;--grape:#8E5CF7;--ok-soft:#DDF7E8;--bad-soft:#FFE3E3;
+ --l1:#22B866;--l2:#2F9BF0;--l3:#8E5CF7;
  --ui:"Baloo Bhaijaan 2","Segoe UI",Tahoma,sans-serif;--read:"Noto Naskh Arabic","Traditional Arabic",serif;color-scheme:light}
 html,body{background:var(--bg);color:var(--ink)}
 body{margin:0;font-family:var(--ui);font-size:17px;line-height:1.55;direction:rtl;padding-inline:16px;padding-block:0 120px}
 *{box-sizing:border-box}#app{max-width:880px;margin-inline:auto}
-button,input,textarea{font:inherit;color:inherit}button{cursor:pointer}
+button,input,textarea,select{font:inherit;color:inherit}button{cursor:pointer}
 :focus-visible{outline:4px solid var(--sun);outline-offset:2px}
 h1{font-size:1.8rem;margin:6px 0 2px;font-weight:800}h2{font-size:1.3rem;margin:0 0 8px;font-weight:800}h3{margin:0 0 6px}
 .lead{color:var(--muted);margin:0 0 12px}.note{color:var(--muted);font-size:.95rem}
@@ -26,22 +27,30 @@ h1{font-size:1.8rem;margin:6px 0 2px;font-weight:800}h2{font-size:1.3rem;margin:
 .st b{display:block;font-size:1.3rem}
 .st.cur{border-color:var(--sky);background:#EAF4FF;box-shadow:0 0 0 3px #BFE0FF}.st.done{border-color:var(--grass);background:#F2FBF5}.st[disabled]{opacity:.5;cursor:not-allowed}
 .pic{width:100%;max-height:360px;object-fit:cover;border-radius:18px;border:2px solid var(--line)}
-.tasks{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:14px}
-.task{border:3px solid var(--line);border-radius:20px;background:#fff;overflow:hidden;text-align:right;padding:0;box-shadow:0 5px 0 var(--line)}
-.task img{width:100%;height:150px;object-fit:cover;display:block}.task div{padding:10px 12px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:14px}
+.gen{border:3px solid var(--line);border-radius:20px;background:#fff;padding:14px;text-align:right;box-shadow:0 5px 0 var(--line)}
+.gen .i{font-size:2.2rem;line-height:1}.gen h3{font-family:var(--read);margin:6px 0 2px}
+.task{border:3px solid var(--line);border-radius:20px;background:#fff;overflow:hidden;box-shadow:0 5px 0 var(--line)}
+.task img{width:100%;height:150px;object-fit:cover;display:block}.task .b{padding:10px 12px}
+.lvs{display:flex;gap:6px;margin-top:8px}
+.lvb{flex:1;border:2px solid var(--c);background:#fff;color:var(--ink);border-radius:12px;padding:4px 2px;font-weight:800;font-size:.9rem;line-height:1.25}
+.lvb small{display:block;font-weight:600;color:var(--muted);font-size:.75rem}
+.lvb.done{background:var(--c);color:#fff}.lvb.done small{color:#fff}
+.lvtag{display:inline-block;border-radius:999px;padding:2px 12px;font-weight:800;color:#fff;background:var(--c)}
+.levels{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px}
+.levels div{border:2px solid var(--c);border-radius:16px;padding:10px;background:#fff}
 .q{font-weight:800;font-size:1.15rem;margin:10px 0 6px;font-family:var(--read)}
 .cards{display:flex;flex-wrap:wrap;gap:8px}
 .ic{border:2px solid var(--line);background:#fff;border-radius:999px;padding:6px 14px;font-family:var(--read);font-weight:700;font-size:1.05rem}
 .ic.on{background:var(--sky);border-color:var(--sky);color:#fff}
-.ic.add{border-style:dashed;color:var(--muted)}
 .in{width:100%;border:2px solid var(--line);border-radius:12px;padding:8px 12px;background:#fff;font-family:var(--read);font-size:1.1rem}
 textarea.in{min-height:110px;line-height:1.9;resize:vertical}
 .para{border-inline-start:8px solid var(--c);background:#fff;border-radius:16px;padding:12px 14px;margin:12px 0;border-top:2px solid var(--line);border-bottom:2px solid var(--line);border-inline-end:2px solid var(--line)}
 .para .h{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:6px}
 .tag{background:var(--c);color:#fff;border-radius:999px;padding:2px 12px;font-weight:800}
 .tip{color:var(--muted);font-family:var(--read)}
+.src{font-family:var(--read);font-size:1.2rem;line-height:2.1}.src p{margin:0 0 8px;text-indent:1.2em}
 .model p{font-family:var(--read);font-size:1.25rem;line-height:2.1;margin:0}
-.model .s{border-bottom:3px solid transparent}
 .model .role{font-family:var(--ui);font-size:.75rem;background:var(--soft);border-radius:8px;padding:0 6px;margin-inline-start:4px;color:#8A5A00;white-space:nowrap}
 .lk{font-weight:800;color:#B03A9E;text-decoration:underline;text-decoration-thickness:2px}
 .planbox{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px}
@@ -51,8 +60,10 @@ textarea.in{min-height:110px;line-height:1.9;resize:vertical}
 .mc{border:1.5px solid var(--line);background:#F7FBFF;border-radius:999px;padding:2px 10px;font-family:var(--read);font-size:.95rem}
 .mc.k{background:#FFF0FA;border-color:#F3C6E8}.mc.f{background:#FFF4D1;border-color:#F5DB8E}
 .frame{display:block;width:100%;text-align:right;border:2px dashed var(--line);background:#FBFDFF;border-radius:12px;padding:6px 10px;margin:4px 0;font-family:var(--read);font-size:1.05rem}
-.lvl{display:flex;gap:8px;flex-wrap:wrap}
-.lvl button{border:2px solid var(--line);background:#fff;border-radius:14px;padding:6px 12px;font-weight:800}.lvl button.on{background:var(--grape);border-color:var(--grape);color:#fff}
+.fr2{border:2px dashed var(--l1);background:#F5FCF8;border-radius:12px;padding:8px 10px;margin:6px 0;font-family:var(--read);font-size:1.1rem;line-height:2.2;display:flex;flex-wrap:wrap;align-items:center;gap:4px}
+.fr2 select{border:2px solid var(--l1);border-radius:10px;background:#fff;padding:0 6px;font-family:var(--read);font-size:1.05rem;max-width:100%}
+.fr2 .btn{margin-inline-start:auto}
+.chal{border:3px solid var(--l3);background:#F6F1FF;border-radius:16px;padding:10px 14px;margin:10px 0}
 .cnt{font-size:.85rem;color:var(--muted)}
 .fb{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:6px}
 .fb li{border-radius:12px;padding:6px 10px;background:var(--ok-soft)}.fb li.w{background:#FFF1CC}
@@ -63,11 +74,13 @@ textarea.in{min-height:110px;line-height:1.9;resize:vertical}
 .final{background:#fff;border-radius:20px;border:2px solid var(--line);padding:20px}
 .final h2{text-align:center;font-family:var(--read);font-size:1.6rem}
 .final p{font-family:var(--read);font-size:1.25rem;line-height:2.1;text-indent:1.5em;margin:0 0 10px}
+.final p.ln{text-indent:0}.al-l{text-align:left}.al-c{text-align:center}
 .bad{background:#FFE3E3;border-bottom:2px solid var(--coral);border-radius:4px}
 .qz{display:flex;flex-direction:column;gap:10px}
 .qz .it{border:2px solid var(--line);border-radius:14px;padding:8px 10px;background:#fff}
 .qz .it.ok{border-color:var(--grass);background:#F2FBF5}.qz .it.no{border-color:var(--coral);background:#FFF5F5}
 .navb{display:flex;gap:10px;justify-content:space-between;flex-wrap:wrap;margin-top:14px}
+details summary{cursor:pointer}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 </style></head><body>
 <div id="app"></div>
@@ -80,7 +93,8 @@ function esc(s){return String(s==null?'':s).replace(/[&<>"]/g,function(c){return
 function fnv(s){var h=0x811c9dc5;for(var i=0;i<s.length;i++){h^=s.charCodeAt(i);h=Math.imul(h,16777619)>>>0}return h.toString(16)}
 function ymd(){var d=new Date();return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0')}
 var DIA=/[ً-ْٰـ]/g;function bare(s){return String(s||'').replace(DIA,'').replace(/\s+/g,' ').trim()}
-var $app=document.getElementById('app');
+var $app=document.getElementById('app'),player=new Audio();
+function play(a){if(!a)return;try{player.pause();player.src=a;player.currentTime=0;var p=player.play();if(p&&p.catch)p.catch(function(){})}catch(e){}}
 
 /* ---------- الطالب ---------- */
 var ME=get('pt_me',null);
@@ -102,19 +116,25 @@ function flush(){if(busy||!Q.length||!ME||!ME.c)return;busy=true;var batch=Q.sli
 setInterval(flush,30000);document.addEventListener('visibilitychange',function(){if(document.visibilityState==='hidden')flush()});
 
 /* ---------- الحالة ---------- */
-var D=null,DICT=null,T=null,S=null,last=null;
+var D=null,DICT=null,GEN=null,T=null,LV=2,S=null,last=null;
+var LVN={1:['🌱','مبتدئ','مساعدة كثيرة','var(--l1)'],2:['🌿','متوسط','مساعدة أقل','var(--l2)'],3:['🌳','متقدم','أكتب وحدي','var(--l3)']};
+var LVD={1:'نموذج قصير، وأفكار جاهزة أختار منها، وجمل ناقصة أكملها باختيار الكلمات.',2:'نموذج أطول، وأفكار أختار منها وأضيف إليها، وبدايات جمل أكملها بنفسي.',3:'نموذج غني، وأسئلة توجّهني فقط، وأكتب وحدي، ومعي تحدٍّ إضافي.'};
 var STEPS=[['ex','🔍','أستكشف'],['mo','📖','أتعلّم من نموذج'],['pl','🗺️','أخطّط'],['dr','✏️','أكتب المسودة'],['rv','🔁','أراجع وأنقّح'],['ed','🔤','أدقّق'],['pub','🌟','أنشر']];
-function key(){return 'ws|'+WHO+'|'+T.id}
-function load(){S=get(key(),null)||{st:0,max:0,ideas:{},own:{},plan:{},lvl:2,dr:{title:'',p1:'',p2:'',p3:''},v1:null,ck:{},nb:{},qz:{},sent:0};}
-function save(){if(T)put(key(),S)}
-function pct(t){var s=get('ws|'+WHO+'|'+t.id,null);return s?s:null}
+function skey(t,l){return 'ws2|'+WHO+'|'+t.id+'|'+l}
+function load(){S=get(skey(T,LV),null);if(!S){S={st:0,max:0,ideas:{},own:{},plan:{},dr:{},v1:null,ck:{},nb:{},qz:{},sent:0,rev:{}};}PARTS().forEach(function(p){if(S.dr[p.id]==null)S.dr[p.id]=''})}
+function save(){if(T)put(skey(T,LV),S)}
+function PARTS(){return GEN.parts}
+function paraParts(){return GEN.parts.filter(function(p){return p.kind!=='line'})}
+function minW(p){var m=p.min||[0,0,0];return m[LV-1]||0}
+function gstat(t){var r={};[1,2,3].forEach(function(l){r[l]=get(skey(t,l),null)});return r}
 
 /* ---------- أدوات النص ---------- */
 function words(s){return bare(s).replace(/[^ء-ي\s]/g,' ').split(/\s+/).filter(Boolean)}
-function sents(s){return String(s||'').split(/[.!؟]+/).map(function(x){return x.trim()}).filter(function(x){return words(x).length>1})}
-var LINKB=null;function linkSet(){if(!LINKB)LINKB=D.link.map(bare).concat(['ثم','بعد ذلك','عندما','لأن','لذلك','لكن','وفجأة','فجأة','وأخيرا','أخيرا','في النهاية','وفي النهاية','عندئذ','بينما','حين','حتى','أيضا','منذ ذلك اليوم']);return LINKB}
+function sents(s){return String(s||'').split(/[.!؟\n]+/).map(function(x){return x.trim()}).filter(function(x){return words(x).length>1})}
+var BASEL=['ثم','بعد ذلك','عندما','لأن','لذلك','لكن','وفجأة','فجأة','أخيرا','في النهاية','عندئذ','بينما','حين','حتى','أيضا','كما','أولا','ثانيا','ثالثا','منذ ذلك اليوم','إضافة إلى ذلك','مثل','بسبب','لهذا','إذن','أما','على سبيل المثال'];
+function linkSet(){return (GEN.link||[]).map(bare).concat(BASEL)}
 function linksUsed(t){var b=' '+bare(t).replace(/[.,،!؟:«»]/g,' ')+' ',u=[];linkSet().forEach(function(l){var x=l.replace(/^و/,'');if(x.length>1&&(b.indexOf(' '+x+' ')>=0||b.indexOf(' و'+x+' ')>=0||b.indexOf(' ف'+x+' ')>=0)&&u.indexOf(x)<0)u.push(x)});return u}
-var STOP=' في من إلى على عن مع و ثم هو هي كان كانت أن أنه لا ما قد هذا هذه ذلك التي الذي يا قال كل بعد عند لم لن '.split(' ');
+var STOP=' في من إلى على عن مع و ثم هو هي كان كانت أن أنه لا ما قد هذا هذه ذلك التي الذي يا قال كل بعد عند لم لن أنا نحن '.split(' ');
 function repeats(t){var c={};words(t).forEach(function(w){w=w.replace(/^(و|ف|ب|ل|ال|وال|بال|فال)/,'');if(w.length<3||STOP.indexOf(w)>=0)return;c[w]=(c[w]||0)+1});return Object.keys(c).filter(function(w){return c[w]>=4})}
 function stem(w){var c=[w];[/^(و|ف)/,/^(ب|ل|ك)/,/^(ال)/].forEach(function(re){c.slice().forEach(function(x){var y=x.replace(re,'');if(y!==x&&y.length>1)c.push(y)})});c.slice().forEach(function(x){['ها','هم','هما','ه','ي','ك','نا','كم','ات','ون','ين','ان','ة'].forEach(function(s){if(x.length>s.length+1&&x.slice(-s.length)===s)c.push(x.slice(0,-s.length))})});return c}
 function known(w){if(!DICT)return true;var c=stem(w);for(var i=0;i<c.length;i++){if(DICT[c[i]]||DICT['ال'+c[i]])return true}return false}
@@ -122,116 +142,156 @@ function spell(t){var out=[];words(t).forEach(function(w){if(w.length<3||known(w
  if(/ه$/.test(w)&&known(w.slice(0,-1)+'ة'))hint='هل تقصد التاء المربوطة (ـة)؟';else if(/ة$/.test(w)&&known(w.slice(0,-1)+'ه'))hint='هل تقصد الهاء (ـه)؟';
  else if(/ي$/.test(w)&&known(w.slice(0,-1)+'ى'))hint='هل تقصد الألف اللينة (ى)؟';else if((function(){var m=/^(و|ف|ب|ل)?ا(.*)$/.exec(w);return m&&(known((m[1]||'')+'أ'+m[2])||known((m[1]||'')+'إ'+m[2])||known('أ'+m[2])||known('إ'+m[2]))})())hint='انتبه إلى همزة القطع (أ / إ).';
  else if(/[أإآ]/.test(w)&&known(w.replace(/[أإآ]/g,'ا')))hint='هل هي همزة وصل بلا علامة؟';out.push({w:w,hint:hint})});return out}
-function draftAll(){return [S.dr.p1,S.dr.p2,S.dr.p3].join('\n')}
+function allText(){return PARTS().map(function(p){return S.dr[p.id]||''}).join('\n')}
 
 /* ---------- واجهات ---------- */
-function top(){return '<div class="top">'+(window.__tqNav?window.__tqNav.btn('chip'):'')+'<a class="chip" href="index.html">→ أدواتي</a>'+(T?'<button class="chip" data-a="home">🧩 كل المهام</button>':'')+'<span class="chip" style="margin-inline-start:auto">'+(PREV?'معاينة · '+esc(PREV.toUpperCase()):esc(ME&&ME.name||''))+'</span></div>'}
+function lvTag(l){return '<span class="lvtag" style="--c:'+LVN[l][3]+'">'+LVN[l][0]+' '+LVN[l][1]+'</span>'}
+function top(){return '<div class="top">'+(window.__tqNav?window.__tqNav.btn('chip'):'')+'<a class="chip" href="index.html">→ أدواتي</a>'+(GEN?'<button class="chip" data-a="home">🧩 أنواع النصوص</button>':'')+(T?'<button class="chip" data-a="gen" data-g="'+GEN.id+'">'+esc(GEN.icon||'')+' مهام '+esc(GEN.short||'النوع')+'</button>':'')+'<span class="chip" style="margin-inline-start:auto">'+(PREV?'معاينة · '+esc(PREV.toUpperCase()):esc(ME&&ME.name||''))+'</span></div>'}
 function stepsBar(){return '<div class="steps">'+STEPS.map(function(s,i){return '<button class="st'+(i===S.st?' cur':i<=S.max?' done':'')+'" data-a="go" data-i="'+i+'"'+(i>S.max?' disabled':'')+'><b>'+s[1]+'</b>'+s[2]+'</button>'}).join('')+'</div>'}
-function nav(ok,label,why){return '<div class="navb">'+(S.st>0?'<button class="btn alt" data-a="go" data-i="'+(S.st-1)+'">→ السابق</button>':'<span></span>')+'<button class="btn" data-a="next"'+(ok?'':' disabled')+'>'+(label||'التالي ←')+'</button></div>'+(!ok&&why?'<p class="note" style="text-align:left">'+esc(why)+'</p>':'')}
+function nav(ok,label,why){return '<div class="navb">'+(S.st>0?'<button class="btn alt" data-a="go" data-i="'+(S.st-1)+'">→ السابق</button>':'<span></span>')+'<button class="btn" data-a="next"'+(ok?'':' disabled')+'>'+(label||'التالي ←')+'</button></div>'+(!ok&&why?'<p class="note" id="why" style="text-align:left">'+esc(why)+'</p>':'')}
 function nbBox(k,t){var on=S.nb[k];return '<div class="nb"><button class="ck'+(on?' on':'')+'" data-a="nb" data-k="'+k+'"><span class="bx"></span><span>📓 '+esc(t)+'</span></button></div>'}
 
-function vHome(){var h=top()+'<h1>🧩 ورشة الكتابة</h1><p class="lead">أكتب '+esc(D.genre)+' خطوةً خطوة: أستكشف الصورة، وأتعلّم من نموذج، وأخطّط، وأكتب المسودة، وأراجعها، وأدقّقها، ثم أنشر نصّي وأكتبه في دفتري.</p>';
- h+='<details class="card"><summary><b>ماذا سأتعلّم؟ (نواتج الوثيقة الوطنية)</b></summary><ul>'+D.outcomes.map(function(o){return '<li>'+esc(o)+'</li>'}).join('')+'</ul></details>';
- h+='<div class="tasks">'+D.tasks.map(function(t){var s=pct(t),st=s?s.max:-1;return '<button class="task" data-a="open" data-t="'+t.id+'"><img src="'+esc(t.img)+'" alt=""><div><h3 style="font-family:var(--read)">'+esc(t.title)+'</h3><span class="note">'+(s&&s.sent?'🌟 نُشر وأُرسل إلى معلمك':s?'وصلت إلى: '+STEPS[Math.min(st,6)][2]:'ابدأ')+'</span></div></button>'}).join('')+'</div>';return h}
+function vHome(){var h=top()+'<h1>🧩 ورشة الكتابة</h1><p class="lead">اختر نوع النص الذي ستكتبه. في كل نوع: أستكشف، وأتعلّم من نموذج، وأخطّط، وأكتب المسودة، وأراجعها، وأدقّقها، ثم أنشر نصّي وأكتبه في دفتري.</p><div class="grid">';
+ D.genres.forEach(function(g){var n=0,tot=g.tasks.length;g.tasks.forEach(function(t){var s=gstat(t);if(s[1]&&s[1].sent||s[2]&&s[2].sent||s[3]&&s[3].sent)n++});
+  h+='<button class="gen" data-a="gen" data-g="'+g.id+'"><div class="i">'+esc(g.icon||'📝')+'</div><h3>'+esc(g.name)+'</h3><span class="note">'+esc(g.about||'')+'</span><p class="note" style="margin:6px 0 0"><b>'+n+'</b> من '+tot+' مهام منشورة</p></button>'});
+ return h+'</div>'}
 
-function vEx(){var h='<img class="pic" src="'+esc(T.img)+'" alt="صورة المهمة"><p class="q">'+esc(T.brief)+'</p><p class="note">اختر الأفكار التي تراها في الصورة، وأضف أفكارك. ستجدها كلها في المخطط بعد قليل.</p>';
- T.explore.forEach(function(e){var sel=S.ideas[e.id]||[],own=S.own[e.id]||[];h+='<div class="card" style="margin:10px 0"><p class="q" style="margin-top:0">'+esc(e.q)+'</p><div class="cards">'+e.cards.concat(own).map(function(c){return '<button class="ic'+(sel.indexOf(c)>=0?' on':'')+'" data-a="idea" data-q="'+e.id+'" data-c="'+esc(c)+'">'+esc(c)+'</button>'}).join('')+'</div><div class="row" style="margin-top:8px"><input class="in" id="own-'+e.id+'" placeholder="فكرة من عندي…" style="flex:1;min-width:180px"><button class="btn alt sm" data-a="addidea" data-q="'+e.id+'">＋ أضف</button></div></div>'});
- var ok=['who','where','prob'].every(function(k){return (S.ideas[k]||[]).length});
- return h+nav(ok,null,'اختر فكرة واحدة على الأقل في: الشخصيات، والمكان والزمان، والمشكلة.')}
+function vGen(){var h=top()+'<h1 style="font-family:var(--read)">'+esc(GEN.icon||'')+' '+esc(GEN.name)+'</h1><p class="lead">'+esc(GEN.about||'')+'</p>';
+ h+='<div class="card"><h2>اختر مستواك في كل مهمة</h2><div class="levels">'+[1,2,3].map(function(l){return '<div style="--c:'+LVN[l][3]+'">'+lvTag(l)+'<p class="note" style="margin:6px 0 0">'+LVD[l]+'</p></div>'}).join('')+'</div><p class="note" style="margin-bottom:0">ابدأ بالمستوى الذي يقترحه معلمك. حين تتقن مستوى، جرّب الأعلى منه.</p></div>';
+ h+='<details class="card"><summary><b>ماذا سأتعلّم؟ (نواتج الوثيقة الوطنية)</b></summary><ul>'+GEN.outcomes.map(function(o){return '<li>'+esc(o)+'</li>'}).join('')+'</ul></details>';
+ h+='<div class="grid">'+GEN.tasks.map(function(t){var s=gstat(t);return '<div class="task">'+(t.img?'<img src="'+esc(t.img)+'" alt="">':'')+'<div class="b"><h3 style="font-family:var(--read)">'+esc(t.title)+'</h3><div class="lvs">'+[1,2,3].map(function(l){var x=s[l];return '<button class="lvb'+(x&&x.sent?' done':'')+'" style="--c:'+LVN[l][3]+'" data-a="open" data-t="'+t.id+'" data-l="'+l+'">'+LVN[l][0]+' '+LVN[l][1]+'<small>'+(x&&x.sent?'🌟 نُشر':x?STEPS[Math.min(x.max,6)][2]:'ابدأ')+'</small></button>'}).join('')+'</div></div></div>'}).join('')+'</div>';
+ return h}
 
-function vMo(){var M=D.model,h='<p class="lead">اقرأ القصة النموذجية. لاحظ أجزاءها الثلاثة بألوانها، وأدوات الربط المكتوبة <span class="lk">بهذا اللون</span>.</p><div class="card model"><img class="pic" src="'+esc(M.img)+'" alt="" style="max-height:220px"><h2 style="text-align:center;font-family:var(--read);margin-top:10px;color:'+D.struct[0].c+'">'+esc(M.title)+'</h2>';
- M.paras.forEach(function(p,i){var st=D.struct[i+1];h+='<div class="para" style="--c:'+st.c+'"><div class="h"><span class="tag">'+esc(st.n)+'</span><span class="tip">'+esc(st.tip)+'</span></div><p>'+p.map(function(x){return '<span class="s">'+hlLinks(esc(x[1]))+'</span><span class="role">'+esc(M.roles[x[0]])+'</span>'}).join(' ')+'</p></div>'});
- h+='</div><div class="card"><h2>نشاط: إلى أي جزء تنتمي هذه الجملة؟</h2><div class="qz">';
- M.quiz.forEach(function(q,i){var a=S.qz[i];h+='<div class="it'+(a?(a===q.a?' ok':' no'):'')+'"><p style="font-family:var(--read);font-size:1.1rem;margin:0 0 6px">«'+esc(q.s)+'»</p><div class="row">'+D.struct.slice(1).map(function(s){return '<button class="btn alt sm" data-a="qz" data-i="'+i+'" data-v="'+s.id+'" style="'+(a===s.id?'background:'+s.c+';color:#fff;border-color:'+s.c:'')+'">'+esc(s.n)+'</button>'}).join('')+(a?(a===q.a?' ✅':' ❌ حاول مرة أخرى'):'')+'</div></div>'});
- var ok=M.quiz.every(function(q,i){return S.qz[i]===q.a});return h+'</div></div>'+nav(ok,null,'أجب عن الجمل الثلاث إجابة صحيحة.')}
-function hlLinks(html){var L=D.link.slice().sort(function(a,b){return b.length-a.length});L.forEach(function(l){var e=esc(l);html=html.split(e).join('<span class="lk">'+e+'</span>')});return html}
+function srcHtml(){var s=T.src;if(!s)return '';return '<div class="card"><h2>📄 '+esc(s.title||'اقرأ النص')+'</h2>'+(s.au?'<button class="btn alt sm" data-a="play" data-au="'+esc(s.au)+'">🔊 استمع إلى النص</button>':'')+'<div class="src">'+s.text.map(function(p){return '<p>'+esc(p)+'</p>'}).join('')+'</div></div>'}
+function vEx(){var h=(T.img?'<img class="pic" src="'+esc(T.img)+'" alt="صورة المهمة">':'')+srcHtml()+'<p class="q">'+esc(T.brief)+'</p><p class="note">'+(LV===3?'أجب عن الأسئلة بأفكارك. إن احتجت مساعدة فاضغط «💡 أحتاج أفكارًا».':LV===1?'اختر الأفكار التي تناسبك. ستجدها كلها في المخطط بعد قليل.':'اختر الأفكار المناسبة، وأضف أفكارك. ستجدها كلها في المخطط بعد قليل.')+'</p>';
+ T.explore.forEach(function(e){var sel=S.ideas[e.id]||[],own=S.own[e.id]||[],show=LV<3||S.rev[e.id];var cs=(show?e.cards:[]).concat(own);
+  h+='<div class="card" style="margin:10px 0"><p class="q" style="margin-top:0">'+esc(e.q)+'</p><div class="cards">'+cs.map(function(c){return '<button class="ic'+(sel.indexOf(c)>=0?' on':'')+'" data-a="idea" data-q="'+e.id+'" data-c="'+esc(c)+'">'+esc(c)+'</button>'}).join('')+(!show?'<button class="btn alt sm" data-a="reveal" data-q="'+e.id+'">💡 أحتاج أفكارًا</button>':'')+'</div>'+(LV>1||true?'<div class="row" style="margin-top:8px"><input class="in" id="own-'+e.id+'" placeholder="فكرة من عندي…" style="flex:1;min-width:180px"><button class="btn alt sm" data-a="addidea" data-q="'+e.id+'">＋ أضف</button></div>':'')+'</div>'});
+ var need=GEN.need||T.explore.slice(0,2).map(function(e){return e.id});var ok=need.every(function(k){return (S.ideas[k]||[]).length});
+ var nm=need.map(function(k){var e=T.explore.filter(function(x){return x.id===k})[0];return e?'«'+e.q+'»':''}).join(' و');
+ return h+nav(ok,null,'اختر فكرة واحدة على الأقل في: '+nm)}
+
+function model(){return GEN.models[LV-1]||GEN.models[0]}
+function hlLinks(html){var L=(GEN.link||[]).slice().sort(function(a,b){return b.length-a.length});L.forEach(function(l){var e=esc(l);html=html.split(e).join('\u0001'+e+'\u0002')});return html.replace(/\u0001/g,'<span class="lk">').replace(/\u0002/g,'</span>')}
+function qParts(){return PARTS().filter(function(p){return p.quiz!==false&&(model().parts[p.id]||[]).length})}
+function vMo(){var M=model(),h='<p class="lead">اقرأ النموذج. لاحظ أجزاءه بألوانها'+((GEN.link||[]).length?'، وأدوات الربط المكتوبة <span class="lk">بهذا اللون</span>':'')+'.</p><div class="card model">'+(M.img?'<img class="pic" src="'+esc(M.img)+'" alt="" style="max-height:220px">':'')+(M.au?'<div class="row" style="justify-content:center;margin-top:8px"><button class="btn alt sm" data-a="play" data-au="'+esc(M.au)+'">🔊 استمع إلى النموذج</button></div>':'');
+ PARTS().forEach(function(p){var ss=M.parts[p.id]||[];if(!ss.length)return;h+='<div class="para" style="--c:'+p.c+'"><div class="h"><span class="tag">'+esc(p.n)+'</span><span class="tip">'+esc(p.tip||'')+'</span></div><p class="'+(p.al?'al-'+p.al:'')+'">'+ss.map(function(x){return '<span class="s">'+hlLinks(esc(x[1]))+'</span>'+(x[0]&&GEN.roles&&GEN.roles[x[0]]?'<span class="role">'+esc(GEN.roles[x[0]])+'</span>':'')}).join(' ')+'</p></div>'});
+ h+='</div>';var QZ=M.quiz||[];
+ if(QZ.length){h+='<div class="card"><h2>نشاط: إلى أي جزء تنتمي هذه الجملة؟</h2><div class="qz">';
+  QZ.forEach(function(q,i){var a=S.qz[i];h+='<div class="it'+(a?(a===q.a?' ok':' no'):'')+'"><p style="font-family:var(--read);font-size:1.1rem;margin:0 0 6px">«'+esc(q.s)+'»</p><div class="row">'+qParts().map(function(s){return '<button class="btn alt sm" data-a="qz" data-i="'+i+'" data-v="'+s.id+'" style="'+(a===s.id?'background:'+s.c+';color:#fff;border-color:'+s.c:'')+'">'+esc(s.n)+'</button>'}).join('')+(a?(a===q.a?' ✅':' ❌ حاول مرة أخرى'):'')+'</div></div>'});h+='</div></div>'}
+ var ok=QZ.every(function(q,i){return S.qz[i]===q.a});return h+nav(ok,null,'أجب عن كل الجمل إجابة صحيحة.')}
 
 function ideaChips(qid,target){var a=(S.ideas[qid]||[]);return a.length?'<div class="mini">'+a.map(function(c){return '<button class="mc" data-a="ins" data-t="'+target+'" data-v="'+esc(c)+'">'+esc(c)+'</button>'}).join('')+'</div>':''}
-function vPl(){var h='<p class="lead">املأ مخطط قصتك بكلمات قصيرة، لا بجمل كاملة. اضغط أي فكرة لتضيفها.</p><div class="planbox">';
- D.plan.forEach(function(p){var n=p.multi||1;h+='<div class="pb"><h3>'+esc(p.n)+'</h3>'+ideaChips(p.q,'pl-'+p.id+'-0');for(var i=0;i<n;i++){h+='<input class="in" id="pl-'+p.id+'-'+i+'" data-pl="'+p.id+'" data-i="'+i+'" value="'+esc(((S.plan[p.id]||[])[i])||'')+'" placeholder="'+(n>1?'الحدث '+(i+1):'…')+'" style="margin-top:6px">'}h+='</div>'});
- h+='</div>'+nbBox('plan','نقلتُ مخطط قصتي إلى دفتري.');
- var ok=D.plan.every(function(p){return ((S.plan[p.id]||[])[0]||'').trim()})&&S.nb.plan;return h+nav(ok,null,'املأ كل خانات المخطط، ثم انقله إلى دفترك.')}
+function vPl(){var h='<p class="lead">'+(LV===1?'اضغط الأفكار لتملأ المخطط. يمكنك أن تكتب أيضًا.':'املأ المخطط بكلمات قصيرة، لا بجمل كاملة. اضغط أي فكرة لتضيفها.')+'</p><div class="planbox">';
+ GEN.plan.forEach(function(p){var n=p.multi||1;h+='<div class="pb"><h3>'+esc(p.n)+'</h3>'+(p.hint?'<p class="note" style="margin:0">'+esc(p.hint)+'</p>':'')+ideaChips(p.q,'pl-'+p.id+'-0');for(var i=0;i<n;i++){h+='<input class="in" id="pl-'+p.id+'-'+i+'" data-pl="'+p.id+'" data-i="'+i+'" value="'+esc(((S.plan[p.id]||[])[i])||'')+'" placeholder="'+(n>1?(p.ph||'الفكرة')+' '+(i+1):'…')+'" style="margin-top:6px">'}h+='</div>'});
+ h+='</div>'+nbBox('plan','نقلتُ المخطط إلى دفتري.');
+ return h+nav(plOk(),null,'املأ كل خانات المخطط، ثم انقله إلى دفترك.')}
+function plOk(){return GEN.plan.every(function(p){return p.opt||((S.plan[p.id]||[])[0]||'').trim()})&&S.nb.plan}
 
-function planFor(pid){var m={p1:['who','wherewhen'],p2:['prob','ev'],p3:['sol','feel']}[pid];return m.map(function(k){var p=D.plan.filter(function(x){return x.id===k})[0];return '<b>'+esc(p.n)+':</b> '+esc((S.plan[k]||[]).filter(Boolean).join('، ')||'—')}).join(' · ')}
-function cntHtml(t){var w=words(t).length,s=sents(t).length;return '<span class="cnt">'+w+' كلمة · '+s+' جمل</span>'}
-function vDr(){var h='<div class="card" style="padding:12px"><b>كم مساعدة تحتاج؟</b><div class="lvl" style="margin-top:6px">'+[[1,'جمل ناقصة أكملها'],[2,'بدايات جمل'],[3,'أكتب وحدي']].map(function(x){return '<button data-a="lvl" data-v="'+x[0]+'" class="'+(S.lvl===x[0]?'on':'')+'">'+x[1]+'</button>'}).join('')+'</div></div>';
- h+='<div class="para" style="--c:'+D.struct[0].c+'"><div class="h"><span class="tag">'+esc(D.struct[0].n)+'</span><span class="tip">'+esc(D.struct[0].tip)+'</span></div><input class="in" id="dr-title" data-dr="title" value="'+esc(S.dr.title)+'" placeholder="عنوان قصتك"><div class="mini">'+T.titles.map(function(t){return '<button class="mc" data-a="settitle" data-v="'+esc(t)+'">'+esc(t)+'</button>'}).join('')+'</div></div>';
- ['p1','p2','p3'].forEach(function(pid,i){var st=D.struct[i+1];h+='<div class="para" style="--c:'+st.c+'"><div class="h"><span class="tag">'+esc(st.n)+'</span><span class="tip">'+esc(st.tip)+'</span></div><p class="note" style="margin:0 0 6px">من مخططك: '+planFor(pid)+'</p>';
-  if(S.lvl===1)h+=T.frames[pid].map(function(f){return '<button class="frame" data-a="ins" data-t="dr-'+pid+'" data-v="'+esc(f)+'">＋ '+esc(f)+'</button>'}).join('');
-  if(S.lvl===2)h+='<div class="mini">'+T.starters[pid].map(function(f){return '<button class="mc" data-a="ins" data-t="dr-'+pid+'" data-v="'+esc(f.replace(/\.\.\.$/,' '))+'">'+esc(f)+'</button>'}).join('')+'</div>';
-  h+='<textarea class="in" id="dr-'+pid+'" data-dr="'+pid+'" placeholder="اكتب '+esc(st.n)+' هنا…">'+esc(S.dr[pid])+'</textarea><div id="c-'+pid+'">'+cntHtml(S.dr[pid])+'</div></div>'});
- h+='<div class="card"><h3>🧺 بنك الكلمات <span class="note">(اضغط الكلمة لتضيفها حيث يقف المؤشر)</span></h3><p class="note" style="margin:4px 0">مفردات القصة</p><div class="mini">'+T.words.map(function(w){return '<button class="mc" data-a="ins" data-v="'+esc(w)+'">'+esc(w)+'</button>'}).join('')+'</div><p class="note" style="margin:4px 0">أدوات الربط</p><div class="mini">'+D.link.map(function(w){return '<button class="mc k" data-a="ins" data-v="'+esc(w)+'">'+esc(w)+'</button>'}).join('')+'</div><p class="note" style="margin:4px 0">المشاعر</p><div class="mini">'+T.feelings.map(function(w){return '<button class="mc f" data-a="ins" data-v="'+esc(w)+'">'+esc(w)+'</button>'}).join('')+'</div></div>';
- var gap=draftAll().indexOf('____')>=0,ok=S.dr.title.trim()&&['p1','p2','p3'].every(function(p){return words(S.dr[p]).length>=8})&&!gap;
- return h+nav(ok,null,gap?'أكمل الفراغات (____) في جملك.':'اكتب العنوان، و8 كلمات على الأقل في كل فقرة.')}
+function planFor(pid){var ps=GEN.plan.filter(function(x){return x.to===pid});if(!ps.length)return '';return '<p class="note" style="margin:0 0 6px">من مخططك: '+ps.map(function(p){return '<b>'+esc(p.n)+':</b> '+esc((S.plan[p.id]||[]).filter(Boolean).join('، ')||'—')}).join(' · ')+'</p>'}
+function cntHtml(p){var t=S.dr[p.id]||'',w=words(t).length,m=minW(p);return '<span class="cnt">'+w+' كلمة'+(p.kind==='line'?'':' · '+sents(t).length+' جمل')+(m?' · المطلوب '+m+' كلمات على الأقل':'')+'</span>'}
+function frameHtml(pid,f,i){if(typeof f==='string')return '<button class="frame" data-a="ins" data-t="dr-'+pid+'" data-v="'+esc(f)+'">＋ '+esc(f)+'</button>';
+ var bits=f.s.split('____'),h='<div class="fr2" data-fr="'+pid+'|'+i+'">';bits.forEach(function(b,j){h+=esc(b);if(j<bits.length-1){var o=(f.o&&f.o[j])||[];h+='<select aria-label="اختر كلمة"><option value="">؟</option>'+o.map(function(x){return '<option>'+esc(x)+'</option>'}).join('')+'<option value="">✍️ أكتبها أنا</option></select>'}});
+ return h+'<button class="btn sm" data-a="addfr" data-p="'+pid+'" data-i="'+i+'">＋ أضف</button></div>'}
+function bankHtml(){var bs=(T.banks||[]).map(function(b,i){return '<p class="note" style="margin:4px 0">'+esc(b.n)+'</p><div class="mini">'+b.w.map(function(w){return '<button class="mc'+(i?' f':'')+'" data-a="ins" data-v="'+esc(w)+'">'+esc(w)+'</button>'}).join('')+'</div>'}).join('');
+ if((GEN.link||[]).length)bs+='<p class="note" style="margin:4px 0">أدوات الربط</p><div class="mini">'+GEN.link.map(function(w){return '<button class="mc k" data-a="ins" data-v="'+esc(w)+'">'+esc(w)+'</button>'}).join('')+'</div>';
+ if(!bs)return '';var head='<h3 style="display:inline">🧺 بنك الكلمات</h3> <span class="note">(اضغط الكلمة لتضيفها حيث يقف المؤشر)</span>';
+ return LV===3?'<details class="card"><summary>'+head+'</summary>'+bs+'</details>':'<div class="card">'+head+bs+'</div>'}
+function drOk(){return !hasGap()&&PARTS().every(function(p){return words(S.dr[p.id]).length>=minW(p)})}
+function hasGap(){return allText().indexOf('____')>=0}
+function drWhy(){if(hasGap())return 'أكمل الفراغات (____) في جملك.';var p=PARTS().filter(function(p){return words(S.dr[p.id]).length<minW(p)})[0];return p?'اكتب '+minW(p)+' كلمات على الأقل في «'+p.n+'».':''}
+function vDr(){var h='';
+ if(LV===3&&GEN.challenge)h+='<div class="chal"><b>🏆 تحدّي المستوى المتقدم:</b> <span style="font-family:var(--read)">'+esc(GEN.challenge)+'</span></div>';
+ if(LV===1)h+='<p class="lead">اختر الكلمات في الجمل الناقصة، ثم اضغط «＋ أضف». يمكنك أن تغيّر الجملة بعد إضافتها.</p>';else if(LV===2)h+='<p class="lead">ابدأ كل جملة بإحدى البدايات أو بجملة من عندك، ثم أكملها.</p>';else h+='<p class="lead">اكتب نصّك وحدك، مستعينًا بمخططك وبتلميح كل جزء.</p>';
+ PARTS().forEach(function(p){h+='<div class="para" style="--c:'+p.c+'"><div class="h"><span class="tag">'+esc(p.n)+'</span><span class="tip">'+esc(p.tip||'')+'</span></div>'+planFor(p.id);
+  if(p.id==='title'&&T.titles&&LV<3)h+='<div class="mini">'+T.titles.map(function(t){return '<button class="mc" data-a="setpart" data-p="title" data-v="'+esc(t)+'">'+esc(t)+'</button>'}).join('')+'</div>';
+  if(LV===1&&T.frames&&T.frames[p.id])h+=T.frames[p.id].map(function(f,i){return frameHtml(p.id,f,i)}).join('');
+  if(LV===2&&T.starters&&T.starters[p.id])h+='<div class="mini">'+T.starters[p.id].map(function(f){return '<button class="mc" data-a="ins" data-t="dr-'+p.id+'" data-v="'+esc(f.replace(/\.\.\.$|…$/,' '))+'">'+esc(f)+'</button>'}).join('')+'</div>';
+  h+=(p.kind==='line'?'<input class="in" id="dr-'+p.id+'" data-dr="'+p.id+'" value="'+esc(S.dr[p.id])+'" placeholder="'+esc(p.ph||p.n)+'">':'<textarea class="in" id="dr-'+p.id+'" data-dr="'+p.id+'" placeholder="اكتب '+esc(p.n)+' هنا…">'+esc(S.dr[p.id])+'</textarea>')+'<div id="c-'+p.id+'">'+cntHtml(p)+'</div></div>'});
+ h+=bankHtml();
+ return h+nav(drOk(),null,drWhy())}
 
-function autoFb(){var f=[],all=draftAll();
- ['p1','p2','p3'].forEach(function(p,i){var n=sents(S.dr[p]).length,nm=D.struct[i+1].n;if(n<2)f.push(['w','فقرة «'+nm+'» فيها جملة واحدة. أضف جملة تشرح أكثر.']);else f.push(['','فقرة «'+nm+'» فيها '+n+' جمل.'])});
- var L=linksUsed(all);f.push(L.length>=3?['','استخدمت '+L.length+' أدوات ربط مختلفة: '+L.join('، ')+'.']:['w','استخدمت '+L.length+' من أدوات الربط فقط. أضف أداة ربط أخرى من البنك.']);
+function autoFb(){var f=[],all=allText();
+ paraParts().forEach(function(p){var n=sents(S.dr[p.id]).length,ms=(p.ms||[1,2,2])[LV-1]||1;if(n<ms)f.push(['w','«'+p.n+'» '+(n?'فيها '+n+' جملة فقط':'فارغة')+'. المطلوب '+ms+' جمل على الأقل.']);else f.push(['','«'+p.n+'» فيها '+n+' جمل.'])});
+ var ml=(GEN.minLinks||[1,2,3])[LV-1];if(ml){var L=linksUsed(all);f.push(L.length>=ml?['','استخدمت '+L.length+' من أدوات الربط: '+L.join('، ')+'.']:['w','استخدمت '+L.length+' من أدوات الربط، والمطلوب '+ml+'. أضف من البنك.'])}
  var R=repeats(all);if(R.length)f.push(['w','كررت كلمة «'+R.join('»، «')+'» كثيرًا. استبدل بها كلمة أخرى أو ضميرًا.']);
- ['p1','p2','p3'].forEach(function(p,i){var t=S.dr[p].trim();if(t&&!/[.!؟»]$/.test(t))f.push(['w','ضع علامة ترقيم في نهاية فقرة «'+D.struct[i+1].n+'».'])});
- var sense=/(رأى|رأيت|يرى|سمع|سمعت|صوت|شعر|شعرت|رائحة|لون|بارد|حار|جميل|لامع|صاف)/.test(bare(all));f.push(sense?['','في قصتك وصف لما يُرى أو يُسمع أو يُحَسّ.']:['w','أضف وصفًا لما رآه البطل أو سمعه أو أحسّ به.']);
+ paraParts().forEach(function(p){var t=(S.dr[p.id]||'').trim();if(t&&!/[.!؟»:]$/.test(t))f.push(['w','ضع علامة ترقيم في نهاية «'+p.n+'».'])});
+ (GEN.auto||[]).forEach(function(r){if((r.lv||1)>LV)return;var t=bare(r.part?S.dr[r.part]:all),hit=false;try{hit=new RegExp(r.re).test(t)}catch(e){}f.push(hit?['',r.ok]:['w',r.no])});
  return f}
 function fbHtml(){return autoFb().map(function(x){return '<li class="'+x[0]+'">'+(x[0]?'⚠️ ':'✅ ')+esc(x[1])+'</li>'}).join('')}
 var fbT=null;
 function changed(){return S.v1&&JSON.stringify(S.v1)!==JSON.stringify(S.dr)}
-function vRv(){var h='<p class="lead">اقرأ مسودتك كأنك القارئ. حسّن شيئًا واحدًا على الأقل، ثم انقل المسودة المنقّحة إلى دفترك.</p><div class="card"><h2>🤖 ملاحظات سريعة على مسودتك</h2><ul class="fb" id="fbbox">'+fbHtml()+'</ul><p class="note">هذه ملاحظات آلية بسيطة، والحكم على جودة القصة لمعلمك بسلّم القسم.</p></div>';
- h+='<div class="card"><h2>✔ أراجع قصتي بنفسي</h2>'+D.check.map(function(c,i){var on=S.ck[i];return '<button class="ck'+(on?' on':'')+'" data-a="ck" data-i="'+i+'"><span class="bx"></span><span>'+esc(c.t)+'</span></button>'}).join('')+'</div>';
- h+='<div class="card"><h2>✏️ أحسّن مسودتي</h2><input class="in" data-dr="title" value="'+esc(S.dr.title)+'">'+['p1','p2','p3'].map(function(p,i){return '<div class="para" style="--c:'+D.struct[i+1].c+'"><span class="tag">'+esc(D.struct[i+1].n)+'</span><textarea class="in" id="dr-'+p+'" data-dr="'+p+'" style="margin-top:6px">'+esc(S.dr[p])+'</textarea><div id="c-'+p+'">'+cntHtml(S.dr[p])+'</div></div>'}).join('')+'</div>';
- h+=nbBox('rev','نقّحتُ مسودتي في دفتري.');
- var nck=Object.keys(S.ck).filter(function(k){return S.ck[k]}).length,ok=changed()&&nck>=D.check.length&&S.nb.rev;
- return h+nav(ok,null,!changed()?'حسّن شيئًا واحدًا على الأقل في مسودتك.':nck<D.check.length?'راجع كل بنود القائمة.':'انقل المسودة المنقّحة إلى دفترك.')}
+function checks(){return GEN.check.filter(function(c){return (c.lv||1)<=LV})}
+function editParts(){return PARTS().map(function(p){return '<div class="para" style="--c:'+p.c+'"><span class="tag">'+esc(p.n)+'</span>'+(p.kind==='line'?'<input class="in" id="dr-'+p.id+'" data-dr="'+p.id+'" value="'+esc(S.dr[p.id])+'" style="margin-top:6px">':'<textarea class="in" id="dr-'+p.id+'" data-dr="'+p.id+'" style="margin-top:6px">'+esc(S.dr[p.id])+'</textarea>')+'<div id="c-'+p.id+'">'+cntHtml(p)+'</div></div>'}).join('')}
+function rvOk(){var C=checks(),n=C.filter(function(c,i){return S.ck[GEN.check.indexOf(c)]}).length;return {ok:changed()&&n>=C.length&&S.nb.rev&&drOk(),n:n,N:C.length}}
+function rvWhy(){var r=rvOk();return !changed()?'حسّن شيئًا واحدًا على الأقل في مسودتك.':r.n<r.N?'راجع كل بنود القائمة.':!S.nb.rev?'انقل المسودة المنقّحة إلى دفترك.':drWhy()}
+function vRv(){var h='<p class="lead">اقرأ مسودتك كأنك القارئ. حسّن شيئًا واحدًا على الأقل، ثم انقل المسودة المنقّحة إلى دفترك.</p><div class="card"><h2>🤖 ملاحظات سريعة على مسودتك</h2><ul class="fb" id="fbbox">'+fbHtml()+'</ul><p class="note">هذه ملاحظات آلية بسيطة، والحكم على جودة النص لمعلمك بسلّم القسم.</p></div>';
+ h+='<div class="card"><h2>✔ أراجع نصّي بنفسي</h2>'+checks().map(function(c){var i=GEN.check.indexOf(c),on=S.ck[i];return '<button class="ck'+(on?' on':'')+'" data-a="ck" data-i="'+i+'"><span class="bx"></span><span>'+esc(c.t)+'</span></button>'}).join('')+'</div>';
+ h+='<div class="card"><h2>✏️ أحسّن مسودتي</h2>'+editParts()+'</div>'+nbBox('rev','نقّحتُ مسودتي في دفتري.');
+ return h+nav(rvOk().ok,null,rvWhy())}
 
-function vEd(){var all=S.dr.title+'\n'+draftAll(),sp=spell(all),h='<p class="lead">ابحث عن الأخطاء الإملائية وعلامات الترقيم وصحّحها. الكلمات الملوّنة قد تكون خطأً، أو كلمات صحيحة لا يعرفها القاموس.</p>';
- h+='<div class="card final">'+[S.dr.title].concat([S.dr.p1,S.dr.p2,S.dr.p3]).map(function(t,i){var x=esc(t);sp.forEach(function(o){x=x.replace(new RegExp('(^|[\\s،.؟!«»:])('+o.w.split('').map(function(c){return c+'[ً-ْ]*'}).join('')+')(?=$|[\\s،.؟!«»:])','g'),'$1<span class="bad">$2</span>')});return i?'<p>'+x+'</p>':'<h2>'+x+'</h2>'}).join('')+'</div>';
+function finalHtml(){return PARTS().map(function(p){var x=esc(S.dr[p.id]);if(p.id==='title')return '<h2>'+x+'</h2>';return '<p class="'+(p.kind==='line'?'ln ':'')+(p.al?'al-'+p.al:'')+'">'+x.replace(/\n/g,'<br>')+'</p>'}).join('')}
+function vEd(){var sp=spell(allText()),h='<p class="lead">ابحث عن الأخطاء الإملائية وعلامات الترقيم وصحّحها. الكلمات الملوّنة قد تكون خطأً، أو كلمات صحيحة لا يعرفها القاموس.</p>';
+ var fin=finalHtml();sp.forEach(function(o){fin=fin.replace(new RegExp('(^|[\\s،.؟!«»:>])('+o.w.split('').map(function(c){return c+'[ً-ْ]*'}).join('')+')(?=$|[\\s،.؟!«»:<])','g'),'$1<span class="bad">$2</span>')});
+ h+='<div class="card final">'+fin+'</div>';
  h+='<div class="card"><h2>🔤 كلمات تحتاج نظرة</h2>'+(sp.length?'<ul class="fb">'+sp.slice(0,15).map(function(o){return '<li class="w">«'+esc(o.w)+'» '+esc(o.hint||'تأكد من كتابتها.')+'</li>'}).join('')+'</ul>':'<p>✅ لم يجد القاموس كلمات غريبة.</p>')+'<p class="note">تذكّر: النقطة في نهاية الجملة، والفاصلة بين الجمل المتصلة، وعلامة الاستفهام بعد السؤال، وعلامتا التنصيص «» للحوار.</p></div>';
- h+='<div class="card"><h2>✏️ أصحّح</h2><input class="in" data-dr="title" value="'+esc(S.dr.title)+'">'+['p1','p2','p3'].map(function(p,i){return '<div class="para" style="--c:'+D.struct[i+1].c+'"><span class="tag">'+esc(D.struct[i+1].n)+'</span><textarea class="in" id="dr-'+p+'" data-dr="'+p+'" style="margin-top:6px">'+esc(S.dr[p])+'</textarea></div>'}).join('')+'<button class="btn alt sm" data-a="recheck">🔄 أعد التدقيق</button></div>';
- return h+nav(true)}
+ h+='<div class="card"><h2>✏️ أصحّح</h2>'+editParts()+'<button class="btn alt sm" data-a="recheck">🔄 أعد التدقيق</button></div>';
+ return h+nav(drOk(),null,drWhy())}
 
-function vPub(){var h='<div class="final"><img class="pic" src="'+esc(T.img)+'" alt="" style="max-height:240px;margin-bottom:10px"><h2>'+esc(S.dr.title)+'</h2>'+['p1','p2','p3'].map(function(p){return '<p>'+esc(S.dr[p])+'</p>'}).join('')+'<p class="note" style="text-align:left">'+esc(ME&&ME.name||'')+' · '+ymd()+'</p></div>';
- var w1=S.v1?words([S.v1.p1,S.v1.p2,S.v1.p3].join(' ')).length:0,w2=words(draftAll()).length;
- h+='<div class="card"><h2>📈 من المسودة إلى النص النهائي</h2><p>المسودة الأولى: <b>'+w1+'</b> كلمة · النص النهائي: <b>'+w2+'</b> كلمة · أدوات الربط: <b>'+linksUsed(draftAll()).length+'</b></p><details><summary>اعرض مسودتي الأولى</summary>'+(S.v1?['p1','p2','p3'].map(function(p){return '<p style="font-family:var(--read)">'+esc(S.v1[p])+'</p>'}).join(''):'')+'</details></div>';
+function vPub(){var h='<div class="final">'+(T.img?'<img class="pic" src="'+esc(T.img)+'" alt="" style="max-height:240px;margin-bottom:10px">':'')+finalHtml()+'<p class="note" style="text-align:left">'+esc(ME&&ME.name||'')+' · '+ymd()+' · '+LVN[LV][0]+' '+LVN[LV][1]+'</p></div>';
+ var w1=S.v1?words(PARTS().map(function(p){return S.v1[p.id]||''}).join(' ')).length:0,w2=words(allText()).length;
+ h+='<div class="card"><h2>📈 من المسودة إلى النص النهائي</h2><p>المسودة الأولى: <b>'+w1+'</b> كلمة · النص النهائي: <b>'+w2+'</b> كلمة'+((GEN.link||[]).length?' · أدوات الربط: <b>'+linksUsed(allText()).length+'</b>':'')+'</p><details><summary>اعرض مسودتي الأولى</summary>'+(S.v1?PARTS().map(function(p){return '<p style="font-family:var(--read)">'+esc(S.v1[p.id]||'')+'</p>'}).join(''):'')+'</details></div>';
+ if(LV<3)h+='<div class="card" style="border-color:'+LVN[LV+1][3]+'"><b>🚀 هل أنت مستعد للمستوى الأعلى؟</b> <span class="note">جرّب المهمة نفسها أو مهمة أخرى بمستوى '+LVN[LV+1][1]+'.</span> <button class="btn alt sm" data-a="open" data-t="'+T.id+'" data-l="'+(LV+1)+'">'+LVN[LV+1][0]+' '+LVN[LV+1][1]+'</button></div>';
  h+=nbBox('final','كتبتُ النسخة النهائية في دفتري بخط واضح.');
- h+='<div class="navb"><button class="btn alt" data-a="go" data-i="5">→ السابق</button><button class="btn" data-a="publish"'+(S.nb.final?'':' disabled')+'>'+(S.sent?'✅ أُرسلت · أرسل التعديل':'📤 أرسل قصتي إلى معلمي')+'</button></div>'+(S.sent?'<p class="note" style="text-align:center">وصلت قصتك إلى معلمك، وسيقيّمها بسلّم القسم.</p>':'');
+ h+='<div class="navb"><button class="btn alt" data-a="go" data-i="5">→ السابق</button><button class="btn" data-a="publish"'+(S.nb.final?'':' disabled')+'>'+(S.sent?'✅ أُرسل · أرسل التعديل':'📤 أرسل نصّي إلى معلمي')+'</button></div>'+(S.sent?'<p class="note" style="text-align:center">وصل نصّك إلى معلمك، وسيقيّمه بسلّم القسم.</p>':'');
  return h}
 
 function render(){var h;
  if(!G)h=top()+'<h1>🧩 ورشة الكتابة</h1><div class="card"><p>ادخل أولًا من صفحة طلاقة برقمك المدرسي، ثم افتح الورشة من «أدواتي».</p><a class="btn" href="index.html">الذهاب إلى طلاقة</a></div>';
  else if(!D)h=top()+'<p class="lead">جارٍ التحميل…</p>';
- else if(!T)h=vHome();
- else h=top()+'<h1 style="font-family:var(--read)">'+esc(T.title)+'</h1>'+stepsBar()+[vEx,vMo,vPl,vDr,vRv,vEd,vPub][S.st]();
+ else if(!GEN)h=vHome();
+ else if(!T)h=vGen();
+ else h=top()+'<h1 style="font-family:var(--read)">'+esc(T.title)+'</h1><p style="margin:0 0 6px">'+lvTag(LV)+' <span class="note">'+esc(GEN.name)+'</span></p>'+stepsBar()+[vEx,vMo,vPl,vDr,vRv,vEd,vPub][S.st]();
  $app.innerHTML=h}
 function go(i){S.st=i;if(i>S.max)S.max=i;if(i===4&&!S.v1)S.v1=JSON.parse(JSON.stringify(S.dr));save();render();window.scrollTo(0,0)}
+function okNow(){return [function(){return true},function(){return true},plOk,drOk,function(){return rvOk().ok},drOk,function(){return true}][S.st]()}
+function refreshNext(){var nb=document.querySelector('[data-a=next]');if(!nb)return;var ok=S.st===0||S.st===1?!nb.disabled:okNow();nb.disabled=!ok;var w=document.getElementById('why');if(w){var t=S.st===2?'املأ كل خانات المخطط، ثم انقله إلى دفترك.':S.st===4?rvWhy():drWhy();w.textContent=ok?'':t}else if(!ok){nb.parentNode.insertAdjacentHTML('afterend','<p class="note" id="why" style="text-align:left"></p>');refreshNext()}}
 
 /* ---------- الأحداث ---------- */
 document.addEventListener('focusin',function(e){if(e.target.matches&&e.target.matches('textarea.in,input.in'))last=e.target});
 document.addEventListener('input',function(e){var t=e.target;if(!S)return;
- if(t.dataset.dr){S.dr[t.dataset.dr]=t.value;save();var c=document.getElementById('c-'+t.dataset.dr);if(c)c.innerHTML=cntHtml(t.value);var nb=document.querySelector('[data-a=next]');if(nb&&S.st===3){var gap=draftAll().indexOf('____')>=0;nb.disabled=!(S.dr.title.trim()&&['p1','p2','p3'].every(function(p){return words(S.dr[p]).length>=8})&&!gap)}}
- if(t.dataset.dr&&S.st===4){clearTimeout(fbT);fbT=setTimeout(function(){var f=document.getElementById('fbbox');if(f)f.innerHTML=fbHtml();var nb=document.querySelector('[data-a=next]');var nck=Object.keys(S.ck).filter(function(k){return S.ck[k]}).length;if(nb)nb.disabled=!(changed()&&nck>=D.check.length&&S.nb.rev)},400)}
- if(t.dataset.pl){var a=S.plan[t.dataset.pl]=S.plan[t.dataset.pl]||[];a[+t.dataset.i]=t.value;save();var nb2=document.querySelector('[data-a=next]');if(nb2&&S.st===2)nb2.disabled=!(D.plan.every(function(p){return ((S.plan[p.id]||[])[0]||'').trim()})&&S.nb.plan)}});
+ if(t.dataset.dr){S.dr[t.dataset.dr]=t.value;save();var p=PARTS().filter(function(x){return x.id===t.dataset.dr})[0];var c=document.getElementById('c-'+t.dataset.dr);if(c&&p)c.innerHTML=cntHtml(p);
+  if(S.st===4){clearTimeout(fbT);fbT=setTimeout(function(){var f=document.getElementById('fbbox');if(f)f.innerHTML=fbHtml();refreshNext()},400)}else refreshNext()}
+ if(t.dataset.pl){var a=S.plan[t.dataset.pl]=S.plan[t.dataset.pl]||[];a[+t.dataset.i]=t.value;save();refreshNext()}});
 
 function insert(el,v){if(!el)return;var s=el.selectionStart!=null?el.selectionStart:el.value.length,e2=el.selectionEnd!=null?el.selectionEnd:s,pre=el.value.slice(0,s),sep=pre&&!/\s$/.test(pre)?' ':'';el.value=pre+sep+v+el.value.slice(e2);var p=(pre+sep+v).length;el.focus();try{el.setSelectionRange(p,p)}catch(x){}el.dispatchEvent(new Event('input',{bubbles:true}))}
+function findGen(id){return D.genres.filter(function(g){return g.id===id})[0]}
 document.addEventListener('click',function(e){var b=e.target.closest('[data-a]');if(!b)return;var a=b.dataset.a;
- if(a==='home'){T=null;S=null;render();window.scrollTo(0,0);return}
- if(a==='open'){T=D.tasks.filter(function(t){return t.id===b.dataset.t})[0];load();render();window.scrollTo(0,0);return}
+ if(a==='play'){play(b.dataset.au);return}
+ if(a==='home'){GEN=null;T=null;S=null;render();window.scrollTo(0,0);return}
+ if(a==='gen'){GEN=findGen(b.dataset.g);T=null;S=null;render();window.scrollTo(0,0);return}
+ if(a==='open'){T=GEN.tasks.filter(function(t){return t.id===b.dataset.t})[0];LV=+b.dataset.l||2;load();render();window.scrollTo(0,0);return}
  if(!S)return;
  if(a==='go'){go(+b.dataset.i);return}
  if(a==='next'){if(S.st<6)go(S.st+1);return}
- if(a==='idea'){var q=b.dataset.q,c=b.dataset.c,l=S.ideas[q]=S.ideas[q]||[],i=l.indexOf(c);if(i>=0)l.splice(i,1);else l.push(c);save();render();return}
- if(a==='addidea'){var q2=b.dataset.q,inp=document.getElementById('own-'+q2),v=inp&&inp.value.trim();if(!v)return;(S.own[q2]=S.own[q2]||[]).push(v);(S.ideas[q2]=S.ideas[q2]||[]).push(v);save();render();return}
- if(a==='qz'){S.qz[b.dataset.i]=b.dataset.v;save();render();return}
- if(a==='nb'){S.nb[b.dataset.k]=!S.nb[b.dataset.k];save();render();return}
- if(a==='ck'){S.ck[b.dataset.i]=!S.ck[b.dataset.i];save();render();return}
- if(a==='lvl'){S.lvl=+b.dataset.v;save();render();return}
- if(a==='settitle'){S.dr.title=b.dataset.v;save();render();return}
- if(a==='ins'){var el=b.dataset.t?document.getElementById(b.dataset.t):last;if(el&&el.id&&el.id.indexOf('pl-')===0&&el.value.trim()){el.value=el.value.trim()+'، '+b.dataset.v;el.dispatchEvent(new Event('input',{bubbles:true}));return}insert(el,b.dataset.v);return}
- if(a==='recheck'){render();return}
- if(a==='publish'){var text=[S.dr.p1,S.dr.p2,S.dr.p3].map(function(x){return x.trim()}).join('\n\n');
-  send({t:'code',k:'WRT',c:JSON.stringify({title:S.dr.title,text:text,r:'ورشة الكتابة · '+D.genre,task:T.id,lvl:S.lvl,v1:S.v1?[S.v1.p1,S.v1.p2,S.v1.p3].join('\n\n'):'',ck:D.check.map(function(_,i){return S.ck[i]?1:0}),nb:S.nb,plan:S.plan})});
-  send({t:'ws',k:T.id,v:words(text).length});S.sent=(S.sent||0)+1;save();render();return}
+ if(a==='idea'){var q=b.dataset.q,c=b.dataset.c,l=S.ideas[q]=S.ideas[q]||[],i=l.indexOf(c);if(i>=0)l.splice(i,1);else l.push(c);save();keep();return}
+ if(a==='reveal'){S.rev[b.dataset.q]=1;save();keep();return}
+ if(a==='addidea'){var q2=b.dataset.q,inp=document.getElementById('own-'+q2),v=inp&&inp.value.trim();if(!v)return;(S.own[q2]=S.own[q2]||[]).push(v);(S.ideas[q2]=S.ideas[q2]||[]).push(v);save();keep();return}
+ if(a==='qz'){S.qz[b.dataset.i]=b.dataset.v;save();keep();return}
+ if(a==='nb'){S.nb[b.dataset.k]=!S.nb[b.dataset.k];save();keep();return}
+ if(a==='ck'){S.ck[b.dataset.i]=!S.ck[b.dataset.i];save();keep();return}
+ if(a==='setpart'){S.dr[b.dataset.p]=b.dataset.v;save();keep();return}
+ if(a==='addfr'){var box=b.closest('.fr2'),f=T.frames[b.dataset.p][+b.dataset.i],sels=box.querySelectorAll('select'),bits=f.s.split('____'),out='';bits.forEach(function(x,j){out+=x;if(j<bits.length-1)out+=(sels[j]&&sels[j].value)||'____'});
+  var el=document.getElementById('dr-'+b.dataset.p);if(el){el.focus();try{el.setSelectionRange(el.value.length,el.value.length)}catch(x){}insert(el,out.trim())}return}
+ if(a==='ins'){var el2=b.dataset.t?document.getElementById(b.dataset.t):last;if(el2&&el2.id&&el2.id.indexOf('pl-')===0&&el2.value.trim()){el2.value=el2.value.trim()+'، '+b.dataset.v;el2.dispatchEvent(new Event('input',{bubbles:true}));return}insert(el2,b.dataset.v);return}
+ if(a==='recheck'){keep();return}
+ if(a==='publish'){var text=PARTS().map(function(p){return (S.dr[p.id]||'').trim()}).filter(Boolean).join('\n\n');
+  send({t:'code',k:'WRT',c:JSON.stringify({title:S.dr.title||T.title,text:text,r:'ورشة الكتابة · '+GEN.name,genre:GEN.id,task:T.id,lvl:LV,v1:S.v1?PARTS().map(function(p){return S.v1[p.id]||''}).join('\n\n'):'',ck:checks().map(function(c){return S.ck[GEN.check.indexOf(c)]?1:0}),nb:S.nb,plan:S.plan})});
+  send({t:'ws',k:T.id+'-L'+LV,v:words(text).length});S.sent=(S.sent||0)+1;save();keep();return}
 });
+function keep(){var y=window.pageYOffset||0;render();window.scrollTo(0,y)}
 
 render();
-if(G)Promise.all([fetch('write-data/ws-'+G+'.json',{cache:'no-store'}).then(function(r){if(!r.ok)throw 0;return r.json()}),fetch('write-data/dict.json').then(function(r){return r.json()}).catch(function(){return []})]).then(function(x){D=x[0];DICT={};x[1].forEach(function(w){DICT[w]=1});render()}).catch(function(){$app.innerHTML=top()+'<h1>🧩 ورشة الكتابة</h1><div class="card"><p>ورشة الكتابة لصفك قيد الإعداد. التجربة الأولى للصف الرابع.</p></div>'});
+if(G)Promise.all([fetch('write-data/ws-'+G+'.json',{cache:'no-store'}).then(function(r){if(!r.ok)throw 0;return r.json()}),fetch('write-data/dict.json').then(function(r){return r.json()}).catch(function(){return []})]).then(function(x){D=x[0];DICT={};x[1].forEach(function(w){DICT[w]=1});var gq=qs.get('w');if(gq)GEN=findGen(gq)||null;render()}).catch(function(){$app.innerHTML=top()+'<h1>🧩 ورشة الكتابة</h1><div class="card"><p>ورشة الكتابة لصفك قيد الإعداد.</p></div>'});
 })();
 </script>
 <script src="brand.js"></script>
