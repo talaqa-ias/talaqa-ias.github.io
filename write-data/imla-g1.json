@@ -14,39 +14,42 @@
 "w": "[بَ]ابٌ",
 "say": "بَابٌ",
 "e": "🚪",
-"au": "write-data/imla-audio/g1/g1-u1-x0.mp3"
+"au": "write-data/imla-audio/g1/g1-u1-x0w.mp3"
 },
 {
 "w": "حَ[بْ]لٌ",
 "say": "حَبْلٌ",
 "e": "🪢",
-"au": "write-data/imla-audio/g1/g1-u1-x1.mp3"
+"au": "write-data/imla-audio/g1/g1-u1-x1w.mp3"
 },
 {
 "w": "كَلْ[بٌ]",
 "say": "كَلْبٌ",
 "e": "🐕",
-"au": "write-data/imla-audio/g1/g1-u1-x2.mp3"
+"au": "write-data/imla-audio/g1/g1-u1-x2w.mp3"
 },
 {
 "w": "[عَ]يْنٌ",
 "say": "عَيْنٌ",
 "e": "👁️",
-"au": "write-data/imla-audio/g1/g1-u1-x3.mp3"
+"au": "write-data/imla-audio/g1/g1-u1-x3w.mp3"
 },
 {
 "w": "شَ[عْ]رٌ",
 "say": "شَعْرٌ",
 "e": "💇",
-"au": "write-data/imla-audio/g1/g1-u1-x4.mp3"
+"au": "write-data/imla-audio/g1/g1-u1-x4w.mp3"
 },
 {
 "w": "زَرْ[عٌ]",
 "say": "زَرْعٌ",
 "e": "🌱",
-"au": "write-data/imla-audio/g1/g1-u1-x5.mp3"
+"au": "write-data/imla-audio/g1/g1-u1-x5w.mp3"
 }
-]
+],
+"ntext": "مَرْحَبًا يَا بَطَلُ! دَرْسُنَا الْيَوْمَ: أَشْكَالُ الْحَرْفِ فِي أَوَّلِ الْكَلِمَةِ وَوَسَطِهَا وَآخِرِهَا. يَتَغَيَّرُ شَكْلُ الْحَرْفِ فِي الْكَلِمَةِ. لَهُ شَكْلٌ فِي أَوَّلِهَا، وَفِي وَسَطِهَا، وَفِي آخِرِهَا. وَهُوَ الْحَرْفُ نَفْسُهُ. وَمِنْ أَمْثِلَةِ الدَّرْسِ: بَابٌ، وَحَبْلٌ، وَكَلْبٌ. أَسْمَعُ الصَّوْتَ، ثُمَّ أَسْأَلُ: أَيْنَ مَكَانُ الْحَرْفِ فِي الْكَلِمَةِ؟ هَيَّا نَتَدَرَّبُ مَعًا!",
+"nau": "write-data/imla-audio/g1/g1-u1-narr.mp3",
+"nv": 3
 },
 "items": [
 {
@@ -155,7 +158,7 @@
 "ن"
 ],
 "a": 0,
-"au": "write-data/imla-audio/g1/g1-u1-8.mp3"
+"au": "write-data/imla-audio/g1/g1-u1-8w.mp3"
 },
 {
 "t": "fill",
@@ -167,7 +170,7 @@
 "ي"
 ],
 "a": 0,
-"au": "write-data/imla-audio/g1/g1-u1-9.mp3"
+"au": "write-data/imla-audio/g1/g1-u1-9w.mp3"
 },
 {
 "t": "fill",
@@ -191,7 +194,7 @@
 "أ"
 ],
 "a": 0,
-"au": "write-data/imla-audio/g1/g1-u1-11.mp3"
+"au": "write-data/imla-audio/g1/g1-u1-11w.mp3"
 },
 {
 "t": "fill",
@@ -227,7 +230,7 @@
 "خ"
 ],
 "a": 0,
-"au": "write-data/imla-audio/g1/g1-u1-14.mp3"
+"au": "write-data/imla-audio/g1/g1-u1-14w.mp3"
 },
 {
 "t": "fill",
@@ -246,42 +249,42 @@
 "say": "تَمْرٌ",
 "ans": "تمر",
 "mode": "see",
-"au": "write-data/imla-audio/g1/g1-u1-16.mp3"
+"au": "write-data/imla-audio/g1/g1-u1-16w.mp3"
 },
 {
 "t": "dict",
 "say": "عِنَبٌ",
 "ans": "عنب",
 "mode": "see",
-"au": "write-data/imla-audio/g1/g1-u1-17.mp3"
+"au": "write-data/imla-audio/g1/g1-u1-17w.mp3"
 },
 {
 "t": "dict",
 "say": "قَمَرٌ",
 "ans": "قمر",
 "mode": "see",
-"au": "write-data/imla-audio/g1/g1-u1-18.mp3"
+"au": "write-data/imla-audio/g1/g1-u1-18w.mp3"
 },
 {
 "t": "dict",
 "say": "بَحْرٌ",
 "ans": "بحر",
 "mode": "hear",
-"au": "write-data/imla-audio/g1/g1-u1-19.mp3"
+"au": "write-data/imla-audio/g1/g1-u1-19w.mp3"
 },
 {
 "t": "dict",
 "say": "خُبْزٌ",
 "ans": "خبز",
 "mode": "hear",
-"au": "write-data/imla-audio/g1/g1-u1-20.mp3"
+"au": "write-data/imla-audio/g1/g1-u1-20w.mp3"
 },
 {
 "t": "dict",
 "say": "حَلِيبٌ",
 "ans": "حليب",
 "mode": "hear",
-"au": "write-data/imla-audio/g1/g1-u1-21.mp3"
+"au": "write-data/imla-audio/g1/g1-u1-21w.mp3"
 },
 {
 "t": "sent",
@@ -296,7 +299,8 @@
 "au": "write-data/imla-audio/g1/g1-u1-23.mp3"
 }
 ],
-"done": 1
+"done": 1,
+"wc": 1
 },
 {
 "id": "g1-u2",
@@ -311,39 +315,42 @@
 "w": "[بَ]طَّةٌ",
 "say": "بَطَّةٌ",
 "e": "🦆",
-"au": "write-data/imla-audio/g1/g1-u2-x0.mp3"
+"au": "write-data/imla-audio/g1/g1-u2-x0w.mp3"
 },
 {
 "w": "[قَ]مَرٌ",
 "say": "قَمَرٌ",
 "e": "🌙",
-"au": "write-data/imla-audio/g1/g1-u2-x1.mp3"
+"au": "write-data/imla-audio/g1/g1-u2-x1w.mp3"
 },
 {
 "w": "[دُ]بٌّ",
 "say": "دُبٌّ",
 "e": "🐻",
-"au": "write-data/imla-audio/g1/g1-u2-x2.mp3"
+"au": "write-data/imla-audio/g1/g1-u2-x2w.mp3"
 },
 {
 "w": "[كُ]رَةٌ",
 "say": "كُرَةٌ",
 "e": "⚽",
-"au": "write-data/imla-audio/g1/g1-u2-x3.mp3"
+"au": "write-data/imla-audio/g1/g1-u2-x3w.mp3"
 },
 {
 "w": "[عِ]نَبٌ",
 "say": "عِنَبٌ",
 "e": "🍇",
-"au": "write-data/imla-audio/g1/g1-u2-x4.mp3"
+"au": "write-data/imla-audio/g1/g1-u2-x4w.mp3"
 },
 {
 "w": "[جِ]سْرٌ",
 "say": "جِسْرٌ",
 "e": "🌉",
-"au": "write-data/imla-audio/g1/g1-u2-x5.mp3"
+"au": "write-data/imla-audio/g1/g1-u2-x5w.mp3"
 }
-]
+],
+"ntext": "مَرْحَبًا يَا بَطَلُ! دَرْسُنَا الْيَوْمَ: الْحَرَكَاتُ الْقَصِيرَةُ: الْفَتْحَةُ وَالضَّمَّةُ وَالْكَسْرَةُ. الْفَتْحَةُ خَطٌّ صَغِيرٌ فَوْقَ الْحَرْفِ: بَ. الضَّمَّةُ وَاوٌ صَغِيرَةٌ فَوْقَ الْحَرْفِ: بُ. الْكَسْرَةُ خَطٌّ صَغِيرٌ تَحْتَ الْحَرْفِ: بِ. وَمِنْ أَمْثِلَةِ الدَّرْسِ: بَطَّةٌ، وَقَمَرٌ، وَدُبٌّ. فَمِي يَنْفَتِحُ مَعَ الْفَتْحَةِ، وَيَنْضَمُّ مَعَ الضَّمَّةِ، وَيَنْزِلُ مَعَ الْكَسْرَةِ. هَيَّا نَتَدَرَّبُ مَعًا!",
+"nau": "write-data/imla-audio/g1/g1-u2-narr.mp3",
+"nv": 3
 },
 "items": [
 {
@@ -452,7 +459,7 @@
 "قِ"
 ],
 "a": 0,
-"au": "write-data/imla-audio/g1/g1-u2-8.mp3"
+"au": "write-data/imla-audio/g1/g1-u2-8w.mp3"
 },
 {
 "t": "fill",
@@ -464,7 +471,7 @@
 "دِ"
 ],
 "a": 0,
-"au": "write-data/imla-audio/g1/g1-u2-9.mp3"
+"au": "write-data/imla-audio/g1/g1-u2-9w.mp3"
 },
 {
 "t": "fill",
@@ -476,7 +483,7 @@
 "عُ"
 ],
 "a": 0,
-"au": "write-data/imla-audio/g1/g1-u2-10.mp3"
+"au": "write-data/imla-audio/g1/g1-u2-10w.mp3"
 },
 {
 "t": "fill",
@@ -488,7 +495,7 @@
 "بِ"
 ],
 "a": 0,
-"au": "write-data/imla-audio/g1/g1-u2-11.mp3"
+"au": "write-data/imla-audio/g1/g1-u2-11w.mp3"
 },
 {
 "t": "fill",
@@ -500,7 +507,7 @@
 "كِ"
 ],
 "a": 0,
-"au": "write-data/imla-audio/g1/g1-u2-12.mp3"
+"au": "write-data/imla-audio/g1/g1-u2-12w.mp3"
 },
 {
 "t": "fill",
@@ -512,7 +519,7 @@
 "جُ"
 ],
 "a": 0,
-"au": "write-data/imla-audio/g1/g1-u2-13.mp3"
+"au": "write-data/imla-audio/g1/g1-u2-13w.mp3"
 },
 {
 "t": "fill",
@@ -524,7 +531,7 @@
 "مِ"
 ],
 "a": 0,
-"au": "write-data/imla-audio/g1/g1-u2-14.mp3"
+"au": "write-data/imla-audio/g1/g1-u2-14w.mp3"
 },
 {
 "t": "fill",
@@ -536,49 +543,49 @@
 "مُ"
 ],
 "a": 0,
-"au": "write-data/imla-audio/g1/g1-u2-15.mp3"
+"au": "write-data/imla-audio/g1/g1-u2-15w.mp3"
 },
 {
 "t": "dict",
 "say": "وَلَدٌ",
 "ans": "ولد",
 "mode": "see",
-"au": "write-data/imla-audio/g1/g1-u2-16.mp3"
+"au": "write-data/imla-audio/g1/g1-u2-16w.mp3"
 },
 {
 "t": "dict",
 "say": "أَسَدٌ",
 "ans": "أسد",
 "mode": "see",
-"au": "write-data/imla-audio/g1/g1-u2-17.mp3"
+"au": "write-data/imla-audio/g1/g1-u2-17w.mp3"
 },
 {
 "t": "dict",
 "say": "جَمَلٌ",
 "ans": "جمل",
 "mode": "see",
-"au": "write-data/imla-audio/g1/g1-u2-18.mp3"
+"au": "write-data/imla-audio/g1/g1-u2-18w.mp3"
 },
 {
 "t": "dict",
 "say": "رُطَبٌ",
 "ans": "رطب",
 "mode": "hear",
-"au": "write-data/imla-audio/g1/g1-u2-19.mp3"
+"au": "write-data/imla-audio/g1/g1-u2-19w.mp3"
 },
 {
 "t": "dict",
 "say": "كَتَبَ",
 "ans": "كتب",
 "mode": "hear",
-"au": "write-data/imla-audio/g1/g1-u2-20.mp3"
+"au": "write-data/imla-audio/g1/g1-u2-20w.mp3"
 },
 {
 "t": "dict",
 "say": "شَجَرٌ",
 "ans": "شجر",
 "mode": "hear",
-"au": "write-data/imla-audio/g1/g1-u2-21.mp3"
+"au": "write-data/imla-audio/g1/g1-u2-21w.mp3"
 },
 {
 "t": "sent",
@@ -593,7 +600,8 @@
 "au": "write-data/imla-audio/g1/g1-u2-23.mp3"
 }
 ],
-"done": 1
+"done": 1,
+"wc": 1
 },
 {
 "id": "g1-u3",
@@ -608,39 +616,42 @@
 "w": "[يَدٌ]",
 "say": "يَدٌ",
 "e": "✋",
-"au": "write-data/imla-audio/g1/g1-u3-x0.mp3"
+"au": "write-data/imla-audio/g1/g1-u3-x0w.mp3"
 },
 {
 "w": "[فَمٌ]",
 "say": "فَمٌ",
 "e": "👄",
-"au": "write-data/imla-audio/g1/g1-u3-x1.mp3"
+"au": "write-data/imla-audio/g1/g1-u3-x1w.mp3"
 },
 {
 "w": "[أَبٌ]",
 "say": "أَبٌ",
 "e": "👨",
-"au": "write-data/imla-audio/g1/g1-u3-x2.mp3"
+"au": "write-data/imla-audio/g1/g1-u3-x2w.mp3"
 },
 {
 "w": "[قَلَمٌ]",
 "say": "قَلَمٌ",
 "e": "✏️",
-"au": "write-data/imla-audio/g1/g1-u3-x3.mp3"
+"au": "write-data/imla-audio/g1/g1-u3-x3w.mp3"
 },
 {
 "w": "[بَيْتٌ]",
 "say": "بَيْتٌ",
 "e": "🏠",
-"au": "write-data/imla-audio/g1/g1-u3-x4.mp3"
+"au": "write-data/imla-audio/g1/g1-u3-x4w.mp3"
 },
 {
 "w": "[وَرْدٌ]",
 "say": "وَرْدٌ",
 "e": "🌹",
-"au": "write-data/imla-audio/g1/g1-u3-x5.mp3"
+"au": "write-data/imla-audio/g1/g1-u3-x5w.mp3"
 }
-]
+],
+"ntext": "مَرْحَبًا يَا بَطَلُ! دَرْسُنَا الْيَوْمَ: أَكْتُبُ كَلِمَاتٍ مِنْ حَرْفَيْنِ وَثَلَاثَةِ أَحْرُفٍ. أَسْمَعُ الْكَلِمَةَ جَيِّدًا. أَعُدُّ أَصْوَاتَهَا. أَكْتُبُ حَرْفًا لِكُلِّ صَوْتٍ. وَمِنْ أَمْثِلَةِ الدَّرْسِ: يَدٌ، وَفَمٌ، وَأَبٌ. أُصَفِّقُ مَعَ كُلِّ صَوْتٍ، ثُمَّ أَعُدُّ الْحُرُوفَ. هَيَّا نَتَدَرَّبُ مَعًا!",
+"nau": "write-data/imla-audio/g1/g1-u3-narr.mp3",
+"nv": 3
 },
 "items": [
 {
@@ -749,7 +760,7 @@
 "ن"
 ],
 "a": 0,
-"au": "write-data/imla-audio/g1/g1-u3-8.mp3"
+"au": "write-data/imla-audio/g1/g1-u3-8w.mp3"
 },
 {
 "t": "fill",
@@ -761,7 +772,7 @@
 "ل"
 ],
 "a": 0,
-"au": "write-data/imla-audio/g1/g1-u3-9.mp3"
+"au": "write-data/imla-audio/g1/g1-u3-9w.mp3"
 },
 {
 "t": "fill",
@@ -773,7 +784,7 @@
 "ج"
 ],
 "a": 0,
-"au": "write-data/imla-audio/g1/g1-u3-10.mp3"
+"au": "write-data/imla-audio/g1/g1-u3-10w.mp3"
 },
 {
 "t": "fill",
@@ -785,7 +796,7 @@
 "ن"
 ],
 "a": 0,
-"au": "write-data/imla-audio/g1/g1-u3-11.mp3"
+"au": "write-data/imla-audio/g1/g1-u3-11w.mp3"
 },
 {
 "t": "fill",
@@ -797,7 +808,7 @@
 "و"
 ],
 "a": 0,
-"au": "write-data/imla-audio/g1/g1-u3-12.mp3"
+"au": "write-data/imla-audio/g1/g1-u3-12w.mp3"
 },
 {
 "t": "fill",
@@ -809,7 +820,7 @@
 "ت"
 ],
 "a": 0,
-"au": "write-data/imla-audio/g1/g1-u3-13.mp3"
+"au": "write-data/imla-audio/g1/g1-u3-13w.mp3"
 },
 {
 "t": "fill",
@@ -821,7 +832,7 @@
 "د"
 ],
 "a": 0,
-"au": "write-data/imla-audio/g1/g1-u3-14.mp3"
+"au": "write-data/imla-audio/g1/g1-u3-14w.mp3"
 },
 {
 "t": "fill",
@@ -833,49 +844,49 @@
 "ص"
 ],
 "a": 0,
-"au": "write-data/imla-audio/g1/g1-u3-15.mp3"
+"au": "write-data/imla-audio/g1/g1-u3-15w.mp3"
 },
 {
 "t": "dict",
 "say": "أُمٌّ",
 "ans": "أم",
 "mode": "see",
-"au": "write-data/imla-audio/g1/g1-u3-16.mp3"
+"au": "write-data/imla-audio/g1/g1-u3-16w.mp3"
 },
 {
 "t": "dict",
 "say": "نَهْرٌ",
 "ans": "نهر",
 "mode": "see",
-"au": "write-data/imla-audio/g1/g1-u3-17.mp3"
+"au": "write-data/imla-audio/g1/g1-u3-17w.mp3"
 },
 {
 "t": "dict",
 "say": "عَسَلٌ",
 "ans": "عسل",
 "mode": "see",
-"au": "write-data/imla-audio/g1/g1-u3-18.mp3"
+"au": "write-data/imla-audio/g1/g1-u3-18w.mp3"
 },
 {
 "t": "dict",
 "say": "فِيلٌ",
 "ans": "فيل",
 "mode": "hear",
-"au": "write-data/imla-audio/g1/g1-u3-19.mp3"
+"au": "write-data/imla-audio/g1/g1-u3-19w.mp3"
 },
 {
 "t": "dict",
 "say": "دِيكٌ",
 "ans": "ديك",
 "mode": "hear",
-"au": "write-data/imla-audio/g1/g1-u3-20.mp3"
+"au": "write-data/imla-audio/g1/g1-u3-20w.mp3"
 },
 {
 "t": "dict",
 "say": "لَبَنٌ",
 "ans": "لبن",
 "mode": "hear",
-"au": "write-data/imla-audio/g1/g1-u3-21.mp3"
+"au": "write-data/imla-audio/g1/g1-u3-21w.mp3"
 },
 {
 "t": "sent",
@@ -890,7 +901,8 @@
 "au": "write-data/imla-audio/g1/g1-u3-23.mp3"
 }
 ],
-"done": 1
+"done": 1,
+"wc": 1
 },
 {
 "id": "g1-u4",
@@ -905,39 +917,42 @@
 "w": "[نَ]حْلَةٌ",
 "say": "نَحْلَةٌ",
 "e": "🐝",
-"au": "write-data/imla-audio/g1/g1-u4-x0.mp3"
+"au": "write-data/imla-audio/g1/g1-u4-x0w.mp3"
 },
 {
 "w": "[جَ]مَلٌ",
 "say": "جَمَلٌ",
 "e": "🐪",
-"au": "write-data/imla-audio/g1/g1-u4-x1.mp3"
+"au": "write-data/imla-audio/g1/g1-u4-x1w.mp3"
 },
 {
 "w": "[خَ]رُوفٌ",
 "say": "خَرُوفٌ",
 "e": "🐑",
-"au": "write-data/imla-audio/g1/g1-u4-x2.mp3"
+"au": "write-data/imla-audio/g1/g1-u4-x2w.mp3"
 },
 {
 "w": "[ذِ]ئْبٌ",
 "say": "ذِئْبٌ",
 "e": "🐺",
-"au": "write-data/imla-audio/g1/g1-u4-x3.mp3"
+"au": "write-data/imla-audio/g1/g1-u4-x3w.mp3"
 },
 {
 "w": "[ظَ]رْفٌ",
 "say": "ظَرْفٌ",
 "e": "✉️",
-"au": "write-data/imla-audio/g1/g1-u4-x4.mp3"
+"au": "write-data/imla-audio/g1/g1-u4-x4w.mp3"
 },
 {
 "w": "[غَ]يْمَةٌ",
 "say": "غَيْمَةٌ",
 "e": "☁️",
-"au": "write-data/imla-audio/g1/g1-u4-x5.mp3"
+"au": "write-data/imla-audio/g1/g1-u4-x5w.mp3"
 }
-]
+],
+"ntext": "مَرْحَبًا يَا بَطَلُ! دَرْسُنَا الْيَوْمَ: الْحُرُوفُ الْمُتَشَابِهَةُ رَسْمًا. بَعْضُ الْحُرُوفِ لَهَا شَكْلٌ وَاحِدٌ، مِثْلُ: ب ت ث. الْفَرْقُ فِي عَدَدِ النِّقَاطِ وَمَكَانِهَا. أَنْظُرُ إِلَى النِّقَاطِ جَيِّدًا. وَمِنْ أَمْثِلَةِ الدَّرْسِ: نَحْلَةٌ، وَجَمَلٌ، وَخَرُوفٌ. أَسْمَعُ الصَّوْتَ جَيِّدًا، ثُمَّ أَسْأَلُ: كَمْ نُقْطَةً؟ وَأَيْنَ أَضَعُهَا؟ هَيَّا نَتَدَرَّبُ مَعًا!",
+"nau": "write-data/imla-audio/g1/g1-u4-narr.mp3",
+"nv": 3
 },
 "items": [
 {
@@ -1046,7 +1061,7 @@
 "ن"
 ],
 "a": 0,
-"au": "write-data/imla-audio/g1/g1-u4-8.mp3"
+"au": "write-data/imla-audio/g1/g1-u4-8w.mp3"
 },
 {
 "t": "fill",
@@ -1058,7 +1073,7 @@
 "ر"
 ],
 "a": 0,
-"au": "write-data/imla-audio/g1/g1-u4-9.mp3"
+"au": "write-data/imla-audio/g1/g1-u4-9w.mp3"
 },
 {
 "t": "fill",
@@ -1070,7 +1085,7 @@
 "ذ"
 ],
 "a": 0,
-"au": "write-data/imla-audio/g1/g1-u4-10.mp3"
+"au": "write-data/imla-audio/g1/g1-u4-10w.mp3"
 },
 {
 "t": "fill",
@@ -1082,7 +1097,7 @@
 "ج"
 ],
 "a": 0,
-"au": "write-data/imla-audio/g1/g1-u4-11.mp3"
+"au": "write-data/imla-audio/g1/g1-u4-11w.mp3"
 },
 {
 "t": "fill",
@@ -1094,7 +1109,7 @@
 "ث"
 ],
 "a": 0,
-"au": "write-data/imla-audio/g1/g1-u4-12.mp3"
+"au": "write-data/imla-audio/g1/g1-u4-12w.mp3"
 },
 {
 "t": "fill",
@@ -1106,7 +1121,7 @@
 "غ"
 ],
 "a": 0,
-"au": "write-data/imla-audio/g1/g1-u4-13.mp3"
+"au": "write-data/imla-audio/g1/g1-u4-13w.mp3"
 },
 {
 "t": "fill",
@@ -1118,7 +1133,7 @@
 "ض"
 ],
 "a": 0,
-"au": "write-data/imla-audio/g1/g1-u4-14.mp3"
+"au": "write-data/imla-audio/g1/g1-u4-14w.mp3"
 },
 {
 "t": "fill",
@@ -1137,42 +1152,42 @@
 "say": "ثَوْبٌ",
 "ans": "ثوب",
 "mode": "see",
-"au": "write-data/imla-audio/g1/g1-u4-16.mp3"
+"au": "write-data/imla-audio/g1/g1-u4-16w.mp3"
 },
 {
 "t": "dict",
 "say": "نَجْمٌ",
 "ans": "نجم",
 "mode": "see",
-"au": "write-data/imla-audio/g1/g1-u4-17.mp3"
+"au": "write-data/imla-audio/g1/g1-u4-17w.mp3"
 },
 {
 "t": "dict",
 "say": "ذَيْلٌ",
 "ans": "ذيل",
 "mode": "see",
-"au": "write-data/imla-audio/g1/g1-u4-18.mp3"
+"au": "write-data/imla-audio/g1/g1-u4-18w.mp3"
 },
 {
 "t": "dict",
 "say": "خَرُوفٌ",
 "ans": "خروف",
 "mode": "hear",
-"au": "write-data/imla-audio/g1/g1-u4-19.mp3"
+"au": "write-data/imla-audio/g1/g1-u4-19w.mp3"
 },
 {
 "t": "dict",
 "say": "ظُفْرٌ",
 "ans": "ظفر",
 "mode": "hear",
-"au": "write-data/imla-audio/g1/g1-u4-20.mp3"
+"au": "write-data/imla-audio/g1/g1-u4-20w.mp3"
 },
 {
 "t": "dict",
 "say": "قِرْدٌ",
 "ans": "قرد",
 "mode": "hear",
-"au": "write-data/imla-audio/g1/g1-u4-21.mp3"
+"au": "write-data/imla-audio/g1/g1-u4-21w.mp3"
 },
 {
 "t": "sent",
@@ -1187,7 +1202,8 @@
 "au": "write-data/imla-audio/g1/g1-u4-23.mp3"
 }
 ],
-"done": 1
+"done": 1,
+"wc": 1
 },
 {
 "id": "g1-u5",
@@ -1202,39 +1218,42 @@
 "w": "[سَ]مَكٌ",
 "say": "سَمَكٌ",
 "e": "🐟",
-"au": "write-data/imla-audio/g1/g1-u5-x0.mp3"
+"au": "write-data/imla-audio/g1/g1-u5-x0w.mp3"
 },
 {
 "w": "[صَ]قْرٌ",
 "say": "صَقْرٌ",
 "e": "🦅",
-"au": "write-data/imla-audio/g1/g1-u5-x1.mp3"
+"au": "write-data/imla-audio/g1/g1-u5-x1w.mp3"
 },
 {
 "w": "[تُ]فَّاحٌ",
 "say": "تُفَّاحٌ",
 "e": "🍎",
-"au": "write-data/imla-audio/g1/g1-u5-x2.mp3"
+"au": "write-data/imla-audio/g1/g1-u5-x2w.mp3"
 },
 {
 "w": "[طَ]ائِرَةٌ",
 "say": "طَائِرَةٌ",
 "e": "✈️",
-"au": "write-data/imla-audio/g1/g1-u5-x3.mp3"
+"au": "write-data/imla-audio/g1/g1-u5-x3w.mp3"
 },
 {
 "w": "[كَ]لْبٌ",
 "say": "كَلْبٌ",
 "e": "🐕",
-"au": "write-data/imla-audio/g1/g1-u5-x4.mp3"
+"au": "write-data/imla-audio/g1/g1-u5-x4w.mp3"
 },
 {
 "w": "[قَ]لْبٌ",
 "say": "قَلْبٌ",
 "e": "❤️",
-"au": "write-data/imla-audio/g1/g1-u5-x5.mp3"
+"au": "write-data/imla-audio/g1/g1-u5-x5w.mp3"
 }
-]
+],
+"ntext": "مَرْحَبًا يَا بَطَلُ! دَرْسُنَا الْيَوْمَ: الْحُرُوفُ الْمُتَشَابِهَةُ نُطْقًا. بَعْضُ الْحُرُوفِ أَصْوَاتُهَا مُتَقَارِبَةٌ، مِثْلُ: س ص. أَسْمَعُ الصَّوْتَ جَيِّدًا. الصَّوْتُ الثَّقِيلُ يَمْلَأُ الْفَمَ: ص ض ط ظ ق. وَمِنْ أَمْثِلَةِ الدَّرْسِ: سَمَكٌ، وَصَقْرٌ، وَتُفَّاحٌ. أَنْطِقُ الْكَلِمَةَ بِبُطْءٍ: هَلِ الصَّوْتُ خَفِيفٌ أَمْ ثَقِيلٌ؟ هَيَّا نَتَدَرَّبُ مَعًا!",
+"nau": "write-data/imla-audio/g1/g1-u5-narr.mp3",
+"nv": 3
 },
 "items": [
 {
@@ -1343,7 +1362,7 @@
 "ث"
 ],
 "a": 0,
-"au": "write-data/imla-audio/g1/g1-u5-8.mp3"
+"au": "write-data/imla-audio/g1/g1-u5-8w.mp3"
 },
 {
 "t": "fill",
@@ -1355,7 +1374,7 @@
 "د"
 ],
 "a": 0,
-"au": "write-data/imla-audio/g1/g1-u5-9.mp3"
+"au": "write-data/imla-audio/g1/g1-u5-9w.mp3"
 },
 {
 "t": "fill",
@@ -1367,7 +1386,7 @@
 "غ"
 ],
 "a": 0,
-"au": "write-data/imla-audio/g1/g1-u5-10.mp3"
+"au": "write-data/imla-audio/g1/g1-u5-10w.mp3"
 },
 {
 "t": "fill",
@@ -1379,7 +1398,7 @@
 "ع"
 ],
 "a": 0,
-"au": "write-data/imla-audio/g1/g1-u5-11.mp3"
+"au": "write-data/imla-audio/g1/g1-u5-11w.mp3"
 },
 {
 "t": "fill",
@@ -1391,7 +1410,7 @@
 "خ"
 ],
 "a": 0,
-"au": "write-data/imla-audio/g1/g1-u5-12.mp3"
+"au": "write-data/imla-audio/g1/g1-u5-12w.mp3"
 },
 {
 "t": "fill",
@@ -1403,7 +1422,7 @@
 "ء"
 ],
 "a": 0,
-"au": "write-data/imla-audio/g1/g1-u5-13.mp3"
+"au": "write-data/imla-audio/g1/g1-u5-13w.mp3"
 },
 {
 "t": "fill",
@@ -1415,7 +1434,7 @@
 "ظ"
 ],
 "a": 0,
-"au": "write-data/imla-audio/g1/g1-u5-14.mp3"
+"au": "write-data/imla-audio/g1/g1-u5-14w.mp3"
 },
 {
 "t": "fill",
@@ -1434,42 +1453,42 @@
 "say": "صَدِيقٌ",
 "ans": "صديق",
 "mode": "see",
-"au": "write-data/imla-audio/g1/g1-u5-16.mp3"
+"au": "write-data/imla-audio/g1/g1-u5-16w.mp3"
 },
 {
 "t": "dict",
 "say": "طَبْلٌ",
 "ans": "طبل",
 "mode": "see",
-"au": "write-data/imla-audio/g1/g1-u5-17.mp3"
+"au": "write-data/imla-audio/g1/g1-u5-17w.mp3"
 },
 {
 "t": "dict",
 "say": "قِطٌّ",
 "ans": "قط",
 "mode": "see",
-"au": "write-data/imla-audio/g1/g1-u5-18.mp3"
+"au": "write-data/imla-audio/g1/g1-u5-18w.mp3"
 },
 {
 "t": "dict",
 "say": "حُوتٌ",
 "ans": "حوت",
 "mode": "hear",
-"au": "write-data/imla-audio/g1/g1-u5-19.mp3"
+"au": "write-data/imla-audio/g1/g1-u5-19w.mp3"
 },
 {
 "t": "dict",
 "say": "ذَهَبٌ",
 "ans": "ذهب",
 "mode": "hear",
-"au": "write-data/imla-audio/g1/g1-u5-20.mp3"
+"au": "write-data/imla-audio/g1/g1-u5-20w.mp3"
 },
 {
 "t": "dict",
 "say": "عَصِيرٌ",
 "ans": "عصير",
 "mode": "hear",
-"au": "write-data/imla-audio/g1/g1-u5-21.mp3"
+"au": "write-data/imla-audio/g1/g1-u5-21w.mp3"
 },
 {
 "t": "sent",
@@ -1484,7 +1503,8 @@
 "au": "write-data/imla-audio/g1/g1-u5-23.mp3"
 }
 ],
-"done": 1
+"done": 1,
+"wc": 1
 },
 {
 "id": "g1-u6",
@@ -1499,39 +1519,42 @@
 "w": "بَ[ا]بٌ",
 "say": "بَابٌ",
 "e": "🚪",
-"au": "write-data/imla-audio/g1/g1-u6-x0.mp3"
+"au": "write-data/imla-audio/g1/g1-u6-x0w.mp3"
 },
 {
 "w": "حُ[و]تٌ",
 "say": "حُوتٌ",
 "e": "🐋",
-"au": "write-data/imla-audio/g1/g1-u6-x1.mp3"
+"au": "write-data/imla-audio/g1/g1-u6-x1w.mp3"
 },
 {
 "w": "فِ[ي]لٌ",
 "say": "فِيلٌ",
 "e": "🐘",
-"au": "write-data/imla-audio/g1/g1-u6-x2.mp3"
+"au": "write-data/imla-audio/g1/g1-u6-x2w.mp3"
 },
 {
 "w": "كِتَ[ا]بٌ",
 "say": "كِتَابٌ",
 "e": "📖",
-"au": "write-data/imla-audio/g1/g1-u6-x3.mp3"
+"au": "write-data/imla-audio/g1/g1-u6-x3w.mp3"
 },
 {
 "w": "عَصِ[ي]رٌ",
 "say": "عَصِيرٌ",
 "e": "🧃",
-"au": "write-data/imla-audio/g1/g1-u6-x4.mp3"
+"au": "write-data/imla-audio/g1/g1-u6-x4w.mp3"
 },
 {
 "w": "صَارُ[و]خٌ",
 "say": "صَارُوخٌ",
 "e": "🚀",
-"au": "write-data/imla-audio/g1/g1-u6-x5.mp3"
+"au": "write-data/imla-audio/g1/g1-u6-x5w.mp3"
 }
-]
+],
+"ntext": "مَرْحَبًا يَا بَطَلُ! دَرْسُنَا الْيَوْمَ: الْمُدُودُ الثَّلَاثَةُ: الْأَلِفُ وَالْوَاوُ وَالْيَاءُ. الْفَتْحَةُ تَطُولُ فَتَصِيرُ أَلِفًا: بَا. الضَّمَّةُ تَطُولُ فَتَصِيرُ وَاوًا: بُو. الْكَسْرَةُ تَطُولُ فَتَصِيرُ يَاءً: بِي. وَمِنْ أَمْثِلَةِ الدَّرْسِ: بَابٌ، وَحُوتٌ، وَفِيلٌ. إِذَا مَدَدْتُ الصَّوْتَ طَوِيلًا كَتَبْتُ حَرْفَ مَدٍّ، وَإِذَا كَانَ قَصِيرًا كَتَبْتُ حَرَكَةً. هَيَّا نَتَدَرَّبُ مَعًا!",
+"nau": "write-data/imla-audio/g1/g1-u6-narr.mp3",
+"nv": 3
 },
 "items": [
 {
@@ -1640,7 +1663,7 @@
 "ي"
 ],
 "a": 0,
-"au": "write-data/imla-audio/g1/g1-u6-8.mp3"
+"au": "write-data/imla-audio/g1/g1-u6-8w.mp3"
 },
 {
 "t": "fill",
@@ -1652,7 +1675,7 @@
 "ي"
 ],
 "a": 0,
-"au": "write-data/imla-audio/g1/g1-u6-9.mp3"
+"au": "write-data/imla-audio/g1/g1-u6-9w.mp3"
 },
 {
 "t": "fill",
@@ -1664,7 +1687,7 @@
 "و"
 ],
 "a": 0,
-"au": "write-data/imla-audio/g1/g1-u6-10.mp3"
+"au": "write-data/imla-audio/g1/g1-u6-10w.mp3"
 },
 {
 "t": "fill",
@@ -1676,7 +1699,7 @@
 "ا"
 ],
 "a": 0,
-"au": "write-data/imla-audio/g1/g1-u6-11.mp3"
+"au": "write-data/imla-audio/g1/g1-u6-11w.mp3"
 },
 {
 "t": "fill",
@@ -1688,7 +1711,7 @@
 "ي"
 ],
 "a": 0,
-"au": "write-data/imla-audio/g1/g1-u6-12.mp3"
+"au": "write-data/imla-audio/g1/g1-u6-12w.mp3"
 },
 {
 "t": "fill",
@@ -1700,7 +1723,7 @@
 "قُو"
 ],
 "a": 0,
-"au": "write-data/imla-audio/g1/g1-u6-13.mp3"
+"au": "write-data/imla-audio/g1/g1-u6-13w.mp3"
 },
 {
 "t": "fill",
@@ -1712,7 +1735,7 @@
 "مِي"
 ],
 "a": 0,
-"au": "write-data/imla-audio/g1/g1-u6-14.mp3"
+"au": "write-data/imla-audio/g1/g1-u6-14w.mp3"
 },
 {
 "t": "fill",
@@ -1724,49 +1747,49 @@
 "تِي"
 ],
 "a": 0,
-"au": "write-data/imla-audio/g1/g1-u6-15.mp3"
+"au": "write-data/imla-audio/g1/g1-u6-15w.mp3"
 },
 {
 "t": "dict",
 "say": "نَارٌ",
 "ans": "نار",
 "mode": "see",
-"au": "write-data/imla-audio/g1/g1-u6-16.mp3"
+"au": "write-data/imla-audio/g1/g1-u6-16w.mp3"
 },
 {
 "t": "dict",
 "say": "تِينٌ",
 "ans": "تين",
 "mode": "see",
-"au": "write-data/imla-audio/g1/g1-u6-17.mp3"
+"au": "write-data/imla-audio/g1/g1-u6-17w.mp3"
 },
 {
 "t": "dict",
 "say": "فُولٌ",
 "ans": "فول",
 "mode": "see",
-"au": "write-data/imla-audio/g1/g1-u6-18.mp3"
+"au": "write-data/imla-audio/g1/g1-u6-18w.mp3"
 },
 {
 "t": "dict",
 "say": "سُوقٌ",
 "ans": "سوق",
 "mode": "hear",
-"au": "write-data/imla-audio/g1/g1-u6-19.mp3"
+"au": "write-data/imla-audio/g1/g1-u6-19w.mp3"
 },
 {
 "t": "dict",
 "say": "رِيشٌ",
 "ans": "ريش",
 "mode": "hear",
-"au": "write-data/imla-audio/g1/g1-u6-20.mp3"
+"au": "write-data/imla-audio/g1/g1-u6-20w.mp3"
 },
 {
 "t": "dict",
 "say": "صَابُونٌ",
 "ans": "صابون",
 "mode": "hear",
-"au": "write-data/imla-audio/g1/g1-u6-21.mp3"
+"au": "write-data/imla-audio/g1/g1-u6-21w.mp3"
 },
 {
 "t": "sent",
@@ -1781,7 +1804,8 @@
 "au": "write-data/imla-audio/g1/g1-u6-23.mp3"
 }
 ],
-"done": 1
+"done": 1,
+"wc": 1
 },
 {
 "id": "g1-u7",
@@ -1796,39 +1820,42 @@
 "w": "قِ[طٌّ]",
 "say": "قِطٌّ",
 "e": "🐈",
-"au": "write-data/imla-audio/g1/g1-u7-x0.mp3"
+"au": "write-data/imla-audio/g1/g1-u7-x0w.mp3"
 },
 {
 "w": "دُ[بٌّ]",
 "say": "دُبٌّ",
 "e": "🐻",
-"au": "write-data/imla-audio/g1/g1-u7-x1.mp3"
+"au": "write-data/imla-audio/g1/g1-u7-x1w.mp3"
 },
 {
 "w": "بَ[طَّ]ةٌ",
 "say": "بَطَّةٌ",
 "e": "🦆",
-"au": "write-data/imla-audio/g1/g1-u7-x2.mp3"
+"au": "write-data/imla-audio/g1/g1-u7-x2w.mp3"
 },
 {
 "w": "سُ[كَّ]رٌ",
 "say": "سُكَّرٌ",
 "e": "🍬",
-"au": "write-data/imla-audio/g1/g1-u7-x3.mp3"
+"au": "write-data/imla-audio/g1/g1-u7-x3w.mp3"
 },
 {
 "w": "تُ[فَّ]احٌ",
 "say": "تُفَّاحٌ",
 "e": "🍎",
-"au": "write-data/imla-audio/g1/g1-u7-x4.mp3"
+"au": "write-data/imla-audio/g1/g1-u7-x4w.mp3"
 },
 {
 "w": "مُعَ[لِّ]مٌ",
 "say": "مُعَلِّمٌ",
 "e": "👨‍🏫",
-"au": "write-data/imla-audio/g1/g1-u7-x5.mp3"
+"au": "write-data/imla-audio/g1/g1-u7-x5w.mp3"
 }
-]
+],
+"ntext": "مَرْحَبًا يَا بَطَلُ! دَرْسُنَا الْيَوْمَ: الشَّدَّةُ. الشَّدَّةُ عَلَامَةٌ صَغِيرَةٌ فَوْقَ الْحَرْفِ: ـّ. أَسْمَعُ الْحَرْفَ مَرَّتَيْنِ. لَكِنِّي أَكْتُبُهُ مَرَّةً وَاحِدَةً، وَأَضَعُ فَوْقَهُ الشَّدَّةَ. وَمِنْ أَمْثِلَةِ الدَّرْسِ: قِطٌّ، وَدُبٌّ، وَبَطَّةٌ. إِذَا ضَغَطْتُ عَلَى الْحَرْفِ وَسَمِعْتُهُ مَرَّتَيْنِ، أَضَعُ عَلَيْهِ شَدَّةً. هَيَّا نَتَدَرَّبُ مَعًا!",
+"nau": "write-data/imla-audio/g1/g1-u7-narr.mp3",
+"nv": 3
 },
 "items": [
 {
@@ -1961,7 +1988,7 @@
 "د"
 ],
 "a": 0,
-"au": "write-data/imla-audio/g1/g1-u7-10.mp3"
+"au": "write-data/imla-audio/g1/g1-u7-10w.mp3"
 },
 {
 "t": "fill",
@@ -1973,7 +2000,7 @@
 "ك"
 ],
 "a": 0,
-"au": "write-data/imla-audio/g1/g1-u7-11.mp3"
+"au": "write-data/imla-audio/g1/g1-u7-11w.mp3"
 },
 {
 "t": "fill",
@@ -1985,7 +2012,7 @@
 "م"
 ],
 "a": 0,
-"au": "write-data/imla-audio/g1/g1-u7-12.mp3"
+"au": "write-data/imla-audio/g1/g1-u7-12w.mp3"
 },
 {
 "t": "fill",
@@ -1997,7 +2024,7 @@
 "ي"
 ],
 "a": 0,
-"au": "write-data/imla-audio/g1/g1-u7-13.mp3"
+"au": "write-data/imla-audio/g1/g1-u7-13w.mp3"
 },
 {
 "t": "fill",
@@ -2009,7 +2036,7 @@
 "ظ"
 ],
 "a": 0,
-"au": "write-data/imla-audio/g1/g1-u7-14.mp3"
+"au": "write-data/imla-audio/g1/g1-u7-14w.mp3"
 },
 {
 "t": "fill",
@@ -2021,49 +2048,49 @@
 "ل"
 ],
 "a": 0,
-"au": "write-data/imla-audio/g1/g1-u7-15.mp3"
+"au": "write-data/imla-audio/g1/g1-u7-15w.mp3"
 },
 {
 "t": "dict",
 "say": "جَدٌّ",
 "ans": "جد",
 "mode": "see",
-"au": "write-data/imla-audio/g1/g1-u7-16.mp3"
+"au": "write-data/imla-audio/g1/g1-u7-16w.mp3"
 },
 {
 "t": "dict",
 "say": "سُلَّمٌ",
 "ans": "سلم",
 "mode": "see",
-"au": "write-data/imla-audio/g1/g1-u7-17.mp3"
+"au": "write-data/imla-audio/g1/g1-u7-17w.mp3"
 },
 {
 "t": "dict",
 "say": "حَمَّامٌ",
 "ans": "حمام",
 "mode": "see",
-"au": "write-data/imla-audio/g1/g1-u7-18.mp3"
+"au": "write-data/imla-audio/g1/g1-u7-18w.mp3"
 },
 {
 "t": "dict",
 "say": "عَمٌّ",
 "ans": "عم",
 "mode": "hear",
-"au": "write-data/imla-audio/g1/g1-u7-19.mp3"
+"au": "write-data/imla-audio/g1/g1-u7-19w.mp3"
 },
 {
 "t": "dict",
 "say": "شُبَّاكٌ",
 "ans": "شباك",
 "mode": "hear",
-"au": "write-data/imla-audio/g1/g1-u7-20.mp3"
+"au": "write-data/imla-audio/g1/g1-u7-20w.mp3"
 },
 {
 "t": "dict",
 "say": "سِكِّينٌ",
 "ans": "سكين",
 "mode": "hear",
-"au": "write-data/imla-audio/g1/g1-u7-21.mp3"
+"au": "write-data/imla-audio/g1/g1-u7-21w.mp3"
 },
 {
 "t": "sent",
@@ -2078,7 +2105,8 @@
 "au": "write-data/imla-audio/g1/g1-u7-23.mp3"
 }
 ],
-"done": 1
+"done": 1,
+"wc": 1
 },
 {
 "id": "g1-u8",
@@ -2093,39 +2121,42 @@
 "w": "[أَرْنَبٌ]",
 "say": "أَرْنَبٌ",
 "e": "🐇",
-"au": "write-data/imla-audio/g1/g1-u8-x0.mp3"
+"au": "write-data/imla-audio/g1/g1-u8-x0w.mp3"
 },
 {
 "w": "[سَمَكَةٌ]",
 "say": "سَمَكَةٌ",
 "e": "🐠",
-"au": "write-data/imla-audio/g1/g1-u8-x1.mp3"
+"au": "write-data/imla-audio/g1/g1-u8-x1w.mp3"
 },
 {
 "w": "[مِفْتَاحٌ]",
 "say": "مِفْتَاحٌ",
 "e": "🔑",
-"au": "write-data/imla-audio/g1/g1-u8-x2.mp3"
+"au": "write-data/imla-audio/g1/g1-u8-x2w.mp3"
 },
 {
 "w": "[مَدْرَسَةٌ]",
 "say": "مَدْرَسَةٌ",
 "e": "🏫",
-"au": "write-data/imla-audio/g1/g1-u8-x3.mp3"
+"au": "write-data/imla-audio/g1/g1-u8-x3w.mp3"
 },
 {
 "w": "[عُصْفُورٌ]",
 "say": "عُصْفُورٌ",
 "e": "🐦",
-"au": "write-data/imla-audio/g1/g1-u8-x4.mp3"
+"au": "write-data/imla-audio/g1/g1-u8-x4w.mp3"
 },
 {
 "w": "[بُرْتُقَالٌ]",
 "say": "بُرْتُقَالٌ",
 "e": "🍊",
-"au": "write-data/imla-audio/g1/g1-u8-x5.mp3"
+"au": "write-data/imla-audio/g1/g1-u8-x5w.mp3"
 }
-]
+],
+"ntext": "مَرْحَبًا يَا بَطَلُ! دَرْسُنَا الْيَوْمَ: أَكْتُبُ كَلِمَاتٍ مِنْ أَرْبَعَةِ أَحْرُفٍ إِلَى سِتَّةٍ. أُقَسِّمُ الْكَلِمَةَ الطَّوِيلَةَ إِلَى مَقَاطِعَ. أَكْتُبُ كُلَّ مَقْطَعٍ وَحْدَهُ. ثُمَّ أَقْرَأُ الْكَلِمَةَ كُلَّهَا. وَمِنْ أَمْثِلَةِ الدَّرْسِ: أَرْنَبٌ، وَسَمَكَةٌ، وَمِفْتَاحٌ. أُصَفِّقُ مَعَ كُلِّ مَقْطَعٍ، وَأَعُدُّ الْحُرُوفَ بَعْدَ الْكِتَابَةِ. هَيَّا نَتَدَرَّبُ مَعًا!",
+"nau": "write-data/imla-audio/g1/g1-u8-narr.mp3",
+"nv": 3
 },
 "items": [
 {
@@ -2234,7 +2265,7 @@
 "م"
 ],
 "a": 0,
-"au": "write-data/imla-audio/g1/g1-u8-8.mp3"
+"au": "write-data/imla-audio/g1/g1-u8-8w.mp3"
 },
 {
 "t": "fill",
@@ -2246,7 +2277,7 @@
 "ك"
 ],
 "a": 0,
-"au": "write-data/imla-audio/g1/g1-u8-9.mp3"
+"au": "write-data/imla-audio/g1/g1-u8-9w.mp3"
 },
 {
 "t": "fill",
@@ -2258,7 +2289,7 @@
 "ث"
 ],
 "a": 0,
-"au": "write-data/imla-audio/g1/g1-u8-10.mp3"
+"au": "write-data/imla-audio/g1/g1-u8-10w.mp3"
 },
 {
 "t": "fill",
@@ -2270,7 +2301,7 @@
 "د"
 ],
 "a": 0,
-"au": "write-data/imla-audio/g1/g1-u8-11.mp3"
+"au": "write-data/imla-audio/g1/g1-u8-11w.mp3"
 },
 {
 "t": "fill",
@@ -2282,7 +2313,7 @@
 "ث"
 ],
 "a": 0,
-"au": "write-data/imla-audio/g1/g1-u8-12.mp3"
+"au": "write-data/imla-audio/g1/g1-u8-12w.mp3"
 },
 {
 "t": "fill",
@@ -2294,7 +2325,7 @@
 "و"
 ],
 "a": 0,
-"au": "write-data/imla-audio/g1/g1-u8-13.mp3"
+"au": "write-data/imla-audio/g1/g1-u8-13w.mp3"
 },
 {
 "t": "fill",
@@ -2306,7 +2337,7 @@
 "غ"
 ],
 "a": 0,
-"au": "write-data/imla-audio/g1/g1-u8-14.mp3"
+"au": "write-data/imla-audio/g1/g1-u8-14w.mp3"
 },
 {
 "t": "fill",
@@ -2318,49 +2349,49 @@
 "غ"
 ],
 "a": 0,
-"au": "write-data/imla-audio/g1/g1-u8-15.mp3"
+"au": "write-data/imla-audio/g1/g1-u8-15w.mp3"
 },
 {
 "t": "dict",
 "say": "دَفْتَرٌ",
 "ans": "دفتر",
 "mode": "see",
-"au": "write-data/imla-audio/g1/g1-u8-16.mp3"
+"au": "write-data/imla-audio/g1/g1-u8-16w.mp3"
 },
 {
 "t": "dict",
 "say": "كُرْسِيٌّ",
 "ans": "كرسي",
 "mode": "see",
-"au": "write-data/imla-audio/g1/g1-u8-17.mp3"
+"au": "write-data/imla-audio/g1/g1-u8-17w.mp3"
 },
 {
 "t": "dict",
 "say": "قَمِيصٌ",
 "ans": "قميص",
 "mode": "see",
-"au": "write-data/imla-audio/g1/g1-u8-18.mp3"
+"au": "write-data/imla-audio/g1/g1-u8-18w.mp3"
 },
 {
 "t": "dict",
 "say": "مَطْبَخٌ",
 "ans": "مطبخ",
 "mode": "hear",
-"au": "write-data/imla-audio/g1/g1-u8-19.mp3"
+"au": "write-data/imla-audio/g1/g1-u8-19w.mp3"
 },
 {
 "t": "dict",
 "say": "مَلْعَبٌ",
 "ans": "ملعب",
 "mode": "hear",
-"au": "write-data/imla-audio/g1/g1-u8-20.mp3"
+"au": "write-data/imla-audio/g1/g1-u8-20w.mp3"
 },
 {
 "t": "dict",
 "say": "صُنْدُوقٌ",
 "ans": "صندوق",
 "mode": "hear",
-"au": "write-data/imla-audio/g1/g1-u8-21.mp3"
+"au": "write-data/imla-audio/g1/g1-u8-21w.mp3"
 },
 {
 "t": "sent",
@@ -2375,7 +2406,8 @@
 "au": "write-data/imla-audio/g1/g1-u8-23.mp3"
 }
 ],
-"done": 1
+"done": 1,
+"wc": 1
 },
 {
 "id": "g1-u9",
@@ -2422,7 +2454,10 @@
 "e": "🌴",
 "au": "write-data/imla-audio/g1/g1-u9-x5.mp3"
 }
-]
+],
+"ntext": "مَرْحَبًا يَا بَطَلُ! دَرْسُنَا الْيَوْمَ: أَكْتُبُ جُمْلَةً قَصِيرَةً: النُّقْطَةُ وَعَلَامَةُ الِاسْتِفْهَامِ. الْجُمْلَةُ كَلِمَاتٌ بَيْنَهَا مَسَافَاتٌ. فِي آخِرِ الْخَبَرِ أَضَعُ نُقْطَةً. وَفِي آخِرِ السُّؤَالِ أَضَعُ عَلَامَةَ اسْتِفْهَامٍ. وَمِنْ أَمْثِلَةِ الدَّرْسِ: أَنَا طَالِبٌ.، وَبَيْتِي جَمِيلٌ.، وَأُمِّي فِي الْبَيْتِ.. إِذَا سَأَلْتُ بِكَلِمَةٍ مِثْلِ: أَيْنَ، مَنْ، مَا، هَلْ، وَضَعْتُ. هَيَّا نَتَدَرَّبُ مَعًا!",
+"nau": "write-data/imla-audio/g1/g1-u9-narr.mp3",
+"nv": 3
 },
 "items": [
 {
@@ -2664,7 +2699,8 @@
 "au": "write-data/imla-audio/g1/g1-u9-23.mp3"
 }
 ],
-"done": 1
+"done": 1,
+"wc": 1
 },
 {
 "id": "g1-u10",
@@ -2679,39 +2715,42 @@
 "w": "[الشَّ]مْسُ",
 "say": "الشَّمْسُ",
 "e": "☀️",
-"au": "write-data/imla-audio/g1/g1-u10-x0.mp3"
+"au": "write-data/imla-audio/g1/g1-u10-x0w.mp3"
 },
 {
 "w": "[الْقَ]مَرُ",
 "say": "الْقَمَرُ",
 "e": "🌙",
-"au": "write-data/imla-audio/g1/g1-u10-x1.mp3"
+"au": "write-data/imla-audio/g1/g1-u10-x1w.mp3"
 },
 {
 "w": "[النَّ]خْلَةُ",
 "say": "النَّخْلَةُ",
 "e": "🌴",
-"au": "write-data/imla-audio/g1/g1-u10-x2.mp3"
+"au": "write-data/imla-audio/g1/g1-u10-x2w.mp3"
 },
 {
 "w": "[الْبَ]حْرُ",
 "say": "الْبَحْرُ",
 "e": "🌊",
-"au": "write-data/imla-audio/g1/g1-u10-x3.mp3"
+"au": "write-data/imla-audio/g1/g1-u10-x3w.mp3"
 },
 {
 "w": "[السَّ]مَكُ",
 "say": "السَّمَكُ",
 "e": "🐟",
-"au": "write-data/imla-audio/g1/g1-u10-x4.mp3"
+"au": "write-data/imla-audio/g1/g1-u10-x4w.mp3"
 },
 {
 "w": "[الْعَ]لَمُ",
 "say": "الْعَلَمُ",
 "e": "🇦🇪",
-"au": "write-data/imla-audio/g1/g1-u10-x5.mp3"
+"au": "write-data/imla-audio/g1/g1-u10-x5w.mp3"
 }
-]
+],
+"ntext": "مَرْحَبًا يَا بَطَلُ! دَرْسُنَا الْيَوْمَ: اللَّامُ الشَّمْسِيَّةُ وَاللَّامُ الْقَمَرِيَّةُ. اللَّامُ الْقَمَرِيَّةُ نَنْطِقُهَا: الْقَمَرُ. اللَّامُ الشَّمْسِيَّةُ لَا نَنْطِقُهَا: الشَّمْسُ. لَكِنَّنَا نَكْتُبُ اللَّامَ دَائِمًا. وَمِنْ أَمْثِلَةِ الدَّرْسِ: الشَّمْسُ، وَالْقَمَرُ، وَالنَّخْلَةُ. إِذَا سَمِعْتُ الْحَرْفَ الْأَوَّلَ مُضَعَّفًا فَاللَّامُ شَمْسِيَّةٌ، وَأَكْتُبُهَا أَيْضًا. هَيَّا نَتَدَرَّبُ مَعًا!",
+"nau": "write-data/imla-audio/g1/g1-u10-narr.mp3",
+"nv": 3
 },
 "items": [
 {
@@ -2820,7 +2859,7 @@
 "أل"
 ],
 "a": 0,
-"au": "write-data/imla-audio/g1/g1-u10-8.mp3"
+"au": "write-data/imla-audio/g1/g1-u10-8w.mp3"
 },
 {
 "t": "fill",
@@ -2832,7 +2871,7 @@
 "ل"
 ],
 "a": 0,
-"au": "write-data/imla-audio/g1/g1-u10-9.mp3"
+"au": "write-data/imla-audio/g1/g1-u10-9w.mp3"
 },
 {
 "t": "fill",
@@ -2844,7 +2883,7 @@
 "اد"
 ],
 "a": 0,
-"au": "write-data/imla-audio/g1/g1-u10-10.mp3"
+"au": "write-data/imla-audio/g1/g1-u10-10w.mp3"
 },
 {
 "t": "fill",
@@ -2856,7 +2895,7 @@
 "ا"
 ],
 "a": 0,
-"au": "write-data/imla-audio/g1/g1-u10-11.mp3"
+"au": "write-data/imla-audio/g1/g1-u10-11w.mp3"
 },
 {
 "t": "fill",
@@ -2868,7 +2907,7 @@
 "از"
 ],
 "a": 0,
-"au": "write-data/imla-audio/g1/g1-u10-12.mp3"
+"au": "write-data/imla-audio/g1/g1-u10-12w.mp3"
 },
 {
 "t": "fill",
@@ -2880,7 +2919,7 @@
 "أل"
 ],
 "a": 0,
-"au": "write-data/imla-audio/g1/g1-u10-13.mp3"
+"au": "write-data/imla-audio/g1/g1-u10-13w.mp3"
 },
 {
 "t": "fill",
@@ -2892,7 +2931,7 @@
 "ار"
 ],
 "a": 0,
-"au": "write-data/imla-audio/g1/g1-u10-14.mp3"
+"au": "write-data/imla-audio/g1/g1-u10-14w.mp3"
 },
 {
 "t": "fill",
@@ -2904,49 +2943,49 @@
 "ل"
 ],
 "a": 0,
-"au": "write-data/imla-audio/g1/g1-u10-15.mp3"
+"au": "write-data/imla-audio/g1/g1-u10-15w.mp3"
 },
 {
 "t": "dict",
 "say": "النَّارُ",
 "ans": "النار",
 "mode": "see",
-"au": "write-data/imla-audio/g1/g1-u10-16.mp3"
+"au": "write-data/imla-audio/g1/g1-u10-16w.mp3"
 },
 {
 "t": "dict",
 "say": "الْبَيْتُ",
 "ans": "البيت",
 "mode": "see",
-"au": "write-data/imla-audio/g1/g1-u10-17.mp3"
+"au": "write-data/imla-audio/g1/g1-u10-17w.mp3"
 },
 {
 "t": "dict",
 "say": "السُّوقُ",
 "ans": "السوق",
 "mode": "see",
-"au": "write-data/imla-audio/g1/g1-u10-18.mp3"
+"au": "write-data/imla-audio/g1/g1-u10-18w.mp3"
 },
 {
 "t": "dict",
 "say": "الدُّبُّ",
 "ans": "الدب",
 "mode": "hear",
-"au": "write-data/imla-audio/g1/g1-u10-19.mp3"
+"au": "write-data/imla-audio/g1/g1-u10-19w.mp3"
 },
 {
 "t": "dict",
 "say": "الْمَطَرُ",
 "ans": "المطر",
 "mode": "hear",
-"au": "write-data/imla-audio/g1/g1-u10-20.mp3"
+"au": "write-data/imla-audio/g1/g1-u10-20w.mp3"
 },
 {
 "t": "dict",
 "say": "الشَّجَرُ",
 "ans": "الشجر",
 "mode": "hear",
-"au": "write-data/imla-audio/g1/g1-u10-21.mp3"
+"au": "write-data/imla-audio/g1/g1-u10-21w.mp3"
 },
 {
 "t": "sent",
@@ -2961,7 +3000,8 @@
 "au": "write-data/imla-audio/g1/g1-u10-23.mp3"
 }
 ],
-"done": 1
+"done": 1,
+"wc": 1
 },
 {
 "id": "g1-u11",
@@ -3008,7 +3048,10 @@
 "e": "🐎",
 "au": "write-data/imla-audio/g1/g1-u11-x5.mp3"
 }
-]
+],
+"ntext": "مَرْحَبًا يَا بَطَلُ! دَرْسُنَا الْيَوْمَ: التَّنْوِينُ وَالنُّونُ. التَّنْوِينُ نُونٌ نَسْمَعُهَا وَلَا نَكْتُبُهَا: كِتَابٌ. نَكْتُبُ بَدَلَهَا حَرَكَتَيْنِ، مِثْلَ: ـٌ ـٍ ـً. أَمَّا النُّونُ الْحَقِيقِيَّةُ فَنَكْتُبُهَا حَرْفًا: لَبَنٌ. وَمِنْ أَمْثِلَةِ الدَّرْسِ: كِتَابٌ، وَبَيْتٍ، وَقَلَمًا. إِذَا وَقَفْتُ عَلَى الْكَلِمَةِ وَبَقِيَتِ النُّونُ فَهِيَ حَرْفٌ، وَإِذَا اخْتَفَتْ فَهِيَ تَنْوِينٌ. هَيَّا نَتَدَرَّبُ مَعًا!",
+"nau": "write-data/imla-audio/g1/g1-u11-narr.mp3",
+"nv": 3
 },
 "items": [
 {
@@ -3258,7 +3301,8 @@
 "au": "write-data/imla-audio/g1/g1-u11-23.mp3"
 }
 ],
-"done": 1
+"done": 1,
+"wc": 1
 }
 ]
 }

@@ -138,7 +138,8 @@
 ],
 "au": "listen-data/audio/b-y4/b-y4-1a-text.mp3",
 "tau": "listen-data/audio/b-y4/b-y4-1a-title.mp3",
-"done": "ar-QA-AmalNeural"
+"done": "ar-QA-AmalNeural",
+"wc": 1
 },
 {
 "id": "b-y4-1b",
@@ -316,7 +317,8 @@
 ],
 "au": "listen-data/audio/b-y4/b-y4-1b-text.mp3",
 "tau": "listen-data/audio/b-y4/b-y4-1b-title.mp3",
-"done": "ar-QA-AmalNeural"
+"done": "ar-QA-AmalNeural",
+"wc": 1
 },
 {
 "id": "b-y4-2a",
@@ -460,7 +462,8 @@
 ],
 "au": "listen-data/audio/b-y4/b-y4-2a-text.mp3",
 "tau": "listen-data/audio/b-y4/b-y4-2a-title.mp3",
-"done": "ar-QA-AmalNeural"
+"done": "ar-QA-AmalNeural",
+"wc": 1
 },
 {
 "id": "b-y4-2b",
@@ -654,7 +657,8 @@
 ],
 "au": "listen-data/audio/b-y4/b-y4-2b-text.mp3",
 "tau": "listen-data/audio/b-y4/b-y4-2b-title.mp3",
-"done": "ar-QA-AmalNeural"
+"done": "ar-QA-AmalNeural",
+"wc": 1
 },
 {
 "id": "b-y4-3a",
@@ -794,7 +798,8 @@
 ],
 "au": "listen-data/audio/b-y4/b-y4-3a-text.mp3",
 "tau": "listen-data/audio/b-y4/b-y4-3a-title.mp3",
-"done": "ar-QA-AmalNeural"
+"done": "ar-QA-AmalNeural",
+"wc": 1
 },
 {
 "id": "b-y4-3b",
@@ -934,7 +939,8 @@
 ],
 "au": "listen-data/audio/b-y4/b-y4-3b-text.mp3",
 "tau": "listen-data/audio/b-y4/b-y4-3b-title.mp3",
-"done": "ar-QA-AmalNeural"
+"done": "ar-QA-AmalNeural",
+"wc": 1
 }
 ],
 "set": "b-y4",
