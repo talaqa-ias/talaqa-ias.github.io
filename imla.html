@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>طلاقة · سلّم الإملاء</title>
+<link rel="icon" href="img/icon.png">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Baloo+Bhaijaan+2:wght@500;700;800&family=Noto+Naskh+Arabic:wght@500;700&display=swap');
+:root{--bg:#EAF6FF;--card:#FFFFFF;--ink:#1D2B4F;--muted:#5B6B8C;--line:#D3E4F5;--soft:#FFF4D1;--sky:#2F9BF0;--grass:#22B866;--sun:#FFC83D;--coral:#FF6B6B;--grape:#8E5CF7;--ok-soft:#DDF7E8;--bad-soft:#FFE3E3;
+ --ui:"Baloo Bhaijaan 2","Segoe UI",Tahoma,sans-serif;--read:"Noto Naskh Arabic","Traditional Arabic",serif;color-scheme:light}
+html,body{background:var(--bg);color:var(--ink)}
+body{margin:0;font-family:var(--ui);font-size:17px;line-height:1.55;direction:rtl;padding-inline:16px;padding-block:0 120px}
+*{box-sizing:border-box}#app{max-width:820px;margin-inline:auto}
+button,input,textarea{font:inherit;color:inherit}button{cursor:pointer}
+:focus-visible{outline:4px solid var(--sun);outline-offset:2px}
+h1{font-size:1.8rem;margin:6px 0 2px;font-weight:800}h2{font-size:1.3rem;margin:0 0 8px;font-weight:800}
+.lead{color:var(--muted);margin:0 0 12px}.note{color:var(--muted);font-size:.95rem}
+.top{display:flex;align-items:center;gap:8px;padding-block:14px;flex-wrap:wrap}
+.chip{border:2px solid var(--line);background:#fff;border-radius:999px;padding:6px 14px;font-weight:700;text-decoration:none;color:var(--ink)}
+.card{background:var(--card);border:2px solid var(--line);border-radius:22px;padding:16px;margin:12px 0;box-shadow:0 5px 0 var(--line)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:0;border-radius:18px;padding:12px 22px;font-weight:800;font-size:1.1rem;background:var(--grass);color:#fff;min-height:52px;box-shadow:0 5px 0 #168A4B}
+.btn.alt{background:#fff;color:var(--ink);border:2px solid var(--line);box-shadow:0 4px 0 var(--line)}
+.btn.sm{min-height:40px;padding:6px 14px;font-size:.95rem;border-radius:12px;box-shadow:0 3px 0 #168A4B}.btn.alt.sm{box-shadow:0 3px 0 var(--line)}
+.btn[disabled]{opacity:.45;cursor:not-allowed}
+.row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.lvh{display:flex;align-items:center;gap:10px;margin:18px 0 8px}.lvh .b{font-size:1.6rem}
+.units{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:10px}
+.unit{border:3px solid var(--line);border-radius:18px;background:#fff;padding:10px 12px;text-align:right;box-shadow:0 4px 0 var(--line);font-family:var(--read);font-weight:700;font-size:1.05rem;display:flex;flex-direction:column;gap:4px}
+.unit.done{border-color:var(--grass);background:#F2FBF5}.unit.try{border-color:var(--sun);background:#FFFBEA}
+.unit small{font-family:var(--ui);color:var(--muted);font-weight:700}
+.rule{font-family:var(--read);font-size:1.25rem;line-height:2}
+.tip{background:var(--soft);border-radius:14px;padding:8px 12px;font-family:var(--read);font-size:1.1rem}
+.exs{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px;margin-top:10px}
+.ex{border:2px solid var(--line);border-radius:16px;background:#fff;padding:10px;text-align:center;font-family:var(--read);font-size:1.6rem;font-weight:700}
+.ex .e{font-size:2rem;display:block}
+.hl{color:#E0457B;background:#FFE6F0;border-radius:6px;padding:0 2px}
+.prog{display:flex;gap:4px;justify-content:center;margin:6px 0;flex-wrap:wrap}.prog i{width:14px;height:8px;border-radius:4px;background:var(--line)}.prog i.ok{background:var(--grass)}.prog i.no{background:var(--coral)}.prog i.c{background:var(--sky)}
+.big{width:110px;height:110px;border-radius:50%;border:0;background:var(--sky);color:#fff;font-size:2.6rem;box-shadow:0 6px 0 #1B6FB3;display:grid;place-items:center;margin:6px auto}
+.ctx{font-family:var(--read);font-size:2rem;font-weight:700;text-align:center;line-height:2;margin:8px 0}
+.blank{display:inline-block;min-width:2.2em;border-bottom:4px dashed var(--sky);color:var(--sky)}
+.opts{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:10px;margin-top:10px}
+.opt{border:3px solid var(--line);background:#fff;border-radius:18px;padding:12px;font-family:var(--read);font-size:1.8rem;font-weight:700;box-shadow:0 4px 0 var(--line);min-height:72px}
+.opt.ok{border-color:var(--grass);background:var(--ok-soft)}.opt.no{border-color:var(--coral);background:var(--bad-soft)}
+.fb{border-radius:14px;padding:10px 12px;margin-top:10px;font-weight:700}.fb.ok{background:var(--ok-soft);color:#126B3B}.fb.no{background:var(--bad-soft);color:#A12B2B}
+.fb .w{font-family:var(--read);font-size:1.5rem}
+.ta{width:100%;min-height:64px;border:3px solid var(--line);border-radius:16px;padding:10px 12px;font-family:var(--read);font-size:1.8rem;line-height:1.8;background:#fff}
+.see{font-family:var(--read);font-size:2.2rem;text-align:center;background:#FFFBEA;border:3px dashed var(--sun);border-radius:18px;padding:14px}
+.kb{background:#F4F8FC;border:2px solid var(--line);border-radius:16px;padding:6px;margin-top:12px}
+.kb .r{display:flex;justify-content:center;gap:4px;margin:3px 0}
+.kb button{flex:1;max-width:48px;min-height:46px;border:1px solid var(--line);border-radius:10px;background:#fff;font-family:var(--read);font-size:1.35rem}
+.kb button.w{max-width:120px;font-family:var(--ui);font-size:1rem}
+.res{font-size:3rem;font-weight:800;text-align:center}
+.mist{font-family:var(--read);font-size:1.3rem}
+.nb{border:3px solid var(--sun);background:#FFFBEA;border-radius:16px;padding:12px;margin-top:12px;font-family:var(--read);font-size:1.15rem}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style></head><body>
+<div id="app"></div>
+<script src="nav.js"></script>
+<script>
+(function(){'use strict';
+function get(k,d){try{var v=localStorage.getItem(k);return v?JSON.parse(v):d}catch(e){return d}}
+function put(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}
+function esc(s){return String(s==null?'':s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
+function shuf(a){a=a.slice();for(var i=a.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1)),t=a[i];a[i]=a[j];a[j]=t}return a}
+function fnv(s){var h=0x811c9dc5;for(var i=0;i<s.length;i++){h^=s.charCodeAt(i);h=Math.imul(h,16777619)>>>0}return h.toString(16)}
+function ymd(){var d=new Date();return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0')}
+var DIA=/[ًٌٍَُِّْٰـ]/g;
+function norm(s,keepP){s=String(s||'').replace(DIA,'').replace(/[«»"]/g,'');if(!keepP)s=s.replace(/[.،؟!:,()]/g,' ');return s.replace(/\s+/g,' ').trim()}
+var $app=document.getElementById('app'),player=new Audio();
+function play(a){if(!a)return;try{player.pause();player.src=a;player.currentTime=0;var p=player.play();if(p&&p.catch)p.catch(function(){})}catch(e){}}
+
+/* ---------- الطالب ---------- */
+var ME=get('pt_me',null);
+var qs=new URLSearchParams(location.search),PREV=qs.get('g');
+function gradeOf(sec){var m=/^G(\d)/i.exec(String(sec||''));return m?'g'+m[1]:null}
+var G=PREV||(ME&&!ME.pv?gradeOf(ME.sec):null);
+var KEY='im|'+(PREV?'preview|'+PREV:(ME?ME.sec+'|'+ME.name:''));
+var ST=get(KEY,null)||{u:{}};function save(){put(KEY,ST)}
+
+/* ---------- الإرسال ---------- */
+var URL_=null;
+function cfg(){if(URL_!==null)return Promise.resolve(URL_);return fetch('send-config.json',{cache:'no-store'}).then(function(r){return r.json()}).then(function(c){URL_=String(c.progress||'');return URL_}).catch(function(){URL_='';return ''})}
+var Q=get('im_q',[]);
+function send(ev){if(PREV||!ME||!ME.c||!ME.p)return;ev.d=ymd();Q.push(ev);put('im_q',Q);flush()}
+var busy=false;
+function flush(){if(busy||!Q.length||!ME||!ME.c)return;busy=true;var batch=Q.slice(0,50);
+ cfg().then(function(url){if(!url){busy=false;return}
+  return fetch(url,{method:'POST',headers:{'Content-Type':'text/plain;charset=utf-8'},keepalive:true,body:JSON.stringify({sec:ME.sec,sid:fnv('sid|'+ME.sec+'|'+ME.name+'|'+ME.c),pf:fnv('ap|'+ME.sec+'|'+ME.name+'|'+ME.c+'|'+ME.p),g:(G||'').toUpperCase(),ev:batch})})
+   .then(function(r){return r.json()}).then(function(j){if(j&&j.ok){Q=Q.slice(batch.length);put('im_q',Q)}}).catch(function(){}).then(function(){busy=false})})}
+setInterval(flush,30000);document.addEventListener('visibilitychange',function(){if(document.visibilityState==='hidden')flush()});
+
+/* ---------- الحالة ---------- */
+var D=null,U=null,R=null,seeT=null;
+var LV={1:['🔁','المستوى 1 · أتذكّر','مراجعة دروس الصف السابق'],2:['⭐','المستوى 2 · أتعلّم','دروس صفّي في الوثيقة الوطنية'],3:['🚀','المستوى 3 · أتقدّم','بدايات دروس الصف التالي']};
+var TN={pick:'أختار الكتابة الصحيحة',fill:'أكمل الحرف الناقص',dict:'أكتب ما أسمع',sent:'أكتب الجملة'};
+function hl(w){return esc(w).replace(/\[([^\]]*)\]/g,'<span class="hl">$1</span>')}
+function top(){return '<div class="top">'+(window.__tqNav?window.__tqNav.btn('chip'):'')+'<a class="chip" href="index.html">→ أدواتي</a>'+(U?'<button class="chip" data-a="home">✍️ كل الدروس</button>':'')+'<span class="chip" style="margin-inline-start:auto">'+(PREV?'معاينة · '+esc(PREV.toUpperCase()):esc(ME&&ME.name||''))+'</span></div>'}
+
+function vHome(){var h=top()+'<h1>✍️ سلّم الإملاء</h1><p class="lead">في كل درس: أتعلّم القاعدة، ثم أتدرّب: أختار، وأكمل، وأكتب ما أسمع. حين أحصل على 80% أتقن الدرس.</p>';
+ [1,2,3].forEach(function(l){var us=D.units.filter(function(u){return u.lv===l});if(!us.length)return;
+  h+='<div class="lvh"><span class="b">'+LV[l][0]+'</span><div><h2 style="margin:0">'+LV[l][1]+'</h2><span class="note">'+LV[l][2]+'</span></div></div><div class="units">'+us.map(function(u){var s=ST.u[u.id];return '<button class="unit'+(s?(s.best>=80?' done':' try'):'')+'" data-a="open" data-u="'+u.id+'"><span>'+(s&&s.best>=80?'✅ ':'')+esc(u.title)+'</span><small>'+(s?'أفضل نتيجة: '+s.best+'%':'لم أبدأ بعد')+'</small></button>'}).join('')+'</div>'});
+ return h}
+
+function vLearn(){var r=U.rule,h=top()+'<h1 style="font-family:var(--read)">'+esc(U.title)+'</h1><div class="card"><h2>📘 أتعلّم القاعدة</h2><p class="rule">'+esc(r.text)+'</p>'+(r.tip?'<p class="tip">💡 '+esc(r.tip)+'</p>':'')+'<div class="exs">'+r.ex.map(function(x){return '<button class="ex" data-a="say" data-au="'+esc(x.au||'')+'">'+(x.e?'<span class="e">'+x.e+'</span>':'')+hl(x.w)+' <span style="font-size:1rem">🔊</span></button>'}).join('')+'</div><p class="note">اضغط كل مثال لتسمعه، ولاحظ الجزء الملوّن.</p></div><div class="row" style="justify-content:center"><button class="btn" data-a="startq">أبدأ التدريب ←</button></div>';return h}
+
+function prog(){return '<div class="prog">'+R.items.map(function(_,i){var a=R.res[i];return '<i class="'+(a===undefined?(i===R.i?'c':''):a>=1?'ok':'no')+'"></i>'}).join('')+'</div>'}
+function ctxHtml(q,fill){var c=esc(q.ctx||'');if(q.t==='pick')return c.replace('____',fill!=null?'<span class="hl">'+esc(fill)+'</span>':'<span class="blank">؟</span>');return c.replace('_',fill!=null?'<span class="hl">'+esc(fill)+'</span>':'<span class="blank">؟</span>')}
+function kb(){var R2=[['ض','ص','ث','ق','ف','غ','ع','ه','خ','ح','ج'],['ش','س','ي','ب','ل','ا','ت','ن','م','ك','ط'],['ء','ئ','ؤ','ر','ى','ة','و','ز','ظ','د','ذ'],['أ','إ','آ','لا','.','،','؟','!',':']];
+ if(!R.kb)return '<div class="row" style="margin-top:8px"><button class="btn alt sm" data-a="kbon">⌨️ لوحة الحروف</button></div>';
+ return '<div class="kb">'+R2.map(function(r){return '<div class="r">'+r.map(function(c){return '<button type="button" data-k="'+c+'">'+c+'</button>'}).join('')+'</div>'}).join('')+'<div class="r"><button type="button" class="w" data-k=" ">مسافة</button><button type="button" class="w" data-k="BS">⌫ امسح</button><button type="button" class="w" data-a="kboff">إخفاء ⌨️</button></div></div>'}
+function vItem(){var q=R.items[R.i],a=R.ans[R.i],done=a!==undefined,h=top()+'<h1 style="font-family:var(--read);font-size:1.4rem">'+esc(U.title)+'</h1>'+prog()+'<div class="card"><p class="note" style="margin:0">'+(R.i+1)+' من '+R.items.length+' · <b>'+TN[q.t]+'</b></p>';
+ var showSay=!(q.t==='dict'&&q.mode==='see'&&!R.seen);
+ if(showSay&&q.au)h+='<button class="big" data-a="say" data-au="'+esc(q.au)+'" aria-label="استمع">🔊</button>';
+ if(q.t==='pick'||q.t==='fill'){h+='<p class="ctx">'+ctxHtml(q,done?q.opts[0]:null)+'</p><div class="opts">'+R.order[R.i].map(function(j){var cls=done?(j===0?' ok':(j===a?' no':'')):'';return '<button class="opt'+cls+'" data-a="ans" data-j="'+j+'"'+(done?' disabled':'')+'>'+esc(q.opts[j])+'</button>'}).join('')+'</div>'}
+ else{if(q.mode==='see'&&!R.seen){h+='<p class="note">انظر إلى الكلمة جيدًا، ستختفي بعد قليل ثم تكتبها.</p><div class="see">'+esc(q.say)+'</div><p class="note" id="cd" style="text-align:center">⏳ 4</p>'}
+  else{h+=(q.mode==='see'?'<p class="note">اكتب الكلمة التي رأيتها:</p>':'<p class="note">استمع ثم اكتب:</p>')+'<textarea class="ta" id="ta" '+(done?'disabled':'')+' autocomplete="off" autocorrect="off" spellcheck="false">'+esc(R.typed[R.i]||'')+'</textarea>'+(done?'':kb()+'<div class="row" style="margin-top:10px"><button class="btn" data-a="check">تحقّق ✓</button></div>')}}
+ if(done){var ok=a===0||a>=1;if(q.t==='dict'||q.t==='sent')ok=R.res[R.i]>=1;
+  h+='<div class="fb '+(ok?'ok':'no')+'">'+(ok?'✔ أحسنت!':'✘ الصواب:')+(q.t==='dict'||q.t==='sent'?' <span class="w">'+esc(q.say)+'</span>':'')+(!ok&&R.diff?'<br><span class="note">'+R.diff+'</span>':'')+'</div><div class="row" style="justify-content:flex-end;margin-top:10px"><button class="btn" data-a="next">'+(R.i<R.items.length-1?'التالي ←':'النتيجة ←')+'</button></div>'}
+ return h+'</div>'}
+
+function vRes(){var n=R.items.length,s=0;R.res.forEach(function(v){s+=v});var p=Math.round(100*s/n),mist=[];
+ R.items.forEach(function(q,i){if(R.res[i]<1)mist.push(q)});
+ var h=top()+'<h1 style="font-family:var(--read)">'+esc(U.title)+'</h1><div class="card"><p class="res">'+(p>=80?'🌟 ':p>=50?'👍 ':'💪 ')+p+'%</p><p class="lead" style="text-align:center">'+(p>=80?'أتقنتَ هذا الدرس!':p>=50?'قريب! أعد الدرس لتصل إلى 80%.':'راجع القاعدة مرة أخرى، ثم أعد التدريب.')+'</p></div>';
+ if(mist.length)h+='<div class="card"><h2>كلمات أتدرّب عليها</h2>'+mist.map(function(q){return '<p class="mist">• '+esc(q.t==='dict'||q.t==='sent'?q.say:(q.t==='pick'?q.ctx.replace('____',q.opts[0]):q.ctx.replace('_',q.opts[0])))+'</p>'}).join('')+'<div class="nb">📓 اكتب هذه الكلمات في دفترك ثلاث مرات، ولوّن الجزء الذي أخطأت فيه.</div></div>';
+ h+='<div class="row"><button class="btn" data-a="home">✍️ كل الدروس</button><button class="btn alt" data-a="open" data-u="'+U.id+'">↺ أعد الدرس</button></div>';return h}
+
+function render(){var h;
+ if(!G)h=top()+'<h1>✍️ سلّم الإملاء</h1><div class="card"><p>ادخل أولًا من صفحة طلاقة برقمك المدرسي، ثم افتح الأداة من «أدواتي».</p><a class="btn" href="index.html">الذهاب إلى طلاقة</a></div>';
+ else if(!D)h=top()+'<p class="lead">جارٍ التحميل…</p>';
+ else if(!U)h=vHome();
+ else if(!R)h=vLearn();
+ else if(R.i>=R.items.length)h=vRes();
+ else h=vItem();
+ $app.innerHTML=h;
+ if(R&&R.i<R.items.length){var q=R.items[R.i];if(q.t==='dict'&&q.mode==='see'&&!R.seen&&!seeT){var c=4;seeT=setInterval(function(){c--;var el=document.getElementById('cd');if(el)el.textContent='⏳ '+c;if(c<=0){clearInterval(seeT);seeT=null;R.seen=true;render();var t=document.getElementById('ta');if(t)t.focus()}},1000)}}}
+
+function startUnit(){var it=U.items.slice();R={items:it,i:0,ans:[],res:[],typed:[],order:it.map(function(q){return q.opts?shuf(q.opts.map(function(_,j){return j})):null}),kb:(G==='g1'||G==='g2'),seen:false};render();auto()}
+function auto(){var q=R.items[R.i];if(q&&q.au&&!(q.t==='dict'&&q.mode==='see'))setTimeout(function(){play(q.au)},300)}
+function diffMsg(exp,got){var e=norm(exp).split(' '),g=norm(got).split(' '),bad=[];e.forEach(function(w,i){if(g[i]!==w)bad.push('«'+w+'»'+(g[i]?' (كتبتَ: '+g[i]+')':''))});return bad.length?'انتبه إلى: '+esc(bad.slice(0,4).join('، ')):''}
+function grade(q,typed){var e=norm(q.ans),g=norm(typed);if(e===g){var pe=norm(q.ans,true).slice(-1),pg=norm(typed,true).slice(-1);if(/[.؟!]/.test(pe)&&pe!==pg)return 0.5;return 1}
+ var ew=e.split(' '),gw=g.split(' '),ok=0;ew.forEach(function(w,i){if(gw[i]===w)ok++});return ew.length>1?Math.round(10*ok/ew.length)/20:0}
+
+document.addEventListener('click',function(e){var b=e.target.closest('[data-a],[data-k]');if(!b)return;
+ if(b.dataset.k){e.preventDefault();var t=document.getElementById('ta');if(!t)return;var k=b.dataset.k,s=t.selectionStart==null?t.value.length:t.selectionStart,en=t.selectionEnd==null?s:t.selectionEnd,v=t.value;
+  if(k==='BS'){if(s===en&&s>0)s--;t.value=v.slice(0,s)+v.slice(en);t.selectionStart=t.selectionEnd=s}else{t.value=v.slice(0,s)+k+v.slice(en);t.selectionStart=t.selectionEnd=s+k.length}R.typed[R.i]=t.value;return}
+ var a=b.dataset.a;
+ if(a==='say'){play(b.dataset.au);return}
+ if(a==='home'){player.pause();U=null;R=null;render();window.scrollTo(0,0);return}
+ if(a==='open'){U=D.units.filter(function(u){return u.id===b.dataset.u})[0];R=null;render();window.scrollTo(0,0);return}
+ if(a==='startq'){startUnit();window.scrollTo(0,0);return}
+ if(!R)return;
+ if(a==='kbon'){R.kb=true;render();return}
+ if(a==='kboff'){R.kb=false;render();return}
+ if(a==='ans'){if(R.ans[R.i]!==undefined)return;var j=+b.dataset.j;R.ans[R.i]=j;R.res[R.i]=j===0?1:0;R.diff='';render();if(R.items[R.i].au)play(R.items[R.i].au);return}
+ if(a==='check'){var t2=document.getElementById('ta'),v2=t2?t2.value:'';if(!v2.trim())return;var q=R.items[R.i];R.typed[R.i]=v2;var sc=grade(q,v2);R.res[R.i]=sc;R.ans[R.i]=sc>=1?1:-1;R.diff=sc<1?diffMsg(q.ans,v2)+(sc===0.5?' — وانتبه إلى علامة الترقيم في آخر الجملة.':''):'';render();return}
+ if(a==='next'){R.i++;R.seen=false;R.diff='';if(R.i>=R.items.length){finish()}else{render();auto()}window.scrollTo(0,0);return}
+});
+document.addEventListener('input',function(e){if(e.target.id==='ta'&&R)R.typed[R.i]=e.target.value});
+function finish(){var n=R.items.length,s=0;R.res.forEach(function(v){s+=v});var p=Math.round(100*s/n),o=ST.u[U.id]||{best:0,n:0};
+ o.best=Math.max(o.best,p);o.last=p;o.n++;o.d=ymd();ST.u[U.id]=o;save();
+ var by={};R.items.forEach(function(q,i){by[q.t]=by[q.t]||[0,0];by[q.t][1]++;by[q.t][0]+=R.res[i]});
+ send({t:'im',k:U.id+'|L'+U.lv,v:p});
+ send({t:'code',k:'IML',c:JSON.stringify({id:U.id,title:U.title,lv:U.lv,p:p,by:by,miss:R.items.filter(function(q,i){return R.res[i]<1}).map(function(q){return q.ans||q.opts[0]}).slice(0,20)})});
+ render()}
+
+render();
+if(G)fetch('write-data/imla-'+G+'.json',{cache:'no-store'}).then(function(r){if(!r.ok)throw 0;return r.json()}).then(function(j){D=j;render()}).catch(function(){$app.innerHTML=top()+'<h1>✍️ سلّم الإملاء</h1><div class="card"><p>دروس الإملاء لصفك قيد الإعداد.</p></div>'});
+})();
+</script>
+<script src="brand.js"></script>
+</body></html>
