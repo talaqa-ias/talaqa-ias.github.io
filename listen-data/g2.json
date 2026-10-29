@@ -70,12 +70,12 @@
 {
 "t": "جَنَاحَانِ",
 "e": "🪽",
-"au": "listen-data/audio/g2/g2-1a-q3-o1.mp3"
+"au": "listen-data/audio/g2/g2-1a-q3-o1w.mp3"
 },
 {
 "t": "قَوْقَعَةٌ",
 "e": "🐚",
-"au": "listen-data/audio/g2/g2-1a-q3-o2.mp3"
+"au": "listen-data/audio/g2/g2-1a-q3-o2w.mp3"
 }
 ],
 "a": 0,
@@ -94,13 +94,13 @@
 {
 "t": "السَّمَكَ",
 "e": "🐟",
-"au": "listen-data/audio/g2/g2-1a-q4-o1.mp3",
+"au": "listen-data/audio/g2/g2-1a-q4-o1w.mp3",
 "img": "aal/img/kw45.webp"
 },
 {
 "t": "اللَّحْمَ",
 "e": "🍖",
-"au": "listen-data/audio/g2/g2-1a-q4-o2.mp3"
+"au": "listen-data/audio/g2/g2-1a-q4-o2w.mp3"
 }
 ],
 "a": 0,
@@ -134,7 +134,8 @@
 ],
 "au": "listen-data/audio/g2/g2-1a-text.mp3",
 "tau": "listen-data/audio/g2/g2-1a-title.mp3",
-"done": "ar-QA-AmalNeural"
+"done": "ar-QA-AmalNeural",
+"wc": 1
 },
 {
 "id": "g2-1b",
@@ -152,17 +153,17 @@
 {
 "t": "أَبُوهَا",
 "e": "👨",
-"au": "listen-data/audio/g2/g2-1b-q1-o0.mp3"
+"au": "listen-data/audio/g2/g2-1b-q1-o0w.mp3"
 },
 {
 "t": "أُمُّهَا",
 "e": "👩",
-"au": "listen-data/audio/g2/g2-1b-q1-o1.mp3"
+"au": "listen-data/audio/g2/g2-1b-q1-o1w.mp3"
 },
 {
 "t": "جَدَّتُهَا",
 "e": "👵",
-"au": "listen-data/audio/g2/g2-1b-q1-o2.mp3"
+"au": "listen-data/audio/g2/g2-1b-q1-o2w.mp3"
 }
 ],
 "a": 0,
@@ -220,7 +221,7 @@
 {
 "t": "الطَّائِرَاتِ",
 "e": "✈️",
-"au": "listen-data/audio/g2/g2-1b-q3-o2.mp3"
+"au": "listen-data/audio/g2/g2-1b-q3-o2w.mp3"
 }
 ],
 "a": 0,
@@ -234,7 +235,7 @@
 {
 "t": "وَرَدَ",
 "e": "✅",
-"au": "listen-data/audio/g2/g2-1b-q4-o0.mp3"
+"au": "listen-data/audio/g2/g2-1b-q4-o0w.mp3"
 },
 {
 "t": "لَمْ يَرِدْ",
@@ -253,7 +254,7 @@
 {
 "t": "وَرَدَ",
 "e": "✅",
-"au": "listen-data/audio/g2/g2-1b-q5-o0.mp3"
+"au": "listen-data/audio/g2/g2-1b-q5-o0w.mp3"
 },
 {
 "t": "لَمْ يَرِدْ",
@@ -352,7 +353,8 @@
 },
 "au": "listen-data/audio/g2/g2-1b-text.mp3",
 "tau": "listen-data/audio/g2/g2-1b-title.mp3",
-"done": "ar-QA-AmalNeural"
+"done": "ar-QA-AmalNeural",
+"wc": 1
 },
 {
 "id": "g2-2a",
@@ -471,12 +473,12 @@
 {
 "t": "الْمَلَابِسَ",
 "e": "👕",
-"au": "listen-data/audio/g2/g2-2a-q5-o1.mp3"
+"au": "listen-data/audio/g2/g2-2a-q5-o1w.mp3"
 },
 {
 "t": "الْأَلْعَابَ",
 "e": "🧸",
-"au": "listen-data/audio/g2/g2-2a-q5-o2.mp3"
+"au": "listen-data/audio/g2/g2-2a-q5-o2w.mp3"
 }
 ],
 "a": 0,
@@ -486,7 +488,8 @@
 ],
 "au": "listen-data/audio/g2/g2-2a-text.mp3",
 "tau": "listen-data/audio/g2/g2-2a-title.mp3",
-"done": "ar-QA-AmalNeural"
+"done": "ar-QA-AmalNeural",
+"wc": 1
 },
 {
 "id": "g2-2b",
@@ -526,12 +529,12 @@
 {
 "t": "مَيْثَاءُ",
 "e": "👧",
-"au": "listen-data/audio/g2/g2-2b-q1-o0.mp3"
+"au": "listen-data/audio/g2/g2-2b-q1-o0w.mp3"
 },
 {
 "t": "الْمُعَلِّمَةُ",
 "e": "👩‍🏫",
-"au": "listen-data/audio/g2/g2-2b-q1-o1.mp3",
+"au": "listen-data/audio/g2/g2-2b-q1-o1w.mp3",
 "img": "aal/img/ch_teacher.webp"
 },
 {
@@ -551,17 +554,17 @@
 {
 "t": "زَرْقَاءُ",
 "e": "🔵",
-"au": "listen-data/audio/g2/g2-2b-q2-o0.mp3"
+"au": "listen-data/audio/g2/g2-2b-q2-o0w.mp3"
 },
 {
 "t": "صَفْرَاءُ",
 "e": "🟡",
-"au": "listen-data/audio/g2/g2-2b-q2-o1.mp3"
+"au": "listen-data/audio/g2/g2-2b-q2-o1w.mp3"
 },
 {
 "t": "خَضْرَاءُ",
 "e": "🟢",
-"au": "listen-data/audio/g2/g2-2b-q2-o2.mp3"
+"au": "listen-data/audio/g2/g2-2b-q2-o2w.mp3"
 }
 ],
 "a": 0,
@@ -633,7 +636,7 @@
 {
 "t": "وَرَدَ",
 "e": "✅",
-"au": "listen-data/audio/g2/g2-2b-q5-o0.mp3"
+"au": "listen-data/audio/g2/g2-2b-q5-o0w.mp3"
 },
 {
 "t": "لَمْ يَرِدْ",
@@ -652,7 +655,7 @@
 {
 "t": "وَرَدَ",
 "e": "✅",
-"au": "listen-data/audio/g2/g2-2b-q6-o0.mp3"
+"au": "listen-data/audio/g2/g2-2b-q6-o0w.mp3"
 },
 {
 "t": "لَمْ يَرِدْ",
@@ -756,7 +759,8 @@
 },
 "au": "listen-data/audio/g2/g2-2b-text.mp3",
 "tau": "listen-data/audio/g2/g2-2b-title.mp3",
-"done": "ar-QA-AmalNeural"
+"done": "ar-QA-AmalNeural",
+"wc": 1
 },
 {
 "id": "g2-3a",
@@ -798,17 +802,17 @@
 {
 "t": "بِمَخَالِبِهِ",
 "e": "🦅",
-"au": "listen-data/audio/g2/g2-3a-q2-o0.mp3"
+"au": "listen-data/audio/g2/g2-3a-q2-o0w.mp3"
 },
 {
 "t": "بِجَنَاحَيْهِ",
 "e": "🪽",
-"au": "listen-data/audio/g2/g2-3a-q2-o1.mp3"
+"au": "listen-data/audio/g2/g2-3a-q2-o1w.mp3"
 },
 {
 "t": "بِذَيْلِهِ",
 "e": "🪶",
-"au": "listen-data/audio/g2/g2-3a-q2-o2.mp3"
+"au": "listen-data/audio/g2/g2-3a-q2-o2w.mp3"
 }
 ],
 "a": 0,
@@ -822,17 +826,17 @@
 {
 "t": "لِلصَّيْدِ",
 "e": "🏹",
-"au": "listen-data/audio/g2/g2-3a-q3-o0.mp3"
+"au": "listen-data/audio/g2/g2-3a-q3-o0w.mp3"
 },
 {
 "t": "لِلسِّبَاقِ",
 "e": "🏁",
-"au": "listen-data/audio/g2/g2-3a-q3-o1.mp3"
+"au": "listen-data/audio/g2/g2-3a-q3-o1w.mp3"
 },
 {
 "t": "لِلنَّوْمِ",
 "e": "😴",
-"au": "listen-data/audio/g2/g2-3a-q3-o2.mp3"
+"au": "listen-data/audio/g2/g2-3a-q3-o2w.mp3"
 }
 ],
 "a": 0,
@@ -974,7 +978,8 @@
 },
 "au": "listen-data/audio/g2/g2-3a-text.mp3",
 "tau": "listen-data/audio/g2/g2-3a-title.mp3",
-"done": "ar-QA-AmalNeural"
+"done": "ar-QA-AmalNeural",
+"wc": 1
 },
 {
 "id": "g2-3b",
@@ -1014,18 +1019,18 @@
 {
 "t": "الْأَبُ",
 "e": "👨",
-"au": "listen-data/audio/g2/g2-3b-q1-o0.mp3",
+"au": "listen-data/audio/g2/g2-3b-q1-o0w.mp3",
 "img": "aal/img/w_ab.webp"
 },
 {
 "t": "رَاشِدٌ",
 "e": "🧒",
-"au": "listen-data/audio/g2/g2-3b-q1-o1.mp3"
+"au": "listen-data/audio/g2/g2-3b-q1-o1w.mp3"
 },
 {
 "t": "عَائِشَةُ",
 "e": "👧",
-"au": "listen-data/audio/g2/g2-3b-q1-o2.mp3"
+"au": "listen-data/audio/g2/g2-3b-q1-o2w.mp3"
 }
 ],
 "a": 0,
@@ -1073,17 +1078,17 @@
 {
 "t": "بِالنُّجُومِ",
 "e": "⭐",
-"au": "listen-data/audio/g2/g2-3b-q3-o0.mp3"
+"au": "listen-data/audio/g2/g2-3b-q3-o0w.mp3"
 },
 {
 "t": "بِالْأَشْجَارِ",
 "e": "🌳",
-"au": "listen-data/audio/g2/g2-3b-q3-o1.mp3"
+"au": "listen-data/audio/g2/g2-3b-q3-o1w.mp3"
 },
 {
 "t": "بِالْخَرِيطَةِ",
 "e": "🗺️",
-"au": "listen-data/audio/g2/g2-3b-q3-o2.mp3"
+"au": "listen-data/audio/g2/g2-3b-q3-o2w.mp3"
 }
 ],
 "a": 0,
@@ -1121,7 +1126,7 @@
 {
 "t": "وَرَدَ",
 "e": "✅",
-"au": "listen-data/audio/g2/g2-3b-q5-o0.mp3"
+"au": "listen-data/audio/g2/g2-3b-q5-o0w.mp3"
 },
 {
 "t": "لَمْ يَرِدْ",
@@ -1140,7 +1145,7 @@
 {
 "t": "وَرَدَ",
 "e": "✅",
-"au": "listen-data/audio/g2/g2-3b-q6-o0.mp3"
+"au": "listen-data/audio/g2/g2-3b-q6-o0w.mp3"
 },
 {
 "t": "لَمْ يَرِدْ",
@@ -1155,7 +1160,8 @@
 ],
 "au": "listen-data/audio/g2/g2-3b-text.mp3",
 "tau": "listen-data/audio/g2/g2-3b-title.mp3",
-"done": "ar-QA-AmalNeural"
+"done": "ar-QA-AmalNeural",
+"wc": 1
 }
 ],
 "set": "g2",

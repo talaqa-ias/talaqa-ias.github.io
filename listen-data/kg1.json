@@ -16,18 +16,18 @@
 {
 "t": "شَمَّا",
 "e": "👧",
-"au": "listen-data/audio/kg1/kg1-1a-q1-o0.mp3",
+"au": "listen-data/audio/kg1/kg1-1a-q1-o0w.mp3",
 "img": "aal/img/ch_shamma.webp"
 },
 {
 "t": "نُورَةُ",
 "e": "👧",
-"au": "listen-data/audio/kg1/kg1-1a-q1-o1.mp3"
+"au": "listen-data/audio/kg1/kg1-1a-q1-o1w.mp3"
 },
 {
 "t": "مَرْيَمُ",
 "e": "👧",
-"au": "listen-data/audio/kg1/kg1-1a-q1-o2.mp3",
+"au": "listen-data/audio/kg1/kg1-1a-q1-o2w.mp3",
 "img": "aal/img/ch_maryam.webp"
 }
 ],
@@ -47,12 +47,12 @@
 {
 "t": "جَدُّهُ",
 "e": "👴",
-"au": "listen-data/audio/kg1/kg1-1a-q2-o1.mp3"
+"au": "listen-data/audio/kg1/kg1-1a-q2-o1w.mp3"
 },
 {
 "t": "عَمُّهُ",
 "e": "👨",
-"au": "listen-data/audio/kg1/kg1-1a-q2-o2.mp3"
+"au": "listen-data/audio/kg1/kg1-1a-q2-o2w.mp3"
 }
 ],
 "a": 0,
@@ -66,19 +66,19 @@
 {
 "t": "الْخُبْزَ",
 "e": "🍞",
-"au": "listen-data/audio/kg1/kg1-1a-q3-o0.mp3",
+"au": "listen-data/audio/kg1/kg1-1a-q3-o0w.mp3",
 "img": "aal/img/kw22.webp"
 },
 {
 "t": "السَّمَكَ",
 "e": "🐟",
-"au": "listen-data/audio/kg1/kg1-1a-q3-o1.mp3",
+"au": "listen-data/audio/kg1/kg1-1a-q3-o1w.mp3",
 "img": "aal/img/kw45.webp"
 },
 {
 "t": "الْمَوْزَ",
 "e": "🍌",
-"au": "listen-data/audio/kg1/kg1-1a-q3-o2.mp3",
+"au": "listen-data/audio/kg1/kg1-1a-q3-o2w.mp3",
 "img": "aal/img/kw44.webp"
 }
 ],
@@ -93,19 +93,19 @@
 {
 "t": "الْحَلِيبَ",
 "e": "🥛",
-"au": "listen-data/audio/kg1/kg1-1a-q4-o0.mp3",
+"au": "listen-data/audio/kg1/kg1-1a-q4-o0w.mp3",
 "img": "aal/img/kw18.webp"
 },
 {
 "t": "الْعَصِيرَ",
 "e": "🧃",
-"au": "listen-data/audio/kg1/kg1-1a-q4-o1.mp3",
+"au": "listen-data/audio/kg1/kg1-1a-q4-o1w.mp3",
 "img": "aal/img/fd_asir.webp"
 },
 {
 "t": "الْمَاءَ",
 "e": "💧",
-"au": "listen-data/audio/kg1/kg1-1a-q4-o2.mp3",
+"au": "listen-data/audio/kg1/kg1-1a-q4-o2w.mp3",
 "img": "aal/img/kw87.webp"
 }
 ],
@@ -159,7 +159,8 @@
 },
 "au": "listen-data/audio/kg1/kg1-1a-text.mp3",
 "tau": "listen-data/audio/kg1/kg1-1a-title.mp3",
-"done": "ar-QA-AmalNeural"
+"done": "ar-QA-AmalNeural",
+"wc": 1
 },
 {
 "id": "kg1-1b",
@@ -177,19 +178,19 @@
 {
 "t": "الْبَطَّةُ",
 "e": "🦆",
-"au": "listen-data/audio/kg1/kg1-1b-q1-o0.mp3",
+"au": "listen-data/audio/kg1/kg1-1b-q1-o0w.mp3",
 "img": "aal/img/duck.webp"
 },
 {
 "t": "الْقِطَّةُ",
 "e": "🐈",
-"au": "listen-data/audio/kg1/kg1-1b-q1-o1.mp3",
+"au": "listen-data/audio/kg1/kg1-1b-q1-o1w.mp3",
 "img": "aal/img/an_qitta.webp"
 },
 {
 "t": "الدَّجَاجَةُ",
 "e": "🐔",
-"au": "listen-data/audio/kg1/kg1-1b-q1-o2.mp3",
+"au": "listen-data/audio/kg1/kg1-1b-q1-o2w.mp3",
 "img": "aal/img/w_dajaja.webp"
 }
 ],
@@ -204,19 +205,19 @@
 {
 "t": "أَصْفَرُ",
 "e": "🟡",
-"au": "listen-data/audio/kg1/kg1-1b-q2-o0.mp3",
+"au": "listen-data/audio/kg1/kg1-1b-q2-o0w.mp3",
 "img": "aal/img/b_asfar.webp"
 },
 {
 "t": "أَحْمَرُ",
 "e": "🔴",
-"au": "listen-data/audio/kg1/kg1-1b-q2-o1.mp3",
+"au": "listen-data/audio/kg1/kg1-1b-q2-o1w.mp3",
 "img": "aal/img/w_ahmar.webp"
 },
 {
 "t": "أَزْرَقُ",
 "e": "🔵",
-"au": "listen-data/audio/kg1/kg1-1b-q2-o2.mp3",
+"au": "listen-data/audio/kg1/kg1-1b-q2-o2w.mp3",
 "img": "aal/img/kw01.webp"
 }
 ],
@@ -231,19 +232,19 @@
 {
 "t": "الْخُبْزَ",
 "e": "🍞",
-"au": "listen-data/audio/kg1/kg1-1b-q3-o0.mp3",
+"au": "listen-data/audio/kg1/kg1-1b-q3-o0w.mp3",
 "img": "aal/img/kw22.webp"
 },
 {
 "t": "الْجَزَرَ",
 "e": "🥕",
-"au": "listen-data/audio/kg1/kg1-1b-q3-o1.mp3",
+"au": "listen-data/audio/kg1/kg1-1b-q3-o1w.mp3",
 "img": "aal/img/kw13.webp"
 },
 {
 "t": "الْمَوْزَ",
 "e": "🍌",
-"au": "listen-data/audio/kg1/kg1-1b-q3-o2.mp3",
+"au": "listen-data/audio/kg1/kg1-1b-q3-o2w.mp3",
 "img": "aal/img/kw44.webp"
 }
 ],
@@ -321,7 +322,8 @@
 },
 "au": "listen-data/audio/kg1/kg1-1b-text.mp3",
 "tau": "listen-data/audio/kg1/kg1-1b-title.mp3",
-"done": "ar-QA-AmalNeural"
+"done": "ar-QA-AmalNeural",
+"wc": 1
 },
 {
 "id": "kg1-2a",
@@ -387,19 +389,19 @@
 {
 "t": "أَزْرَقُ",
 "e": "🔵",
-"au": "listen-data/audio/kg1/kg1-2a-q3-o0.mp3",
+"au": "listen-data/audio/kg1/kg1-2a-q3-o0w.mp3",
 "img": "aal/img/kw01.webp"
 },
 {
 "t": "أَحْمَرُ",
 "e": "🔴",
-"au": "listen-data/audio/kg1/kg1-2a-q3-o1.mp3",
+"au": "listen-data/audio/kg1/kg1-2a-q3-o1w.mp3",
 "img": "aal/img/w_ahmar.webp"
 },
 {
 "t": "أَخْضَرُ",
 "e": "🟢",
-"au": "listen-data/audio/kg1/kg1-2a-q3-o2.mp3",
+"au": "listen-data/audio/kg1/kg1-2a-q3-o2w.mp3",
 "img": "aal/img/kw25.webp"
 }
 ],
@@ -498,7 +500,8 @@
 },
 "au": "listen-data/audio/kg1/kg1-2a-text.mp3",
 "tau": "listen-data/audio/kg1/kg1-2a-title.mp3",
-"done": "ar-QA-AmalNeural"
+"done": "ar-QA-AmalNeural",
+"wc": 1
 },
 {
 "id": "kg1-2b",
@@ -540,19 +543,19 @@
 {
 "t": "الْأَحْمَرُ",
 "e": "🔴",
-"au": "listen-data/audio/kg1/kg1-2b-q2-o0.mp3",
+"au": "listen-data/audio/kg1/kg1-2b-q2-o0w.mp3",
 "img": "aal/img/w_ahmar.webp"
 },
 {
 "t": "الْأَخْضَرُ",
 "e": "🟢",
-"au": "listen-data/audio/kg1/kg1-2b-q2-o1.mp3",
+"au": "listen-data/audio/kg1/kg1-2b-q2-o1w.mp3",
 "img": "aal/img/kw25.webp"
 },
 {
 "t": "الْأَزْرَقُ",
 "e": "🔵",
-"au": "listen-data/audio/kg1/kg1-2b-q2-o2.mp3",
+"au": "listen-data/audio/kg1/kg1-2b-q2-o2w.mp3",
 "img": "aal/img/kw01.webp"
 }
 ],
@@ -567,17 +570,17 @@
 {
 "t": "حَزِنَتْ",
 "e": "😢",
-"au": "listen-data/audio/kg1/kg1-2b-q3-o0.mp3"
+"au": "listen-data/audio/kg1/kg1-2b-q3-o0w.mp3"
 },
 {
 "t": "ضَحِكَتْ",
 "e": "😂",
-"au": "listen-data/audio/kg1/kg1-2b-q3-o1.mp3"
+"au": "listen-data/audio/kg1/kg1-2b-q3-o1w.mp3"
 },
 {
 "t": "غَضِبَتْ",
 "e": "😠",
-"au": "listen-data/audio/kg1/kg1-2b-q3-o2.mp3"
+"au": "listen-data/audio/kg1/kg1-2b-q3-o2w.mp3"
 }
 ],
 "a": 0,
@@ -675,7 +678,8 @@
 },
 "au": "listen-data/audio/kg1/kg1-2b-text.mp3",
 "tau": "listen-data/audio/kg1/kg1-2b-title.mp3",
-"done": "ar-QA-AmalNeural"
+"done": "ar-QA-AmalNeural",
+"wc": 1
 },
 {
 "id": "kg1-3a",
@@ -741,19 +745,19 @@
 {
 "t": "أَحْمَرُ",
 "e": "🔴",
-"au": "listen-data/audio/kg1/kg1-3a-q3-o0.mp3",
+"au": "listen-data/audio/kg1/kg1-3a-q3-o0w.mp3",
 "img": "aal/img/w_ahmar.webp"
 },
 {
 "t": "أَخْضَرُ",
 "e": "🟢",
-"au": "listen-data/audio/kg1/kg1-3a-q3-o1.mp3",
+"au": "listen-data/audio/kg1/kg1-3a-q3-o1w.mp3",
 "img": "aal/img/kw25.webp"
 },
 {
 "t": "أَصْفَرُ",
 "e": "🟡",
-"au": "listen-data/audio/kg1/kg1-3a-q3-o2.mp3",
+"au": "listen-data/audio/kg1/kg1-3a-q3-o2w.mp3",
 "img": "aal/img/b_asfar.webp"
 }
 ],
@@ -844,7 +848,8 @@
 },
 "au": "listen-data/audio/kg1/kg1-3a-text.mp3",
 "tau": "listen-data/audio/kg1/kg1-3a-title.mp3",
-"done": "ar-QA-AmalNeural"
+"done": "ar-QA-AmalNeural",
+"wc": 1
 },
 {
 "id": "kg1-3b",
@@ -862,19 +867,19 @@
 {
 "t": "أَزْرَقُ",
 "e": "🔵",
-"au": "listen-data/audio/kg1/kg1-3b-q1-o0.mp3",
+"au": "listen-data/audio/kg1/kg1-3b-q1-o0w.mp3",
 "img": "aal/img/kw01.webp"
 },
 {
 "t": "أَحْمَرُ",
 "e": "🔴",
-"au": "listen-data/audio/kg1/kg1-3b-q1-o1.mp3",
+"au": "listen-data/audio/kg1/kg1-3b-q1-o1w.mp3",
 "img": "aal/img/w_ahmar.webp"
 },
 {
 "t": "أَسْوَدُ",
 "e": "⚫",
-"au": "listen-data/audio/kg1/kg1-3b-q1-o2.mp3",
+"au": "listen-data/audio/kg1/kg1-3b-q1-o2w.mp3",
 "img": "aal/img/b_aswad.webp"
 }
 ],
@@ -889,19 +894,19 @@
 {
 "t": "السَّمَكُ",
 "e": "🐟",
-"au": "listen-data/audio/kg1/kg1-3b-q2-o0.mp3",
+"au": "listen-data/audio/kg1/kg1-3b-q2-o0w.mp3",
 "img": "aal/img/kw45.webp"
 },
 {
 "t": "الْقِطُّ",
 "e": "🐈",
-"au": "listen-data/audio/kg1/kg1-3b-q2-o1.mp3",
+"au": "listen-data/audio/kg1/kg1-3b-q2-o1w.mp3",
 "img": "aal/img/an_qitta.webp"
 },
 {
 "t": "الْجَمَلُ",
 "e": "🐪",
-"au": "listen-data/audio/kg1/kg1-3b-q2-o2.mp3",
+"au": "listen-data/audio/kg1/kg1-3b-q2-o2w.mp3",
 "img": "aal/img/kw12.webp"
 }
 ],
@@ -916,17 +921,17 @@
 {
 "t": "الْقَارِبُ",
 "e": "⛵",
-"au": "listen-data/audio/kg1/kg1-3b-q3-o0.mp3"
+"au": "listen-data/audio/kg1/kg1-3b-q3-o0w.mp3"
 },
 {
 "t": "السَّيَّارَةُ",
 "e": "🚗",
-"au": "listen-data/audio/kg1/kg1-3b-q3-o1.mp3"
+"au": "listen-data/audio/kg1/kg1-3b-q3-o1w.mp3"
 },
 {
 "t": "الْقِطَارُ",
 "e": "🚆",
-"au": "listen-data/audio/kg1/kg1-3b-q3-o2.mp3"
+"au": "listen-data/audio/kg1/kg1-3b-q3-o2w.mp3"
 }
 ],
 "a": 0,
@@ -940,17 +945,17 @@
 {
 "t": "بِالْكُرَةِ",
 "e": "⚽",
-"au": "listen-data/audio/kg1/kg1-3b-q4-o0.mp3"
+"au": "listen-data/audio/kg1/kg1-3b-q4-o0w.mp3"
 },
 {
 "t": "بِالدَّرَّاجَةِ",
 "e": "🚲",
-"au": "listen-data/audio/kg1/kg1-3b-q4-o1.mp3"
+"au": "listen-data/audio/kg1/kg1-3b-q4-o1w.mp3"
 },
 {
 "t": "بِالطَّائِرَةِ",
 "e": "✈️",
-"au": "listen-data/audio/kg1/kg1-3b-q4-o2.mp3"
+"au": "listen-data/audio/kg1/kg1-3b-q4-o2w.mp3"
 }
 ],
 "a": 0,
@@ -1016,7 +1021,8 @@
 },
 "au": "listen-data/audio/kg1/kg1-3b-text.mp3",
 "tau": "listen-data/audio/kg1/kg1-3b-title.mp3",
-"done": "ar-QA-AmalNeural"
+"done": "ar-QA-AmalNeural",
+"wc": 1
 }
 ],
 "set": "kg1",

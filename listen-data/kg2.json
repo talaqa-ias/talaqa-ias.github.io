@@ -31,7 +31,7 @@
 "a": 0,
 "id": "q1",
 "au": "listen-data/audio/kg2/kg2-1a-q1.mp3",
-"sau": "listen-data/audio/kg2/kg2-1a-q1-s.mp3"
+"sau": "listen-data/audio/kg2/kg2-1a-q1-sw.mp3"
 },
 {
 "type": "word",
@@ -56,7 +56,7 @@
 "a": 0,
 "id": "q2",
 "au": "listen-data/audio/kg2/kg2-1a-q2.mp3",
-"sau": "listen-data/audio/kg2/kg2-1a-q2-s.mp3"
+"sau": "listen-data/audio/kg2/kg2-1a-q2-sw.mp3"
 },
 {
 "type": "word",
@@ -81,7 +81,7 @@
 "a": 0,
 "id": "q3",
 "au": "listen-data/audio/kg2/kg2-1a-q3.mp3",
-"sau": "listen-data/audio/kg2/kg2-1a-q3-s.mp3"
+"sau": "listen-data/audio/kg2/kg2-1a-q3-sw.mp3"
 },
 {
 "type": "word",
@@ -107,7 +107,7 @@
 "a": 0,
 "id": "q4",
 "au": "listen-data/audio/kg2/kg2-1a-q4.mp3",
-"sau": "listen-data/audio/kg2/kg2-1a-q4-s.mp3"
+"sau": "listen-data/audio/kg2/kg2-1a-q4-sw.mp3"
 },
 {
 "type": "word",
@@ -133,7 +133,7 @@
 "a": 0,
 "id": "q5",
 "au": "listen-data/audio/kg2/kg2-1a-q5.mp3",
-"sau": "listen-data/audio/kg2/kg2-1a-q5-s.mp3"
+"sau": "listen-data/audio/kg2/kg2-1a-q5-sw.mp3"
 },
 {
 "type": "word",
@@ -158,7 +158,7 @@
 "a": 0,
 "id": "q6",
 "au": "listen-data/audio/kg2/kg2-1a-q6.mp3",
-"sau": "listen-data/audio/kg2/kg2-1a-q6-s.mp3"
+"sau": "listen-data/audio/kg2/kg2-1a-q6-sw.mp3"
 },
 {
 "type": "word",
@@ -184,7 +184,7 @@
 "a": 0,
 "id": "q7",
 "au": "listen-data/audio/kg2/kg2-1a-q7.mp3",
-"sau": "listen-data/audio/kg2/kg2-1a-q7-s.mp3"
+"sau": "listen-data/audio/kg2/kg2-1a-q7-sw.mp3"
 },
 {
 "type": "word",
@@ -208,7 +208,7 @@
 "a": 0,
 "id": "q8",
 "au": "listen-data/audio/kg2/kg2-1a-q8.mp3",
-"sau": "listen-data/audio/kg2/kg2-1a-q8-s.mp3"
+"sau": "listen-data/audio/kg2/kg2-1a-q8-sw.mp3"
 },
 {
 "type": "word",
@@ -232,7 +232,7 @@
 "a": 0,
 "id": "q9",
 "au": "listen-data/audio/kg2/kg2-1a-q9.mp3",
-"sau": "listen-data/audio/kg2/kg2-1a-q9-s.mp3"
+"sau": "listen-data/audio/kg2/kg2-1a-q9-sw.mp3"
 },
 {
 "type": "word",
@@ -255,11 +255,12 @@
 "a": 0,
 "id": "q10",
 "au": "listen-data/audio/kg2/kg2-1a-q10.mp3",
-"sau": "listen-data/audio/kg2/kg2-1a-q10-s.mp3"
+"sau": "listen-data/audio/kg2/kg2-1a-q10-sw.mp3"
 }
 ],
 "tau": "listen-data/audio/kg2/kg2-1a-title.mp3",
-"done": "ar-QA-AmalNeural"
+"done": "ar-QA-AmalNeural",
+"wc": 1
 },
 {
 "id": "kg2-1b",
@@ -287,7 +288,7 @@
 "a": 0,
 "id": "q1",
 "au": "listen-data/audio/kg2/kg2-1b-q1.mp3",
-"sau": "listen-data/audio/kg2/kg2-1b-q1-s.mp3"
+"sau": "listen-data/audio/kg2/kg2-1b-q1-sw.mp3"
 },
 {
 "type": "sound",
@@ -307,7 +308,7 @@
 "a": 0,
 "id": "q2",
 "au": "listen-data/audio/kg2/kg2-1b-q2.mp3",
-"sau": "listen-data/audio/kg2/kg2-1b-q2-s.mp3"
+"sau": "listen-data/audio/kg2/kg2-1b-q2-sw.mp3"
 },
 {
 "type": "sound",
@@ -327,7 +328,7 @@
 "a": 0,
 "id": "q3",
 "au": "listen-data/audio/kg2/kg2-1b-q3.mp3",
-"sau": "listen-data/audio/kg2/kg2-1b-q3-s.mp3"
+"sau": "listen-data/audio/kg2/kg2-1b-q3-sw.mp3"
 },
 {
 "type": "sound",
@@ -347,7 +348,7 @@
 "a": 0,
 "id": "q4",
 "au": "listen-data/audio/kg2/kg2-1b-q4.mp3",
-"sau": "listen-data/audio/kg2/kg2-1b-q4-s.mp3"
+"sau": "listen-data/audio/kg2/kg2-1b-q4-sw.mp3"
 },
 {
 "type": "sound",
@@ -367,7 +368,7 @@
 "a": 0,
 "id": "q5",
 "au": "listen-data/audio/kg2/kg2-1b-q5.mp3",
-"sau": "listen-data/audio/kg2/kg2-1b-q5-s.mp3"
+"sau": "listen-data/audio/kg2/kg2-1b-q5-sw.mp3"
 },
 {
 "type": "word",
@@ -387,7 +388,7 @@
 "a": 0,
 "id": "q6",
 "au": "listen-data/audio/kg2/kg2-1b-q6.mp3",
-"sau": "listen-data/audio/kg2/kg2-1b-q6-s.mp3"
+"sau": "listen-data/audio/kg2/kg2-1b-q6-sw.mp3"
 },
 {
 "type": "word",
@@ -407,7 +408,7 @@
 "a": 0,
 "id": "q7",
 "au": "listen-data/audio/kg2/kg2-1b-q7.mp3",
-"sau": "listen-data/audio/kg2/kg2-1b-q7-s.mp3"
+"sau": "listen-data/audio/kg2/kg2-1b-q7-sw.mp3"
 },
 {
 "type": "word",
@@ -427,7 +428,7 @@
 "a": 0,
 "id": "q8",
 "au": "listen-data/audio/kg2/kg2-1b-q8.mp3",
-"sau": "listen-data/audio/kg2/kg2-1b-q8-s.mp3"
+"sau": "listen-data/audio/kg2/kg2-1b-q8-sw.mp3"
 },
 {
 "type": "word",
@@ -447,11 +448,12 @@
 "a": 0,
 "id": "q9",
 "au": "listen-data/audio/kg2/kg2-1b-q9.mp3",
-"sau": "listen-data/audio/kg2/kg2-1b-q9-s.mp3"
+"sau": "listen-data/audio/kg2/kg2-1b-q9-sw.mp3"
 }
 ],
 "tau": "listen-data/audio/kg2/kg2-1b-title.mp3",
-"done": "ar-QA-AmalNeural"
+"done": "ar-QA-AmalNeural",
+"wc": 1
 },
 {
 "id": "kg2-2a",
@@ -521,18 +523,18 @@
 {
 "t": "الدَّجَاجَ",
 "e": "🐔",
-"au": "listen-data/audio/kg2/kg2-2a-q3-o0.mp3",
+"au": "listen-data/audio/kg2/kg2-2a-q3-o0w.mp3",
 "img": "aal/img/w_dajaja.webp"
 },
 {
 "t": "الْبَقَرَةَ",
 "e": "🐄",
-"au": "listen-data/audio/kg2/kg2-2a-q3-o1.mp3"
+"au": "listen-data/audio/kg2/kg2-2a-q3-o1w.mp3"
 },
 {
 "t": "الْقِطَّةَ",
 "e": "🐈",
-"au": "listen-data/audio/kg2/kg2-2a-q3-o2.mp3",
+"au": "listen-data/audio/kg2/kg2-2a-q3-o2w.mp3",
 "img": "aal/img/an_qitta.webp"
 }
 ],
@@ -567,7 +569,8 @@
 ],
 "au": "listen-data/audio/kg2/kg2-2a-text.mp3",
 "tau": "listen-data/audio/kg2/kg2-2a-title.mp3",
-"done": "ar-QA-AmalNeural"
+"done": "ar-QA-AmalNeural",
+"wc": 1
 },
 {
 "id": "kg2-2b",
@@ -637,17 +640,17 @@
 {
 "t": "أُمَّهَا",
 "e": "👩",
-"au": "listen-data/audio/kg2/kg2-2b-q3-o0.mp3"
+"au": "listen-data/audio/kg2/kg2-2b-q3-o0w.mp3"
 },
 {
 "t": "جَدَّتَهَا",
 "e": "👵",
-"au": "listen-data/audio/kg2/kg2-2b-q3-o1.mp3"
+"au": "listen-data/audio/kg2/kg2-2b-q3-o1w.mp3"
 },
 {
 "t": "أُخْتَهَا",
 "e": "👧",
-"au": "listen-data/audio/kg2/kg2-2b-q3-o2.mp3"
+"au": "listen-data/audio/kg2/kg2-2b-q3-o2w.mp3"
 }
 ],
 "a": 0,
@@ -681,7 +684,8 @@
 ],
 "au": "listen-data/audio/kg2/kg2-2b-text.mp3",
 "tau": "listen-data/audio/kg2/kg2-2b-title.mp3",
-"done": "ar-QA-AmalNeural"
+"done": "ar-QA-AmalNeural",
+"wc": 1
 },
 {
 "id": "kg2-3a",
@@ -775,17 +779,17 @@
 {
 "t": "بِالْفَرَحِ",
 "e": "😄",
-"au": "listen-data/audio/kg2/kg2-3a-q4-o0.mp3"
+"au": "listen-data/audio/kg2/kg2-3a-q4-o0w.mp3"
 },
 {
 "t": "بِالْحُزْنِ",
 "e": "😢",
-"au": "listen-data/audio/kg2/kg2-3a-q4-o1.mp3"
+"au": "listen-data/audio/kg2/kg2-3a-q4-o1w.mp3"
 },
 {
 "t": "بِالْخَوْفِ",
 "e": "😨",
-"au": "listen-data/audio/kg2/kg2-3a-q4-o2.mp3"
+"au": "listen-data/audio/kg2/kg2-3a-q4-o2w.mp3"
 }
 ],
 "a": 0,
@@ -816,12 +820,13 @@
 "a": 0,
 "id": "q5",
 "au": "listen-data/audio/kg2/kg2-3a-q5.mp3",
-"sau": "listen-data/audio/kg2/kg2-3a-q5-s.mp3"
+"sau": "listen-data/audio/kg2/kg2-3a-q5-sw.mp3"
 }
 ],
 "au": "listen-data/audio/kg2/kg2-3a-text.mp3",
 "tau": "listen-data/audio/kg2/kg2-3a-title.mp3",
-"done": "ar-QA-AmalNeural"
+"done": "ar-QA-AmalNeural",
+"wc": 1
 },
 {
 "id": "kg2-3b",
@@ -936,7 +941,8 @@
 ],
 "au": "listen-data/audio/kg2/kg2-3b-text.mp3",
 "tau": "listen-data/audio/kg2/kg2-3b-title.mp3",
-"done": "ar-QA-AmalNeural"
+"done": "ar-QA-AmalNeural",
+"wc": 1
 }
 ],
 "set": "kg2",
