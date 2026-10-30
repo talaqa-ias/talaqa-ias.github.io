@@ -180,9 +180,9 @@ function vMo(){var M=model(),h='<p class="lead">اقرأ النموذج. لاح�
   QZ.forEach(function(q,i){var a=S.qz[i];h+='<div class="it'+(a?(a===q.a?' ok':' no'):'')+'"><p style="font-family:var(--read);font-size:1.1rem;margin:0 0 6px">«'+esc(q.s)+'»</p><div class="row">'+qParts().map(function(s){return '<button class="btn alt sm" data-a="qz" data-i="'+i+'" data-v="'+s.id+'" style="'+(a===s.id?'background:'+s.c+';color:#fff;border-color:'+s.c:'')+'">'+esc(s.n)+'</button>'}).join('')+(a?(a===q.a?' ✅':' ❌ حاول مرة أخرى'):'')+'</div></div>'});h+='</div></div>'}
  var ok=QZ.every(function(q,i){return S.qz[i]===q.a});return h+nav(ok,null,'أجب عن كل الجمل إجابة صحيحة.')}
 
-function ideaChips(qid,target){var a=(S.ideas[qid]||[]);return a.length?'<div class="mini">'+a.map(function(c){return '<button class="mc" data-a="ins" data-t="'+target+'" data-v="'+esc(c)+'">'+esc(c)+'</button>'}).join('')+'</div>':''}
+function ideaChips(qid,pf){var a=(S.ideas[qid]||[]);return a.length?'<div class="mini">'+a.map(function(c){return '<button class="mc" data-a="plc" data-pf="'+pf+'" data-v="'+esc(c)+'">'+esc(c)+'</button>'}).join('')+'</div>':''}
 function vPl(){var h='<p class="lead">'+(LV===1?'اضغط الأفكار لتملأ المخطط. يمكنك أن تكتب أيضًا.':'املأ المخطط بكلمات قصيرة، لا بجمل كاملة. اضغط أي فكرة لتضيفها.')+'</p><div class="planbox">';
- GEN.plan.forEach(function(p){var n=p.multi||1;h+='<div class="pb"><h3>'+esc(p.n)+'</h3>'+(p.hint?'<p class="note" style="margin:0">'+esc(p.hint)+'</p>':'')+ideaChips(p.q,'pl-'+p.id+'-0');for(var i=0;i<n;i++){h+='<input class="in" id="pl-'+p.id+'-'+i+'" data-pl="'+p.id+'" data-i="'+i+'" value="'+esc(((S.plan[p.id]||[])[i])||'')+'" placeholder="'+(n>1?(p.ph||'الفكرة')+' '+(i+1):'…')+'" style="margin-top:6px">'}h+='</div>'});
+ GEN.plan.forEach(function(p){var n=p.multi||1;h+='<div class="pb"><h3>'+esc(p.n)+'</h3>'+(p.hint?'<p class="note" style="margin:0">'+esc(p.hint)+'</p>':'')+ideaChips(p.q,p.id);for(var i=0;i<n;i++){h+='<input class="in" id="pl-'+p.id+'-'+i+'" data-pl="'+p.id+'" data-i="'+i+'" value="'+esc(((S.plan[p.id]||[])[i])||'')+'" placeholder="'+(n>1?(p.ph||'الفكرة')+' '+(i+1):'…')+'" style="margin-top:6px">'}h+='</div>'});
  h+='</div>'+nbBox('plan','نقلتُ المخطط إلى دفتري.');
  return h+nav(plOk(),null,'املأ كل خانات المخطط، ثم انقله إلى دفترك.')}
 function plOk(){return GEN.plan.every(function(p){return p.opt||((S.plan[p.id]||[])[0]||'').trim()})&&S.nb.plan}
@@ -282,6 +282,12 @@ document.addEventListener('click',function(e){var b=e.target.closest('[data-a]')
  if(a==='setpart'){S.dr[b.dataset.p]=b.dataset.v;save();keep();return}
  if(a==='addfr'){var box=b.closest('.fr2'),f=T.frames[b.dataset.p][+b.dataset.i],sels=box.querySelectorAll('select'),bits=f.s.split('____'),out='';bits.forEach(function(x,j){out+=x;if(j<bits.length-1)out+=(sels[j]&&sels[j].value)||'____'});
   var el=document.getElementById('dr-'+b.dataset.p);if(el){el.focus();try{el.setSelectionRange(el.value.length,el.value.length)}catch(x){}insert(el,out.trim())}return}
+ if(a==='plc'){var pf=b.dataset.pf,ins=[].slice.call(document.querySelectorAll('[data-pl="'+pf+'"]'));if(!ins.length)return;
+  var el3=(last&&last.dataset&&last.dataset.pl===pf&&document.body.contains(last))?last:null;
+  if(!el3)el3=ins.filter(function(x){return !x.value.trim()})[0]||ins[ins.length-1];
+  if(ins.length>1&&el3.value.trim()&&el3!==last){var em=ins.filter(function(x){return !x.value.trim()})[0];if(em)el3=em}
+  el3.value=el3.value.trim()?el3.value.trim()+'، '+b.dataset.v:b.dataset.v;el3.dispatchEvent(new Event('input',{bubbles:true}));
+  var k=ins.indexOf(el3);last=(ins.length>1&&k<ins.length-1)?ins[k+1]:el3;ins.forEach(function(x){x.style.borderColor=''});if(ins.length>1)last.style.borderColor='var(--sky)';return}
  if(a==='ins'){var el2=b.dataset.t?document.getElementById(b.dataset.t):last;if(el2&&el2.id&&el2.id.indexOf('pl-')===0&&el2.value.trim()){el2.value=el2.value.trim()+'، '+b.dataset.v;el2.dispatchEvent(new Event('input',{bubbles:true}));return}insert(el2,b.dataset.v);return}
  if(a==='recheck'){keep();return}
  if(a==='publish'){var text=PARTS().map(function(p){return (S.dr[p.id]||'').trim()}).filter(Boolean).join('\n\n');
