@@ -83,6 +83,8 @@ function flush(){if(busy||!Q.length||!ME||!ME.c)return;busy=true;var batch=Q.sli
  cfg().then(function(url){if(!url){busy=false;return}
   return fetch(url,{method:'POST',headers:{'Content-Type':'text/plain;charset=utf-8'},keepalive:true,body:JSON.stringify({sec:ME.sec,sid:fnv('sid|'+ME.sec+'|'+ME.name+'|'+ME.c),pf:fnv('ap|'+ME.sec+'|'+ME.name+'|'+ME.c+'|'+ME.p),g:'KG',ev:batch})})
    .then(function(r){return r.json()}).then(function(j){if(j&&j.ok){Q=Q.slice(batch.length);put('kgw_q',Q)}}).catch(function(){}).then(function(){busy=false})})}
+function upImg(title){var c=document.getElementById('cd');if(PREV||!c||!ME||!ME.c||!ME.p)return;var b64='';try{b64=c.toDataURL('image/png').split(',')[1]}catch(e){return}if(!b64||b64.length<3000)return;
+ cfg().then(function(url){if(!url)return;return fetch(url,{method:'POST',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify({a:'img',sec:ME.sec,sid:fnv('sid|'+ME.sec+'|'+ME.name+'|'+ME.c),pf:fnv('ap|'+ME.sec+'|'+ME.name+'|'+ME.c+'|'+ME.p),title:title,b64:b64})})}).catch(function(){})}
 setInterval(flush,30000);document.addEventListener('visibilitychange',function(){if(document.visibilityState==='hidden')flush()});
 
 var D=null,ST=get('kgw|'+WHO,{tr:{},ln:{},fm:{},bd:{},tw:{},st:{},card:{}}),V=null;
@@ -165,7 +167,7 @@ function vSt(){var h=top()+'<h1>🖼️ أرتّب قصتي</h1>';if(V.i==null){
   h+='</div><div class="card"><h2>🎨 ارسم الجزء الذي أحببته</h2><div class="colors">'+['#1D2B4F','#FF6B6B','#FFC83D','#22B866','#2F9BF0','#8E5CF7','#A0522D'].map(function(c){return '<button data-a="col" data-c="'+c+'" style="background:'+c+'" class="'+((DR&&DR.c)===c?'on':'')+'" aria-label="لون"></button>'}).join('')+'</div><div class="pad" id="dpad"><canvas id="cd" width="400" height="400"></canvas></div><div class="row ctr" style="margin-top:8px"><button class="btn alt sm" data-a="dclr">🧽 امسح الرسم</button></div>';
   var k='st-'+s.id;h+='<button class="ck'+(ST.st[s.id]&&ST.st[s.id].told?' on':'')+'" data-a="told"><span class="bx"></span><span>🗣️ حكيتُ القصة لمعلمي أو لأهلي، فكتبوها لي في دفتري.</span></button>'}
  return h+'</div>'}
-function setupDraw(){var c=document.getElementById('cd');if(!c)return;var x=c.getContext('2d');DR=DR||{c:'#1D2B4F'};x.lineCap='round';x.lineJoin='round';x.lineWidth=10;var dn=false,l=null;
+function setupDraw(){var c=document.getElementById('cd');if(!c)return;var x=c.getContext('2d');x.fillStyle='#fff';x.fillRect(0,0,400,400);DR=DR||{c:'#1D2B4F'};x.lineCap='round';x.lineJoin='round';x.lineWidth=10;var dn=false,l=null;
  function pos(e){var r=c.getBoundingClientRect();return [(e.clientX-r.left)*400/r.width,(e.clientY-r.top)*400/r.height]}
  c.addEventListener('pointerdown',function(e){e.preventDefault();try{c.setPointerCapture(e.pointerId)}catch(z){}dn=true;l=pos(e)});
  c.addEventListener('pointermove',function(e){if(!dn)return;e.preventDefault();var p=pos(e);x.strokeStyle=DR.c;x.beginPath();x.moveTo(l[0],l[1]);x.lineTo(p[0],p[1]);x.stroke();l=p});
@@ -210,8 +212,8 @@ document.addEventListener('click',function(e){var b=e.target.closest('[data-a]')
  if(a==='pnl'){var k=+b.dataset.k;if(V.pk.indexOf(k)<0)V.pk.push(k);if(V.pk.length===3){var s2=D.stories[V.i];if(V.pk.join()==='0,1,2'){ST.st[s2.id]=ST.st[s2.id]||{};ST.st[s2.id].ok=1;save();send({t:'kw',k:'st-'+s2.id,v:1});if(s2.au)play(s2.au)}}render();return}
  if(a==='again'){V.pk=[];render();return}
  if(a==='col'){DR=DR||{};DR.c=b.dataset.c;[].forEach.call(document.querySelectorAll('.colors button'),function(x){x.classList.toggle('on',x===b)});return}
- if(a==='dclr'){var c=document.getElementById('cd');if(c)c.getContext('2d').clearRect(0,0,400,400);return}
- if(a==='told'){var s3=D.stories[V.i];ST.st[s3.id]=ST.st[s3.id]||{};ST.st[s3.id].told=!ST.st[s3.id].told;save();b.classList.toggle('on');if(ST.st[s3.id].told)send({t:'kw',k:'told-'+s3.id,v:1});return}
+ if(a==='dclr'){var c=document.getElementById('cd');if(c){var cx=c.getContext('2d');cx.fillStyle='#fff';cx.fillRect(0,0,400,400)}return}
+ if(a==='told'){var s3=D.stories[V.i];ST.st[s3.id]=ST.st[s3.id]||{};ST.st[s3.id].told=!ST.st[s3.id].told;save();b.classList.toggle('on');if(ST.st[s3.id].told){send({t:'kw',k:'told-'+s3.id,v:1});upImg('رسمتي · '+s3.title.replace(/[\u064B-\u0652]/g,''))}return}
  if(a==='cpick'){ST.card[b.dataset.f]=b.dataset.v;save();var y=window.pageYOffset;render();window.scrollTo(0,y);return}
  if(a==='cnb'){ST.card._nb=!ST.card._nb;save();if(ST.card._nb)send({t:'code',k:'KGC',c:JSON.stringify(ST.card)});var y2=window.pageYOffset;render();window.scrollTo(0,y2);return}
 });
