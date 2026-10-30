@@ -16,7 +16,7 @@ function rubricFor(sec,sk,blv){if(!R)return null;var g=gradeKey(sec);
  if(g==='KG')return sk==='speak'?R.KG.speak:null;
  return R.A[g]&&R.A[g][sk]}
 function evidence(S,sk,ctx){var out=[];
- if(sk==='write'){(ctx.wr||[]).filter(function(w){return w.c===S.c&&w.n===S.n}).slice(-8).reverse().forEach(function(w,i){var x={};try{x=JSON.parse(w.x)}catch(e){}out.push({id:'w'+i,t:(x.title||'نص')+' · الدرجة '+(x.r||'')+' · '+w.d,body:x.text||'',task:x.title||''})})}
+ if(sk==='write'){(ctx.wr||[]).filter(function(w){return w.c===S.c&&w.n===S.n}).slice(-8).reverse().forEach(function(w,i){var x={};try{x=JSON.parse(w.x)}catch(e){}out.push({id:'w'+i,t:(x.title||'نص')+(x.genre?' · '+String(x.r||'').replace('ورشة الكتابة · ','')+' · '+(['','🌱 مبتدئ','🌿 متوسط','🌳 متقدم'][x.lvl]||''):' · الدرجة '+(x.r||''))+' · '+w.d,body:x.text||'',task:x.title||''})})}
  else{var kind=sk==='read'?'القراءة':'التحدث';((ctx.recl||{})[S.c+'|'+S.n]||[]).filter(function(r){return r.k===kind}).slice(-8).reverse().forEach(function(r,i){out.push({id:'r'+i,t:r.t+(r.a?' · المحاولة '+r.a:'')+' · '+r.d,u:r.u||'',task:r.t})})}
  return out}
 function total(rub,lv){var t=0,n=0;(rub.crit||[]).forEach(function(c,i){if(lv[i]!=null){t+=lv[i];n++}});return {t:t,n:n,max:n*(rub.levels?rub.levels.length:5),full:(rub.crit||[]).length*(rub.levels?rub.levels.length:5)}}

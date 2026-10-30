@@ -1,0 +1,224 @@
+<!doctype html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>طلاقة · أكتب في الروضة</title>
+<link rel="icon" href="img/icon.png">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Baloo+Bhaijaan+2:wght@500;700;800&family=Noto+Naskh+Arabic:wght@500;700&display=swap');
+:root{--bg:#EAF6FF;--card:#FFFFFF;--ink:#1D2B4F;--muted:#5B6B8C;--line:#D3E4F5;--soft:#FFF4D1;--sky:#2F9BF0;--grass:#22B866;--sun:#FFC83D;--coral:#FF6B6B;--grape:#8E5CF7;
+ --ui:"Baloo Bhaijaan 2","Segoe UI",Tahoma,sans-serif;--read:"Noto Naskh Arabic","Traditional Arabic",serif;color-scheme:light}
+html,body{background:var(--bg);color:var(--ink)}
+body{margin:0;font-family:var(--ui);font-size:18px;line-height:1.55;direction:rtl;padding-inline:16px;padding-block:0 120px}
+*{box-sizing:border-box}#app{max-width:880px;margin-inline:auto}
+button,input{font:inherit;color:inherit}button{cursor:pointer}
+:focus-visible{outline:4px solid var(--sun);outline-offset:2px}
+h1{font-size:1.8rem;margin:6px 0 2px;font-weight:800}h2{font-size:1.3rem;margin:0 0 8px;font-weight:800}
+.lead{color:var(--muted);margin:0 0 12px}.note{color:var(--muted);font-size:.95rem}
+.top{display:flex;align-items:center;gap:8px;padding-block:14px;flex-wrap:wrap}
+.chip{border:2px solid var(--line);background:#fff;border-radius:999px;padding:6px 14px;font-weight:700;text-decoration:none;color:var(--ink)}
+.card{background:var(--card);border:2px solid var(--line);border-radius:22px;padding:16px;margin:12px 0;box-shadow:0 5px 0 var(--line)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:0;border-radius:18px;padding:12px 22px;font-weight:800;font-size:1.15rem;background:var(--grass);color:#fff;min-height:56px;box-shadow:0 5px 0 #168A4B}
+.btn.alt{background:#fff;color:var(--ink);border:2px solid var(--line);box-shadow:0 4px 0 var(--line)}
+.btn.sm{min-height:44px;padding:6px 14px;font-size:1rem;border-radius:12px}
+.btn[disabled]{opacity:.45}
+.row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}.ctr{justify-content:center}
+.acts{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px}
+.act{border:3px solid var(--line);border-radius:22px;background:#fff;padding:16px;text-align:right;box-shadow:0 5px 0 var(--line)}
+.act .i{font-size:2.6rem;line-height:1}.act h3{margin:6px 0 2px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(78px,1fr));gap:10px}
+.cell{border:3px solid var(--line);border-radius:18px;background:#fff;padding:6px 2px;text-align:center;font-family:var(--read);font-size:2rem;font-weight:700;line-height:1.4}
+.cell small{display:block;font-family:var(--ui);font-size:.85rem;color:#E0A800;min-height:1.2em}
+.cell.done{border-color:var(--grass);background:#F2FBF5}
+.pad{position:relative;width:min(100%,420px);aspect-ratio:1;margin:0 auto;border:3px solid var(--line);border-radius:22px;background:#fff;touch-action:none;overflow:hidden}
+.pad canvas{position:absolute;inset:0;width:100%;height:100%}
+.big{font-family:var(--read);font-size:2.4rem;font-weight:700;text-align:center;margin:4px 0}
+.emo{font-size:4rem;text-align:center;line-height:1.2}
+.stars{font-size:2.2rem;text-align:center;min-height:2.6rem}
+.opts{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.opt{border:3px solid var(--line);border-radius:18px;background:#fff;padding:10px 4px;font-weight:800;font-size:1.05rem}
+.opt .d{display:block;font-size:1.3rem;letter-spacing:4px}
+.opt.ok{border-color:var(--grass);background:#DDF7E8}.opt.no{border-color:var(--coral);background:#FFE3E3}
+.hl{color:var(--coral)}
+.slot{min-height:80px;border:3px dashed var(--sky);border-radius:18px;background:#F5FAFF;font-family:var(--read);font-size:2.6rem;text-align:center;line-height:80px}
+.tiles{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin:12px 0}
+.tile{width:64px;height:64px;border:3px solid var(--line);border-radius:16px;background:#fff;font-family:var(--read);font-size:2rem;font-weight:700;box-shadow:0 4px 0 var(--line)}
+.panels{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.panel{position:relative;border:3px solid var(--line);border-radius:18px;background:#fff;padding:12px 4px;font-size:2.6rem;text-align:center;min-height:110px}
+.panel .n{position:absolute;top:-10px;inset-inline-start:-6px;background:var(--sky);color:#fff;border-radius:999px;width:34px;height:34px;font-size:1.1rem;font-weight:800;display:grid;place-items:center}
+.panel.ok{border-color:var(--grass)}.panel.no{border-color:var(--coral)}
+.cap{font-family:var(--read);font-size:1.05rem;display:block;margin-top:6px}
+.colors{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin:8px 0}
+.colors button{width:44px;height:44px;border-radius:999px;border:3px solid #fff;box-shadow:0 0 0 2px var(--line)}
+.colors button.on{box-shadow:0 0 0 4px var(--ink)}
+.ck{display:flex;align-items:center;gap:10px;border:3px solid var(--sun);border-radius:16px;padding:10px;background:#FFFBEA;width:100%;text-align:right;font-size:1.05rem;margin:10px 0}
+.ck .bx{width:30px;height:30px;border-radius:8px;border:3px solid var(--line);flex:0 0 30px;display:grid;place-items:center;background:#fff}
+.ck.on{border-color:var(--grass);background:#F2FBF5}.ck.on .bx{background:var(--grass);border-color:var(--grass);color:#fff}.ck.on .bx::after{content:"✓"}
+.fcard{border:4px solid var(--grape);border-radius:22px;background:#fff;padding:16px;font-family:var(--read);font-size:1.3rem}
+.fcard .f{display:flex;gap:10px;align-items:center;border-bottom:2px dashed var(--line);padding:8px 0}
+.fcard .f b{min-width:150px}
+.in{width:100%;border:2px solid var(--line);border-radius:12px;padding:8px 12px;background:#fff;font-family:var(--read);font-size:1.3rem}
+.chips{display:flex;flex-wrap:wrap;gap:8px}.chips button{border:2px solid var(--line);background:#fff;border-radius:999px;padding:4px 12px;font-family:var(--read);font-size:1.15rem}.chips button.on{background:var(--sky);color:#fff;border-color:var(--sky)}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style></head><body>
+<div id="app"></div>
+<script src="nav.js"></script>
+<script>
+(function(){'use strict';
+function get(k,d){try{var v=localStorage.getItem(k);return v?JSON.parse(v):d}catch(e){return d}}
+function put(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}
+function esc(s){return String(s==null?'':s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
+function fnv(s){var h=0x811c9dc5;for(var i=0;i<s.length;i++){h^=s.charCodeAt(i);h=Math.imul(h,16777619)>>>0}return h.toString(16)}
+function ymd(){var d=new Date();return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0')}
+function shuf(a){a=a.slice();for(var i=a.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1)),t=a[i];a[i]=a[j];a[j]=t}return a}
+var $app=document.getElementById('app'),player=new Audio();
+function play(a){if(!a)return;try{player.pause();player.src=a;player.currentTime=0;var p=player.play();if(p&&p.catch)p.catch(function(){})}catch(e){}}
+
+var ME=get('pt_me',null),qs=new URLSearchParams(location.search),PREV=qs.get('g');
+function lvOf(sec){var m=/^KG([12])/i.exec(String(sec||''));return m?'kg'+m[1]:null}
+var KG=PREV||(ME&&!ME.pv?lvOf(ME.sec):null);
+var WHO=PREV?'preview|'+PREV:(ME?ME.sec+'|'+ME.name:'');
+var URL_=null,Q=get('kgw_q',[]),busy=false;
+function cfg(){if(URL_!==null)return Promise.resolve(URL_);return fetch('send-config.json',{cache:'no-store'}).then(function(r){return r.json()}).then(function(c){URL_=String(c.progress||'');return URL_}).catch(function(){URL_='';return ''})}
+function send(ev){if(PREV||!ME||!ME.c||!ME.p)return;ev.d=ymd();Q.push(ev);put('kgw_q',Q);flush()}
+function flush(){if(busy||!Q.length||!ME||!ME.c)return;busy=true;var batch=Q.slice(0,20);
+ cfg().then(function(url){if(!url){busy=false;return}
+  return fetch(url,{method:'POST',headers:{'Content-Type':'text/plain;charset=utf-8'},keepalive:true,body:JSON.stringify({sec:ME.sec,sid:fnv('sid|'+ME.sec+'|'+ME.name+'|'+ME.c),pf:fnv('ap|'+ME.sec+'|'+ME.name+'|'+ME.c+'|'+ME.p),g:'KG',ev:batch})})
+   .then(function(r){return r.json()}).then(function(j){if(j&&j.ok){Q=Q.slice(batch.length);put('kgw_q',Q)}}).catch(function(){}).then(function(){busy=false})})}
+setInterval(flush,30000);document.addEventListener('visibilitychange',function(){if(document.visibilityState==='hidden')flush()});
+
+var D=null,ST=get('kgw|'+WHO,{tr:{},ln:{},fm:{},bd:{},tw:{},st:{},card:{}}),V=null;
+['tr','ln','fm','bd','tw','st','card'].forEach(function(k){if(!ST[k])ST[k]={}});
+function save(){put('kgw|'+WHO,ST)}
+var ACTS={kg1:[['ln','〰️','خطوط قبل الكتابة','أتتبّع الخطوط بإصبعي، ثم أرسمها في دفتري.'],['tr','✏️','أتتبّع الحروف','أتتبّع الحرف المنقّط بإصبعي.'],['st','🖼️','أرتّب قصتي','أرتّب الصور، وأحكي القصة، وأرسم.']],
+ kg2:[['tr','✏️','أتتبّع الحروف','أتتبّع الحرف المنقّط بإصبعي.'],['fm','🔎','أين الحرف؟','أعرف مكان الحرف في الكلمة: أوّلها، وسطها، آخرها.'],['bd','🧩','أركّب الكلمة','أركّب كلمة الصورة من الحروف.'],['tw','🖍️','أكتب الكلمة','أتتبّع كلمة منقّطة، ثم أكتبها في دفتري.'],['st','🖼️','أرتّب قصتي','أرتّب الصور، وأحكي القصة، وأرسم.'],['card','🪪','بطاقتي','أكمل بطاقتي الشخصية، وأنسخها في دفتري.']]};
+var NAMES={ln:'خطوط قبل الكتابة',tr:'أتتبّع الحروف',fm:'أين الحرف؟',bd:'أركّب الكلمة',tw:'أكتب الكلمة',st:'أرتّب قصتي',card:'بطاقتي'};
+function starStr(n){return n?'⭐'.repeat(n):''}
+
+function top(){return '<div class="top">'+(window.__tqNav?window.__tqNav.btn('chip'):'')+'<a class="chip" href="index.html">→ أدواتي</a>'+(V?'<button class="chip" data-a="home">✏️ أنشطتي</button>':'')+'<span class="chip" style="margin-inline-start:auto">'+(PREV?'معاينة · '+esc(PREV.toUpperCase()):esc(ME&&ME.name||''))+'</span></div>'}
+function vHome(){var h=top()+'<h1>✏️ أكتب · '+(KG==='kg1'?'KG1':'KG2')+'</h1><p class="lead">اختر نشاطًا. استمع، وتتبّع بإصبعك، ثم اكتب في دفترك.</p><div class="acts">';
+ ACTS[KG].forEach(function(a){var n=Object.keys(ST[a[0]]||{}).length;h+='<button class="act" data-a="act" data-v="'+a[0]+'"><div class="i">'+a[1]+'</div><h3>'+a[2]+'</h3><span class="note">'+a[3]+'</span>'+(n?'<p class="note" style="margin:6px 0 0">✅ أنجزت '+n+'</p>':'')+'</button>'});
+ return h+'</div><p class="note" style="margin-top:16px">👨‍👩‍👧 للأهل والمعلمين: أمسك القلم مع الطفل بالطريقة الصحيحة حين يكتب في الدفتر، واكتبوا له القصة التي يحكيها.</p>'}
+
+/* ---------- لوحة التتبّع ---------- */
+var PAD=null;
+function padHtml(){return '<div class="pad" id="pad"><canvas id="cg" width="400" height="400"></canvas><canvas id="cu" width="400" height="400"></canvas></div><div class="stars" id="stars"></div><div class="row ctr"><button class="btn alt sm" data-a="clr">🧽 امسح</button><button class="btn" data-a="chk">✔ تحقّق</button></div>'}
+function linePath(c,id){var W=400;c.beginPath();
+ if(id==='h'){c.moveTo(330,200);c.lineTo(70,200)}else if(id==='v'){c.moveTo(200,70);c.lineTo(200,330)}else if(id==='d'){c.moveTo(320,80);c.lineTo(80,320)}
+ else if(id==='c'){c.moveTo(320,140);c.quadraticCurveTo(200,360,80,140)}else if(id==='z'){c.moveTo(340,150);c.lineTo(270,260);c.lineTo(200,150);c.lineTo(130,260);c.lineTo(60,150)}
+ else if(id==='o'){c.arc(200,200,120,-Math.PI/2,Math.PI*1.5,true)}}
+function lineStart(id){return {h:[330,200],v:[200,70],d:[320,80],c:[320,140],z:[340,150],o:[200,80]}[id]}
+function fitFont(c,txt){var s=txt.length>2?150:260;c.font='700 '+s+'px "Noto Naskh Arabic"';var w=c.measureText(txt).width;if(w>340){s=Math.floor(s*340/w);c.font='700 '+s+'px "Noto Naskh Arabic"'}return s}
+function setupPad(kind,val){var g=document.getElementById('cg'),u=document.getElementById('cu');if(!g)return;var cg=g.getContext('2d'),cu=u.getContext('2d');
+ var m=document.createElement('canvas');m.width=m.height=400;var cm=m.getContext('2d'),t=document.createElement('canvas');t.width=t.height=400;var ct=t.getContext('2d');
+ cm.fillStyle='#000';cm.strokeStyle='#000';ct.fillStyle='#000';ct.strokeStyle='#000';cm.lineCap=ct.lineCap='round';cm.lineJoin=ct.lineJoin='round';
+ if(kind==='line'){cm.lineWidth=22;linePath(cm,val);cm.stroke();ct.lineWidth=70;linePath(ct,val);ct.stroke()}
+ else{[cm,ct].forEach(function(c){fitFont(c,val);c.textAlign='center';c.textBaseline='middle';c.direction='rtl'});cm.fillText(val,200,215);ct.lineWidth=46;ct.strokeText(val,200,215);ct.fillText(val,200,215)}
+ var md=cm.getImageData(0,0,400,400).data,td=ct.getImageData(0,0,400,400).data;
+ cg.clearRect(0,0,400,400);cg.fillStyle='#E9F1FA';cg.drawImage(m,0,0);cg.globalCompositeOperation='source-in';cg.fillRect(0,0,400,400);cg.globalCompositeOperation='source-over';
+ cg.fillStyle='#7F9CC0';for(var y=4;y<400;y+=11)for(var x=4;x<400;x+=11){if(md[(y*400+x)*4+3]>128){cg.beginPath();cg.arc(x,y,2.6,0,7);cg.fill()}}
+ var s=kind==='line'?lineStart(val):null;if(s){cg.fillStyle='#22B866';cg.beginPath();cg.arc(s[0],s[1],13,0,7);cg.fill();cg.fillStyle='#fff';cg.font='700 16px sans-serif';cg.textAlign='center';cg.textBaseline='middle';cg.fillText('ابدأ',s[0],s[1]-26>10?s[1]:s[1])}
+ PAD={md:md,td:td,cu:cu,u:u,down:false,last:null,n:0};
+ cu.lineCap='round';cu.lineJoin='round';cu.lineWidth=24;cu.strokeStyle='rgba(47,155,240,.85)';
+ function pos(e){var r=u.getBoundingClientRect();return [(e.clientX-r.left)*400/r.width,(e.clientY-r.top)*400/r.height]}
+ u.addEventListener('pointerdown',function(e){e.preventDefault();try{u.setPointerCapture(e.pointerId)}catch(x){}PAD.down=true;PAD.last=pos(e);cu.beginPath();cu.arc(PAD.last[0],PAD.last[1],12,0,7);cu.fillStyle=cu.strokeStyle;cu.fill()});
+ u.addEventListener('pointermove',function(e){if(!PAD.down)return;e.preventDefault();var p=pos(e);cu.beginPath();cu.moveTo(PAD.last[0],PAD.last[1]);cu.lineTo(p[0],p[1]);cu.stroke();PAD.last=p;PAD.n++});
+ ['pointerup','pointercancel','pointerleave'].forEach(function(ev){u.addEventListener(ev,function(){PAD.down=false})})}
+function score(){if(!PAD)return 0;var ud=PAD.cu.getImageData(0,0,400,400).data,g=0,cov=0,us=0,out=0;
+ for(var i=0;i<400*400;i+=3){var k=i*4;var inG=PAD.md[k+3]>128,inT=PAD.td[k+3]>128,uu=ud[k+3]>40;if(inG){g++;if(uu)cov++}if(uu){us++;if(!inT)out++}}
+ var c=g?cov/g:0,o=us?out/us:1;return c>=.72&&o<.25?3:c>=.58&&o<.4?2:c>=.45&&o<.5?1:0}
+
+function vTrace(kind){var L=kind==='ln'?D.lines:kind==='tw'?D.build:D.letters,h=top();
+ if(V.i==null){h+='<h1>'+(kind==='ln'?'〰️ خطوط قبل الكتابة':kind==='tw'?'🖍️ أكتب الكلمة':'✏️ أتتبّع الحروف')+'</h1><p class="lead">اختر '+(kind==='ln'?'خطًّا':kind==='tw'?'كلمة':'حرفًا')+'، ثم تتبّعه بإصبعك.</p><div class="grid">'+L.map(function(x,i){var id=kind==='ln'?x.id:kind==='tw'?x.b:x.l,s=ST[kind][id];return '<button class="cell'+(s?' done':'')+'" data-a="pick" data-i="'+i+'"'+(kind==='tw'?' style="font-size:1.3rem"':'')+'>'+(kind==='ln'?esc(x.n.split(' ')[0])+'<br><span style="font-size:.9rem">'+esc(x.n.split(' ').slice(1).join(' '))+'</span>':kind==='tw'?(x.e+'<br>'+esc(x.t)):esc(x.l))+'<small>'+starStr(s)+'</small></button>'}).join('')+'</div>';return h}
+ var x=L[V.i];h+='<h1 style="text-align:center">'+(kind==='ln'?esc(x.n):kind==='tw'?x.e+' '+esc(x.t):esc(x.say||('حَرْفُ '+x.l))+' <span style="font-family:var(--read)">'+esc(x.l)+'</span>')+'</h1>';
+ if(x.au)h+='<div class="row ctr"><button class="btn alt sm" data-a="play" data-au="'+esc(x.au)+'">🔊 استمع</button></div>';
+ if(kind==='tr')h+='<p class="note" style="text-align:center">'+x.w.map(function(w){return w.e+' '+esc(w.t)}).join(' · ')+'</p>';
+ h+=padHtml()+'<div class="row ctr" style="margin-top:10px">'+(V.i>0?'<button class="btn alt sm" data-a="mv" data-d="-1">→ السابق</button>':'')+(V.i<L.length-1?'<button class="btn alt sm" data-a="mv" data-d="1">التالي ←</button>':'')+'</div>';
+ h+='<p class="note" style="text-align:center">📓 بعد أن تنجح، اكتب '+(kind==='ln'?'الخطّ':kind==='tw'?'الكلمة':'الحرف')+' في دفترك 3 مرات.</p>';return h}
+function traceVal(kind){var L=kind==='ln'?D.lines:kind==='tw'?D.build:D.letters,x=L[V.i];return kind==='ln'?x.path:kind==='tw'?x.b:x.l}
+
+/* ---------- أين الحرف ---------- */
+function fmItems(){var a=[];D.letters.forEach(function(L){L.w.forEach(function(w){a.push({L:L,w:w})})});return a}
+function hlWord(t,l,pos){var b=t.replace(/[ً-ْٰ]/g,'');var idx=pos==='b'?0:pos==='e'?b.length-1:-1;if(idx<0){for(var i=1;i<b.length-1;i++){if(same(b[i],l)){idx=i;break}}}
+ var out='',bi=-1;for(var j=0;j<t.length;j++){var c=t[j];if(!/[ً-ْٰ]/.test(c))bi++;out+=(bi===idx?'<span class="hl">'+esc(c)+'</span>':esc(c))}return out}
+function same(a,l){if(l==='أ')return /[أإآا]/.test(a);return a===l}
+function vFm(){var A=fmItems(),h=top()+'<h1>🔎 أين الحرف؟</h1>';if(V.i==null)V.i=0;var it=A[V.i],a=V.ans;
+ h+='<div class="card"><div class="emo">'+it.w.e+'</div><div class="big">'+(a?hlWord(it.w.t,it.L.l,it.w.pos):esc(it.w.t))+'</div>'+(it.w.au?'<div class="row ctr"><button class="btn alt sm" data-a="play" data-au="'+esc(it.w.au)+'">🔊 استمع</button></div>':'')+'<p style="text-align:center;font-size:1.2rem;font-weight:800">أين '+esc(it.L.say||'الحرف')+' <span style="font-family:var(--read);font-size:1.8rem">('+esc(it.L.l)+')</span>؟</p><div class="opts">'+[['b','في أوّلها','●○○'],['m','في وسطها','○●○'],['e','في آخرها','○○●']].map(function(o){var c=a?(o[0]===it.w.pos?' ok':(o[0]===a?' no':'')):'';return '<button class="opt'+c+'" data-a="fmans" data-v="'+o[0]+'"'+(a?' disabled':'')+'><span class="d">'+o[2]+'</span>'+o[1]+'</button>'}).join('')+'</div>';
+ if(a)h+='<div class="stars">'+(a===it.w.pos?'🌟 أحسنت!':'💡 انظر إلى الحرف الملوّن.')+'</div><div class="row ctr"><button class="btn" data-a="fmnext">التالي ←</button></div>';
+ h+='<p class="note" style="text-align:center">'+(V.i+1)+' من '+A.length+' · صحيح: '+Object.keys(ST.fm).filter(function(k){return ST.fm[k]}).length+'</p></div>';return h}
+
+/* ---------- أركّب الكلمة ---------- */
+var ALPH='ابتثجحخدذرزسشصضطظعغفقكلمنهوي'.split('');
+function vBd(){var h=top()+'<h1>🧩 أركّب الكلمة</h1>';if(V.i==null){h+='<p class="lead">اختر صورة، ثم ركّب كلمتها من الحروف.</p><div class="grid">'+D.build.map(function(x,i){var s=ST.bd[x.b];return '<button class="cell'+(s?' done':'')+'" data-a="pick" data-i="'+i+'">'+x.e+'<small>'+(s?'✅':'')+'</small></button>'}).join('')+'</div>';return h}
+ var x=D.build[V.i];if(!V.tiles){var ls=x.b.split(''),ex=shuf(ALPH.filter(function(c){return ls.indexOf(c)<0})).slice(0,2);V.tiles=shuf(ls.concat(ex));V.cur=''}
+ var ok=V.cur===x.b;h+='<div class="card"><div class="emo">'+x.e+'</div>'+(x.au?'<div class="row ctr"><button class="btn alt sm" data-a="play" data-au="'+esc(x.au)+'">🔊 استمع</button></div>':'')+'<div class="slot">'+esc(V.cur)+'&nbsp;</div>';
+ if(ok)h+='<div class="stars">🌟 أحسنت! <span style="font-family:var(--read)">'+esc(x.t)+'</span></div><p class="note" style="text-align:center">📓 اكتب الكلمة في دفترك.</p>';
+ else h+='<div class="tiles">'+V.tiles.map(function(c,i){return '<button class="tile" data-a="tile" data-c="'+c+'">'+c+'</button>'}).join('')+'</div><div class="row ctr"><button class="btn alt sm" data-a="bs">⌫ امسح حرفًا</button>'+(V.cur.length>=x.b.length?'<span class="stars" style="font-size:1.1rem">💡 حاول مرة أخرى</span>':'')+'</div>';
+ h+='<div class="row ctr" style="margin-top:10px">'+(V.i>0?'<button class="btn alt sm" data-a="mv" data-d="-1">→ السابق</button>':'')+(V.i<D.build.length-1?'<button class="btn alt sm" data-a="mv" data-d="1">التالي ←</button>':'')+'</div></div>';return h}
+
+/* ---------- أرتّب قصتي ---------- */
+var DR=null;
+function vSt(){var h=top()+'<h1>🖼️ أرتّب قصتي</h1>';if(V.i==null){h+='<p class="lead">اختر قصة، ثم رتّب صورها.</p><div class="acts">'+D.stories.map(function(s,i){var d=ST.st[s.id];return '<button class="act" data-a="pick" data-i="'+i+'"><div class="i">'+s.panels.map(function(p){return p.e}).join(' ')+'</div><h3 style="font-family:var(--read)">'+esc(s.title)+'</h3>'+(d?'<span class="note">✅ رتّبتها</span>':'')+'</button>'}).join('')+'</div>';return h}
+ var s=D.stories[V.i];if(!V.ord){V.ord=shuf([0,1,2]);if(V.ord.join()==='0,1,2')V.ord=[2,0,1];V.pk=[]}
+ var done=V.pk.length===3,right=done&&V.pk.join()==='0,1,2';
+ h+='<div class="card"><h2 style="font-family:var(--read);text-align:center">'+esc(s.title)+'</h2><p style="text-align:center">'+(done?(right?'🌟 أحسنت! هذا هو الترتيب الصحيح.':'💡 ليس هذا الترتيب. حاول مرة أخرى.'):'اضغط الصورة الأولى، ثم الثانية، ثم الثالثة.')+'</p><div class="panels">'+V.ord.map(function(k){var n=V.pk.indexOf(k);var cls=done?(right?' ok':' no'):'';return '<button class="panel'+cls+'" data-a="pnl" data-k="'+k+'"'+(done?' disabled':'')+'>'+(n>=0?'<span class="n">'+(n+1)+'</span>':'')+s.panels[k].e+(right?'<span class="cap">'+esc(s.panels[k].c)+'</span>':'')+'</button>'}).join('')+'</div>';
+ if(done&&!right)h+='<div class="row ctr" style="margin-top:10px"><button class="btn" data-a="again">🔄 حاول مرة أخرى</button></div>';
+ if(right){if(s.au)h+='<div class="row ctr" style="margin-top:10px"><button class="btn alt" data-a="play" data-au="'+esc(s.au)+'">🔊 استمع إلى القصة</button></div>';
+  h+='</div><div class="card"><h2>🎨 ارسم الجزء الذي أحببته</h2><div class="colors">'+['#1D2B4F','#FF6B6B','#FFC83D','#22B866','#2F9BF0','#8E5CF7','#A0522D'].map(function(c){return '<button data-a="col" data-c="'+c+'" style="background:'+c+'" class="'+((DR&&DR.c)===c?'on':'')+'" aria-label="لون"></button>'}).join('')+'</div><div class="pad" id="dpad"><canvas id="cd" width="400" height="400"></canvas></div><div class="row ctr" style="margin-top:8px"><button class="btn alt sm" data-a="dclr">🧽 امسح الرسم</button></div>';
+  var k='st-'+s.id;h+='<button class="ck'+(ST.st[s.id]&&ST.st[s.id].told?' on':'')+'" data-a="told"><span class="bx"></span><span>🗣️ حكيتُ القصة لمعلمي أو لأهلي، فكتبوها لي في دفتري.</span></button>'}
+ return h+'</div>'}
+function setupDraw(){var c=document.getElementById('cd');if(!c)return;var x=c.getContext('2d');DR=DR||{c:'#1D2B4F'};x.lineCap='round';x.lineJoin='round';x.lineWidth=10;var dn=false,l=null;
+ function pos(e){var r=c.getBoundingClientRect();return [(e.clientX-r.left)*400/r.width,(e.clientY-r.top)*400/r.height]}
+ c.addEventListener('pointerdown',function(e){e.preventDefault();try{c.setPointerCapture(e.pointerId)}catch(z){}dn=true;l=pos(e)});
+ c.addEventListener('pointermove',function(e){if(!dn)return;e.preventDefault();var p=pos(e);x.strokeStyle=DR.c;x.beginPath();x.moveTo(l[0],l[1]);x.lineTo(p[0],p[1]);x.stroke();l=p});
+ ['pointerup','pointercancel','pointerleave'].forEach(function(ev){c.addEventListener(ev,function(){dn=false})})}
+
+/* ---------- بطاقتي ---------- */
+function vCard(){var C=D.card,v=ST.card,h=top()+'<h1>🪪 بطاقتي</h1><p class="lead">أكمل بطاقتك مثل النموذج. يساعدك أحد أهلك في كتابة اسمك.</p>';
+ h+='<div class="card"><h2>النموذج</h2><div class="fcard">'+C.fields.map(function(f){return '<div class="f"><b>'+esc(f.n)+':</b> <span>'+esc(f.ex)+'</span></div>'}).join('')+'</div></div>';
+ h+='<div class="card"><h2>بطاقتي أنا</h2><div class="fcard">'+C.fields.map(function(f){var val=v[f.id]||'';var inner;
+  if(f.type==='pick')inner='<div class="chips">'+C[f.opt].map(function(o){return '<button class="'+(val===o.t?'on':'')+'" data-a="cpick" data-f="'+f.id+'" data-v="'+esc(o.t)+'">'+o.e+' '+esc(o.t)+'</button>'}).join('')+'</div>';
+  else if(f.type==='num')inner='<div class="chips">'+['3','4','5','6'].map(function(n){return '<button class="'+(val===n?'on':'')+'" data-a="cpick" data-f="'+f.id+'" data-v="'+n+'">'+n+'</button>'}).join('')+'</div>';
+  else inner='<input class="in" data-cf="'+f.id+'" value="'+esc(val)+'" placeholder="'+esc(f.ex)+'">';
+  return '<div class="f" style="flex-wrap:wrap"><b>'+esc(f.n)+':</b> '+inner+'</div>'}).join('')+'</div>';
+ var full=C.fields.every(function(f){return (v[f.id]||'').trim()});
+ h+='<button class="ck'+(v._nb?' on':'')+'" data-a="cnb"'+(full?'':' disabled')+'><span class="bx"></span><span>📓 نسختُ بطاقتي في دفتري.</span></button>'+(full?'':'<p class="note">أكمل كل الخانات أولًا.</p>')+'</div>';return h}
+
+function render(){var h;
+ if(!KG)h=top()+'<h1>✏️ أكتب</h1><div class="card"><p>هذه الأداة لأطفال الروضة. ادخل من صفحة طلاقة برقمك المدرسي.</p><a class="btn" href="index.html">الذهاب إلى طلاقة</a></div>';
+ else if(!D)h=top()+'<p class="lead">جارٍ التحميل…</p>';
+ else if(!V)h=vHome();
+ else if(V.k==='ln'||V.k==='tr'||V.k==='tw')h=vTrace(V.k);
+ else if(V.k==='fm')h=vFm();else if(V.k==='bd')h=vBd();else if(V.k==='st')h=vSt();else h=vCard();
+ $app.innerHTML=h;
+ if(V&&(V.k==='ln'||V.k==='tr'||V.k==='tw')&&V.i!=null){var go=function(){setupPad(V.k==='ln'?'line':'text',traceVal(V.k))};if(document.fonts&&document.fonts.load)document.fonts.load('700 100px "Noto Naskh Arabic"').then(go,go);else go()}
+ if(V&&V.k==='st')setupDraw()}
+
+document.addEventListener('input',function(e){var t=e.target;if(t.dataset&&t.dataset.cf){ST.card[t.dataset.cf]=t.value;save();var b=document.querySelector('[data-a=cnb]');if(b){var full=D.card.fields.every(function(f){return (ST.card[f.id]||'').trim()});b.disabled=!full}}});
+document.addEventListener('click',function(e){var b=e.target.closest('[data-a]');if(!b||b.disabled)return;var a=b.dataset.a;
+ if(a==='play'){play(b.dataset.au);return}
+ if(a==='home'){V=null;render();window.scrollTo(0,0);return}
+ if(a==='act'){V={k:b.dataset.v,i:null};render();window.scrollTo(0,0);return}
+ if(a==='pick'){V.i=+b.dataset.i;V.tiles=null;V.ord=null;render();window.scrollTo(0,0);
+  var L=V.k==='tr'?D.letters[V.i]:V.k==='tw'||V.k==='bd'?D.build[V.i]:null;if(L&&L.au)play(L.au);return}
+ if(a==='mv'){V.i+=+b.dataset.d;V.tiles=null;render();var L2=V.k==='tr'?D.letters[V.i]:V.k==='tw'||V.k==='bd'?D.build[V.i]:null;if(L2&&L2.au)play(L2.au);return}
+ if(a==='clr'){if(PAD){PAD.cu.clearRect(0,0,400,400)}document.getElementById('stars').textContent='';return}
+ if(a==='chk'){var s=score(),el=document.getElementById('stars');if(PAD&&PAD.n<5)s=0;el.textContent=s?starStr(s)+(s===3?' ممتاز!':' أحسنت!'):'💡 تتبّع النقاط كلها، وحاول مرة أخرى.';
+  if(s){var id=traceVal(V.k);if(V.k==='ln')id=D.lines[V.i].id;if(V.k==='tw')id=D.build[V.i].b;if(!ST[V.k][id]||ST[V.k][id]<s){ST[V.k][id]=s;save();send({t:'kw',k:V.k+'-'+id,v:s})}}return}
+ if(a==='fmans'){var A=fmItems(),it=A[V.i];V.ans=b.dataset.v;var ok=V.ans===it.w.pos;ST.fm[it.w.b]=ok?1:0;save();send({t:'kw',k:'fm-'+it.w.b,v:ok?1:0});render();if(it.w.au&&ok)play(it.w.au);return}
+ if(a==='fmnext'){V.i=(V.i+1)%fmItems().length;V.ans=null;render();return}
+ if(a==='tile'){var x=D.build[V.i];if(V.cur.length>=x.b.length)return;V.cur+=b.dataset.c;if(V.cur===x.b){ST.bd[x.b]=1;save();send({t:'kw',k:'bd-'+x.b,v:1});if(x.au)play(x.au)}render();return}
+ if(a==='bs'){V.cur=V.cur.slice(0,-1);render();return}
+ if(a==='pnl'){var k=+b.dataset.k;if(V.pk.indexOf(k)<0)V.pk.push(k);if(V.pk.length===3){var s2=D.stories[V.i];if(V.pk.join()==='0,1,2'){ST.st[s2.id]=ST.st[s2.id]||{};ST.st[s2.id].ok=1;save();send({t:'kw',k:'st-'+s2.id,v:1});if(s2.au)play(s2.au)}}render();return}
+ if(a==='again'){V.pk=[];render();return}
+ if(a==='col'){DR=DR||{};DR.c=b.dataset.c;[].forEach.call(document.querySelectorAll('.colors button'),function(x){x.classList.toggle('on',x===b)});return}
+ if(a==='dclr'){var c=document.getElementById('cd');if(c)c.getContext('2d').clearRect(0,0,400,400);return}
+ if(a==='told'){var s3=D.stories[V.i];ST.st[s3.id]=ST.st[s3.id]||{};ST.st[s3.id].told=!ST.st[s3.id].told;save();b.classList.toggle('on');if(ST.st[s3.id].told)send({t:'kw',k:'told-'+s3.id,v:1});return}
+ if(a==='cpick'){ST.card[b.dataset.f]=b.dataset.v;save();var y=window.pageYOffset;render();window.scrollTo(0,y);return}
+ if(a==='cnb'){ST.card._nb=!ST.card._nb;save();if(ST.card._nb)send({t:'code',k:'KGC',c:JSON.stringify(ST.card)});var y2=window.pageYOffset;render();window.scrollTo(0,y2);return}
+});
+
+render();
+if(KG)fetch('write-data/kgw.json',{cache:'no-store'}).then(function(r){return r.json()}).then(function(j){D=j;render()}).catch(function(){$app.innerHTML=top()+'<div class="card"><p>تعذّر التحميل. حاول مرة أخرى.</p></div>'});
+})();
+</script>
+<script src="brand.js"></script>
+</body></html>

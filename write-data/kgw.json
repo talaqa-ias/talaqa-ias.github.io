@@ -1,0 +1,1348 @@
+{
+ "letters": [
+  {
+   "l": "أ",
+   "name": "أَلِفٌ",
+   "say": "حَرْفُ الْأَلِفِ",
+   "w": [
+    {
+     "t": "أَسَدٌ",
+     "b": "أسد",
+     "e": "🦁",
+     "pos": "b",
+     "au": "write-data/kgw-audio/l00w0p.mp3",
+     "pv": 1
+    },
+    {
+     "t": "فَأْرٌ",
+     "b": "فأر",
+     "e": "🐭",
+     "pos": "m",
+     "au": "write-data/kgw-audio/l00w1p.mp3",
+     "pv": 1
+    },
+    {
+     "t": "بَطَاطَا",
+     "b": "بطاطا",
+     "e": "🥔",
+     "pos": "e",
+     "au": "write-data/kgw-audio/l00w2p.mp3",
+     "pv": 1
+    }
+   ],
+   "au": "write-data/kgw-audio/l00.mp3"
+  },
+  {
+   "l": "ب",
+   "name": "بَاءٌ",
+   "say": "حَرْفُ الْبَاءِ",
+   "w": [
+    {
+     "t": "بَطَّةٌ",
+     "b": "بطة",
+     "e": "🦆",
+     "pos": "b",
+     "au": "write-data/kgw-audio/l01w0p.mp3",
+     "pv": 1
+    },
+    {
+     "t": "عَنْكَبُوتٌ",
+     "b": "عنكبوت",
+     "e": "🕷️",
+     "pos": "m",
+     "au": "write-data/kgw-audio/l01w1p.mp3",
+     "pv": 1
+    },
+    {
+     "t": "عِنَبٌ",
+     "b": "عنب",
+     "e": "🍇",
+     "pos": "e",
+     "au": "write-data/kgw-audio/l01w2p.mp3",
+     "pv": 1
+    }
+   ],
+   "au": "write-data/kgw-audio/l01.mp3"
+  },
+  {
+   "l": "ت",
+   "name": "تَاءٌ",
+   "say": "حَرْفُ التَّاءِ",
+   "w": [
+    {
+     "t": "تُفَّاحَةٌ",
+     "b": "تفاحة",
+     "e": "🍎",
+     "pos": "b",
+     "au": "write-data/kgw-audio/l02w0p.mp3",
+     "pv": 1
+    },
+    {
+     "t": "كِتَابٌ",
+     "b": "كتاب",
+     "e": "📖",
+     "pos": "m",
+     "au": "write-data/kgw-audio/l02w1p.mp3",
+     "pv": 1
+    },
+    {
+     "t": "بَيْتٌ",
+     "b": "بيت",
+     "e": "🏠",
+     "pos": "e",
+     "au": "write-data/kgw-audio/l02w2p.mp3",
+     "pv": 1
+    }
+   ],
+   "au": "write-data/kgw-audio/l02.mp3"
+  },
+  {
+   "l": "ث",
+   "name": "ثَاءٌ",
+   "say": "حَرْفُ الثَّاءِ",
+   "w": [
+    {
+     "t": "ثَعْلَبٌ",
+     "b": "ثعلب",
+     "e": "🦊",
+     "pos": "b",
+     "au": "write-data/kgw-audio/l03w0p.mp3",
+     "pv": 1
+    },
+    {
+     "t": "كُمَّثْرَى",
+     "b": "كمثرى",
+     "e": "🍐",
+     "pos": "m",
+     "au": "write-data/kgw-audio/l03w1p.mp3",
+     "pv": 1
+    },
+    {
+     "t": "مُثَلَّثٌ",
+     "b": "مثلث",
+     "e": "🔺",
+     "pos": "e",
+     "au": "write-data/kgw-audio/l03w2p.mp3",
+     "pv": 1
+    }
+   ],
+   "au": "write-data/kgw-audio/l03.mp3"
+  },
+  {
+   "l": "ج",
+   "name": "جِيمٌ",
+   "say": "حَرْفُ الْجِيمِ",
+   "w": [
+    {
+     "t": "جَمَلٌ",
+     "b": "جمل",
+     "e": "🐪",
+     "pos": "b",
+     "au": "write-data/kgw-audio/l04w0p.mp3",
+     "pv": 1
+    },
+    {
+     "t": "نَجْمَةٌ",
+     "b": "نجمة",
+     "e": "⭐",
+     "pos": "m",
+     "au": "write-data/kgw-audio/l04w1p.mp3",
+     "pv": 1
+    },
+    {
+     "t": "ثَلْجٌ",
+     "b": "ثلج",
+     "e": "❄️",
+     "pos": "e",
+     "au": "write-data/kgw-audio/l04w2p.mp3",
+     "pv": 1
+    }
+   ],
+   "au": "write-data/kgw-audio/l04.mp3"
+  },
+  {
+   "l": "ح",
+   "name": "حَاءٌ",
+   "say": "حَرْفُ الْحَاءِ",
+   "w": [
+    {
+     "t": "حِصَانٌ",
+     "b": "حصان",
+     "e": "🐴",
+     "pos": "b",
+     "au": "write-data/kgw-audio/l05w0p.mp3",
+     "pv": 1
+    },
+    {
+     "t": "نَحْلَةٌ",
+     "b": "نحلة",
+     "e": "🐝",
+     "pos": "m",
+     "au": "write-data/kgw-audio/l05w1p.mp3",
+     "pv": 1
+    },
+    {
+     "t": "تِمْسَاحٌ",
+     "b": "تمساح",
+     "e": "🐊",
+     "pos": "e",
+     "au": "write-data/kgw-audio/l05w2p.mp3",
+     "pv": 1
+    }
+   ],
+   "au": "write-data/kgw-audio/l05.mp3"
+  },
+  {
+   "l": "خ",
+   "name": "خَاءٌ",
+   "say": "حَرْفُ الْخَاءِ",
+   "w": [
+    {
+     "t": "خَرُوفٌ",
+     "b": "خروف",
+     "e": "🐑",
+     "pos": "b",
+     "au": "write-data/kgw-audio/l06w0p.mp3",
+     "pv": 1
+    },
+    {
+     "t": "نَخْلَةٌ",
+     "b": "نخلة",
+     "e": "🌴",
+     "pos": "m",
+     "au": "write-data/kgw-audio/l06w1p.mp3",
+     "pv": 1
+    },
+    {
+     "t": "بِطِّيخٌ",
+     "b": "بطيخ",
+     "e": "🍉",
+     "pos": "e",
+     "au": "write-data/kgw-audio/l06w2p.mp3",
+     "pv": 1
+    }
+   ],
+   "au": "write-data/kgw-audio/l06.mp3"
+  },
+  {
+   "l": "د",
+   "name": "دَالٌ",
+   "say": "حَرْفُ الدَّالِ",
+   "w": [
+    {
+     "t": "دُبٌّ",
+     "b": "دب",
+     "e": "🐻",
+     "pos": "b",
+     "au": "write-data/kgw-audio/l07w0p.mp3",
+     "pv": 1
+    },
+    {
+     "t": "هَدِيَّةٌ",
+     "b": "هدية",
+     "e": "🎁",
+     "pos": "m",
+     "au": "write-data/kgw-audio/l07w1p.mp3",
+     "pv": 1
+    },
+    {
+     "t": "قِرْدٌ",
+     "b": "قرد",
+     "e": "🐒",
+     "pos": "e",
+     "au": "write-data/kgw-audio/l07w2p.mp3",
+     "pv": 1
+    }
+   ],
+   "au": "write-data/kgw-audio/l07.mp3"
+  },
+  {
+   "l": "ذ",
+   "name": "ذَالٌ",
+   "say": "حَرْفُ الذَّالِ",
+   "w": [
+    {
+     "t": "ذِئْبٌ",
+     "b": "ذئب",
+     "e": "🐺",
+     "pos": "b",
+     "au": "write-data/kgw-audio/l08w0p.mp3",
+     "pv": 1
+    },
+    {
+     "t": "حِذَاءٌ",
+     "b": "حذاء",
+     "e": "👞",
+     "pos": "m",
+     "au": "write-data/kgw-audio/l08w1p.mp3",
+     "pv": 1
+    },
+    {
+     "t": "قُنْفُذٌ",
+     "b": "قنفذ",
+     "e": "🦔",
+     "pos": "e",
+     "au": "write-data/kgw-audio/l08w2p.mp3",
+     "pv": 1
+    }
+   ],
+   "au": "write-data/kgw-audio/l08.mp3"
+  },
+  {
+   "l": "ر",
+   "name": "رَاءٌ",
+   "say": "حَرْفُ الرَّاءِ",
+   "w": [
+    {
+     "t": "رِيشَةٌ",
+     "b": "ريشة",
+     "e": "🪶",
+     "pos": "b",
+     "au": "write-data/kgw-audio/l09w0p.mp3",
+     "pv": 1
+    },
+    {
+     "t": "فَرَاشَةٌ",
+     "b": "فراشة",
+     "e": "🦋",
+     "pos": "m",
+     "au": "write-data/kgw-audio/l09w1p.mp3",
+     "pv": 1
+    },
+    {
+     "t": "بَحْرٌ",
+     "b": "بحر",
+     "e": "🌊",
+     "pos": "e",
+     "au": "write-data/kgw-audio/l09w2p.mp3",
+     "pv": 1
+    }
+   ],
+   "au": "write-data/kgw-audio/l09.mp3"
+  },
+  {
+   "l": "ز",
+   "name": "زَايٌ",
+   "say": "حَرْفُ الزَّايِ",
+   "w": [
+    {
+     "t": "زَرَافَةٌ",
+     "b": "زرافة",
+     "e": "🦒",
+     "pos": "b",
+     "au": "write-data/kgw-audio/l10w0p.mp3",
+     "pv": 1
+    },
+    {
+     "t": "غَزَالٌ",
+     "b": "غزال",
+     "e": "🦌",
+     "pos": "m",
+     "au": "write-data/kgw-audio/l10w1p.mp3",
+     "pv": 1
+    },
+    {
+     "t": "مَوْزٌ",
+     "b": "موز",
+     "e": "🍌",
+     "pos": "e",
+     "au": "write-data/kgw-audio/l10w2p.mp3",
+     "pv": 1
+    }
+   ],
+   "au": "write-data/kgw-audio/l10.mp3"
+  },
+  {
+   "l": "س",
+   "name": "سِينٌ",
+   "say": "حَرْفُ السِّينِ",
+   "w": [
+    {
+     "t": "سَيَّارَةٌ",
+     "b": "سيارة",
+     "e": "🚗",
+     "pos": "b",
+     "au": "write-data/kgw-audio/l11w0p.mp3",
+     "pv": 1
+    },
+    {
+     "t": "مِسْطَرَةٌ",
+     "b": "مسطرة",
+     "e": "📏",
+     "pos": "m",
+     "au": "write-data/kgw-audio/l11w1p.mp3",
+     "pv": 1
+    },
+    {
+     "t": "شَمْسٌ",
+     "b": "شمس",
+     "e": "☀️",
+     "pos": "e",
+     "au": "write-data/kgw-audio/l11w2p.mp3",
+     "pv": 1
+    }
+   ],
+   "au": "write-data/kgw-audio/l11.mp3"
+  },
+  {
+   "l": "ش",
+   "name": "شِينٌ",
+   "say": "حَرْفُ الشِّينِ",
+   "w": [
+    {
+     "t": "شَجَرَةٌ",
+     "b": "شجرة",
+     "e": "🌳",
+     "pos": "b",
+     "au": "write-data/kgw-audio/l12w0p.mp3",
+     "pv": 1
+    },
+    {
+     "t": "فُرْشَاةٌ",
+     "b": "فرشاة",
+     "e": "🪥",
+     "pos": "m",
+     "au": "write-data/kgw-audio/l12w1p.mp3",
+     "pv": 1
+    },
+    {
+     "t": "كَبْشٌ",
+     "b": "كبش",
+     "e": "🐏",
+     "pos": "e",
+     "au": "write-data/kgw-audio/l12w2p.mp3",
+     "pv": 1
+    }
+   ],
+   "au": "write-data/kgw-audio/l12.mp3"
+  },
+  {
+   "l": "ص",
+   "name": "صَادٌ",
+   "say": "حَرْفُ الصَّادِ",
+   "w": [
+    {
+     "t": "صَقْرٌ",
+     "b": "صقر",
+     "e": "🦅",
+     "pos": "b",
+     "au": "write-data/kgw-audio/l13w0p.mp3",
+     "pv": 1
+    },
+    {
+     "t": "عُصْفُورٌ",
+     "b": "عصفور",
+     "e": "🐦",
+     "pos": "m",
+     "au": "write-data/kgw-audio/l13w1p.mp3",
+     "pv": 1
+    },
+    {
+     "t": "مِقَصٌّ",
+     "b": "مقص",
+     "e": "✂️",
+     "pos": "e",
+     "au": "write-data/kgw-audio/l13w2p.mp3",
+     "pv": 1
+    }
+   ],
+   "au": "write-data/kgw-audio/l13.mp3"
+  },
+  {
+   "l": "ض",
+   "name": "ضَادٌ",
+   "say": "حَرْفُ الضَّادِ",
+   "w": [
+    {
+     "t": "ضِفْدَعٌ",
+     "b": "ضفدع",
+     "e": "🐸",
+     "pos": "b",
+     "au": "write-data/kgw-audio/l14w0p.mp3",
+     "pv": 1
+    },
+    {
+     "t": "بَيْضَةٌ",
+     "b": "بيضة",
+     "e": "🥚",
+     "pos": "m",
+     "au": "write-data/kgw-audio/l14w1p.mp3",
+     "pv": 1
+    },
+    {
+     "t": "أَرْضٌ",
+     "b": "أرض",
+     "e": "🌍",
+     "pos": "e",
+     "au": "write-data/kgw-audio/l14w2p.mp3",
+     "pv": 1
+    }
+   ],
+   "au": "write-data/kgw-audio/l14.mp3"
+  },
+  {
+   "l": "ط",
+   "name": "طَاءٌ",
+   "say": "حَرْفُ الطَّاءِ",
+   "w": [
+    {
+     "t": "طَائِرَةٌ",
+     "b": "طائرة",
+     "e": "✈️",
+     "pos": "b",
+     "au": "write-data/kgw-audio/l15w0p.mp3",
+     "pv": 1
+    },
+    {
+     "t": "شَطِيرَةٌ",
+     "b": "شطيرة",
+     "e": "🥪",
+     "pos": "m",
+     "au": "write-data/kgw-audio/l15w1p.mp3",
+     "pv": 1
+    },
+    {
+     "t": "خَيْطٌ",
+     "b": "خيط",
+     "e": "🧵",
+     "pos": "e",
+     "au": "write-data/kgw-audio/l15w2p.mp3",
+     "pv": 1
+    }
+   ],
+   "au": "write-data/kgw-audio/l15.mp3"
+  },
+  {
+   "l": "ظ",
+   "name": "ظَاءٌ",
+   "say": "حَرْفُ الظَّاءِ",
+   "w": [
+    {
+     "t": "ظَرْفٌ",
+     "b": "ظرف",
+     "e": "✉️",
+     "pos": "b",
+     "au": "write-data/kgw-audio/l16w0p.mp3",
+     "pv": 1
+    },
+    {
+     "t": "نَظَّارَةٌ",
+     "b": "نظارة",
+     "e": "👓",
+     "pos": "m",
+     "au": "write-data/kgw-audio/l16w1p.mp3",
+     "pv": 1
+    },
+    {
+     "t": "يَقِظٌ",
+     "b": "يقظ",
+     "e": "👀",
+     "pos": "e",
+     "au": "write-data/kgw-audio/l16w2p.mp3",
+     "pv": 1
+    }
+   ],
+   "au": "write-data/kgw-audio/l16.mp3"
+  },
+  {
+   "l": "ع",
+   "name": "عَيْنٌ",
+   "say": "حَرْفُ الْعَيْنِ",
+   "w": [
+    {
+     "t": "عَيْنٌ",
+     "b": "عين",
+     "e": "👁️",
+     "pos": "b",
+     "au": "write-data/kgw-audio/l17w0p.mp3",
+     "pv": 1
+    },
+    {
+     "t": "مِلْعَقَةٌ",
+     "b": "ملعقة",
+     "e": "🥄",
+     "pos": "m",
+     "au": "write-data/kgw-audio/l17w1p.mp3",
+     "pv": 1
+    },
+    {
+     "t": "ذِرَاعٌ",
+     "b": "ذراع",
+     "e": "💪",
+     "pos": "e",
+     "au": "write-data/kgw-audio/l17w2p.mp3",
+     "pv": 1
+    }
+   ],
+   "au": "write-data/kgw-audio/l17.mp3"
+  },
+  {
+   "l": "غ",
+   "name": "غَيْنٌ",
+   "say": "حَرْفُ الْغَيْنِ",
+   "w": [
+    {
+     "t": "غَيْمَةٌ",
+     "b": "غيمة",
+     "e": "☁️",
+     "pos": "b",
+     "au": "write-data/kgw-audio/l18w0p.mp3",
+     "pv": 1
+    },
+    {
+     "t": "بَبَّغَاءُ",
+     "b": "ببغاء",
+     "e": "🦜",
+     "pos": "m",
+     "au": "write-data/kgw-audio/l18w1p.mp3",
+     "pv": 1
+    },
+    {
+     "t": "دِمَاغٌ",
+     "b": "دماغ",
+     "e": "🧠",
+     "pos": "e",
+     "au": "write-data/kgw-audio/l18w2p.mp3",
+     "pv": 1
+    }
+   ],
+   "au": "write-data/kgw-audio/l18.mp3"
+  },
+  {
+   "l": "ف",
+   "name": "فَاءٌ",
+   "say": "حَرْفُ الْفَاءِ",
+   "w": [
+    {
+     "t": "فِيلٌ",
+     "b": "فيل",
+     "e": "🐘",
+     "pos": "b",
+     "au": "write-data/kgw-audio/l19w0p.mp3",
+     "pv": 1
+    },
+    {
+     "t": "سُلَحْفَاةٌ",
+     "b": "سلحفاة",
+     "e": "🐢",
+     "pos": "m",
+     "au": "write-data/kgw-audio/l19w1p.mp3",
+     "pv": 1
+    },
+    {
+     "t": "أَنْفٌ",
+     "b": "أنف",
+     "e": "👃",
+     "pos": "e",
+     "au": "write-data/kgw-audio/l19w2p.mp3",
+     "pv": 1
+    }
+   ],
+   "au": "write-data/kgw-audio/l19.mp3"
+  },
+  {
+   "l": "ق",
+   "name": "قَافٌ",
+   "say": "حَرْفُ الْقَافِ",
+   "w": [
+    {
+     "t": "قِطَّةٌ",
+     "b": "قطة",
+     "e": "🐱",
+     "pos": "b",
+     "au": "write-data/kgw-audio/l20w0p.mp3",
+     "pv": 1
+    },
+    {
+     "t": "بَقَرَةٌ",
+     "b": "بقرة",
+     "e": "🐄",
+     "pos": "m",
+     "au": "write-data/kgw-audio/l20w1p.mp3",
+     "pv": 1
+    },
+    {
+     "t": "صُنْدُوقٌ",
+     "b": "صندوق",
+     "e": "📦",
+     "pos": "e",
+     "au": "write-data/kgw-audio/l20w2p.mp3",
+     "pv": 1
+    }
+   ],
+   "au": "write-data/kgw-audio/l20.mp3"
+  },
+  {
+   "l": "ك",
+   "name": "كَافٌ",
+   "say": "حَرْفُ الْكَافِ",
+   "w": [
+    {
+     "t": "كُرَةٌ",
+     "b": "كرة",
+     "e": "⚽",
+     "pos": "b",
+     "au": "write-data/kgw-audio/l21w0p.mp3",
+     "pv": 1
+    },
+    {
+     "t": "مِكْنَسَةٌ",
+     "b": "مكنسة",
+     "e": "🧹",
+     "pos": "m",
+     "au": "write-data/kgw-audio/l21w1p.mp3",
+     "pv": 1
+    },
+    {
+     "t": "دِيكٌ",
+     "b": "ديك",
+     "e": "🐓",
+     "pos": "e",
+     "au": "write-data/kgw-audio/l21w2p.mp3",
+     "pv": 1
+    }
+   ],
+   "au": "write-data/kgw-audio/l21.mp3"
+  },
+  {
+   "l": "ل",
+   "name": "لَامٌ",
+   "say": "حَرْفُ اللَّامِ",
+   "w": [
+    {
+     "t": "لَيْمُونٌ",
+     "b": "ليمون",
+     "e": "🍋",
+     "pos": "b",
+     "au": "write-data/kgw-audio/l22w0p.mp3",
+     "pv": 1
+    },
+    {
+     "t": "قَلَمٌ",
+     "b": "قلم",
+     "e": "✏️",
+     "pos": "m",
+     "au": "write-data/kgw-audio/l22w1p.mp3",
+     "pv": 1
+    },
+    {
+     "t": "بُرْتُقَالٌ",
+     "b": "برتقال",
+     "e": "🍊",
+     "pos": "e",
+     "au": "write-data/kgw-audio/l22w2p.mp3",
+     "pv": 1
+    }
+   ],
+   "au": "write-data/kgw-audio/l22.mp3"
+  },
+  {
+   "l": "م",
+   "name": "مِيمٌ",
+   "say": "حَرْفُ الْمِيمِ",
+   "w": [
+    {
+     "t": "مِفْتَاحٌ",
+     "b": "مفتاح",
+     "e": "🔑",
+     "pos": "b",
+     "au": "write-data/kgw-audio/l23w0p.mp3",
+     "pv": 1
+    },
+    {
+     "t": "سَمَكَةٌ",
+     "b": "سمكة",
+     "e": "🐟",
+     "pos": "m",
+     "au": "write-data/kgw-audio/l23w1p.mp3",
+     "pv": 1
+    },
+    {
+     "t": "فَمٌ",
+     "b": "فم",
+     "e": "👄",
+     "pos": "e",
+     "au": "write-data/kgw-audio/l23w2p.mp3",
+     "pv": 1
+    }
+   ],
+   "au": "write-data/kgw-audio/l23.mp3"
+  },
+  {
+   "l": "ن",
+   "name": "نُونٌ",
+   "say": "حَرْفُ النُّونِ",
+   "w": [
+    {
+     "t": "نَمِرٌ",
+     "b": "نمر",
+     "e": "🐅",
+     "pos": "b",
+     "au": "write-data/kgw-audio/l24w0p.mp3",
+     "pv": 1
+    },
+    {
+     "t": "أَرْنَبٌ",
+     "b": "أرنب",
+     "e": "🐇",
+     "pos": "m",
+     "au": "write-data/kgw-audio/l24w1p.mp3",
+     "pv": 1
+    },
+    {
+     "t": "بَالُونٌ",
+     "b": "بالون",
+     "e": "🎈",
+     "pos": "e",
+     "au": "write-data/kgw-audio/l24w2p.mp3",
+     "pv": 1
+    }
+   ],
+   "au": "write-data/kgw-audio/l24.mp3"
+  },
+  {
+   "l": "ه",
+   "name": "هَاءٌ",
+   "say": "حَرْفُ الْهَاءِ",
+   "w": [
+    {
+     "t": "هِلَالٌ",
+     "b": "هلال",
+     "e": "🌙",
+     "pos": "b",
+     "au": "write-data/kgw-audio/l25w0p.mp3",
+     "pv": 1
+    },
+    {
+     "t": "زَهْرَةٌ",
+     "b": "زهرة",
+     "e": "🌸",
+     "pos": "m",
+     "au": "write-data/kgw-audio/l25w1p.mp3",
+     "pv": 1
+    },
+    {
+     "t": "وَجْهٌ",
+     "b": "وجه",
+     "e": "😊",
+     "pos": "e",
+     "au": "write-data/kgw-audio/l25w2p.mp3",
+     "pv": 1
+    }
+   ],
+   "au": "write-data/kgw-audio/l25.mp3"
+  },
+  {
+   "l": "و",
+   "name": "وَاوٌ",
+   "say": "حَرْفُ الْوَاوِ",
+   "w": [
+    {
+     "t": "وَرْدَةٌ",
+     "b": "وردة",
+     "e": "🌹",
+     "pos": "b",
+     "au": "write-data/kgw-audio/l26w0p.mp3",
+     "pv": 1
+    },
+    {
+     "t": "حُوتٌ",
+     "b": "حوت",
+     "e": "🐋",
+     "pos": "m",
+     "au": "write-data/kgw-audio/l26w1p.mp3",
+     "pv": 1
+    },
+    {
+     "t": "دَلْوٌ",
+     "b": "دلو",
+     "e": "🪣",
+     "pos": "e",
+     "au": "write-data/kgw-audio/l26w2p.mp3",
+     "pv": 1
+    }
+   ],
+   "au": "write-data/kgw-audio/l26.mp3"
+  },
+  {
+   "l": "ي",
+   "name": "يَاءٌ",
+   "say": "حَرْفُ الْيَاءِ",
+   "w": [
+    {
+     "t": "يَدٌ",
+     "b": "يد",
+     "e": "✋",
+     "pos": "b",
+     "au": "write-data/kgw-audio/l27w0p.mp3",
+     "pv": 1
+    },
+    {
+     "t": "زَيْتُونٌ",
+     "b": "زيتون",
+     "e": "🫒",
+     "pos": "m",
+     "au": "write-data/kgw-audio/l27w1p.mp3",
+     "pv": 1
+    },
+    {
+     "t": "كُرْسِيٌّ",
+     "b": "كرسي",
+     "e": "🪑",
+     "pos": "e",
+     "au": "write-data/kgw-audio/l27w2p.mp3",
+     "pv": 1
+    }
+   ],
+   "au": "write-data/kgw-audio/l27.mp3"
+  }
+ ],
+ "lines": [
+  {
+   "id": "h",
+   "n": "خَطٌّ أُفُقِيٌّ",
+   "path": "h"
+  },
+  {
+   "id": "v",
+   "n": "خَطٌّ عَمُودِيٌّ",
+   "path": "v"
+  },
+  {
+   "id": "d",
+   "n": "خَطٌّ مَائِلٌ",
+   "path": "d"
+  },
+  {
+   "id": "c",
+   "n": "خَطٌّ مُنْحَنٍ",
+   "path": "c"
+  },
+  {
+   "id": "z",
+   "n": "خَطٌّ مُتَعَرِّجٌ",
+   "path": "z"
+  },
+  {
+   "id": "o",
+   "n": "دَائِرَةٌ",
+   "path": "o"
+  }
+ ],
+ "build": [
+  {
+   "t": "قَلَمٌ",
+   "b": "قلم",
+   "e": "✏️",
+   "au": "write-data/kgw-audio/b00p.mp3",
+   "pv": 1
+  },
+  {
+   "t": "جَمَلٌ",
+   "b": "جمل",
+   "e": "🐪",
+   "au": "write-data/kgw-audio/b01p.mp3",
+   "pv": 1
+  },
+  {
+   "t": "نَمِرٌ",
+   "b": "نمر",
+   "e": "🐅",
+   "au": "write-data/kgw-audio/b02p.mp3",
+   "pv": 1
+  },
+  {
+   "t": "عِنَبٌ",
+   "b": "عنب",
+   "e": "🍇",
+   "au": "write-data/kgw-audio/b03p.mp3",
+   "pv": 1
+  },
+  {
+   "t": "قَمَرٌ",
+   "b": "قمر",
+   "e": "🌙",
+   "au": "write-data/kgw-audio/b04p.mp3",
+   "pv": 1
+  },
+  {
+   "t": "بَحْرٌ",
+   "b": "بحر",
+   "e": "🌊",
+   "au": "write-data/kgw-audio/b05p.mp3",
+   "pv": 1
+  },
+  {
+   "t": "سَمَكٌ",
+   "b": "سمك",
+   "e": "🐟",
+   "au": "write-data/kgw-audio/b06p.mp3",
+   "pv": 1
+  },
+  {
+   "t": "وَلَدٌ",
+   "b": "ولد",
+   "e": "👦",
+   "au": "write-data/kgw-audio/b07p.mp3",
+   "pv": 1
+  },
+  {
+   "t": "قِرْدٌ",
+   "b": "قرد",
+   "e": "🐒",
+   "au": "write-data/kgw-audio/b08p.mp3",
+   "pv": 1
+  },
+  {
+   "t": "صَقْرٌ",
+   "b": "صقر",
+   "e": "🦅",
+   "au": "write-data/kgw-audio/b09p.mp3",
+   "pv": 1
+  },
+  {
+   "t": "ثَلْجٌ",
+   "b": "ثلج",
+   "e": "❄️",
+   "au": "write-data/kgw-audio/b10p.mp3",
+   "pv": 1
+  },
+  {
+   "t": "خُبْزٌ",
+   "b": "خبز",
+   "e": "🍞",
+   "au": "write-data/kgw-audio/b11p.mp3",
+   "pv": 1
+  },
+  {
+   "t": "بَيْتٌ",
+   "b": "بيت",
+   "e": "🏠",
+   "au": "write-data/kgw-audio/b12p.mp3",
+   "pv": 1
+  },
+  {
+   "t": "فِيلٌ",
+   "b": "فيل",
+   "e": "🐘",
+   "au": "write-data/kgw-audio/b13p.mp3",
+   "pv": 1
+  },
+  {
+   "t": "حُوتٌ",
+   "b": "حوت",
+   "e": "🐋",
+   "au": "write-data/kgw-audio/b14p.mp3",
+   "pv": 1
+  },
+  {
+   "t": "مَوْزٌ",
+   "b": "موز",
+   "e": "🍌",
+   "au": "write-data/kgw-audio/b15p.mp3",
+   "pv": 1
+  },
+  {
+   "t": "دِيكٌ",
+   "b": "ديك",
+   "e": "🐓",
+   "au": "write-data/kgw-audio/b16p.mp3",
+   "pv": 1
+  },
+  {
+   "t": "عَيْنٌ",
+   "b": "عين",
+   "e": "👁️",
+   "au": "write-data/kgw-audio/b17p.mp3",
+   "pv": 1
+  },
+  {
+   "t": "كُوبٌ",
+   "b": "كوب",
+   "e": "🥤",
+   "au": "write-data/kgw-audio/b18p.mp3",
+   "pv": 1
+  },
+  {
+   "t": "شَايٌ",
+   "b": "شاي",
+   "e": "🍵",
+   "au": "write-data/kgw-audio/b19p.mp3",
+   "pv": 1
+  },
+  {
+   "t": "يَدٌ",
+   "b": "يد",
+   "e": "✋",
+   "au": "write-data/kgw-audio/b20p.mp3",
+   "pv": 1
+  },
+  {
+   "t": "فَمٌ",
+   "b": "فم",
+   "e": "👄",
+   "au": "write-data/kgw-audio/b21p.mp3",
+   "pv": 1
+  },
+  {
+   "t": "بَابٌ",
+   "b": "باب",
+   "e": "🚪",
+   "au": "write-data/kgw-audio/b22p.mp3",
+   "pv": 1
+  },
+  {
+   "t": "شَمْسٌ",
+   "b": "شمس",
+   "e": "☀️",
+   "au": "write-data/kgw-audio/b23p.mp3",
+   "pv": 1
+  },
+  {
+   "t": "حِصَانٌ",
+   "b": "حصان",
+   "e": "🐴",
+   "au": "write-data/kgw-audio/b24p.mp3",
+   "pv": 1
+  },
+  {
+   "t": "غَزَالٌ",
+   "b": "غزال",
+   "e": "🦌",
+   "au": "write-data/kgw-audio/b25p.mp3",
+   "pv": 1
+  },
+  {
+   "t": "خَرُوفٌ",
+   "b": "خروف",
+   "e": "🐑",
+   "au": "write-data/kgw-audio/b26p.mp3",
+   "pv": 1
+  },
+  {
+   "t": "حَلِيبٌ",
+   "b": "حليب",
+   "e": "🥛",
+   "au": "write-data/kgw-audio/b27p.mp3",
+   "pv": 1
+  },
+  {
+   "t": "كُرْسِيٌّ",
+   "b": "كرسي",
+   "e": "🪑",
+   "au": "write-data/kgw-audio/b28p.mp3",
+   "pv": 1
+  },
+  {
+   "t": "بِطِّيخٌ",
+   "b": "بطيخ",
+   "e": "🍉",
+   "au": "write-data/kgw-audio/b29p.mp3",
+   "pv": 1
+  }
+ ],
+ "stories": [
+  {
+   "id": "s1",
+   "title": "مِنَ الْبَيْضَةِ إِلَى الدَّجَاجَةِ",
+   "panels": [
+    {
+     "e": "🥚",
+     "c": "بَيْضَةٌ فِي الْعُشِّ."
+    },
+    {
+     "e": "🐣",
+     "c": "خَرَجَ الْكَتْكُوتُ مِنَ الْبَيْضَةِ."
+    },
+    {
+     "e": "🐔",
+     "c": "كَبِرَ الْكَتْكُوتُ فَصَارَ دَجَاجَةً."
+    }
+   ],
+   "au": "write-data/kgw-audio/s1.mp3"
+  },
+  {
+   "id": "s2",
+   "title": "مِنَ الْبِذْرَةِ إِلَى الشَّجَرَةِ",
+   "panels": [
+    {
+     "e": "🤲🌰",
+     "c": "زَرَعَ سَيْفٌ بِذْرَةً."
+    },
+    {
+     "e": "🌱",
+     "c": "نَبَتَتْ نَبْتَةٌ صَغِيرَةٌ."
+    },
+    {
+     "e": "🌳",
+     "c": "كَبِرَتِ النَّبْتَةُ فَصَارَتْ شَجَرَةً."
+    }
+   ],
+   "au": "write-data/kgw-audio/s2.mp3"
+  },
+  {
+   "id": "s3",
+   "title": "الْمَطَرُ",
+   "panels": [
+    {
+     "e": "☁️☁️",
+     "c": "تَجَمَّعَتِ الْغُيُومُ فِي السَّمَاءِ."
+    },
+    {
+     "e": "🌧️",
+     "c": "نَزَلَ الْمَطَرُ عَلَى الْأَرْضِ."
+    },
+    {
+     "e": "☀️🌼",
+     "c": "ظَهَرَتِ الشَّمْسُ وَنَبَتَتِ الزُّهُورُ."
+    }
+   ],
+   "au": "write-data/kgw-audio/s3.mp3"
+  },
+  {
+   "id": "s4",
+   "title": "قَبْلَ الطَّعَامِ",
+   "panels": [
+    {
+     "e": "🧼🙌",
+     "c": "أَغْسِلُ يَدَيَّ بِالْمَاءِ وَالصَّابُونِ."
+    },
+    {
+     "e": "🤲🍽️",
+     "c": "أَقُولُ: بِسْمِ اللَّهِ."
+    },
+    {
+     "e": "😋🍚",
+     "c": "آكُلُ بِيَدِي الْيُمْنَى."
+    }
+   ],
+   "au": "write-data/kgw-audio/s4.mp3"
+  },
+  {
+   "id": "s5",
+   "title": "أَسْتَعِدُّ لِلْمَدْرَسَةِ",
+   "panels": [
+    {
+     "e": "⏰🛏️",
+     "c": "أَسْتَيْقِظُ مِنَ النَّوْمِ مُبَكِّرًا."
+    },
+    {
+     "e": "👕🎒",
+     "c": "أَلْبَسُ مَلَابِسِي وَآخُذُ حَقِيبَتِي."
+    },
+    {
+     "e": "🚌🏫",
+     "c": "أَذْهَبُ إِلَى الْمَدْرَسَةِ."
+    }
+   ],
+   "au": "write-data/kgw-audio/s5.mp3"
+  },
+  {
+   "id": "s6",
+   "title": "رِحْلَةُ الصَّقْرِ",
+   "panels": [
+    {
+     "e": "🧔🦅",
+     "c": "الصَّقْرُ عَلَى يَدِ صَاحِبِهِ."
+    },
+    {
+     "e": "🦅☁️",
+     "c": "طَارَ الصَّقْرُ فِي السَّمَاءِ."
+    },
+    {
+     "e": "🦅🧔",
+     "c": "عَادَ الصَّقْرُ إِلَى صَاحِبِهِ."
+    }
+   ],
+   "au": "write-data/kgw-audio/s6.mp3"
+  }
+ ],
+ "card": {
+  "fields": [
+   {
+    "id": "name",
+    "n": "اسْمِي",
+    "ex": "سَيْفٌ",
+    "type": "text"
+   },
+   {
+    "id": "age",
+    "n": "عُمْرِي",
+    "ex": "5",
+    "type": "num"
+   },
+   {
+    "id": "class",
+    "n": "صَفِّي",
+    "ex": "الرَّوْضَةُ الثَّانِيَةُ",
+    "type": "text"
+   },
+   {
+    "id": "color",
+    "n": "لَوْنِي الْمُفَضَّلُ",
+    "ex": "أَخْضَرُ",
+    "type": "pick",
+    "opt": "colors"
+   },
+   {
+    "id": "food",
+    "n": "طَعَامِي الْمُفَضَّلُ",
+    "ex": "أَرُزٌّ",
+    "type": "pick",
+    "opt": "foods"
+   }
+  ],
+  "colors": [
+   {
+    "t": "أَحْمَرُ",
+    "e": "🔴"
+   },
+   {
+    "t": "أَخْضَرُ",
+    "e": "🟢"
+   },
+   {
+    "t": "أَزْرَقُ",
+    "e": "🔵"
+   },
+   {
+    "t": "أَصْفَرُ",
+    "e": "🟡"
+   },
+   {
+    "t": "بُرْتُقَالِيٌّ",
+    "e": "🟠"
+   },
+   {
+    "t": "بَنَفْسَجِيٌّ",
+    "e": "🟣"
+   }
+  ],
+  "foods": [
+   {
+    "t": "أَرُزٌّ",
+    "e": "🍚"
+   },
+   {
+    "t": "دَجَاجٌ",
+    "e": "🍗"
+   },
+   {
+    "t": "سَمَكٌ",
+    "e": "🐟"
+   },
+   {
+    "t": "خُبْزٌ",
+    "e": "🍞"
+   },
+   {
+    "t": "مَوْزٌ",
+    "e": "🍌"
+   },
+   {
+    "t": "تُفَّاحٌ",
+    "e": "🍎"
+   }
+  ]
+ }
+}
