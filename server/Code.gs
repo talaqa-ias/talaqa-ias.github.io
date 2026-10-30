@@ -34,7 +34,7 @@ function sheet(){var ss=SpreadsheetApp.getActive(),sh=ss.getSheetByName(SHEET);
   if(!sh){sh=ss.insertSheet(SHEET);sh.appendRow(['وقت الاستلام','التاريخ','الشعبة','الطالب','الأداة','المفتاح','القيمة','الصف','النشاط']);sh.setFrozenRows(1);sh.setRightToLeft(true)}
   else if(sh.getRange(1,4).getValue()!=='الطالب'){sh.getRange(1,4).setValue('الطالب');sh.getRange(1,9).setValue('النشاط')}
   return sh}
-var KIND={v:'زيارة',r:'قراءة',s:'تحدث',g:'ألعاب',a:'تسجيل صوتي'};
+var KIND={v:'زيارة',r:'قراءة',s:'تحدث',g:'ألعاب',a:'تسجيل صوتي',ls:'استماع',im:'إملاء',ws:'ورشة الكتابة',kw:'كتابة الروضة',i:'رسم/صورة'};
 /* رموز الإنجاز التفصيلية (سرعة القراءة، طريقة التحقق، القياس الصفي، تقييم التحدث) تُحفظ آخر نسخة منها */
 function codeSheet(){var ss=SpreadsheetApp.getActive(),sh=ss.getSheetByName('codes');if(!sh){sh=ss.insertSheet('codes');sh.appendRow(['وقت الاستلام','الشعبة','الطالب','النوع','الرمز التفصيلي']);sh.setFrozenRows(1);sh.setRightToLeft(true)}else if(sh.getRange(1,3).getValue()!=='الطالب')sh.getRange(1,3).setValue('الطالب');return sh}
 function out(o){return ContentService.createTextOutput(JSON.stringify(o)).setMimeType(ContentService.MimeType.JSON)}
@@ -43,14 +43,17 @@ function out(o){return ContentService.createTextOutput(JSON.stringify(o)).setMim
 function doPost(e){
   try{
     var b0=JSON.parse(e.postData.contents);if(b0.a==='score')return saveScore(b0);
-    var b=b0,S=seed(),sec=String(b.sec||''),K=secCodes(S),c=K[sec],P=c&&pinsOf(S,sec,c);
-    if(!P){S=seed(true);K=secCodes(S);c=K[sec];P=c&&pinsOf(S,sec,c)}
+    var b=b0,PORT=b.port==='B'?'B':'A',S=seed(false,PORT),sec=String(b.sec||''),K=secCodes(S),c=K[sec],P=c&&pinsOf(S,sec,c);
+    if(!P){S=seed(true,PORT);K=secCodes(S);c=K[sec];P=c&&pinsOf(S,sec,c)}
     /* لا أسماء في الجدول: الطالب يُعرَّف بمعرّف مستعار (sid) لا يفكّه إلا من يملك رمز الشعبة */
     var who=P&&Object.keys(P).filter(function(n){return fnv('sid|'+sec+'|'+n+'|'+c)===String(b.sid)})[0];
     if(!who||fnv('ap|'+sec+'|'+who+'|'+c+'|'+P[who])!==String(b.pf))return out({ok:false,err:'auth'});
     if(b.a==='rec')return saveRec(b,sec,who);
+    if(b.a==='img')return saveImg(b,sec,who);
     var all=(b.ev||[]).slice(0,300),cs=all.filter(function(x){return x.t==='code'}),ev=all.filter(function(x){return x.t!=='code'});
-    if(cs.length){var lk=LockService.getScriptLock();lk.waitLock(20000);try{var cx=codeSheet();cs.forEach(function(x){cx.appendRow([new Date(),sec,who,String(x.k||'').slice(0,4),String(x.c||'').slice(0,45000)])})}finally{lk.releaseLock()}}
+    if(cs.length){var lk=LockService.getScriptLock();lk.waitLock(20000);try{var cx=codeSheet();cs.forEach(function(x){cx.appendRow([new Date(),sec,who,String(x.k||'').slice(0,4),String(x.c||'').slice(0,45000)])})}finally{lk.releaseLock()}
+      cs.forEach(function(x){try{evidence(x,sec,who,String(b.g||''))}catch(er){}})}
+    try{all.filter(function(x){return x.t==='kw'}).forEach(function(x){kgEvidence(x,sec,who)})}catch(er){}
     if(!ev.length)return out({ok:true,n:cs.length});
     var now=new Date(),rows=ev.map(function(x){var t=String(x.t||'').slice(0,12);return [now,String(x.d||'').slice(0,10),sec,who,t,String(x.k||'').slice(0,80),Number(x.v)||0,String(b.g||'').slice(0,4),KIND[t]||t]});
     var lock=LockService.getScriptLock();lock.waitLock(20000);
@@ -119,6 +122,7 @@ function saveRec(b,sec,who){
     var file=dir.createFile(Utilities.newBlob(bytes,mime.split(';')[0],name));
     sh.appendRow([new Date(),sec,who,kind,title,part,file.getUrl(),attempt,gradeName(sec)]);
     gradeUpsert(sec,who,kind,title,part,attempt,day,file.getUrl());
+    try{skAdd(b.tool==='read'?'read':'speak',[day,gradeName(sec),sec,who,title+(part?' · '+part:''),'','المحاولة '+attempt,'تسجيل صوتي',link(file.getUrl(),'استمع')])}catch(er){}
     var ev=sheet();ev.appendRow([new Date(),day,sec,who,'a',clean(b.tool)+'|'+title+'|'+part,attempt,String(b.g||'').slice(0,4),'تسجيل صوتي: '+kind+' · '+title+(part?' · '+part:'')+' · المحاولة '+attempt]);
     return out({ok:true,url:file.getUrl(),attempt:attempt});
   }finally{lock.releaseLock()}
@@ -139,9 +143,55 @@ function reorganizeExisting(){
   Logger.log('moved '+moved+' files');
 }
 /* لتجهيز الأذونات مرة واحدة من المحرر: اختر authorize ثم Run */
-function authorize(){var f=DriveApp.createFolder('طلاقة-اختبار-الإذن');f.setTrashed(true);SpreadsheetApp.getActive();UrlFetchApp.fetch(SITE,{muteHttpExceptions:true})}
+function authorize(){var f=DriveApp.createFolder('طلاقة-اختبار-الإذن');f.setTrashed(true);var dd=DocumentApp.create('طلاقة-اختبار-الإذن');DriveApp.getFileById(dd.getId()).setTrashed(true);SpreadsheetApp.getActive();UrlFetchApp.fetch(SITE,{muteHttpExceptions:true})}
 
 /* ---------- ملخّص للمعلم أو المنسق ---------- */
+
+/* ---------- صفحات الأدلة: ورقة لكل مهارة + ملفات في مجلد الطالب ----------
+   القراءة والتحدث: التسجيلات الصوتية (مجلد القراءة / التحدث) · الاستماع والإملاء: النتيجة وتفصيلها
+   الكتابة: كل نص منشور يُحفظ مستند Google في مجلد «الكتابة» للطالب · كتابة الروضة: الأنشطة والرسوم */
+var SK={read:'📖 القراءة',speak:'🗣️ التحدث',listen:'🎧 الاستماع',imla:'✍️ الإملاء',write:'🧩 الكتابة',kgw:'✏️ كتابة الروضة'};
+var SKHEAD=['التاريخ','الصف','الشعبة','الطالب','النشاط / المهمة','المستوى','النتيجة','التفاصيل','الدليل'];
+function skSheet(k){var ss=SpreadsheetApp.getActive(),n=SK[k],sh=ss.getSheetByName(n);
+  if(!sh){sh=ss.insertSheet(n);sh.appendRow(SKHEAD);sh.setFrozenRows(1);sh.setRightToLeft(true);sh.getRange(1,1,1,SKHEAD.length).setFontWeight('bold').setBackground('#EAF4FF');sh.setColumnWidth(5,240);sh.setColumnWidth(8,360)}
+  return sh}
+function link(url,label){return url?'=HYPERLINK("'+url+'","'+String(label||'افتح').replace(/"/g,'')+'")':''}
+function skAdd(k,row){var lk=LockService.getScriptLock();lk.waitLock(20000);try{skSheet(k).appendRow(row)}finally{lk.releaseLock()}}
+function today(){return Utilities.formatDate(new Date(),'Asia/Dubai','yyyy-MM-dd')}
+var LTYPES={detail:'معلومة وتفصيل',char:'الشخصيات',event:'الأحداث',seq:'ترتيب الأحداث',inout:'ورد أم لم يرد',main:'الفكرة العامة',title:'العنوان',infer:'الاستنتاج',opinion:'الرأي',moral:'المغزى',purpose:'غاية المتحدث',view:'وجهة النظر',factop:'حقيقة أم رأي',compare:'الموازنة',summary:'التلخيص',ending:'الخاتمة',vocab:'معنى الكلمة',word:'اسمع واختر',sound:'الصوت والحرف',dir:'تنفيذ التوجيهات'};
+var ITYPES={pick:'أختار الكتابة الصحيحة',fill:'أكمل الحرف',dict:'أكتب ما أسمع',sent:'أكتب الجملة'};
+var LVN={1:'🌱 مبتدئ',2:'🌿 متوسط',3:'🌳 متقدم'};
+function byStr(by,names){return Object.keys(by||{}).map(function(k){var v=by[k];return (names[k]||k)+': '+(Array.isArray(v)?v[0]+'/'+v[1]:v)}).join(' · ')}
+function evidence(x,sec,who,g){var o={};try{o=JSON.parse(x.c)}catch(e){return}var k=String(x.k||''),d=today();
+  if(k==='LST')skAdd('listen',[d,gradeName(sec),sec,who,o.title||o.id,'المستوى '+(o.lv||''),(o.p!=null?o.p+'%':''),byStr(o.by,LTYPES)+(o.heard?' · مرات الاستماع: '+o.heard:'')+(o.op&&o.op.length&&o.op[0]?' · رأيه: '+o.op.join('، '):''),'']);
+  else if(k==='IML')skAdd('imla',[d,gradeName(sec),sec,who,o.title||o.id,'المستوى '+(o.lv||''),(o.p!=null?o.p+'%':''),byStr(o.by,ITYPES)+(o.miss&&o.miss.length?' · أخطأ في: '+o.miss.join('، '):''),'']);
+  else if(k==='WRT'){var url=writeDoc(o,sec,who,d);var wc=String(o.text||'').split(/\s+/).filter(Boolean).length;
+    skAdd('write',[d,gradeName(sec),sec,who,(o.title||'')+(o.r?' · '+String(o.r).replace('ورشة الكتابة · ',''):''),LVN[o.lvl]||(o.lvl?'الدرجة '+o.lvl:''),wc+' كلمة',o.v1?'المسودة الأولى: '+String(o.v1).split(/\s+/).filter(Boolean).length+' كلمة':'',link(url,'افتح النص')])}
+  else if(k==='KGC')skAdd('kgw',[d,gradeName(sec),sec,who,'بطاقتي الشخصية','','أكملها ونسخها في الدفتر',Object.keys(o).filter(function(q){return q[0]!=='_'}).map(function(q){return o[q]}).join(' · '),''])}
+var KGN={ln:'خطوط قبل الكتابة',tr:'تتبّع الحرف',fm:'أين الحرف',bd:'أركّب الكلمة',tw:'أكتب الكلمة',st:'رتّب القصة',told:'حكى القصة'};
+function kgEvidence(x,sec,who){var k=String(x.k||''),p=k.split('-'),t=p.shift(),rest=p.join('-'),v=Number(x.v)||0;
+  var res=t==='ln'||t==='tr'||t==='tw'?(v?'⭐'.repeat(v):'—'):t==='fm'?(v?'صحيح':'خطأ'):'أنجز';
+  skAdd('kgw',[String(x.d||today()),gradeName(sec),sec,who,(KGN[t]||t)+(rest?' · '+rest:''),'',res,'',''])}
+function writeDoc(o,sec,who,d){try{
+  var dir=studentDir(sec,who,'الكتابة'),name=clean((o.title||'نص')+' · '+(LVN[o.lvl]||'')+' · '+d);
+  var doc=DocumentApp.create(name),bd=doc.getBody();bd.setAttributes((function(){var a={};a[DocumentApp.Attribute.FONT_FAMILY]='Times New Roman';a[DocumentApp.Attribute.FONT_SIZE]=14;return a})());
+  var H=bd.appendParagraph(o.title||'نص');H.setHeading(DocumentApp.ParagraphHeading.HEADING1);
+  bd.appendParagraph('الطالب: '+who+' · الشعبة: '+sec+' · التاريخ: '+d);
+  bd.appendParagraph((o.r||'')+(o.lvl?' · مستوى المساعدة: '+(LVN[o.lvl]||o.lvl):''));
+  bd.appendParagraph('النص النهائي').setHeading(DocumentApp.ParagraphHeading.HEADING2);
+  String(o.text||'').split(/\n\n+/).forEach(function(t){bd.appendParagraph(t)});
+  if(o.v1){bd.appendParagraph('المسودة الأولى').setHeading(DocumentApp.ParagraphHeading.HEADING2);String(o.v1).split(/\n\n+/).forEach(function(t){bd.appendParagraph(t)})}
+  if(o.plan){bd.appendParagraph('المخطط').setHeading(DocumentApp.ParagraphHeading.HEADING2);Object.keys(o.plan).forEach(function(q){bd.appendParagraph('• '+[].concat(o.plan[q]).filter(Boolean).join('، '))})}
+  if(o.nb)bd.appendParagraph('الدفتر: '+[o.nb.plan?'نقل المخطط':'',o.nb.rev?'نقّح المسودة':'',o.nb.final?'كتب النسخة النهائية':''].filter(Boolean).join(' · '));
+  bd.getParagraphs().forEach(function(p){p.setLeftToRight(false);p.setAlignment(DocumentApp.HorizontalAlignment.RIGHT)});
+  doc.saveAndClose();var f=DriveApp.getFileById(doc.getId());dir.addFile(f);DriveApp.getRootFolder().removeFile(f);return f.getUrl()}catch(e){return ''}}
+function saveImg(b,sec,who){
+  var bytes=Utilities.base64Decode(String(b.b64||''));if(!bytes.length||bytes.length>4*1024*1024)return out({ok:false,err:'size'});
+  var d=today(),title=clean(b.title||'رسمي'),dir=studentDir(sec,who,'الكتابة');
+  var f=dir.createFile(Utilities.newBlob(bytes,'image/png',title+' · '+d+'.png'));
+  skAdd('kgw',[d,gradeName(sec),sec,who,title,'','رسم','',link(f.getUrl(),'افتح الرسم')]);
+  return out({ok:true,url:f.getUrl()})}
+
 function doGet(e){
   var q=e.parameter||{},S=seed(),allowed=null;
   if(q.a==='ping')return out({ok:true});
