@@ -85,6 +85,7 @@ details summary{cursor:pointer}
 </style></head><body>
 <div id="app"></div>
 <script src="nav.js"></script>
+<script src="back.js"></script>
 <script>
 (function(){'use strict';
 function get(k,d){try{var v=localStorage.getItem(k);return v?JSON.parse(v):d}catch(e){return d}}
@@ -146,7 +147,7 @@ function allText(){return PARTS().map(function(p){return S.dr[p.id]||''}).join('
 
 /* ---------- واجهات ---------- */
 function lvTag(l){return '<span class="lvtag" style="--c:'+LVN[l][3]+'">'+LVN[l][0]+' '+LVN[l][1]+'</span>'}
-function top(){return '<div class="top">'+(window.__tqNav?window.__tqNav.btn('chip'):'')+'<a class="chip" href="index.html">→ أدواتي</a>'+(GEN?'<button class="chip" data-a="home">🧩 أنواع النصوص</button>':'')+(T?'<button class="chip" data-a="gen" data-g="'+GEN.id+'">'+esc(GEN.icon||'')+' مهام '+esc(GEN.short||'النوع')+'</button>':'')+'<span class="chip" style="margin-inline-start:auto">'+(PREV?'معاينة · '+esc(PREV.toUpperCase()):esc(ME&&ME.name||''))+'</span></div>'}
+function top(){return '<div class="top">'+(window.TQB?TQB.btn('chip'):'')+'<a class="chip" href="index.html">→ أدواتي</a>'+(GEN?'<button class="chip" data-a="home">🧩 أنواع النصوص</button>':'')+(T?'<button class="chip" data-a="gen" data-g="'+GEN.id+'">'+esc(GEN.icon||'')+' مهام '+esc(GEN.short||'النوع')+'</button>':'')+'<span class="chip" style="margin-inline-start:auto">'+(PREV?'معاينة · '+esc(PREV.toUpperCase()):esc(ME&&ME.name||''))+'</span></div>'}
 function stepsBar(){return '<div class="steps">'+STEPS.map(function(s,i){return '<button class="st'+(i===S.st?' cur':i<=S.max?' done':'')+'" data-a="go" data-i="'+i+'"'+(i>S.max?' disabled':'')+'><b>'+s[1]+'</b>'+s[2]+'</button>'}).join('')+'</div>'}
 function nav(ok,label,why){return '<div class="navb">'+(S.st>0?'<button class="btn alt" data-a="go" data-i="'+(S.st-1)+'">→ السابق</button>':'<span></span>')+'<button class="btn" data-a="next"'+(ok?'':' disabled')+'>'+(label||'التالي ←')+'</button></div>'+(!ok&&why?'<p class="note" id="why" style="text-align:left">'+esc(why)+'</p>':'')}
 function nbBox(k,t){var on=S.nb[k];return '<div class="nb"><button class="ck'+(on?' on':'')+'" data-a="nb" data-k="'+k+'"><span class="bx"></span><span>📓 '+esc(t)+'</span></button></div>'}
@@ -251,7 +252,7 @@ function render(){var h;
  else if(!GEN)h=vHome();
  else if(!T)h=vGen();
  else h=top()+'<h1 style="font-family:var(--read)">'+esc(T.title)+'</h1><p style="margin:0 0 6px">'+lvTag(LV)+' <span class="note">'+esc(GEN.name)+'</span></p>'+stepsBar()+[vEx,vMo,vPl,vDr,vRv,vEd,vPub][S.st]();
- $app.innerHTML=h}
+ $app.innerHTML=h;if(window.TQB)TQB.depth((GEN?1:0)+(T?1:0))}
 function go(i){S.st=i;if(i>S.max)S.max=i;if(i===4&&!S.v1)S.v1=JSON.parse(JSON.stringify(S.dr));save();render();window.scrollTo(0,0)}
 function okNow(){return [function(){return true},function(){return true},plOk,drOk,function(){return rvOk().ok},drOk,function(){return true}][S.st]()}
 function refreshNext(){var nb=document.querySelector('[data-a=next]');if(!nb)return;var ok=S.st===0||S.st===1?!nb.disabled:okNow();nb.disabled=!ok;var w=document.getElementById('why');if(w){var t=S.st===2?'املأ كل خانات المخطط، ثم انقله إلى دفترك.':S.st===4?rvWhy():drWhy();w.textContent=ok?'':t}else if(!ok){nb.parentNode.insertAdjacentHTML('afterend','<p class="note" id="why" style="text-align:left"></p>');refreshNext()}}
@@ -296,6 +297,7 @@ document.addEventListener('click',function(e){var b=e.target.closest('[data-a]')
 });
 function keep(){var y=window.pageYOffset||0;render();window.scrollTo(0,y)}
 
+if(window.TQB)TQB.init({home:'index.html',up:function(){if(T){T=null;S=null}else if(GEN){GEN=null}else return false;render();window.scrollTo(0,0)}});
 render();
 if(G)Promise.all([fetch('write-data/ws-'+G+'.json',{cache:'no-store'}).then(function(r){if(!r.ok)throw 0;return r.json()}),fetch('write-data/dict.json').then(function(r){return r.json()}).catch(function(){return []})]).then(function(x){D=x[0];DICT={};x[1].forEach(function(w){DICT[w]=1});var gq=qs.get('w');if(gq)GEN=findGen(gq)||null;render()}).catch(function(){$app.innerHTML=top()+'<h1>🧩 ورشة الكتابة</h1><div class="card"><p>ورشة الكتابة لصفك قيد الإعداد.</p></div>'});
 })();

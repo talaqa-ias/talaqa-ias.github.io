@@ -54,6 +54,7 @@ h1{font-size:1.8rem;margin:6px 0 2px;font-weight:800}h2{font-size:1.3rem;margin:
 </style></head><body>
 <div id="app"></div>
 <script src="nav.js"></script>
+<script src="back.js"></script>
 <script>
 (function(){'use strict';
 function get(k,d){try{var v=localStorage.getItem(k);return v?JSON.parse(v):d}catch(e){return d}}
@@ -92,7 +93,7 @@ var D=null,U=null,R=null,seeT=null;
 var LV={1:['🔁','المستوى 1 · أتذكّر','مراجعة دروس الصف السابق'],2:['⭐','المستوى 2 · أتعلّم','دروس صفّي في الوثيقة الوطنية'],3:['🚀','المستوى 3 · أتقدّم','بدايات دروس الصف التالي']};
 var TN={pick:'أختار الكتابة الصحيحة',fill:'أكمل الحرف الناقص',dict:'أكتب ما أسمع',sent:'أكتب الجملة'};
 function hl(w){return esc(w).replace(/\[([^\]]*)\]/g,'<span class="hl">$1</span>')}
-function top(){return '<div class="top">'+(window.__tqNav?window.__tqNav.btn('chip'):'')+'<a class="chip" href="index.html">→ أدواتي</a>'+(U?'<button class="chip" data-a="home">✍️ كل الدروس</button>':'')+'<span class="chip" style="margin-inline-start:auto">'+(PREV?'معاينة · '+esc(PREV.toUpperCase()):esc(ME&&ME.name||''))+'</span></div>'}
+function top(){return '<div class="top">'+(window.TQB?TQB.btn('chip'):'')+'<a class="chip" href="index.html">→ أدواتي</a>'+(U?'<button class="chip" data-a="home">✍️ كل الدروس</button>':'')+'<span class="chip" style="margin-inline-start:auto">'+(PREV?'معاينة · '+esc(PREV.toUpperCase()):esc(ME&&ME.name||''))+'</span></div>'}
 
 function vHome(){var h=top()+'<h1>✍️ سلّم الإملاء</h1><p class="lead">في كل درس: أتعلّم القاعدة، ثم أتدرّب: أختار، وأكمل، وأكتب ما أسمع. حين أحصل على 80% أتقن الدرس.</p>';
  [1,2,3].forEach(function(l){var us=D.units.filter(function(u){return u.lv===l});if(!us.length)return;
@@ -129,7 +130,7 @@ function render(){var h;
  else if(!R)h=vLearn();
  else if(R.i>=R.items.length)h=vRes();
  else h=vItem();
- $app.innerHTML=h;
+ $app.innerHTML=h;if(window.TQB)TQB.depth((U?1:0)+(R?1:0));
  if(R&&R.i<R.items.length){var q=R.items[R.i];if(q.t==='dict'&&q.mode==='see'&&!R.seen&&!seeT){var c=4;seeT=setInterval(function(){c--;var el=document.getElementById('cd');if(el)el.textContent='⏳ '+c;if(c<=0){clearInterval(seeT);seeT=null;R.seen=true;render();var t=document.getElementById('ta');if(t)t.focus()}},1000)}}}
 
 function startUnit(){var it=U.items.slice();R={items:it,i:0,ans:[],res:[],typed:[],order:it.map(function(q){return q.opts?shuf(q.opts.map(function(_,j){return j})):null}),kb:(G==='g1'||G==='g2'),seen:false};render();auto()}
@@ -161,6 +162,7 @@ function finish(){var n=R.items.length,s=0;R.res.forEach(function(v){s+=v});var 
  send({t:'code',k:'IML',c:JSON.stringify({id:U.id,title:U.title,lv:U.lv,p:p,by:by,miss:R.items.filter(function(q,i){return R.res[i]<1}).map(function(q){return q.ans||q.opts[0]}).slice(0,20)})});
  render()}
 
+if(window.TQB)TQB.init({home:'index.html',up:function(){try{player.pause()}catch(e){}if(R){R=null}else if(U){U=null}else return false;render();window.scrollTo(0,0)}});
 render();
 if(G)fetch('write-data/imla-'+G+'.json',{cache:'no-store'}).then(function(r){if(!r.ok)throw 0;return r.json()}).then(function(j){D=j;render()}).catch(function(){$app.innerHTML=top()+'<h1>✍️ سلّم الإملاء</h1><div class="card"><p>دروس الإملاء لصفك قيد الإعداد.</p></div>'});
 })();

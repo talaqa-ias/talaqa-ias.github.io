@@ -61,6 +61,7 @@ h1{font-size:1.8rem;margin:6px 0 2px;font-weight:800}h2{font-size:1.3rem;margin:
 </style></head><body>
 <div id="app"></div>
 <script src="nav.js"></script>
+<script src="back.js"></script>
 <script>
 (function(){'use strict';
 function get(k,d){try{var v=localStorage.getItem(k);return v?JSON.parse(v):d}catch(e){return d}}
@@ -95,7 +96,7 @@ var ACTS={kg1:[['ln','〰️','خطوط قبل الكتابة','أتتبّع ا�
 var NAMES={ln:'خطوط قبل الكتابة',tr:'أتتبّع الحروف',fm:'أين الحرف؟',bd:'أركّب الكلمة',tw:'أكتب الكلمة',st:'أرتّب قصتي',card:'بطاقتي'};
 function starStr(n){return n?'⭐'.repeat(n):''}
 
-function top(){return '<div class="top">'+(window.__tqNav?window.__tqNav.btn('chip'):'')+'<a class="chip" href="index.html">→ أدواتي</a>'+(V?'<button class="chip" data-a="home">✏️ أنشطتي</button>':'')+'<span class="chip" style="margin-inline-start:auto">'+(PREV?'معاينة · '+esc(PREV.toUpperCase()):esc(ME&&ME.name||''))+'</span></div>'}
+function top(){return '<div class="top">'+(window.TQB?TQB.btn('chip'):'')+'<a class="chip" href="index.html">→ أدواتي</a>'+(V?'<button class="chip" data-a="home">✏️ أنشطتي</button>':'')+'<span class="chip" style="margin-inline-start:auto">'+(PREV?'معاينة · '+esc(PREV.toUpperCase()):esc(ME&&ME.name||''))+'</span></div>'}
 function vHome(){var h=top()+'<h1>✏️ أكتب · '+(KG==='kg1'?'KG1':'KG2')+'</h1><p class="lead">اختر نشاطًا. استمع، وتتبّع بإصبعك، ثم اكتب في دفترك.</p><div class="acts">';
  ACTS[KG].forEach(function(a){var n=Object.keys(ST[a[0]]||{}).length;h+='<button class="act" data-a="act" data-v="'+a[0]+'"><div class="i">'+a[1]+'</div><h3>'+a[2]+'</h3><span class="note">'+a[3]+'</span>'+(n?'<p class="note" style="margin:6px 0 0">✅ أنجزت '+n+'</p>':'')+'</button>'});
  return h+'</div><p class="note" style="margin-top:16px">👨‍👩‍👧 للأهل والمعلمين: أمسك القلم مع الطفل بالطريقة الصحيحة حين يكتب في الدفتر، واكتبوا له القصة التي يحكيها.</p>'}
@@ -190,7 +191,7 @@ function render(){var h;
  else if(!V)h=vHome();
  else if(V.k==='ln'||V.k==='tr'||V.k==='tw')h=vTrace(V.k);
  else if(V.k==='fm')h=vFm();else if(V.k==='bd')h=vBd();else if(V.k==='st')h=vSt();else h=vCard();
- $app.innerHTML=h;
+ $app.innerHTML=h;if(window.TQB)TQB.depth(V?(V.i!=null?2:1):0);
  if(V&&(V.k==='ln'||V.k==='tr'||V.k==='tw')&&V.i!=null){var go=function(){setupPad(V.k==='ln'?'line':'text',traceVal(V.k))};if(document.fonts&&document.fonts.load)document.fonts.load('700 100px "Noto Naskh Arabic"').then(go,go);else go()}
  if(V&&V.k==='st')setupDraw()}
 
@@ -218,6 +219,7 @@ document.addEventListener('click',function(e){var b=e.target.closest('[data-a]')
  if(a==='cnb'){ST.card._nb=!ST.card._nb;save();if(ST.card._nb)send({t:'code',k:'KGC',c:JSON.stringify(ST.card)});var y2=window.pageYOffset;render();window.scrollTo(0,y2);return}
 });
 
+if(window.TQB)TQB.init({home:'index.html',up:function(){if(V&&V.i!=null&&V.k!=='fm'&&V.k!=='card'){V.i=null;V.tiles=null;V.ord=null}else if(V){V=null}else return false;render();window.scrollTo(0,0)}});
 render();
 if(KG)fetch('write-data/kgw.json',{cache:'no-store'}).then(function(r){return r.json()}).then(function(j){D=j;render()}).catch(function(){$app.innerHTML=top()+'<div class="card"><p>تعذّر التحميل. حاول مرة أخرى.</p></div>'});
 })();

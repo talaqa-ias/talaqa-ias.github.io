@@ -60,6 +60,7 @@ h1{font-size:1.7rem;margin:6px 0 2px;font-weight:800}h2{font-size:1.25rem;margin
 </style></head><body>
 <div id="app"></div>
 <script src="nav.js"></script>
+<script src="back.js"></script>
 <script>
 (function(){'use strict';
 function get(k,d){try{var v=localStorage.getItem(k);return v?JSON.parse(v):d}catch(e){return d}}
@@ -106,7 +107,7 @@ function acts(l){var A=SK==='read'?RACTS:WACTS;return A.filter(function(a){var k
 function stOf(l,k){return (ST[l.id]||{})[k]}
 function setSt(l,k,v){ST[l.id]=ST[l.id]||{};if(!ST[l.id][k]||ST[l.id][k]<v)ST[l.id][k]=v;save()}
 
-function top(){return '<div class="top">'+(window.__tqNav?window.__tqNav.btn('chip'):'')+'<a class="chip" href="b/index.html">→ أدواتي · My tools</a>'+(LES?'<button class="chip" data-a="home">📚 الدروس · Lessons</button>':'')+(ACT?'<button class="chip" data-a="les">'+esc(LES.emo||'')+' '+esc(LES.title)+'</button>':'')+'<span class="chip" style="margin-inline-start:auto">'+(PREV?'Preview · '+esc(PREV.toUpperCase()):esc(ME&&ME.name||''))+'</span></div>'}
+function top(){return '<div class="top">'+(window.TQB?TQB.btn('chip'):'')+'<a class="chip" href="b/index.html">→ أدواتي · My tools</a>'+(LES?'<button class="chip" data-a="home">📚 الدروس · Lessons</button>':'')+(ACT?'<button class="chip" data-a="les">'+esc(LES.emo||'')+' '+esc(LES.title)+'</button>':'')+'<span class="chip" style="margin-inline-start:auto">'+(PREV?'Preview · '+esc(PREV.toUpperCase()):esc(ME&&ME.name||''))+'</span></div>'}
 function hdr(){return SK==='read'?['📖 أقرأ','Read in Arabic','كل درس فيه كلمات وقصة من دروس الاستماع. اقرأ أولًا، ثم اضغط 🔊 لتتأكد.','Every lesson uses the words and story from your listening lessons. Read first, then tap 🔊 to check yourself.']:['✍️ أكتب','Write in Arabic','أكتب كلمات الدرس وجمله على الشاشة، ثم في دفتري.','Write the lesson words and sentences on the screen, then in your notebook.']}
 function vHome(){var H=hdr(),h=top()+'<h1>'+L(H[0],H[1])+'</h1><div class="how">👨‍👩‍👧 '+L(H[2],H[3])+'<span class="en">Parents: sit with your child, turn the sound on, and let them try alone first. Every instruction is in Arabic and English.</span></div><div class="grid">';
  D.lessons.forEach(function(l){var A=acts(l),n=A.filter(function(a){return stOf(l,a[0])}).length;h+='<button class="les" data-a="open" data-l="'+l.id+'"><div class="i">'+esc(l.emo||'📘')+'</div><h3>'+esc(l.title)+'</h3><span class="en" style="text-align:right">'+esc(l.en||'')+'</span><div class="prog"><i style="width:'+Math.round(n/A.length*100)+'%"></i></div><span class="note" dir="ltr">'+n+' / '+A.length+'</span></button>'});
@@ -231,7 +232,7 @@ function render(){var h;
  else if(!D)h=top()+'<p class="lead">⏳ Loading…</p>';
  else if(!LES)h=vHome();else if(!ACT)h=vLes();
  else h={words:vWords,sight:vSight,build:vBuild,story:vStory,quiz:vQuiz,trace:vTrace,spell:vSpell,fill:vFill,mine:vMine}[ACT]();
- $app.innerHTML=h;
+ $app.innerHTML=h;if(window.TQB)TQB.depth((LES?1:0)+(ACT?1:0));
  if(ACT==='trace'&&V&&V.i<(V.items||[]).length){var x=V.items[V.i],go=function(){setupPad(x.v.length>2?'text':'text',x.v)};if(document.fonts&&document.fonts.load)document.fonts.load('700 100px "Noto Naskh Arabic"').then(go,go);else go()}}
 function startAct(k){ACT=k;V={};render();window.scrollTo(0,0)}
 function nextItem(){V.i++;V.ans=null;V.opts=null;V.tl=null;V.cur='';V.nb=false;render();window.scrollTo(0,0)}
@@ -266,6 +267,7 @@ document.addEventListener('click',function(e){var b=e.target.closest('[data-a]')
  if(a==='minesend'){var q2=(LES.ask||[])[V.i%(LES.ask||[1]).length];send({t:'code',k:'WRT',c:JSON.stringify({title:'Arabic B · '+bare(LES.title),text:tx(q2)+'\n\n'+V.txt.trim(),r:'العربية لغير الناطقين · أكتب جملتي',lvl:0,nb:{final:1}})});setSt(LES,'mine',3);V.sent=true;render();return}
 });
 
+if(window.TQB)TQB.init({home:'b/index.html',up:function(){if(ACT){ACT=null;V=null}else if(LES){LES=null}else return false;render();window.scrollTo(0,0)}});
 render();
 if(G)Promise.all([fetch('aal-'+G+'.html').then(function(r){return r.text()}),fetch('aal/gloss.json').then(function(r){return r.json()}).catch(function(){return {}})]).then(function(x){var m=x[0].match(/<script id="seed" type="application\/json">([\s\S]*?)<\/script>/);D=JSON.parse(m[1]);GL=(x[1]||{})[G]||{};(D.hasA||[]).forEach(function(a){HASA[a]=1});(D.hasI||[]).forEach(function(a){HASI[a]=1});render()}).catch(function(){$app.innerHTML=top()+'<div class="card"><p>Could not load. Please try again.</p></div>'});
 })();

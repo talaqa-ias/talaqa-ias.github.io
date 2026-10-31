@@ -1218,7 +1218,7 @@ function noAudio(list){var miss=list.some(function(x){return !hasA(x)});return m
 function frameHTML(f){return '<div class="frm">'+esc(f).replace(/___/g,'<span class="blank">؟</span>')+'</div>'}
 
 var _rdb=new Promise(function(res,rej){try{var r=indexedDB.open('tq_rec',1);r.onupgradeneeded=function(){r.result.createObjectStore('r')};r.onsuccess=function(){res(r.result)};r.onerror=function(){rej(r.error)}}catch(e){rej(e)}});
-function rput(k,v){return _rdb.then(function(db){return new Promise(function(r){var t=db.transaction('r','readwrite');t.objectStore('r').put(v,k);t.oncomplete=r;t.onerror=r})}).catch(function(){})}
+var __RU={},__SIL='data:audio/wav;base64,UklGRnQAAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YVAAAACAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgA==';function rput(k,v){try{if(v&&v.blob)__RU[k]=URL.createObjectURL(v.blob)}catch(e){}return _rdb.then(function(db){return new Promise(function(r){var t=db.transaction('r','readwrite');t.objectStore('r').put(v,k);t.oncomplete=r;t.onerror=r})}).catch(function(){})}
 function rget(k){return _rdb.then(function(db){return new Promise(function(r){var q=db.transaction('r').objectStore('r').get(k);q.onsuccess=function(){r(q.result)};q.onerror=function(){r(null)}})}).catch(function(){return null})}
 function rkeys(){return _rdb.then(function(db){return new Promise(function(r){var q=db.transaction('r').objectStore('r').getAllKeys();q.onsuccess=function(){r(q.result||[])};q.onerror=function(){r([])}})}).catch(function(){return []})}
 var _REC=null,_stream=null,_chunks=[],_rplayer=new Audio();
@@ -1232,7 +1232,7 @@ function recToggle(key,btn){if(_REC&&_REC.state==='recording'){_REC.stop();retur
   _REC.start();btn.classList.add('on');btn.textContent='⏹ أوقف';var st=document.getElementById('recst');if(st)st.textContent='🔴 يسجّل…'};
  if(_stream)return go();
  navigator.mediaDevices.getUserMedia({audio:{echoCancellation:true,noiseSuppression:true}}).then(function(s){_stream=s;go()}).catch(function(){toast('اسمح باستخدام الميكروفون')})}
-function playRec(key){rget(key).then(function(v){if(!v){toast('لا يوجد تسجيل بعد');return}try{player.pause()}catch(e){}_rplayer.src=URL.createObjectURL(v.blob);_rplayer.play()})}
+function playRec(key){try{player.pause()}catch(e){}var u=__RU[key];if(u){_rplayer.src=u;_rplayer.currentTime=0;var p=_rplayer.play();if(p&&p.catch)p.catch(function(){});return}try{_rplayer.src=__SIL;var q=_rplayer.play();if(q&&q.catch)q.catch(function(){})}catch(e){}rget(key).then(function(v){if(!v){toast('لا يوجد تسجيل بعد');return}__RU[key]=URL.createObjectURL(v.blob);_rplayer.src=__RU[key];_rplayer.play()})}
 function sendRecs(){var s=me();if(!s){toast('ادخل باسمك أولًا');return}var pre=(DATA.tool||'spk')+':'+s.name+':';
  rkeys().then(function(ks){ks=ks.filter(function(k){return String(k).indexOf(pre)===0});if(!ks.length){toast('لا توجد تسجيلات بعد');return}
   Promise.all(ks.map(function(k){return rget(k).then(function(v){if(!v)return null;var ext=(v.mime||'').indexOf('mp4')>=0?'m4a':'webm';return {name:String(k).slice(pre.length).replace(/[:]/g,'_')+'.'+ext,blob:v.blob}})})).then(function(bl){
