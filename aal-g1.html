@@ -104,6 +104,12 @@ var dbp=new Promise(function(res,rej){try{var r=indexedDB.open('aal_rec',1);r.on
 function rput(k,v){return dbp.then(function(db){return new Promise(function(r){var t=db.transaction('r','readwrite');t.objectStore('r').put(v,k);t.oncomplete=r;t.onerror=r})})}
 function rget(k){return dbp.then(function(db){return new Promise(function(r){var q=db.transaction('r').objectStore('r').get(k);q.onsuccess=function(){r(q.result)};q.onerror=function(){r(null)}})}).catch(function(){return null})}
 function rkeys(){return dbp.then(function(db){return new Promise(function(r){var q=db.transaction('r').objectStore('r').getAllKeys();q.onsuccess=function(){r(q.result||[])};q.onerror=function(){r([])}})}).catch(function(){return []})}
+
+/* طلاقة · رفع تسجيلات التحدث إلى الدرايف (الطالب ← التحدث) */
+function __tqUp(blob,key){try{var me=JSON.parse(localStorage.getItem('ptb_me')||'null');if(!me||me.pv||!me.c||!me.p||!blob||blob.size<6000)return;
+ var fnv=function(s){var h=0x811c9dc5;for(var i=0;i<s.length;i++){h^=s.charCodeAt(i);h=Math.imul(h,16777619)>>>0}return h.toString(16)};
+ var fr=new FileReader();fr.onload=function(){fetch('send-config.json',{cache:'no-store'}).then(function(r){return r.json()}).then(function(c){var u=String(c.progress||'');if(!u)return;
+  return fetch(u,{method:'POST',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify({port:'B',a:'rec',sec:me.sec,sid:fnv('sid|'+me.sec+'|'+me.name+'|'+me.c),pf:fnv('ap|'+me.sec+'|'+me.name+'|'+me.c+'|'+me.p),tool:'speak',title:document.title.replace(/^طلاقة · /,'')+' · '+String(key||'').slice(0,40),part:'',mime:blob.type,b64:String(fr.result).split(',')[1]})})}).then(function(r){return r&&r.json()}).then(function(j){if(j&&j.ok&&typeof toast==='function')toast('✅ وصل تسجيلك إلى معلمك · Sent to your teacher')}).catch(function(){})};fr.readAsDataURL(blob)}catch(e){}}
 var REC=null,stream=null,chunks=[],recKey=null;
 function mime(){var m=['audio/webm;codecs=opus','audio/mp4','audio/webm'];for(var i=0;i<m.length;i++)if(window.MediaRecorder&&MediaRecorder.isTypeSupported&&MediaRecorder.isTypeSupported(m[i]))return m[i];return ''}
 function recToggle(key,btn,onDone){
@@ -111,7 +117,7 @@ function recToggle(key,btn,onDone){
  player.pause();
  var go=function(){chunks=[];var mt=mime();try{REC=new MediaRecorder(stream,mt?{mimeType:mt}:undefined)}catch(e){toast('التسجيل غير مدعوم في هذا المتصفح');return}
   REC.ondataavailable=function(e){if(e.data&&e.data.size)chunks.push(e.data)};
-  REC.onstop=function(){var b=new Blob(chunks,{type:REC.mimeType||mt});btn.classList.remove('on');btn.textContent='🎙️ أعد';rput(key,{blob:b,mime:b.type,at:new Date().toISOString()}).then(function(){onDone&&onDone(b)})};
+  REC.onstop=function(){var b=new Blob(chunks,{type:REC.mimeType||mt});btn.classList.remove('on');btn.textContent='🎙️ أعد';rput(key,{blob:b,mime:b.type,at:new Date().toISOString()}).then(function(){onDone&&onDone(b)});try{__tqUp(b,key)}catch(x){}};
   REC.start();btn.classList.add('on');btn.textContent='⏹ أوقف'};
  if(stream)return go();
  navigator.mediaDevices.getUserMedia({audio:{echoCancellation:true,noiseSuppression:true}}).then(function(s){stream=s;go()}).catch(function(){toast('اسمح باستخدام الميكروفون')})
