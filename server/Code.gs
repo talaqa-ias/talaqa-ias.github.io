@@ -43,7 +43,7 @@ function out(o){return ContentService.createTextOutput(JSON.stringify(o)).setMim
 function doPost(e){
   try{
     var b0=JSON.parse(e.postData.contents);if(b0.a==='score')return saveScore(b0);
-    var b=b0,PORT=b.port==='B'?'B':'A',S=seed(false,PORT),sec=String(b.sec||''),K=secCodes(S),c=K[sec],P=c&&pinsOf(S,sec,c);
+    var b=b0,PORT=PORT_=(b.port==='B'?'B':'A'),S=seed(false,PORT),sec=String(b.sec||''),K=secCodes(S),c=K[sec],P=c&&pinsOf(S,sec,c);
     if(!P){S=seed(true,PORT);K=secCodes(S);c=K[sec];P=c&&pinsOf(S,sec,c)}
     /* لا أسماء في الجدول: الطالب يُعرَّف بمعرّف مستعار (sid) لا يفكّه إلا من يملك رمز الشعبة */
     var who=P&&Object.keys(P).filter(function(n){return fnv('sid|'+sec+'|'+n+'|'+c)===String(b.sid)})[0];
@@ -87,7 +87,8 @@ function saveScore(b){
    Drive: «طلاقة · تسجيلات الطلاب» ← المرحلة ← الشعبة ← الطالب ← القراءة/التحدث ← «المهمة · المحاولة N · التاريخ»
    الجدول: ورقة recs (كل التسجيلات)، وورقة لكل مرحلة فيها سطر لكل (طالب، مهمة) وأعمدة المحاولة 1، 2، 3… */
 var ROOT='طلاقة · تسجيلات الطلاب';
-function gradeName(sec){var s=String(sec||'').toUpperCase();if(/^KG/.test(s))return 'الروضة';var m=s.match(/^G(\d)/);return m?({'1':'الصف الأول','2':'الصف الثاني','3':'الصف الثالث','4':'الصف الرابع','5':'الصف الخامس'})[m[1]]||('الصف '+m[1]):'أخرى'}
+var PORT_='A';
+function gradeName(sec){var s=String(sec||'').toUpperCase(),B=PORT_==='B'?' · العربية ب':'';if(/^KG/.test(s))return 'الروضة'+B;var m=s.match(/^G(\d)/);return (m?({'1':'الصف الأول','2':'الصف الثاني','3':'الصف الثالث','4':'الصف الرابع','5':'الصف الخامس'})[m[1]]||('الصف '+m[1]):'أخرى')+B}
 function folder(parent,name){var it=parent?parent.getFoldersByName(name):DriveApp.getFoldersByName(name);return it.hasNext()?it.next():(parent?parent.createFolder(name):DriveApp.createFolder(name))}
 function studentDir(sec,who,kind){return folder(folder(folder(folder(folder(null,ROOT),gradeName(sec)),sec),clean(who)),kind)}
 function clean(s){return String(s||'').replace(/[\\/:*?"<>|#%]+/g,' ').replace(/\s+/g,' ').trim().slice(0,90)}
@@ -167,6 +168,7 @@ function evidence(x,sec,who,g){var o={};try{o=JSON.parse(x.c)}catch(e){return}va
   else if(k==='IML')skAdd('imla',[d,gradeName(sec),sec,who,o.title||o.id,'المستوى '+(o.lv||''),(o.p!=null?o.p+'%':''),byStr(o.by,ITYPES)+(o.miss&&o.miss.length?' · أخطأ في: '+o.miss.join('، '):''),'']);
   else if(k==='WRT'){var url=writeDoc(o,sec,who,d);var wc=String(o.text||'').split(/\s+/).filter(Boolean).length;
     skAdd('write',[d,gradeName(sec),sec,who,(o.title||'')+(o.r?' · '+String(o.r).replace('ورشة الكتابة · ',''):''),LVN[o.lvl]||(o.lvl?'الدرجة '+o.lvl:''),wc+' كلمة',o.v1?'المسودة الأولى: '+String(o.v1).split(/\s+/).filter(Boolean).length+' كلمة':'',link(url,'افتح النص')])}
+  else if(k==='BRD'||k==='BWR')skAdd(k==='BRD'?'read':'write',[d,gradeName(sec),sec,who,(o.title||o.id)+(o.en?' · '+o.en:''),'',o.rec?'تسجيل':(o.p!=null?o.p+'%':''),({words:'قراءة الكلمات',sight:'كلمات بصرية',build:'ترتيب الجملة',story:'قراءة القصة',quiz:'فهم المقروء',trace:'تتبّع',spell:'تهجئة الكلمة',fill:'إكمال الجملة',mine:'جملتي'})[o.act]||o.act||'',link(o.rec||'','استمع')]);
   else if(k==='KGC')skAdd('kgw',[d,gradeName(sec),sec,who,'بطاقتي الشخصية','','أكملها ونسخها في الدفتر',Object.keys(o).filter(function(q){return q[0]!=='_'}).map(function(q){return o[q]}).join(' · '),''])}
 var KGN={ln:'خطوط قبل الكتابة',tr:'تتبّع الحرف',fm:'أين الحرف',bd:'أركّب الكلمة',tw:'أكتب الكلمة',st:'رتّب القصة',told:'حكى القصة'};
 function kgEvidence(x,sec,who){var k=String(x.k||''),p=k.split('-'),t=p.shift(),rest=p.join('-'),v=Number(x.v)||0;
