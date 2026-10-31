@@ -83,6 +83,7 @@ h1{font-size:1.8rem;margin:6px 0 2px;font-weight:800}h2{font-size:1.3rem;margin:
 </style></head><body>
 <div id="app"></div>
 <script src="nav.js"></script>
+<script src="back.js"></script>
 <script>
 (function(){'use strict';
 function get(k,d){try{var v=localStorage.getItem(k);return v?JSON.parse(v):d}catch(e){return d}}
@@ -131,7 +132,7 @@ function flush(){if(busy||!Q.length||!ME||!ME.c)return;busy=true;var batch=Q.sli
 setInterval(flush,30000);document.addEventListener('visibilitychange',function(){if(document.visibilityState==='hidden')flush()});
 
 var D=null,T=null,R=null;/* D: بيانات الصف، T: النص الحالي، R: حالة المحاولة */
-function top(){return '<div class="top"><a class="chip" href="'+(TRK==='b'?'b/index.html':'index.html')+'">→ أدواتي</a>'+(T?'<button class="chip" data-a="home">🎧 كل النصوص</button>':'')+'<span class="chip" style="margin-inline-start:auto">'+(PREV?'معاينة · '+esc(PREV.toUpperCase()):esc(ME&&ME.name||''))+'</span></div>'}
+function top(){return '<div class="top">'+(window.TQB?TQB.btn('chip'):'')+'<a class="chip" href="'+(TRK==='b'?'b/index.html':'index.html')+'">→ أدواتي</a>'+(T?'<button class="chip" data-a="home">🎧 كل النصوص</button>':'')+'<span class="chip" style="margin-inline-start:auto">'+(PREV?'معاينة · '+esc(PREV.toUpperCase()):esc(ME&&ME.name||''))+'</span></div>'}
 function lvName(l){return (D.levels&&D.levels[l])||('المستوى '+l)}
 function band(p){return p>=80?'':p>=50?' mid':' low'}
 
@@ -207,7 +208,7 @@ function render(){var h;if(!G)h=top()+'<h1>🎧 أستمع وأفهم</h1><div c
  else if(!D)h=top()+'<p class="lead">جارٍ التحميل…</p>';
  else if(!T)h=vHome();
  else h={pre:vPre,listen:vListen,q:vQ,dir:vDir,res:vRes}[R.ph]();
- $app.innerHTML=h;enAug($app)}
+ $app.innerHTML=h;enAug($app);if(window.TQB)TQB.depth(T?1:0)}
 
 document.addEventListener('click',function(e){var b=e.target.closest('[data-a]');if(!b)return;var a=b.dataset.a;
  if(a==='say'){if(R&&R.playing){R.playing=false;onEnd=null;render()}play(b.dataset.au);return}
@@ -234,6 +235,7 @@ document.addEventListener('click',function(e){var b=e.target.closest('[data-a]')
  if(a==='dir-done'){finish();window.scrollTo(0,0);return}
 });
 
+if(window.TQB)TQB.init({home:TRK==='b'?'b/index.html':'index.html',up:function(){try{player.pause()}catch(e){}if(T){T=null;R=null}else return false;render();window.scrollTo(0,0)}});
 render();
 if(G)fetch('listen-data/'+G+'.json',{cache:'no-store'}).then(function(r){if(!r.ok)throw 0;return r.json()}).then(function(j){D=j;render()}).catch(function(){$app.innerHTML=top()+'<h1>🎧 أستمع وأفهم</h1><div class="card"><p>نصوص الاستماع لصفك قيد الإعداد، وستصل قريبًا.</p></div>'});
 })();
