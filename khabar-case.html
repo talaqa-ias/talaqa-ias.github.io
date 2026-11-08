@@ -1,0 +1,570 @@
+<!doctype html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>طلاقة · قضية الخبر المختفي — استراتيجية مسرح الجريمة اللغوية</title>
+<link rel="icon" href="img/icon.png">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Baloo+Bhaijaan+2:wght@500;700;800&family=Noto+Naskh+Arabic:wght@500;700&family=Special+Elite&display=swap');
+:root{--ink:#1D2433;--muted:#5B6478;--line:#D9DEE8;--tape:#FFD21F;--red:#C8102E;--kraft:#EAD9B0;--kraft2:#D9C18A;
+ --mufrad:#2F9BF0;--fiil:#22B866;--ism:#8E5CF7;--jar:#FF8A1F;--zarf:#E0457B;
+ --ui:"Baloo Bhaijaan 2","Segoe UI",Tahoma,sans-serif;--read:"Noto Naskh Arabic","Traditional Arabic",serif;--type:"Special Elite","Courier New",monospace}
+*{box-sizing:border-box;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+html,body{margin:0;background:#9AA3B5;color:var(--ink);font-family:var(--ui);font-size:15px;line-height:1.55}
+.bar{position:sticky;top:0;z-index:9;background:#1D2433;color:#fff;display:flex;gap:10px;align-items:center;flex-wrap:wrap;padding:10px 16px}
+.bar b{font-size:1.05rem}.bar a,.bar button{background:var(--tape);color:#1D2433;border:0;border-radius:10px;padding:6px 14px;font:inherit;font-weight:800;text-decoration:none;cursor:pointer}
+.bar .toc{display:flex;gap:6px;flex-wrap:wrap}.bar .toc a{background:#2E3850;color:#fff;font-weight:600;font-size:.85rem;padding:4px 10px}
+.page{width:210mm;min-height:297mm;margin:14px auto;background:#fff;padding:13mm 13mm;position:relative;overflow:hidden;box-shadow:0 4px 18px #0004}
+@page{size:A4;margin:0}
+@media print{html,body{background:#fff}.bar{display:none}.page{margin:0;box-shadow:none;page-break-after:always;break-after:page;height:297mm}}
+h1,h2,h3{margin:0 0 6px;line-height:1.3}h1{font-size:1.9rem;font-weight:800}h2{font-size:1.35rem;font-weight:800}h3{font-size:1.08rem;font-weight:800}
+p{margin:0 0 6px}.muted{color:var(--muted)}.small{font-size:.85rem}
+.read{font-family:var(--read)}
+.tag{display:inline-block;border-radius:999px;padding:1px 10px;font-weight:800;color:#fff;font-size:.85rem}
+.hdr{display:flex;justify-content:space-between;align-items:center;border-bottom:3px solid var(--ink);padding-bottom:5px;margin-bottom:9px}
+.hdr .kit{font-weight:800;font-size:.9rem;color:var(--muted)}
+.hdr svg{width:34px;height:34px}
+table{width:100%;border-collapse:collapse;font-size:.9rem}
+th,td{border:1.5px solid #9AA3B5;padding:4px 6px;vertical-align:top;text-align:right}
+th{background:#EEF1F6;font-weight:800}
+.box{border:2px solid var(--line);border-radius:12px;padding:8px 10px;margin-bottom:8px}
+.cols2{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.cols3{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+ul,ol{margin:2px 0 6px;padding-inline-start:20px}li{margin:1px 0}
+/* caution tape */
+.tape{height:15mm;background:repeating-linear-gradient(-45deg,var(--tape) 0 14mm,#111 14mm 18mm);display:flex;align-items:center;justify-content:center;border-top:1.5mm solid #111;border-bottom:1.5mm solid #111}
+.tape span{background:var(--tape);padding:0 5mm;font-weight:800;font-size:1.25rem;letter-spacing:.5px;color:#111;border-inline:1mm solid #111}
+.tape.red{background:repeating-linear-gradient(-45deg,#E8395A 0 14mm,#fff 14mm 18mm)}.tape.red span{background:#E8395A;color:#fff}
+/* stamps */
+.stamp{display:inline-block;border:4px double var(--red);color:var(--red);font-family:var(--type);font-weight:700;padding:2px 12px;transform:rotate(-8deg);letter-spacing:1px;opacity:.9}
+.stamp.ar{font-family:var(--ui);font-weight:800}
+/* type colour classes */
+.t1{--c:var(--mufrad)}.t2{--c:var(--fiil)}.t3{--c:var(--ism)}.t4{--c:var(--jar)}.t5{--c:var(--zarf)}
+/* evidence markers */
+.markers{display:grid;grid-template-columns:repeat(4,1fr);gap:4mm}
+.mk{border:1.5px dashed #888;height:52mm;display:grid;grid-template-rows:1fr 1fr}
+.mk div{background:var(--tape);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:2.4rem;color:#111}
+.mk div:first-child{transform:rotate(180deg);border-bottom:1.5px dashed #555}
+.mk small{position:absolute}
+/* suspect cards */
+.suspects{display:grid;grid-template-columns:1fr 1fr;gap:5mm}
+.sus{border:3px solid var(--c);border-radius:4mm;overflow:hidden;background:#fff;display:flex;flex-direction:column;min-height:82mm}
+.sus .top{background:var(--c);color:#fff;padding:3mm 4mm;display:flex;align-items:center;gap:3mm}
+.sus .top svg{width:16mm;height:16mm;flex:none;background:#fff;border-radius:50%;padding:1.5mm}
+.sus .top h3{font-size:1.15rem;margin:0}.sus .top small{display:block;opacity:.95;font-weight:600}
+.sus .bd{padding:3mm 4mm;flex:1}
+.sus .ex{font-family:var(--read);font-size:1.15rem;background:#F6F7FA;border-radius:2mm;padding:1mm 3mm;margin:1mm 0}
+.sus .ex u{text-decoration:none;border-bottom:3px solid var(--c)}
+.sus .fp{border-top:2px dashed var(--c);margin-top:2mm;padding-top:2mm;font-size:.88rem}
+/* evidence cards */
+.evs{display:grid;grid-template-columns:1fr 1fr;gap:5mm}
+.ev{border:2.5px solid #1D2433;border-radius:3mm;height:62mm;position:relative;background:#FFFDF6;overflow:hidden;display:flex;flex-direction:column;justify-content:center;align-items:center;padding:4mm 6mm}
+.ev .bg{position:absolute;inset:auto;left:-6mm;bottom:-8mm;width:42mm;height:42mm;opacity:.13}
+.ev .num{position:absolute;top:3mm;right:3mm;background:var(--tape);border:2px solid #111;font-weight:800;font-size:1.3rem;width:12mm;height:12mm;display:flex;align-items:center;justify-content:center;clip-path:polygon(50% 0,100% 100%,0 100%);padding-top:3mm}
+.ev .lbl{position:absolute;top:3mm;left:4mm;font-family:var(--type);font-size:.75rem;color:var(--red);border:2px solid var(--red);padding:0 2mm;transform:rotate(4deg)}
+.ev .s{font-family:var(--read);font-size:1.75rem;font-weight:700;text-align:center;position:relative;line-height:1.6}
+.ev .q{position:absolute;bottom:3mm;right:5mm;left:5mm;font-size:.8rem;color:var(--muted);text-align:center}
+/* big printables */
+.bigsvg{width:100%;display:block}
+.lines{border-bottom:1.5px dotted #888;height:9mm}
+.chk{display:inline-block;width:5mm;height:5mm;border:1.5px solid #555;border-radius:1mm;vertical-align:middle;margin-inline-end:2mm}
+.badge{border:3px solid var(--ink);border-radius:4mm;padding:4mm;display:flex;gap:4mm;align-items:center;min-height:52mm;background:linear-gradient(135deg,#fff 60%,#F3F5F9)}
+.badge svg{width:24mm;height:24mm;flex:none}
+.badge h3{font-size:1.2rem}
+.ticket{border:2.5px dashed #555;border-radius:4mm;padding:5mm;margin-bottom:6mm}
+.code{display:flex;gap:3mm;justify-content:center;direction:rtl;margin:3mm 0}
+.code span{width:15mm;height:17mm;border:2.5px solid #111;border-radius:2mm;display:flex;align-items:flex-end;justify-content:center;font-size:.8rem;color:#666;background:#fff}
+.file{background:var(--kraft);border:2px solid var(--kraft2);border-radius:3mm;padding:8mm;position:relative}
+.file:before{content:"";position:absolute;top:-9mm;right:12mm;width:55mm;height:10mm;background:var(--kraft);border:2px solid var(--kraft2);border-bottom:0;border-radius:3mm 3mm 0 0}
+.typed{font-family:var(--read);font-size:1.05rem;line-height:1.85}
+.foot{position:absolute;bottom:6mm;left:13mm;right:13mm;font-size:.72rem;color:var(--muted);display:flex;justify-content:space-between;border-top:1px solid var(--line);padding-top:2mm}
+</style></head>
+<body>
+
+<!-- ===== SVG library ===== -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+ <defs>
+  <symbol id="i-mag" viewBox="0 0 64 64"><circle cx="26" cy="26" r="17" fill="none" stroke="currentColor" stroke-width="6"/><circle cx="26" cy="26" r="11" fill="currentColor" opacity=".12"/><path d="M38 38 L58 58" stroke="currentColor" stroke-width="9" stroke-linecap="round"/></symbol>
+  <symbol id="i-finger" viewBox="0 0 64 80"><g fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round">
+   <path d="M32 10c-13 0-22 11-22 26v14"/><path d="M32 10c13 0 22 11 22 26v20"/>
+   <path d="M32 17c-9 0-16 8-16 19v22"/><path d="M32 17c9 0 16 8 16 19v24"/>
+   <path d="M32 24c-6 0-10 5-10 12v26"/><path d="M32 24c6 0 10 5 10 12v28"/>
+   <path d="M32 31c-2 0-4 2-4 5v32"/><path d="M32 31c2 0 4 2 4 5v34"/>
+   <path d="M4 44v14M60 40v18"/></g></symbol>
+  <symbol id="i-hand" viewBox="0 0 100 120"><g fill="currentColor">
+   <rect x="22" y="52" width="58" height="56" rx="24"/>
+   <rect x="24" y="12" width="12" height="52" rx="6"/><rect x="39" y="4" width="12" height="56" rx="6"/>
+   <rect x="54" y="8" width="12" height="52" rx="6"/><rect x="69" y="20" width="11" height="44" rx="5.5"/>
+   <rect x="2" y="56" width="11" height="40" rx="5.5" transform="rotate(-38 8 76)"/></g>
+   <g fill="none" stroke="#fff" stroke-width="1.6" opacity=".55"><path d="M30 20h0M44 14h0"/><path d="M34 80c10 6 24 6 34 0M36 90c9 5 20 5 30 0M40 70c8 4 18 4 26 0"/></g></symbol>
+  <symbol id="i-shoe" viewBox="0 0 60 140">
+   <clipPath id="cp-sole"><path d="M30 2c16 0 26 16 26 36s-6 30-8 40H12c-2-10-8-20-8-40S14 2 30 2z"/></clipPath>
+   <clipPath id="cp-heel"><path d="M12 92h36c2 8 4 16 2 26-2 12-10 20-20 20s-18-8-20-20c-2-10 0-18 2-26z"/></clipPath>
+   <g clip-path="url(#cp-sole)" fill="none" stroke="currentColor" stroke-width="6.5">
+    <path d="M0 4 L30 14 L60 4M0 16 L30 26 L60 16M0 28 L30 38 L60 28M0 40 L30 50 L60 40M0 52 L30 62 L60 52M0 64 L30 74 L60 64M0 76 L30 86 L60 76"/>
+    <path d="M30 2c16 0 26 16 26 36s-6 30-8 40H12c-2-10-8-20-8-40S14 2 30 2z" stroke-width="5" stroke-dasharray="7 4"/></g>
+   <g clip-path="url(#cp-heel)" fill="currentColor"><rect x="22" y="96" width="16" height="30" rx="6"/>
+    <path d="M12 92h36c2 8 4 16 2 26-2 12-10 20-20 20s-18-8-20-20c-2-10 0-18 2-26z" fill="none" stroke="currentColor" stroke-width="12" stroke-dasharray="6 4"/></g></symbol>
+  <symbol id="i-detective" viewBox="0 0 200 260"><g fill="currentColor">
+   <ellipse cx="100" cy="58" rx="66" ry="10"/><path d="M62 56 C62 20 74 12 100 12 S138 20 138 56Z"/>
+   <rect x="64" y="44" width="72" height="9" fill="#fff" opacity=".25"/>
+   <path d="M76 62 C76 96 88 112 104 112 C120 112 128 96 126 62Z"/>
+   <path d="M86 108 L60 122 C36 134 26 160 22 200 L18 258 H182 L176 200 C172 160 160 134 140 122 L116 108 L100 150Z"/>
+   <path d="M96 118 L100 150 L104 118 L100 112Z" fill="#fff" opacity=".35"/></g>
+   <g transform="translate(142 120) rotate(20)"><circle cx="0" cy="0" r="22" fill="#fff" stroke="currentColor" stroke-width="7"/><rect x="-5" y="20" width="10" height="48" rx="4" fill="currentColor"/></g></symbol>
+  <symbol id="i-warn" viewBox="0 0 100 90"><path d="M50 4 L96 86 H4Z" fill="#FFD21F" stroke="#111" stroke-width="6" stroke-linejoin="round"/><rect x="45" y="30" width="10" height="32" rx="4" fill="#111"/><circle cx="50" cy="73" r="6" fill="#111"/></symbol>
+  <symbol id="i-notouch" viewBox="0 0 100 100"><use href="#i-hand" x="22" y="18" width="56" height="64" style="color:#222"/><circle cx="50" cy="50" r="44" fill="none" stroke="#C8102E" stroke-width="9"/><path d="M19 19 L81 81" stroke="#C8102E" stroke-width="9"/></symbol>
+  <symbol id="i-file" viewBox="0 0 64 64"><path d="M6 14h20l6 6h26v36H6z" fill="#D9C18A" stroke="#7A6431" stroke-width="3"/><path d="M6 24h52" stroke="#7A6431" stroke-width="3"/></symbol>
+  <symbol id="i-pin" viewBox="0 0 64 64"><circle cx="32" cy="22" r="14" fill="currentColor"/><path d="M32 36v24" stroke="#555" stroke-width="4"/></symbol>
+  <symbol id="i-note" viewBox="0 0 64 64"><path d="M6 6h52v40L44 58H6z" fill="#F4F45A" stroke="#B9B91F" stroke-width="2"/><path d="M44 58V46h14" fill="#D6D63A"/><path d="M14 20h34M14 30h30M14 40h22" stroke="#7a7a2a" stroke-width="3"/></symbol>
+ </defs>
+</svg>
+
+<div class="bar">
+ <b>🔍 قضية الخبر المختفي — حقيبة الاستراتيجية</b>
+ <button onclick="print()">🖨️ طباعة / حفظ PDF</button>
+ <a href="index.html">↩︎ البوابة</a>
+ <div class="toc">
+  <a href="#p-guide">دليل المعلم</a><a href="#p-flow">سير الحصة</a><a href="#p-signs">لافتات المسرح</a><a href="#p-markers">علامات الأدلة</a>
+  <a href="#p-file">ملف القضية</a><a href="#p-suspects">المشتبه بهم</a><a href="#p-ev1">بطاقات الأدلة</a><a href="#p-props">الآثار</a>
+  <a href="#p-badges">شارات المحققين</a><a href="#p-ws1">دفتر المحقق</a><a href="#p-ws2">أوراق متمايزة</a><a href="#p-exit">بطاقة الخروج</a><a href="#p-key">الإجابات والمتابعة</a>
+ </div>
+</div>
+
+<!-- =================== 1. TEACHER GUIDE =================== -->
+<section class="page" id="p-guide">
+ <div class="tape"><span>مسرح جريمة لغوية · ممنوع الاقتراب</span></div>
+ <div style="display:flex;gap:6mm;align-items:center;margin:6mm 0 4mm">
+  <svg style="width:34mm;height:44mm;color:#1D2433;flex:none"><use href="#i-detective"/></svg>
+  <div>
+   <span class="stamp">TOP SECRET</span>
+   <h1 style="margin-top:3mm">قضية الخبر المختفي 🔍</h1>
+   <p style="font-size:1.08rem">استراتيجية <b>«مسرح الجريمة اللغوية»</b> لتعليم <b>أنواع الخبر</b> — تعلّم قائم على الاستقصاء واللعب التعاوني.</p>
+   <p class="muted">الصف المقترح: الخامس (قابلة للتكييف للصفين الرابع والسادس حسب الخطة) · المدة: حصة واحدة (45–50 دقيقة) + بطاقة خروج.</p>
+  </div>
+ </div>
+
+ <div class="cols2">
+  <div class="box">
+   <h3>🎯 نواتج التعلّم</h3>
+   <ol>
+    <li>يحدّد الطالب المبتدأ والخبر في الجملة الاسمية.</li>
+    <li>يصنّف الخبر إلى: مفرد، جملة فعلية، جملة اسمية، شبه جملة (جار ومجرور / ظرف).</li>
+    <li>يعلّل تصنيفه بدليل لغوي («بصمة» النوع).</li>
+    <li>يوظّف أنواع الخبر في كتابة جمل تامة المعنى.</li>
+   </ol>
+  </div>
+  <div class="box">
+   <h3>✅ معايير النجاح (بلغة الطالب)</h3>
+   <ul style="list-style:none;padding:0">
+    <li><span class="chk"></span>أستطيع أن أجد المبتدأ والخبر.</li>
+    <li><span class="chk"></span>أستطيع أن أسمّي نوع الخبر.</li>
+    <li><span class="chk"></span>أستطيع أن أشرح «البصمة» التي دلّتني على النوع.</li>
+    <li><span class="chk"></span>أستطيع أن أكتب جملة بكل نوع من أنواع الخبر.</li>
+   </ul>
+  </div>
+ </div>
+
+ <div class="box">
+  <h3>🧠 فكرة الاستراتيجية</h3>
+  <p class="typed" style="font-size:.98rem;line-height:1.7">يتحوّل الصف إلى «مسرح جريمة»: المبتدأ وُجد وحيدًا والمعنى ناقص، و<b>الخبر</b> مختفٍ. يعمل الطلاب في فرق محققين؛ يجمعون <b>بطاقات الأدلة</b> (جملًا موزّعة على آثار الأقدام وبصمات الأيدي وحول مخطط الجسم)، ويطابقون كل دليل مع <b>بطاقة المشتبه به</b> المناسبة (نوع الخبر) اعتمادًا على «بصمته» المميّزة، ويسجّلون ذلك في <b>دفتر المحقق</b>. بعدها يفكّون <b>الشيفرة السرية</b> في ملف القضية لكشف «المتهم»، ثم يلصقون جملهم الخاصة على <b>جدار الاعترافات</b> (ملصقات لاصقة حول صورة المحقق).</p>
+ </div>
+
+ <div class="cols2">
+  <div class="box">
+   <h3>🧰 المواد (كلها في هذه الحقيبة)</h3>
+   <ul class="small">
+    <li>لافتات: «مسرح جريمة لغوية»، «ممنوع اللمس»، «تحذير»، شرائط التحذير.</li>
+    <li>20 علامة أدلة صفراء مرقّمة (تُطوى على شكل خيمة).</li>
+    <li>آثار: أقدام، كفّ، بصمة، مخطط الجسم، صورة المحقق.</li>
+    <li>ملف القضية (سري للغاية) + بطاقة مفتاح الشيفرة.</li>
+    <li>5 بطاقات مشتبه بهم (أنواع الخبر) + 20 بطاقة أدلة.</li>
+    <li>شارات أدوار، دفتر المحقق، 3 أوراق عمل متمايزة، بطاقة خروج.</li>
+    <li>من خارج الحقيبة: شريط لاصق أحمر/أصفر، ملصقات لاصقة (Sticky notes)، عدسات مكبّرة (اختياري)، ظروف بنية.</li>
+   </ul>
+  </div>
+  <div class="box">
+   <h3>🗺️ تجهيز المسرح (قبل الحصة بـ 10 دقائق)</h3>
+   <ol class="small">
+    <li>اربط شرائط التحذير في زاوية الصف أو على الأرض.</li>
+    <li>ضع آثار الأقدام والكفّ والبصمة ومخطط الجسم على الأرض.</li>
+    <li>ضع بطاقات الأدلة (1–20) فوق الآثار أو بجانبها، وبجانب كل بطاقة علامة الدليل بالرقم نفسه.</li>
+    <li>ألصق «ممنوع اللمس» و«تحذير» و«مفتاح الشيفرة» على الجدار.</li>
+    <li>ألصق صورة المحقق على الجدار — هنا «جدار الاعترافات».</li>
+    <li>ضع ملف القضية + بطاقات المشتبه بهم داخل ظرف لكل فريق.</li>
+   </ol>
+  </div>
+ </div>
+ <div class="foot"><span>حقيبة «قضية الخبر المختفي» · قسم اللغة العربية</span><span>1 / دليل المعلم</span></div>
+</section>
+
+<!-- =================== 2. LESSON FLOW =================== -->
+<section class="page" id="p-flow">
+ <div class="hdr"><h2>⏱️ سير الحصة والأدوار والتمايز</h2><span class="kit">دليل المعلم</span></div>
+ <table>
+  <tr><th style="width:17%">المرحلة / الزمن</th><th>دور المعلم</th><th>دور الطالب</th><th style="width:20%">دليل التعلّم</th></tr>
+  <tr><td><b>1. البلاغ</b><br>5 د</td><td>يدخل بملف «سري للغاية» ويقرأ البلاغ بأسلوب درامي. يعرض جملة ناقصة: «الحديقةُ ...» ويسأل: ما الذي ينقص؟</td><td>يتوقّع ما ينقص الجملة؛ يستدعي المبتدأ والخبر (تعلّم سابق).</td><td>إجابات شفوية — تقييم قبلي سريع.</td></tr>
+  <tr><td><b>2. التعرّف على المشتبه بهم</b><br>8 د</td><td>يعرض بطاقات المشتبه بهم الخمس، ويحلّل «بصمة» كل نوع بمثال، ويفكّر بصوت مسموع (Think-aloud).</td><td>يطابق مثالًا جديدًا مع البطاقة المناسبة باستخدام بطاقات الألوان (رفع البطاقة).</td><td>نسبة الإجابات الصحيحة في الرفع الجماعي.</td></tr>
+  <tr><td><b>3. التحقيق في المسرح</b><br>15 د</td><td>يوزّع الأدوار، ويتجوّل، ويطرح أسئلة سابرة: «ما الدليل؟ لماذا ليس مفردًا؟». يدعم مجموعة المتابعة.</td><td>تتنقّل الفرق بين الأدلة؛ تحدّد المبتدأ والخبر ونوعه والبصمة، وتسجّل في دفتر المحقق.</td><td>دفتر المحقق (عدد التصنيفات الصحيحة مع التعليل).</td></tr>
+  <tr><td><b>4. فكّ الشيفرة</b><br>5 د</td><td>يوجّه الفرق إلى مفتاح الشيفرة على الجدار.</td><td>تستخدم الفرقة تصنيفاتها للأدلة المطلوبة لتكوين كلمة السر.</td><td>صحة كلمة السر = صحة 5 تصنيفات.</td></tr>
+  <tr><td><b>5. جدار الاعترافات</b><br>7 د</td><td>يطلب من كل طالب جملة بنوع خبر يحدّده لونُ الملصق أو رقمُه.</td><td>يكتب جملة من إنتاجه ويلصقها حول صورة المحقق؛ يراجع زميله جملته (تقييم الأقران).</td><td>جمل الطلاب (إنتاج مستقل).</td></tr>
+  <tr><td><b>6. إغلاق القضية</b><br>5 د</td><td>يناقش أكثر الأخطاء شيوعًا، ثم يوزّع بطاقة الخروج.</td><td>يحلّ بطاقة الخروج ويقيّم نفسه بمعايير النجاح.</td><td>بطاقة الخروج (5 بنود) — تُرصد في جدول المتابعة.</td></tr>
+ </table>
+
+ <div class="cols2" style="margin-top:8px">
+  <div class="box">
+   <h3>🕵️ الأدوار داخل الفريق (4–5 طلاب)</h3>
+   <ul class="small">
+    <li><b>كبير المحققين:</b> يدير الفريق والوقت ويحسم الخلاف بالدليل.</li>
+    <li><b>خبير البصمات:</b> يحدّد المبتدأ في كل دليل.</li>
+    <li><b>محلّل الأدلة:</b> يحدّد الخبر ونوعه.</li>
+    <li><b>كاتب التقرير:</b> يسجّل في دفتر المحقق.</li>
+    <li><b>المدقّق:</b> يتحقق من التعليل قبل التسجيل («أين البصمة؟»).</li>
+   </ul>
+   <p class="small muted">تُدوَّر الأدوار كل 5 أدلة لضمان مشاركة جميع الطلاب.</p>
+  </div>
+  <div class="box">
+   <h3>🎚️ التمايز</h3>
+   <ul class="small">
+    <li><b>دعم (مستوى 1):</b> الأدلة 1–10 فقط + ورقة «اختر النوع» + بطاقات المشتبه بهم مفتوحة أمام الطالب.</li>
+    <li><b>أساسي (مستوى 2):</b> الأدلة 1–20 + دفتر المحقق كاملًا.</li>
+    <li><b>تحدٍّ (مستوى 3):</b> ورقة «المحقق الخبير»: تحويل الخبر من نوع إلى آخر، واكتشاف الخطأ، وكتابة تقرير.</li>
+    <li><b>متعلمو العربية لغةً إضافية:</b> بطاقات مصوّرة + بنك كلمات + الإشارة بالألوان بدل الكتابة عند الحاجة.</li>
+    <li><b>أصحاب الهمم:</b> تقليل عدد الأدلة، وتكبير الخط، ودور «كاتب التقرير» بمساعدة زميل.</li>
+   </ul>
+  </div>
+ </div>
+
+ <div class="box">
+  <h3>⚠️ أخطاء مفاهيمية متوقّعة (وكيف نعالجها)</h3>
+  <table class="small">
+   <tr><th style="width:42%">الخطأ</th><th>المعالجة</th></tr>
+   <tr><td>يظن الطالب أن «المفرد» يعني المفرد العددي فقط، فيرفض «الطالبتانِ مجتهدتانِ».</td><td>المفرد في باب الخبر = <b>ليس جملة ولا شبه جملة</b>، وقد يكون مثنى أو جمعًا (الأدلة 6، 11).</td></tr>
+   <tr><td>يعدّ كلمة واحدة بعد المبتدأ هي الخبر في الجملة الاسمية: «النخلةُ ثمارُها».</td><td>اسأل: «هل تمّ المعنى؟» — الخبر هو كل ما أتمّ المعنى: «ثمارُها لذيذةٌ».</td></tr>
+   <tr><td>يخلط بين الظرف والجار والمجرور.</td><td>بصمة الجار والمجرور: حرف جر (في، على، من، إلى...). بصمة الظرف: كلمة تدل على مكان أو زمان (فوق، تحت، أمام، خلف، بين...).</td></tr>
+   <tr><td>يرى «يلعبون في الحديقة» شبه جملة لوجود «في».</td><td>ابحث عن أول ما يأتي بعد المبتدأ: إن كان فعلًا فالخبر جملة فعلية.</td></tr>
+  </table>
+ </div>
+
+ <div class="box" style="margin:0">
+  <h3>📊 قياس الأثر والمتابعة</h3>
+  <p class="small"><b>مؤشر النجاح المستهدف (يحدّده المعلم):</b> مثلًا أن يصنّف 80% من الطلاب 4 من 5 بنود على الأقل بصورة صحيحة في بطاقة الخروج مع التعليل. <b>الأدلة:</b> بطاقات الخروج، دفاتر المحققين، جمل جدار الاعترافات (صورة). <b>المتابعة:</b> يُرصد أداء كل طالب في جدول المتابعة (الصفحة الأخيرة)، ويُعاد تجميع الطلاب الذين لم يحققوا المعيار في مجموعة دعم قصيرة خلال الحصة التالية، ثم يُعاد قياسهم بمهمة مماثلة بعد أسبوع للتحقق من استدامة التعلّم.</p>
+  <p class="small muted">ملاحظة مهنية: النسبة أعلاه هدف مقترح وليست نتيجة؛ تُعتمد بعد مقارنتها ببيانات التقييم القبلي للصف.</p>
+ </div>
+ <div class="foot"><span>حقيبة «قضية الخبر المختفي»</span><span>2 / سير الحصة</span></div>
+</section>
+
+<!-- =================== 3. SIGNS =================== -->
+<section class="page" id="p-signs">
+ <div class="tape"><span>مسرح جريمة لغوية</span></div>
+ <div style="text-align:center;padding:10mm 0 6mm">
+  <svg style="width:120mm;height:68mm;color:#1D2433"><use href="#i-mag"/></svg>
+  <h1 style="font-size:3.3rem;margin-top:4mm">مسرحُ جريمةٍ لغويّة</h1>
+  <p style="font-size:1.5rem" class="read">المبتدأُ وُجِدَ وحيدًا… والمعنى ناقصٌ!<br>مَن يُعيدُ <b style="color:var(--red)">الخبرَ</b> المختفي؟</p>
+ </div>
+ <div class="tape red"><span>لا تقترب · محققون فقط</span></div>
+ <div style="display:grid;grid-template-columns:1fr 1fr;gap:8mm;margin-top:10mm;text-align:center">
+  <div style="border:3px solid var(--red);border-radius:6mm;padding:6mm">
+   <svg style="width:55mm;height:55mm"><use href="#i-notouch"/></svg>
+   <h1 style="color:var(--red);font-size:2.4rem">ممنوع اللمس!</h1>
+   <p class="small">الأدلة تُقرأ ولا تُحرَّك</p>
+  </div>
+  <div style="border:3px solid #111;border-radius:6mm;padding:6mm">
+   <svg style="width:60mm;height:55mm"><use href="#i-warn"/></svg>
+   <h1 style="font-size:2.4rem">تحذير!</h1>
+   <p class="small">كل جملة تُخفي خبرًا… ابحث عن البصمة</p>
+  </div>
+ </div>
+ <div class="foot"><span>لافتات المسرح — تُطبع ملوّنة وتُلصق على الجدار</span><span>3</span></div>
+</section>
+
+<!-- =================== 4. MARKERS + TAPE =================== -->
+<section class="page" id="p-markers">
+ <div class="hdr"><h2>🟨 علامات الأدلة (تُقصّ وتُطوى من المنتصف)</h2><span class="kit">تجهيز المسرح</span></div>
+ <div class="markers" id="markers"></div>
+ <div style="margin-top:6mm" class="tape"><span>مسرح جريمة لغوية · ممنوع الاقتراب</span></div>
+ <div style="margin-top:4mm" class="tape red"><span>تحقيق جارٍ · محققون فقط</span></div>
+ <p class="small muted" style="margin-top:3mm">شرائط احتياطية: قصّ الشرائط وألصقها متتالية إن لم يتوفر شريط تحذير حقيقي.</p>
+ <div class="foot"><span>علامات الأدلة 1–20</span><span>4</span></div>
+</section>
+
+<!-- =================== 5. CASE FILE =================== -->
+<section class="page" id="p-file">
+ <div style="height:10mm"></div>
+ <div class="file">
+  <div style="display:flex;justify-content:space-between;align-items:flex-start">
+   <div>
+    <span class="stamp" style="font-size:1.3rem">TOP SECRET</span>
+    <h1 style="margin-top:4mm">ملف القضية رقم (خ/5)</h1>
+    <p style="font-family:var(--type);direction:ltr;text-align:right">OPERATION: THE MISSING KHABAR</p>
+   </div>
+   <svg style="width:38mm;height:48mm;color:#3B3324"><use href="#i-detective"/></svg>
+  </div>
+  <div class="typed" style="background:#FFFBEF;border-radius:2mm;padding:5mm;margin:4mm 0;border:1.5px solid var(--kraft2)">
+   <b>إلى فريق المحققين،</b><br>
+   في صباح هذا اليوم، استيقظت «مدينة الجمل» على أمر غريب: <b>المبتدآت</b> تقف وحيدةً في كل مكان، والمعنى ناقص! «الصقرُ…» «النخلةُ…» «الطلابُ…».<br>
+   تشير التحريات الأولية إلى أن <b>الخبر</b> قد اختفى وتنكّر في خمسة أشكال مختلفة، وترك وراءه آثار أقدام وبصمات في مسرح الجريمة.<br>
+   <b>مهمتكم:</b><br>
+   1️⃣ افحصوا الأدلة المرقّمة في المسرح دون لمسها.<br>
+   2️⃣ حدّدوا في كل دليل: المبتدأ، والخبر، ونوع الخبر، والبصمة التي دلّتكم عليه.<br>
+   3️⃣ طابقوا كل خبر مع بطاقة «المشتبه به» المناسبة.<br>
+   4️⃣ فكّوا الشيفرة السرية أدناه لتعرفوا اسم المتهم الحقيقي.<br>
+   5️⃣ اكتبوا اعترافكم (جملة من تأليفكم) وألصقوه على جدار الاعترافات.
+  </div>
+  <div class="box" style="background:#fff;border-color:var(--kraft2)">
+   <h3>🔐 الشيفرة السرية</h3>
+   <p class="small">صنّفوا الأدلة الآتية بالترتيب، ثم استبدلوا كل نوع بحرفه من <b>مفتاح الشيفرة</b> المعلّق على الجدار:</p>
+   <p class="read" style="font-size:1.3rem;text-align:center;letter-spacing:1px">الدليل <b>5</b> ← الدليل <b>4</b> ← الدليل <b>3</b> ← الدليل <b>1</b> ← الدليل <b>2</b></p>
+   <div class="code"><span>5</span><span>4</span><span>3</span><span>1</span><span>2</span></div>
+   <p class="small" style="text-align:center">اسم المتهم: ..........................................</p>
+  </div>
+  <div style="display:flex;justify-content:space-between;align-items:center;margin-top:3mm">
+   <span class="stamp ar" style="font-size:1.1rem">سرّي للغاية</span>
+   <span class="small">توقيع كبير المحققين: ...........................</span>
+  </div>
+ </div>
+ <div class="foot"><span>ملف القضية — نسخة لكل فريق (يفضّل طباعته على ورق بني أو ظرف)</span><span>5</span></div>
+</section>
+
+<!-- =================== 6. SUSPECTS =================== -->
+<section class="page" id="p-suspects">
+ <div class="hdr"><h2>🕵️ بطاقات المشتبه بهم — أنواع الخبر</h2><span class="kit">تُقصّ وتوزّع على الفرق</span></div>
+ <div class="suspects" id="suspects"></div>
+ <div class="foot"><span>المشتبه بهم — الخبر وأنواعه</span><span>6</span></div>
+</section>
+
+<!-- =================== 7-9. EVIDENCE =================== -->
+<section class="page" id="p-ev1"><div class="hdr"><h2>🧾 بطاقات الأدلة (1–8)</h2><span class="kit">توضع فوق الآثار في المسرح</span></div><div class="evs" data-from="0" data-to="8"></div><div class="foot"><span>بطاقات الأدلة</span><span>7</span></div></section>
+<section class="page"><div class="hdr"><h2>🧾 بطاقات الأدلة (9–16)</h2><span class="kit">توضع فوق الآثار في المسرح</span></div><div class="evs" data-from="8" data-to="16"></div><div class="foot"><span>بطاقات الأدلة</span><span>8</span></div></section>
+<section class="page"><div class="hdr"><h2>🧾 بطاقات الأدلة (17–20) + مفتاح الشيفرة</h2><span class="kit">المفتاح يُعلّق على الجدار</span></div><div class="evs" data-from="16" data-to="20"></div>
+ <div style="margin-top:6mm;border:4px solid var(--red);border-radius:4mm;padding:5mm;position:relative">
+  <span class="stamp" style="position:absolute;top:3mm;left:5mm">CONFIDENTIAL</span>
+  <h2>🔑 مفتاح الشيفرة السرية</h2>
+  <table style="font-size:1.1rem;text-align:center">
+   <tr><th>نوع الخبر</th><th class="t1" style="color:var(--mufrad)">مفرد</th><th style="color:var(--fiil)">جملة فعلية</th><th style="color:var(--ism)">جملة اسمية</th><th style="color:var(--jar)">شبه جملة: جار ومجرور</th><th style="color:var(--zarf)">شبه جملة: ظرف</th></tr>
+   <tr><th>الحرف</th><td style="font-size:1.8rem;font-weight:800">ب</td><td style="font-size:1.8rem;font-weight:800">ر</td><td style="font-size:1.8rem;font-weight:800">ا</td><td style="font-size:1.8rem;font-weight:800">ل</td><td style="font-size:1.8rem;font-weight:800">خ</td></tr>
+  </table>
+ </div>
+ <div class="foot"><span>بطاقات الأدلة + المفتاح</span><span>9</span></div>
+</section>
+
+<!-- =================== 10-11. PROPS =================== -->
+<section class="page" id="p-props">
+ <div class="hdr"><h2>👣 الآثار — مخطط الجسم (يوضع على الأرض)</h2><span class="kit">تُوزّع حوله الأدلة</span></div>
+ <svg class="bigsvg" viewBox="0 0 400 500" style="height:225mm">
+  <g fill="none" stroke="#111" stroke-width="7" stroke-linejoin="round" stroke-linecap="round">
+   <circle cx="200" cy="70" r="40"/>
+   <path d="M175 110 L160 120 C120 130 90 150 60 200 L30 250 C24 262 40 272 50 262 L95 205 L120 185 L125 300 L110 470 C108 486 135 490 140 474 L185 330 L215 330 L260 474 C265 490 292 486 290 470 L275 300 L280 185 L305 205 L350 262 C360 272 376 262 370 250 L340 200 C310 150 280 130 240 120 L225 110"/>
+  </g>
+  <text x="200" y="230" text-anchor="middle" font-family="Noto Naskh Arabic" font-size="26" font-weight="700" fill="#C8102E">هنا وُجِدَ المبتدأُ وحيدًا</text>
+  <g font-family="Baloo Bhaijaan 2" font-weight="800" font-size="18">
+   <g transform="translate(118 150)"><path d="M0 22 L14 0 L28 22Z" fill="#FFD21F" stroke="#111" stroke-width="2"/><text x="14" y="19" text-anchor="middle">1</text></g>
+   <g transform="translate(255 150)"><path d="M0 22 L14 0 L28 22Z" fill="#FFD21F" stroke="#111" stroke-width="2"/><text x="14" y="19" text-anchor="middle">2</text></g>
+   <g transform="translate(186 300)"><path d="M0 22 L14 0 L28 22Z" fill="#FFD21F" stroke="#111" stroke-width="2"/><text x="14" y="19" text-anchor="middle">3</text></g>
+  </g>
+ </svg>
+ <p class="small muted">للحجم الكبير: اطبع بخيار «ملاءمة لورقة A3» أو ارسم المخطط على ورق كرافت بالشريط الأسود.</p>
+ <div class="foot"><span>الآثار</span><span>10</span></div>
+</section>
+
+<section class="page">
+ <div class="hdr"><h2>👣 آثار الأقدام · ✋ الكفّ · 🫆 البصمة</h2><span class="kit">تُقصّ وتوضع على الأرض</span></div>
+ <div style="display:grid;grid-template-columns:1fr 1fr;gap:6mm;align-items:center">
+  <div style="text-align:center;border:1.5px dashed #999;padding:4mm"><svg style="width:32mm;height:100mm;color:#222"><use href="#i-shoe"/></svg><svg style="width:32mm;height:100mm;color:#222;transform:translateY(-12mm) scaleX(-1)"><use href="#i-shoe"/></svg></div>
+  <div style="text-align:center;border:1.5px dashed #999;padding:4mm"><svg style="width:80mm;height:100mm;color:#151515"><use href="#i-hand"/></svg></div>
+  <div style="text-align:center;border:1.5px dashed #999;padding:4mm"><svg style="width:60mm;height:76mm;color:#333"><use href="#i-finger"/></svg></div>
+  <div style="text-align:center;border:1.5px dashed #999;padding:4mm"><svg style="width:32mm;height:100mm;color:#222"><use href="#i-shoe"/></svg><svg style="width:32mm;height:100mm;color:#222;transform:translateY(-12mm) scaleX(-1)"><use href="#i-shoe"/></svg></div>
+ </div>
+ <div class="foot"><span>الآثار — اطبع نسختين أو ثلاثًا</span><span>11</span></div>
+</section>
+
+<section class="page">
+ <div class="hdr"><h2>🟨 جدار الاعترافات</h2><span class="kit">يُلصق على الجدار وتُلصق حوله الملصقات اللاصقة</span></div>
+ <div style="text-align:center">
+  <svg style="width:150mm;height:195mm;color:#1D2433"><use href="#i-detective"/></svg>
+  <h1 style="font-size:2.6rem;margin-top:3mm">جدارُ الاعترافات</h1>
+  <p class="read" style="font-size:1.3rem">اعترِفْ… اكتبْ جملةً بخبرٍ من النوع المكتوب على ملصقك، وألصقها هنا!</p>
+  <div style="display:flex;gap:3mm;justify-content:center;margin-top:3mm;flex-wrap:wrap">
+   <span class="tag" style="background:var(--mufrad)">مفرد</span><span class="tag" style="background:var(--fiil)">جملة فعلية</span><span class="tag" style="background:var(--ism)">جملة اسمية</span><span class="tag" style="background:var(--jar)">جار ومجرور</span><span class="tag" style="background:var(--zarf)">ظرف</span>
+  </div>
+ </div>
+ <div class="foot"><span>جدار الاعترافات — يفضّل الطباعة على A3</span><span>12</span></div>
+</section>
+
+<section class="page">
+ <div class="hdr"><h2>🔍 ملصق محطة الجدار</h2><span class="kit">يُلصق على الجدار وتُثبَّت بطاقة دليل داخل العدسة</span></div>
+ <div style="position:relative;height:245mm">
+  <svg viewBox="0 0 200 260" style="width:100%;height:100%"><circle cx="100" cy="90" r="78" fill="#F4F8FF" stroke="#1D2433" stroke-width="12"/><rect x="150" y="150" width="22" height="105" rx="10" fill="#1D2433" transform="rotate(-35 161 202)"/></svg>
+  <div style="position:absolute;top:42mm;left:0;right:0;text-align:center">
+   <div style="margin:0 auto;width:95mm;height:62mm;border:2px dashed #888;border-radius:3mm;display:flex;align-items:center;justify-content:center;color:#888">ثبّت بطاقة الدليل هنا</div>
+   <p style="margin-top:4mm;font-weight:800;font-size:1.3rem">محطة رقم: ......</p>
+  </div>
+ </div>
+ <div class="foot"><span>ملصق المحطة — اطبع 3–4 نسخ لمحطات الجدار</span><span>12ب</span></div>
+</section>
+
+<!-- =================== 13. BADGES =================== -->
+<section class="page" id="p-badges">
+ <div class="hdr"><h2>🪪 شارات المحققين (الأدوار)</h2><span class="kit">تُقصّ وتُعلّق بخيط أو مشبك</span></div>
+ <div style="display:grid;grid-template-columns:1fr 1fr;gap:5mm" id="badges"></div>
+ <div class="foot"><span>شارات الأدوار</span><span>13</span></div>
+</section>
+
+<!-- =================== 14. DETECTIVE NOTEBOOK =================== -->
+<section class="page" id="p-ws1">
+ <div class="hdr"><h2>📒 دفتر المحقق</h2><span class="kit">ورقة عمل الفريق · المستوى الأساسي</span></div>
+ <p>اسم الفريق: ............................. الصف/الشعبة: ............ التاريخ: ....../....../......</p>
+ <p class="small muted">البصمة = الدليل الذي جعلك تختار النوع (مثال: «بعد المبتدأ فعل»، «حرف جر: في»، «ظرف مكان: فوق»).</p>
+ <table id="nbk" style="font-size:.88rem"><tr><th style="width:9%">رقم الدليل</th><th style="width:19%">المبتدأ</th><th style="width:25%">الخبر</th><th style="width:20%">نوع الخبر</th><th>البصمة (دليلي)</th></tr></table>
+ <div class="foot"><span>دفتر المحقق</span><span>14</span></div>
+</section>
+
+<!-- =================== 15. LEVEL 1 =================== -->
+<section class="page" id="p-ws2">
+ <div class="hdr"><h2>🔎 المحقق المبتدئ <span class="tag" style="background:var(--fiil)">مستوى 1 · دعم</span></h2><span class="kit">ورقة عمل فردية</span></div>
+ <p>الاسم: ......................................... الصف: ............</p>
+ <div class="box">
+  <h3>أولًا: لوّن المبتدأ بالأزرق، وضع خطًّا تحت الخبر، ثم ضع ✓ تحت نوع الخبر.</h3>
+  <table id="l1" style="font-size:.95rem"><tr><th style="width:38%">الجملة</th><th>مفرد</th><th>جملة فعلية</th><th>جملة اسمية</th><th>جار ومجرور</th><th>ظرف</th></tr></table>
+ </div>
+ <div class="box">
+  <h3>ثانيًا: صِلْ كل مبتدأ بالخبر المناسب، ثم اكتب الجملة.</h3>
+  <div style="display:grid;grid-template-columns:1fr 30mm 1fr;align-items:center;font-family:var(--read);font-size:1.2rem;row-gap:3mm">
+   <div>• السماءُ</div><div></div><div>• فوقَ الغصنِ</div>
+   <div>• العصفورُ</div><div></div><div>• صافيةٌ</div>
+   <div>• الأمُّ</div><div></div><div>• في الحقيبةِ</div>
+   <div>• الدفترُ</div><div></div><div>• تُعِدُّ الطعامَ</div>
+  </div>
+  <div class="lines"></div><div class="lines"></div>
+ </div>
+ <div class="box" style="margin:0">
+  <h3>ثالثًا: بنك البصمات 🫆 (للمساعدة)</h3>
+  <p class="small">فعل بعد المبتدأ ← <b style="color:var(--fiil)">جملة فعلية</b> · اسم + ضمير يعود على المبتدأ ← <b style="color:var(--ism)">جملة اسمية</b> · في / على / من / إلى ← <b style="color:var(--jar)">جار ومجرور</b> · فوق / تحت / أمام / خلف / بين ← <b style="color:var(--zarf)">ظرف</b> · كلمة واحدة (ليست جملة ولا شبه جملة) ← <b style="color:var(--mufrad)">مفرد</b></p>
+ </div>
+ <div class="foot"><span>أوراق متمايزة — مستوى 1</span><span>15</span></div>
+</section>
+
+<!-- =================== 16. LEVEL 3 =================== -->
+<section class="page">
+ <div class="hdr"><h2>🧠 المحقق الخبير <span class="tag" style="background:var(--ism)">مستوى 3 · تحدٍّ</span></h2><span class="kit">ورقة عمل فردية</span></div>
+ <p>الاسم: ......................................... الصف: ............</p>
+ <div class="box">
+  <h3>أولًا: غيّر «تنكّر» الخبر! حوّل الخبر إلى النوع المطلوب مع المحافظة على المعنى قدر الإمكان.</h3>
+  <table style="font-size:.95rem">
+   <tr><th style="width:36%">الجملة</th><th style="width:22%">حوّل الخبر إلى</th><th>الجملة الجديدة</th></tr>
+   <tr><td class="read">الطالبُ مجتهدٌ.</td><td>جملة فعلية</td><td></td></tr>
+   <tr><td class="read">الكتابُ على الطاولةِ.</td><td>ظرف</td><td></td></tr>
+   <tr><td class="read">الحديقةُ جميلةٌ.</td><td>جملة اسمية</td><td></td></tr>
+   <tr><td class="read">العصفورُ يغرّدُ.</td><td>جار ومجرور</td><td></td></tr>
+  </table>
+ </div>
+ <div class="box">
+  <h3>ثانيًا: محقق مزيّف! اكتشف الخطأ في تقرير المحقق «سالم»، وصحّحه مع التعليل.</h3>
+  <table style="font-size:.95rem">
+   <tr><th style="width:30%">الجملة</th><th style="width:28%">تقرير سالم</th><th>هل هو صحيح؟ التصحيح والتعليل</th></tr>
+   <tr><td class="read">المعلمونَ مخلصونَ.</td><td>الخبر ليس مفردًا لأنه جمع.</td><td></td></tr>
+   <tr><td class="read">الأطفالُ يلعبونَ في الحديقةِ.</td><td>الخبر شبه جملة: في الحديقة.</td><td></td></tr>
+   <tr><td class="read">البيتُ نوافذُهُ واسعةٌ.</td><td>الخبر: نوافذُهُ (مفرد).</td><td></td></tr>
+  </table>
+ </div>
+ <div class="box" style="margin:0">
+  <h3>ثالثًا: تقرير إغلاق القضية ✍️</h3>
+  <p class="small">اكتب فقرة (4–5 جمل) تصف فيها «مدينة الجمل» بعد عودة الخبر، واستخدم الأنواع الخمسة للخبر، ثم ضع تحت كل خبر رقم نوعه: (1) مفرد (2) فعلية (3) اسمية (4) جار ومجرور (5) ظرف.</p>
+  <div class="lines"></div><div class="lines"></div><div class="lines"></div><div class="lines"></div><div class="lines"></div><div class="lines"></div>
+ </div>
+ <div class="foot"><span>أوراق متمايزة — مستوى 3</span><span>16</span></div>
+</section>
+
+<!-- =================== 17. EXIT TICKET =================== -->
+<section class="page" id="p-exit">
+ <div class="hdr"><h2>🎫 بطاقة الخروج — تقرير المحقق الفردي</h2><span class="kit">نسختان في الصفحة</span></div>
+ <div id="tickets"></div>
+ <div class="foot"><span>بطاقة الخروج</span><span>17</span></div>
+</section>
+
+<!-- =================== 18. KEY + TRACKER =================== -->
+<section class="page" id="p-key">
+ <div class="hdr"><h2>🗝️ الإجابات النموذجية</h2><span class="kit">للمعلم فقط</span></div>
+ <table id="key" style="font-size:.85rem"><tr><th style="width:7%">#</th><th style="width:33%">الجملة</th><th style="width:14%">المبتدأ</th><th style="width:20%">الخبر</th><th>النوع</th></tr></table>
+ <div class="cols2" style="margin-top:6px">
+  <div class="box small"><b>الشيفرة:</b> الدليل 5 (اسمية = ا) ← 4 (جار ومجرور = ل) ← 3 (ظرف = خ) ← 1 (مفرد = ب) ← 2 (فعلية = ر) = <b style="font-size:1.1rem">الخبر</b><br><span class="muted">المغزى: «المتهم» هو الخبر نفسه، كان مختبئًا في كل جملة؛ لا يتم المعنى إلا به.</span></div>
+  <div class="box small"><b>مستوى 1 (الوصل):</b> السماءُ صافيةٌ · العصفورُ فوقَ الغصنِ · الأمُّ تُعِدُّ الطعامَ · الدفترُ في الحقيبةِ.<br><b>مستوى 3 (سالم):</b> الأول خطأ (مفرد في الباب)، الثاني خطأ (جملة فعلية: يلعبون في الحديقة)، الثالث خطأ (جملة اسمية: نوافذُهُ واسعةٌ).</div>
+ </div>
+ <div class="box small" style="margin:0"><b>بطاقة الخروج:</b> (1) الشمسُ / ساطعةٌ / مفرد · (2) الفلاحُ / يحصدُ القمحَ / جملة فعلية · (3) القطةُ / تحتَ السريرِ / ظرف · (4) السمكُ / في البحرِ / جار ومجرور · (5) الوردةُ / لونُها أحمرُ / جملة اسمية · (6) إجابة مفتوحة تُقيَّم بالمعايير.</div>
+ <div class="foot"><span>مفتاح الإجابات</span><span>18</span></div>
+</section>
+
+<section class="page">
+ <div class="hdr"><h2>📈 جدول متابعة الأثر — بطاقة الخروج</h2><span class="kit">للمعلم / منسق المادة</span></div>
+ <p class="small">الصف/الشعبة: ............ التاريخ: ....../....../...... المعلم: ............................ ضع ✓ للإجابة الصحيحة مع التعليل، و½ للتصنيف الصحيح دون تعليل، و✗ للخطأ.</p>
+ <table id="tracker" style="font-size:.82rem"><tr><th style="width:5%">#</th><th style="width:22%">اسم الطالب</th><th>الفئة*</th><th>مفرد</th><th>فعلية</th><th>ظرف</th><th>جار ومجرور</th><th>اسمية</th><th>الجملة الخاصة</th><th>المجموع /6</th><th>الإجراء التالي</th></tr></table>
+ <div class="box small" style="margin-top:6px">
+  <b>* الفئة:</b> (م) متفوق · (ع) عام · (د) يحتاج دعمًا · (ه) أصحاب الهمم · (ل) العربية لغة إضافية.<br>
+  <b>ملخص الصف:</b> نسبة من حققوا 5/6 فأكثر: ........% · أكثر الأنواع صعوبة: ................................ · الفئة الأقل تقدّمًا: ..............<br>
+  <b>الإجراء المقرر:</b> .................................................................................................................................................<br>
+  <b>موعد إعادة القياس:</b> ....../....../...... (مهمة مماثلة بعد أسبوع للتحقق من استدامة التعلّم)
+ </div>
+ <div class="foot"><span>جدول المتابعة — دليل أثر</span><span>19</span></div>
+</section>
+
+<script>
+// type: 1 مفرد, 2 جملة فعلية, 3 جملة اسمية, 4 جار ومجرور, 5 ظرف
+const T={1:['مفرد','mufrad'],2:['جملة فعلية','fiil'],3:['جملة اسمية','ism'],4:['شبه جملة: جار ومجرور','jar'],5:['شبه جملة: ظرف','zarf']};
+const EV=[
+ ['الإماراتُ جميلةٌ.','الإماراتُ','جميلةٌ',1,'i-shoe'],
+ ['العَلَمُ يرفرفُ عاليًا.','العَلَمُ','يرفرفُ عاليًا',2,'i-hand'],
+ ['الصقرُ فوقَ الجبلِ.','الصقرُ','فوقَ الجبلِ',5,'i-finger'],
+ ['الطلابُ في المكتبةِ.','الطلابُ','في المكتبةِ',4,'i-shoe'],
+ ['النخلةُ ثمارُها لذيذةٌ.','النخلةُ','ثمارُها لذيذةٌ',3,'i-mag'],
+ ['المعلمونَ مخلصونَ.','المعلمونَ','مخلصونَ',1,'i-hand'],
+ ['الأطفالُ يلعبونَ في الحديقةِ.','الأطفالُ','يلعبونَ في الحديقةِ',2,'i-finger'],
+ ['القهوةُ رائحتُها زكيّةٌ.','القهوةُ','رائحتُها زكيّةٌ',3,'i-shoe'],
+ ['الكتابُ على الرفِّ.','الكتابُ','على الرفِّ',4,'i-mag'],
+ ['السفينةُ أمامَ الميناءِ.','السفينةُ','أمامَ الميناءِ',5,'i-hand'],
+ ['الطالبتانِ مجتهدتانِ.','الطالبتانِ','مجتهدتانِ',1,'i-finger'],
+ ['الشمسُ تُشرقُ صباحًا.','الشمسُ','تُشرقُ صباحًا',2,'i-shoe'],
+ ['البيتُ نوافذُهُ واسعةٌ.','البيتُ','نوافذُهُ واسعةٌ',3,'i-mag'],
+ ['الجملُ في الصحراءِ.','الجملُ','في الصحراءِ',4,'i-hand'],
+ ['القلمُ بينَ الدفاترِ.','القلمُ','بينَ الدفاترِ',5,'i-finger'],
+ ['برجُ خليفةَ شامخٌ.','برجُ','شامخٌ',1,'i-shoe'],
+ ['المزارعُ يسقي الزرعَ.','المزارعُ','يسقي الزرعَ',2,'i-mag'],
+ ['المدرسةُ ساحتُها كبيرةٌ.','المدرسةُ','ساحتُها كبيرةٌ',3,'i-hand'],
+ ['العصيرُ في الكأسِ.','العصيرُ','في الكأسِ',4,'i-finger'],
+ ['الحديقةُ خلفَ البيتِ.','الحديقةُ','خلفَ البيتِ',5,'i-shoe'],
+];
+const $=s=>document.querySelector(s);
+// markers
+$('#markers').innerHTML=Array.from({length:20},(_,i)=>`<div class="mk"><div>${i+1}</div><div>${i+1}</div></div>`).join('');
+// suspects
+const SUS=[
+ [1,'المشتبه به الأول','الخبر المفرد','i-shoe','كلمةٌ ليست جملةً ولا شبهَ جملة. قد يكون مفردًا أو مثنى أو جمعًا!','الجوُّ <u>معتدلٌ</u>.<br>اللاعبونَ <u>متعاونونَ</u>.','يأتي بعد المبتدأ اسمٌ واحد يصفه ويتمّ به المعنى، ويطابقه غالبًا في العدد والنوع.'],
+ [2,'المشتبه به الثاني','الخبر جملة فعلية','i-hand','يتنكّر في جملة تبدأ <b>بفعل</b>، وفيها ضمير يعود على المبتدأ.','الطائرةُ <u>تحلّقُ في السماءِ</u>.','بعد المبتدأ مباشرةً <b>فعل</b> (ماضٍ أو مضارع).'],
+ [3,'المشتبه به الثالث','الخبر جملة اسمية','i-mag','يتنكّر في جملة اسمية كاملة (مبتدأ + خبر) داخل الجملة الكبرى.','الشجرةُ <u>أغصانُها طويلةٌ</u>.','بعد المبتدأ <b>اسم متصل بضمير</b> يعود على المبتدأ (ـها، ـهُ، ـهم) ثم خبره.'],
+ [4,'المشتبه به الرابع','شبه جملة: جار ومجرور','i-finger','يختبئ خلف <b>حرف جر</b> يتبعه اسم مجرور.','الماءُ <u>في الكوبِ</u>.','بعد المبتدأ حرف جر: في، على، من، إلى، عن، الباء، اللام…'],
+ [5,'المشتبه به الخامس','شبه جملة: ظرف','i-detective','يختبئ في <b>ظرف مكان أو زمان</b> يتبعه مضاف إليه.','الطائرُ <u>فوقَ الشجرةِ</u>.','بعد المبتدأ كلمة تدل على مكان أو زمان: فوق، تحت، أمام، خلف، بين، عند، يوم…'],
+];
+$('#suspects').innerHTML=SUS.map(([t,n,name,ic,desc,ex,fp])=>`<div class="sus t${t}"><div class="top"><svg style="color:var(--c)"><use href="#${ic}"/></svg><div><small>${n} · رقم ${t}</small><h3>${name}</h3></div></div><div class="bd"><p class="small"><b>الأوصاف:</b> ${desc}</p><div class="ex">${ex}</div><div class="fp">🫆 <b>البصمة:</b> ${fp}</div></div></div>`).join('')+
+ `<div class="sus" style="--c:#1D2433"><div class="top"><svg style="color:#1D2433"><use href="#i-file"/></svg><div><small>مذكرة كبير المحققين</small><h3>كيف أكشف الخبر؟</h3></div></div><div class="bd small"><ol><li>أجد <b>المبتدأ</b> (الاسم الذي نتحدث عنه في أول الجملة).</li><li>أسأل: ماذا أخبرتنا الجملة عنه؟ ← هذا <b>الخبر</b> (كل ما يتمّ به المعنى).</li><li>أنظر إلى أول كلمة في الخبر: فعل؟ حرف جر؟ ظرف؟ اسم بضمير؟ أو كلمة واحدة؟</li><li>أطابق البصمة مع المشتبه به، وأكتب دليلي.</li></ol></div></div>`;
+// evidence cards
+document.querySelectorAll('.evs').forEach(el=>{const f=+el.dataset.from,t=+el.dataset.to;
+ el.innerHTML=EV.slice(f,t).map((e,k)=>{const i=f+k+1;return `<div class="ev"><svg class="bg"><use href="#${e[4]}"/></svg><div class="num">${i}</div><div class="lbl">EVIDENCE #${i}</div><div class="s">${e[0]}</div><div class="q">أين المبتدأ؟ أين الخبر؟ ما نوعه؟ وما البصمة؟</div></div>`}).join('')});
+// badges
+const B=[['كبير المحققين','i-detective','أدير الفريق والوقت، وأحسم الخلاف بالدليل.'],['خبير البصمات','i-finger','أحدّد المبتدأ في كل دليل.'],['محلّل الأدلة','i-mag','أحدّد الخبر ونوعه.'],['كاتب التقرير','i-file','أسجّل النتائج في دفتر المحقق.'],['المدقّق','i-hand','أسأل دائمًا: أين البصمة؟ قبل التسجيل.']];
+$('#badges').innerHTML=[...B,...B.slice(0,1)].map(([n,ic,d])=>`<div class="badge"><svg style="color:#1D2433"><use href="#${ic}"/></svg><div><span class="stamp" style="font-size:.7rem;transform:rotate(-4deg)">DETECTIVE</span><h3 style="margin-top:2mm">${n}</h3><p class="small">${d}</p><p class="small">الاسم: ......................................</p></div></div>`).join('');
+// notebook
+$('#nbk').insertAdjacentHTML('beforeend',EV.map((_,i)=>`<tr style="height:10.6mm"><td style="text-align:center;font-weight:800">${i+1}</td><td></td><td></td><td></td><td></td></tr>`).join(''));
+// level 1 (first 8 with mixed types)
+const L1=[0,1,3,2,4,5,8,9];
+$('#l1').insertAdjacentHTML('beforeend',L1.map(i=>`<tr style="height:10mm"><td class="read" style="font-size:1.1rem">${EV[i][0]}</td><td></td><td></td><td></td><td></td><td></td></tr>`).join(''));
+// exit tickets
+const tk=`<div class="ticket"><div style="display:flex;justify-content:space-between"><h3>🕵️ تقرير المحقق: ...................................</h3><span class="small">الصف: .........</span></div>
+<p class="small">ضع خطًّا تحت الخبر، واكتب نوعه، ثم اكتب البصمة.</p>
+<table style="font-size:.95rem"><tr><th style="width:36%">الجملة</th><th style="width:28%">نوع الخبر</th><th>البصمة</th></tr>
+${['الشمسُ ساطعةٌ.','الفلاحُ يحصدُ القمحَ.','القطةُ تحتَ السريرِ.','السمكُ في البحرِ.','الوردةُ لونُها أحمرُ.'].map((s,i)=>`<tr style="height:9mm"><td class="read" style="font-size:1.1rem">${i+1}. ${s}</td><td></td><td></td></tr>`).join('')}</table>
+<p style="margin-top:2mm"><b>6.</b> اكتب جملة خبرها <b>جملة اسمية</b>: .......................................................................</p>
+<p class="small">تقييمي لنفسي: 🟢 أستطيع وحدي &nbsp; 🟡 أحتاج تذكيرًا &nbsp; 🔴 أحتاج مساعدة — أصعب نوع عندي: ...............................</p></div>`;
+$('#tickets').innerHTML=tk+tk;
+// key
+$('#key').insertAdjacentHTML('beforeend',EV.map((e,i)=>`<tr><td style="text-align:center">${i+1}</td><td class="read">${e[0]}</td><td class="read">${e[1]}</td><td class="read">${e[2]}</td><td style="color:var(--${T[e[3]][1]});font-weight:800">${T[e[3]][0]}</td></tr>`).join(''));
+// tracker
+$('#tracker').insertAdjacentHTML('beforeend',Array.from({length:26},(_,i)=>`<tr style="height:8.3mm"><td style="text-align:center">${i+1}</td>${'<td></td>'.repeat(10)}</tr>`).join(''));
+</script>
+</body></html>
