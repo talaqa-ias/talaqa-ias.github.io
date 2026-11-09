@@ -1,0 +1,451 @@
+<!doctype html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>طلاقة · عرض «قضية الخبر المختفي»</title>
+<link rel="icon" href="img/icon.png">
+<link href="https://fonts.googleapis.com/css2?family=Baloo+Bhaijaan+2:wght@500;700;800&family=Noto+Naskh+Arabic:wght@500;700&family=Special+Elite&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#1D2433;--bg:#141A26;--paper:#FFFDF6;--tape:#FFD21F;--red:#C8102E;--muted:#5B6478;
+ --c1:#2F9BF0;--c2:#22B866;--c3:#8E5CF7;--c4:#FF8A1F;--c5:#E0457B;
+ --ui:"Baloo Bhaijaan 2","Segoe UI",Tahoma,sans-serif;--read:"Noto Naskh Arabic","Traditional Arabic",serif;--type:"Special Elite","Courier New",monospace}
+*{box-sizing:border-box}
+html,body{margin:0;height:100%;background:#0B0F17;overflow:hidden;font-family:var(--ui);color:var(--ink)}
+#stage{position:absolute;left:50%;top:50%;width:1920px;height:1080px;transform-origin:center center}
+.slide{position:absolute;inset:0;background:#fff;display:none;overflow:hidden;padding:70px 110px}
+.slide.on{display:block}
+.slide.dark{background:radial-gradient(ellipse at 30% 20%,#2A3550,#141A26 70%);color:#fff}
+.slide.kraft{background:#EAD9B0}
+.f{opacity:0;transform:translateY(20px);transition:.45s}.f.v{opacity:1;transform:none}
+h1{font-size:96px;margin:0;line-height:1.15;font-weight:800}h2{font-size:72px;margin:0 0 30px;font-weight:800;line-height:1.2}
+p,li{font-size:42px;line-height:1.55;margin:0 0 14px}
+.read{font-family:var(--read)}
+.tape{position:absolute;left:-40px;right:-40px;height:74px;background:repeating-linear-gradient(-45deg,var(--tape) 0 60px,#111 60px 80px);display:flex;align-items:center;justify-content:center;border-block:8px solid #111}
+.tape span{background:var(--tape);padding:0 40px;font-weight:800;font-size:40px;color:#111;border-inline:6px solid #111}
+.tape.red{background:repeating-linear-gradient(-45deg,#E8395A 0 60px,#fff 60px 80px)}.tape.red span{background:#E8395A;color:#fff}
+.stamp{display:inline-block;border:10px double var(--red);color:var(--red);font-family:var(--type);font-size:54px;padding:4px 30px;transform:rotate(-8deg);letter-spacing:3px}
+.stamp.ar{font-family:var(--ui);font-weight:800}
+.row{display:flex;gap:40px;align-items:center}
+.grid5{display:grid;grid-template-columns:repeat(5,1fr);gap:26px}
+.sus{border:7px solid var(--c);border-radius:28px;overflow:hidden;background:#fff;text-align:center}
+.sus .t{background:var(--c);color:#fff;padding:18px 10px;font-size:34px;font-weight:800;line-height:1.25}
+.sus svg{width:130px;height:130px;margin:22px auto 8px;display:block;color:var(--c)}
+.sus .n{font-size:30px;font-weight:800;color:var(--muted);padding-bottom:18px}
+.big{font-family:var(--read);font-size:92px;font-weight:700;text-align:center;line-height:1.7}
+.big u{text-decoration:none;border-bottom:12px solid var(--c);padding:0 10px}
+.bubble{background:#F3F5FA;border-radius:30px;padding:26px 40px;border-inline-start:14px solid var(--c,#1D2433)}
+.pill{display:inline-block;border-radius:999px;padding:6px 30px;color:#fff;font-weight:800;font-size:38px;background:var(--c)}
+.tc{text-align:center}
+.foot{position:absolute;bottom:26px;left:110px;right:110px;display:flex;justify-content:space-between;font-size:24px;color:#9AA3B5}
+.slide.dark .foot{color:#6E7A94}
+.clock{font-family:var(--type);font-size:260px;line-height:1;text-align:center;color:var(--tape);text-shadow:0 0 40px #FFD21F55}
+.clock.warn{color:#FF5A5A}
+.btn{font:inherit;font-weight:800;font-size:34px;border:0;border-radius:20px;padding:14px 34px;background:var(--tape);color:#111;cursor:pointer;box-shadow:0 6px 0 #B08F00}
+.btn.alt{background:#2E3850;color:#fff;box-shadow:0 6px 0 #10151F}
+.btn:active{transform:translateY(4px);box-shadow:none}
+table.rot{border-collapse:separate;border-spacing:14px;margin:0 auto}
+table.rot td,table.rot th{font-size:36px;padding:14px 26px;border-radius:18px;text-align:center}
+table.rot th{color:#9AA3B5;font-weight:700}
+table.rot td{background:#26304A;color:#fff;font-weight:800}
+table.rot td.s1{background:var(--red)}
+.code{display:flex;gap:30px;justify-content:center;margin:30px 0}
+.code div{width:170px;height:200px;border:8px solid #111;border-radius:22px;background:#fff;display:flex;flex-direction:column;align-items:center;justify-content:space-between;padding:10px}
+.code b{font-size:120px;line-height:1;color:var(--red);opacity:0;transition:.4s}.code div.v b{opacity:1}
+.code small{font-size:28px;color:#555;font-weight:800}
+.key{display:grid;grid-template-columns:repeat(5,1fr);gap:16px;margin-top:20px}
+.key div{border:6px solid var(--c);border-radius:20px;text-align:center;padding:8px;font-size:30px;font-weight:800;background:#fff}
+.key b{display:block;font-size:72px;color:var(--c)}
+.team{background:#fff;border-radius:28px;padding:20px;text-align:center;border:6px solid #2E3850;transition:.3s;color:var(--ink)}
+.team.lead{border-color:var(--tape);box-shadow:0 0 0 8px #FFD21F66;transform:translateY(-10px)}
+.team h3{font-size:40px;margin:0}.team .sc{font-size:120px;font-weight:800;line-height:1.1;font-family:var(--type)}
+.team .bs{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+.team button{font:inherit;font-size:30px;font-weight:800;border:0;border-radius:14px;padding:6px 16px;cursor:pointer}
+.plus{background:#22B866;color:#fff}.minus{background:#FFE3E3;color:#C8102E}
+#winner{position:absolute;inset:0;background:#141A26EE;display:none;align-items:center;justify-content:center;flex-direction:column;color:#fff;z-index:5}
+#winner.on{display:flex}
+.conf{position:absolute;width:22px;height:30px;top:-40px;animation:fall linear forwards}
+@keyframes fall{to{transform:translateY(1200px) rotate(720deg)}}
+/* chrome */
+#nav{position:fixed;bottom:14px;left:50%;transform:translateX(-50%);display:flex;gap:8px;align-items:center;background:#000a;border-radius:16px;padding:6px 10px;opacity:.15;transition:.3s;z-index:9}
+#nav:hover{opacity:1}
+#nav button{font:inherit;font-weight:800;background:#2E3850;color:#fff;border:0;border-radius:10px;padding:6px 14px;cursor:pointer;font-size:16px}
+#nav span{color:#fff;font-size:15px;min-width:60px;text-align:center}
+#prog{position:fixed;top:0;right:0;height:6px;background:var(--tape);z-index:9;transition:.3s}
+@media print{
+ html,body{overflow:visible;background:#fff}#nav,#prog,#winner{display:none!important}
+ #stage{position:static;transform:none!important;width:1920px;height:auto}
+ .slide{display:block!important;position:relative;width:1920px;height:1080px;page-break-after:always;break-after:page}
+ .f{opacity:1!important;transform:none!important}.code b{opacity:1!important}
+ *{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+ @page{size:1920px 1080px;margin:0}
+}
+</style></head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+  <symbol id="i-mag" viewBox="0 0 64 64"><circle cx="26" cy="26" r="17" fill="none" stroke="currentColor" stroke-width="6"/><circle cx="26" cy="26" r="11" fill="currentColor" opacity=".12"/><path d="M38 38 L58 58" stroke="currentColor" stroke-width="9" stroke-linecap="round"/></symbol>
+  <symbol id="i-finger" viewBox="0 0 64 80"><g fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round">
+   <path d="M32 10c-13 0-22 11-22 26v14"/><path d="M32 10c13 0 22 11 22 26v20"/>
+   <path d="M32 17c-9 0-16 8-16 19v22"/><path d="M32 17c9 0 16 8 16 19v24"/>
+   <path d="M32 24c-6 0-10 5-10 12v26"/><path d="M32 24c6 0 10 5 10 12v28"/>
+   <path d="M32 31c-2 0-4 2-4 5v32"/><path d="M32 31c2 0 4 2 4 5v34"/>
+   <path d="M4 44v14M60 40v18"/></g></symbol>
+  <symbol id="i-hand" viewBox="0 0 100 120"><g fill="currentColor">
+   <rect x="22" y="52" width="58" height="56" rx="24"/>
+   <rect x="24" y="12" width="12" height="52" rx="6"/><rect x="39" y="4" width="12" height="56" rx="6"/>
+   <rect x="54" y="8" width="12" height="52" rx="6"/><rect x="69" y="20" width="11" height="44" rx="5.5"/>
+   <rect x="2" y="56" width="11" height="40" rx="5.5" transform="rotate(-38 8 76)"/></g>
+   <g fill="none" stroke="#fff" stroke-width="1.6" opacity=".55"><path d="M30 20h0M44 14h0"/><path d="M34 80c10 6 24 6 34 0M36 90c9 5 20 5 30 0M40 70c8 4 18 4 26 0"/></g></symbol>
+  <symbol id="i-shoe" viewBox="0 0 60 140">
+   <clipPath id="cp-sole"><path d="M30 2c16 0 26 16 26 36s-6 30-8 40H12c-2-10-8-20-8-40S14 2 30 2z"/></clipPath>
+   <clipPath id="cp-heel"><path d="M12 92h36c2 8 4 16 2 26-2 12-10 20-20 20s-18-8-20-20c-2-10 0-18 2-26z"/></clipPath>
+   <g clip-path="url(#cp-sole)" fill="none" stroke="currentColor" stroke-width="6.5">
+    <path d="M0 4 L30 14 L60 4M0 16 L30 26 L60 16M0 28 L30 38 L60 28M0 40 L30 50 L60 40M0 52 L30 62 L60 52M0 64 L30 74 L60 64M0 76 L30 86 L60 76"/>
+    <path d="M30 2c16 0 26 16 26 36s-6 30-8 40H12c-2-10-8-20-8-40S14 2 30 2z" stroke-width="5" stroke-dasharray="7 4"/></g>
+   <g clip-path="url(#cp-heel)" fill="currentColor"><rect x="22" y="96" width="16" height="30" rx="6"/>
+    <path d="M12 92h36c2 8 4 16 2 26-2 12-10 20-20 20s-18-8-20-20c-2-10 0-18 2-26z" fill="none" stroke="currentColor" stroke-width="12" stroke-dasharray="6 4"/></g></symbol>
+  <symbol id="i-detective" viewBox="0 0 200 260"><g fill="currentColor">
+   <ellipse cx="100" cy="58" rx="66" ry="10"/><path d="M62 56 C62 20 74 12 100 12 S138 20 138 56Z"/>
+   <rect x="64" y="44" width="72" height="9" fill="#fff" opacity=".25"/>
+   <path d="M76 62 C76 96 88 112 104 112 C120 112 128 96 126 62Z"/>
+   <path d="M86 108 L60 122 C36 134 26 160 22 200 L18 258 H182 L176 200 C172 160 160 134 140 122 L116 108 L100 150Z"/>
+   <path d="M96 118 L100 150 L104 118 L100 112Z" fill="#fff" opacity=".35"/></g>
+   <g transform="translate(142 120) rotate(20)"><circle cx="0" cy="0" r="22" fill="#fff" stroke="currentColor" stroke-width="7"/><rect x="-5" y="20" width="10" height="48" rx="4" fill="currentColor"/></g></symbol>
+  <symbol id="i-warn" viewBox="0 0 100 90"><path d="M50 4 L96 86 H4Z" fill="#FFD21F" stroke="#111" stroke-width="6" stroke-linejoin="round"/><rect x="45" y="30" width="10" height="32" rx="4" fill="#111"/><circle cx="50" cy="73" r="6" fill="#111"/></symbol>
+  <symbol id="i-notouch" viewBox="0 0 100 100"><use href="#i-hand" x="22" y="18" width="56" height="64" style="color:#222"/><circle cx="50" cy="50" r="44" fill="none" stroke="#C8102E" stroke-width="9"/><path d="M19 19 L81 81" stroke="#C8102E" stroke-width="9"/></symbol>
+  <symbol id="i-file" viewBox="0 0 64 64"><path d="M6 14h20l6 6h26v36H6z" fill="#D9C18A" stroke="#7A6431" stroke-width="3"/><path d="M6 24h52" stroke="#7A6431" stroke-width="3"/></symbol>
+  <symbol id="i-pin" viewBox="0 0 64 64"><circle cx="32" cy="22" r="14" fill="currentColor"/><path d="M32 36v24" stroke="#555" stroke-width="4"/></symbol>
+  <symbol id="i-note" viewBox="0 0 64 64"><path d="M6 6h52v40L44 58H6z" fill="#F4F45A" stroke="#B9B91F" stroke-width="2"/><path d="M44 58V46h14" fill="#D6D63A"/><path d="M14 20h34M14 30h30M14 40h22" stroke="#7a7a2a" stroke-width="3"/></symbol>
+ </defs></svg>
+<div id="prog"></div>
+<div id="stage">
+
+<!-- 1 TITLE -->
+<section class="slide dark">
+ <div class="tape" style="top:70px"><span>مسرح جريمة لغوية · ممنوع الاقتراب</span></div>
+ <div class="row" style="margin-top:220px;justify-content:center;gap:80px">
+  <svg style="width:380px;height:500px;color:#fff"><use href="#i-detective"/></svg>
+  <div>
+   <span class="stamp" style="background:#fff">TOP SECRET</span>
+   <h1 style="font-size:140px;margin-top:40px">قضية الخبر المختفي 🔍</h1>
+   <p style="font-size:48px;color:#C9D2E6">درس: أنواع الخبر · فريق المحققين</p>
+  </div>
+ </div>
+ <div class="tape red" style="bottom:60px"><span>تحقيق جارٍ · محققون فقط</span></div>
+</section>
+
+<!-- 2 REPORT -->
+<section class="slide kraft">
+ <div class="row" style="justify-content:space-between"><span class="stamp">URGENT</span><svg style="width:150px;height:190px;color:#3B3324"><use href="#i-detective"/></svg></div>
+ <h2 style="margin-top:-60px">🚨 بلاغٌ عاجل!</h2>
+ <div class="bubble read" style="background:#FFFBEF;font-size:46px;line-height:1.8">
+  <p class="f" style="font-size:46px">استيقظت «مدينة الجُمَل» على أمرٍ غريب…</p>
+  <p class="f" style="font-size:46px">المبتدآت تقف وحيدةً في كل مكان، والمعنى ناقص!</p>
+  <p class="f" style="font-size:60px;font-weight:700;color:var(--red)">«الصقرُ…» &nbsp; «النخلةُ…» &nbsp; «الطلابُ…»</p>
+  <p class="f" style="font-size:46px">التحريات تقول: <b>الخبر</b> اختفى وتنكّر في <b>خمسة أشكال</b>، وترك آثارًا في مسرح الجريمة.</p>
+ </div>
+</section>
+
+<!-- 3 WHAT'S MISSING -->
+<section class="slide">
+ <h2>🤔 ماذا ينقص هذه الجملة؟</h2>
+ <p class="big" style="margin-top:60px">الحديقةُ <span style="color:#bbb">. . . . . . .</span></p>
+ <div class="f bubble tc" style="--c:var(--c2);margin-top:50px"><p style="font-size:50px;margin:0">الحديقةُ <b style="color:var(--c2)">جميلةٌ</b> ✅ تمّ المعنى!</p></div>
+ <div class="f bubble" style="margin-top:30px;--c:var(--red)"><p style="font-size:46px;margin:0"><b>المبتدأ:</b> الاسم الذي نتحدث عنه. &nbsp; <b>الخبر:</b> ما نُخبر به عنه، ويتمّ به المعنى.</p></div>
+</section>
+
+<!-- 4 SUCCESS CRITERIA -->
+<section class="slide">
+ <h2>🎯 مهمتنا اليوم: معايير النجاح</h2>
+ <ul style="list-style:none;padding:0;margin-top:40px">
+  <li class="f">🔎 أستطيع أن أجد <b>المبتدأ</b> و<b>الخبر</b>.</li>
+  <li class="f">🏷️ أستطيع أن أسمّي <b>نوع الخبر</b>.</li>
+  <li class="f">🫆 أستطيع أن أشرح <b>البصمة</b> التي دلّتني على النوع.</li>
+  <li class="f">✍️ أستطيع أن أكتب جملة بكل نوع من أنواع الخبر.</li>
+ </ul>
+</section>
+
+<!-- 5 SUSPECTS OVERVIEW -->
+<section class="slide">
+ <h2>🕵️ المشتبه بهم: الخبر تنكّر في 5 أشكال</h2>
+ <div class="grid5" style="margin-top:50px">
+  <div class="sus f" style="--c:var(--c1)"><div class="t">الخبر المفرد</div><svg><use href="#i-shoe"/></svg><div class="n">رقم 1</div></div>
+  <div class="sus f" style="--c:var(--c2)"><div class="t">جملة فعلية</div><svg><use href="#i-hand"/></svg><div class="n">رقم 2</div></div>
+  <div class="sus f" style="--c:var(--c3)"><div class="t">جملة اسمية</div><svg><use href="#i-mag"/></svg><div class="n">رقم 3</div></div>
+  <div class="sus f" style="--c:var(--c4)"><div class="t">شبه جملة:<br>جار ومجرور</div><svg><use href="#i-finger"/></svg><div class="n">رقم 4</div></div>
+  <div class="sus f" style="--c:var(--c5)"><div class="t">شبه جملة:<br>ظرف</div><svg><use href="#i-detective"/></svg><div class="n">رقم 5</div></div>
+ </div>
+</section>
+
+<!-- 6-10 EACH SUSPECT -->
+<section class="slide" style="--c:var(--c1)">
+ <div class="row"><span class="pill">المشتبه به 1</span><h2 style="margin:0">الخبر المفرد</h2></div>
+ <p class="big" style="margin-top:60px">الجوُّ <u class="f">معتدلٌ</u>.</p>
+ <p class="big f" style="font-size:80px">اللاعبونَ <u>متعاونونَ</u>.</p>
+ <div class="bubble f" style="margin-top:20px"><p style="margin:0">🫆 <b>البصمة:</b> ليس جملة ولا شبه جملة. قد يكون <b>مثنى أو جمعًا</b>!</p></div>
+</section>
+<section class="slide" style="--c:var(--c2)">
+ <div class="row"><span class="pill">المشتبه به 2</span><h2 style="margin:0">الخبر جملة فعلية</h2></div>
+ <p class="big" style="margin-top:90px">الطائرةُ <u class="f">تحلّقُ في السماءِ</u>.</p>
+ <div class="bubble f" style="margin-top:60px"><p style="margin:0">🫆 <b>البصمة:</b> بعد المبتدأ مباشرةً <b>فعل</b> (ماضٍ أو مضارع).</p></div>
+</section>
+<section class="slide" style="--c:var(--c3)">
+ <div class="row"><span class="pill">المشتبه به 3</span><h2 style="margin:0">الخبر جملة اسمية</h2></div>
+ <p class="big" style="margin-top:90px">الشجرةُ <u class="f">أغصانُها طويلةٌ</u>.</p>
+ <div class="bubble f" style="margin-top:60px"><p style="margin:0">🫆 <b>البصمة:</b> بعد المبتدأ <b>اسم متصل بضمير</b> يعود عليه (ـها، ـهُ، ـهم)، ثم خبره.</p></div>
+</section>
+<section class="slide" style="--c:var(--c4)">
+ <div class="row"><span class="pill">المشتبه به 4</span><h2 style="margin:0">شبه جملة: جار ومجرور</h2></div>
+ <p class="big" style="margin-top:90px">الماءُ <u class="f">في الكوبِ</u>.</p>
+ <div class="bubble f" style="margin-top:60px"><p style="margin:0">🫆 <b>البصمة:</b> بعد المبتدأ <b>حرف جر</b>: في، على، من، إلى، عن…</p></div>
+</section>
+<section class="slide" style="--c:var(--c5)">
+ <div class="row"><span class="pill">المشتبه به 5</span><h2 style="margin:0">شبه جملة: ظرف</h2></div>
+ <p class="big" style="margin-top:90px">الطائرُ <u class="f">فوقَ الشجرةِ</u>.</p>
+ <div class="bubble f" style="margin-top:60px"><p style="margin:0">🫆 <b>البصمة:</b> بعد المبتدأ كلمة تدل على <b>مكان أو زمان</b>: فوق، تحت، أمام، خلف، بين، عند…</p></div>
+</section>
+
+<!-- 11-15 QUICK PRACTICE -->
+<section class="slide" style="--c:var(--c1)">
+ <h2>✋ ارفعوا بطاقة المشتبه به! <span style="color:var(--muted);font-size:44px">(1 / 5)</span></h2>
+ <p class="big" style="margin-top:70px">السماءُ <u class="f">صافيةٌ</u>.</p>
+ <div class="f tc" style="margin-top:40px"><span class="pill" style="font-size:60px;padding:10px 50px">1 · مفرد</span></div>
+ <div class="f bubble" style="margin-top:40px"><p style="margin:0">🫆 <b>البصمة:</b> كلمة واحدة، ليست جملة ولا شبه جملة</p></div>
+</section>
+<section class="slide" style="--c:var(--c2)">
+ <h2>✋ ارفعوا بطاقة المشتبه به! <span style="color:var(--muted);font-size:44px">(2 / 5)</span></h2>
+ <p class="big" style="margin-top:70px">الطائرُ <u class="f">يطيرُ عاليًا</u>.</p>
+ <div class="f tc" style="margin-top:40px"><span class="pill" style="font-size:60px;padding:10px 50px">2 · جملة فعلية</span></div>
+ <div class="f bubble" style="margin-top:40px"><p style="margin:0">🫆 <b>البصمة:</b> بعد المبتدأ فعل: يطيرُ</p></div>
+</section>
+<section class="slide" style="--c:var(--c4)">
+ <h2>✋ ارفعوا بطاقة المشتبه به! <span style="color:var(--muted);font-size:44px">(3 / 5)</span></h2>
+ <p class="big" style="margin-top:70px">الكتابُ <u class="f">في الحقيبةِ</u>.</p>
+ <div class="f tc" style="margin-top:40px"><span class="pill" style="font-size:60px;padding:10px 50px">4 · شبه جملة: جار ومجرور</span></div>
+ <div class="f bubble" style="margin-top:40px"><p style="margin:0">🫆 <b>البصمة:</b> حرف جر: في</p></div>
+</section>
+<section class="slide" style="--c:var(--c3)">
+ <h2>✋ ارفعوا بطاقة المشتبه به! <span style="color:var(--muted);font-size:44px">(4 / 5)</span></h2>
+ <p class="big" style="margin-top:70px">الوردةُ <u class="f">رائحتُها جميلةٌ</u>.</p>
+ <div class="f tc" style="margin-top:40px"><span class="pill" style="font-size:60px;padding:10px 50px">3 · جملة اسمية</span></div>
+ <div class="f bubble" style="margin-top:40px"><p style="margin:0">🫆 <b>البصمة:</b> اسم متصل بضمير يعود على المبتدأ: رائحتُها</p></div>
+</section>
+<section class="slide" style="--c:var(--c5)">
+ <h2>✋ ارفعوا بطاقة المشتبه به! <span style="color:var(--muted);font-size:44px">(5 / 5)</span></h2>
+ <p class="big" style="margin-top:70px">القطُّ <u class="f">تحتَ الكرسيِّ</u>.</p>
+ <div class="f tc" style="margin-top:40px"><span class="pill" style="font-size:60px;padding:10px 50px">5 · شبه جملة: ظرف</span></div>
+ <div class="f bubble" style="margin-top:40px"><p style="margin:0">🫆 <b>البصمة:</b> ظرف مكان: تحتَ</p></div>
+</section>
+
+
+<!-- HOW TO -->
+<section class="slide dark">
+ <h2>📋 مذكرة كبير المحققين: كيف أكشف الخبر؟</h2>
+ <ol style="margin-top:30px">
+  <li class="f">أجد <b style="color:var(--tape)">المبتدأ</b>: الاسم الذي نتحدث عنه في أول الجملة.</li>
+  <li class="f">أسأل: ماذا أخبرتنا الجملة عنه؟ ← هذا <b style="color:var(--tape)">الخبر</b> (كل ما يتمّ به المعنى).</li>
+  <li class="f">أنظر إلى أول كلمة في الخبر: فعل؟ حرف جر؟ ظرف؟ اسم بضمير؟ كلمة واحدة؟</li>
+  <li class="f">أطابق البصمة مع المشتبه به، وأكتب <b style="color:var(--tape)">دليلي</b> في دفتر المحقق.</li>
+ </ol>
+</section>
+
+<!-- ROLES -->
+<section class="slide">
+ <h2>🪪 فريق المحققين: الأدوار</h2>
+ <div class="grid5" style="margin-top:40px">
+  <div class="sus f" style="--c:#1D2433"><div class="t">كبير المحققين</div><svg><use href="#i-detective"/></svg><div class="n" style="font-size:28px;padding:0 14px 20px">يدير الفريق والوقت ويحسم الخلاف بالدليل</div></div>
+  <div class="sus f" style="--c:#1D2433"><div class="t">خبير البصمات</div><svg><use href="#i-finger"/></svg><div class="n" style="font-size:28px;padding:0 14px 20px">يحدّد المبتدأ</div></div>
+  <div class="sus f" style="--c:#1D2433"><div class="t">محلّل الأدلة</div><svg><use href="#i-mag"/></svg><div class="n" style="font-size:28px;padding:0 14px 20px">يحدّد الخبر ونوعه</div></div>
+  <div class="sus f" style="--c:#1D2433"><div class="t">كاتب التقرير</div><svg><use href="#i-file"/></svg><div class="n" style="font-size:28px;padding:0 14px 20px">يسجّل في دفتر المحقق</div></div>
+  <div class="sus f" style="--c:#1D2433"><div class="t">المدقّق</div><svg><use href="#i-hand"/></svg><div class="n" style="font-size:28px;padding:0 14px 20px">يسأل دائمًا: أين البصمة؟</div></div>
+ </div>
+ <p class="f tc" style="margin-top:40px;color:var(--muted)">🔄 نتبادل الأدوار بعد الجولة الثانية</p>
+</section>
+
+<!-- RULES -->
+<section class="slide">
+ <div class="tape" style="top:0"><span>قواعد مسرح الجريمة</span></div>
+ <div style="margin-top:120px;display:grid;grid-template-columns:1fr 1fr;gap:40px">
+  <div class="bubble f" style="--c:var(--red)"><p style="margin:0">🚫 <b>ممنوع اللمس:</b> نقرأ الأدلة ولا نحرّكها.</p></div>
+  <div class="bubble f" style="--c:var(--c1)"><p style="margin:0">🤫 <b>المحققون يهمسون</b> حتى لا يسمعنا المتهم.</p></div>
+  <div class="bubble f" style="--c:var(--c2)"><p style="margin:0">🔔 <b>عند الجرس</b> ننتقل إلى المحطة التالية.</p></div>
+  <div class="bubble f" style="--c:var(--c4)"><p style="margin:0">🫆 <b>لا تسجيل بلا بصمة:</b> المدقّق يوافق أولًا.</p></div>
+ </div>
+ <div class="f tc" style="margin-top:50px"><span class="pill" style="--c:var(--red);font-size:46px">⭐ كل فريق يجب أن يمرّ بالمحطة 1 (أدلة الشيفرة)</span></div>
+</section>
+
+<!-- STATIONS MAP -->
+<section class="slide">
+ <h2>🗺️ محطات التحقيق <span style="font-size:40px;color:var(--muted)">(كل جولة: انتقل إلى المحطة التالية ← 1 ← 2 ← 3 ← 4 ← 5 ← 1)</span></h2>
+ <svg viewBox="0 0 1700 760" style="width:1700px;height:760px">
+  <rect x="20" y="20" width="1660" height="720" rx="40" fill="#FFF6D1" stroke="#FFD21F" stroke-width="14" stroke-dasharray="40 20"/>
+  <g font-family="Baloo Bhaijaan 2" font-weight="800" text-anchor="middle">
+   <g transform="translate(850 380)"><circle r="150" fill="#C8102E"/><text y="-30" font-size="46" fill="#fff">⭐ المحطة 1</text><text y="30" font-size="40" fill="#fff">مخطط الجسم</text><text y="85" font-size="40" fill="#fff">الأدلة 1–5</text></g>
+   <g transform="translate(1400 170)"><rect x="-190" y="-95" width="380" height="190" rx="30" fill="#1D2433"/><use href="#i-shoe" x="-170" y="-80" width="60" height="160" style="color:#FFD21F"/><text x="40" y="-10" font-size="44" fill="#fff">المحطة 2</text><text x="40" y="45" font-size="34" fill="#FFD21F">آثار الأقدام · 6–9</text></g>
+   <g transform="translate(300 170)"><rect x="-190" y="-95" width="380" height="190" rx="30" fill="#1D2433"/><use href="#i-hand" x="-175" y="-70" width="110" height="140" style="color:#FFD21F"/><text x="50" y="-10" font-size="44" fill="#fff">المحطة 3</text><text x="50" y="45" font-size="34" fill="#FFD21F">الكفّ · 10–13</text></g>
+   <g transform="translate(300 590)"><rect x="-190" y="-95" width="380" height="190" rx="30" fill="#1D2433"/><use href="#i-finger" x="-170" y="-70" width="100" height="140" style="color:#FFD21F"/><text x="50" y="-10" font-size="44" fill="#fff">المحطة 4</text><text x="50" y="45" font-size="34" fill="#FFD21F">البصمة · 14–17</text></g>
+   <g transform="translate(1400 590)"><rect x="-190" y="-95" width="380" height="190" rx="30" fill="#1D2433"/><use href="#i-mag" x="-170" y="-60" width="110" height="120" style="color:#FFD21F"/><text x="50" y="-10" font-size="44" fill="#fff">المحطة 5</text><text x="50" y="45" font-size="34" fill="#FFD21F">العدسة · 18–20</text></g>
+  </g>
+  <g fill="none" stroke="#2F9BF0" stroke-width="12" stroke-dasharray="30 18" marker-end="url(#arw)">
+   <path d="M1200 170 L520 170"/><path d="M300 280 L300 480"/><path d="M520 590 L1180 590"/><path d="M1230 540 L1000 450"/><path d="M1000 300 L1220 230"/>
+  </g>
+  <defs><marker id="arw" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="4" markerHeight="4" orient="auto"><path d="M0 0L10 5L0 10z" fill="#2F9BF0"/></marker></defs>
+ </svg>
+</section>
+
+<!-- INVESTIGATION TIMER + ROTATION -->
+<section class="slide dark" id="rotSlide">
+ <div class="row" style="justify-content:space-between"><h2 style="margin:0">⏱️ التحقيق — الجولة <span id="rnd">1</span> من 5</h2>
+  <div class="row" style="gap:16px"><button class="btn" data-act="rotStart">▶︎ ابدأ</button><button class="btn alt" data-act="rotPause">⏸</button><button class="btn alt" data-act="rotNext">الجولة التالية ⏭</button><button class="btn alt" data-act="rotReset">↺</button></div></div>
+ <div class="row" style="gap:60px;margin-top:20px;align-items:flex-start">
+  <div style="flex:1"><div class="clock" id="rotClock">3:00</div><p id="rotMsg" class="tc" style="font-size:54px;color:var(--tape);min-height:80px"></p></div>
+  <table class="rot" id="rotTable"></table>
+ </div>
+ <p class="tc" style="color:#9AA3B5;font-size:32px">🔄 بعد الجولة الثانية: تبادلوا الأدوار · المحطة 1 ⭐ بالأحمر</p>
+</section>
+
+<!-- PAUSE -->
+<section class="slide" style="--c:var(--red)">
+ <span class="stamp">STOP</span>
+ <h2 style="margin-top:20px">✋ وقفة المحقق: محقق قال إن هذا الخبر شبه جملة!</h2>
+ <p class="big" style="margin-top:40px">الأطفالُ يلعبونَ في الحديقةِ.</p>
+ <p class="f tc" style="font-size:52px">ما أول كلمة بعد المبتدأ؟ ← <b style="color:var(--c2)">يلعبونَ</b> (فعل)</p>
+ <div class="f bubble" style="--c:var(--c2);margin-top:30px"><p style="margin:0;font-size:50px">✅ الخبر <b style="color:var(--c2)">جملة فعلية</b>: «يلعبونَ في الحديقةِ». و«في الحديقة» جزء منها.</p></div>
+</section>
+
+<!-- CODE -->
+<section class="slide kraft">
+ <div class="row" style="justify-content:space-between"><h2 style="margin:0">🔐 فكّ الشيفرة السرية</h2><span class="stamp">CONFIDENTIAL</span></div>
+ <p style="margin-top:10px">صنّفوا الأدلة بالترتيب، ثم استبدلوا كل نوع بحرفه من المفتاح:</p>
+ <div class="key">
+  <div style="--c:var(--c1)">مفرد<b>ب</b></div><div style="--c:var(--c2)">جملة فعلية<b>ر</b></div><div style="--c:var(--c3)">جملة اسمية<b>ا</b></div><div style="--c:var(--c4)">جار ومجرور<b>ل</b></div><div style="--c:var(--c5)">ظرف<b>خ</b></div>
+ </div>
+ <div class="code" id="code">
+  <div class="cf"><b>ا</b><small>الدليل 5</small></div><div class="cf"><b>ل</b><small>الدليل 4</small></div><div class="cf"><b>خ</b><small>الدليل 3</small></div><div class="cf"><b>ب</b><small>الدليل 1</small></div><div class="cf"><b>ر</b><small>الدليل 2</small></div>
+ </div>
+ <p class="tc" style="color:#5B5030;font-size:32px">اضغط «التالي» لكشف حرف بعد حرف</p>
+</section>
+
+<!-- REVEAL -->
+<section class="slide dark">
+ <div class="tc" style="margin-top:80px">
+  <p class="f" style="font-size:60px">المتهم الحقيقي هو…</p>
+  <h1 class="f" style="font-size:240px;color:var(--tape)">الخبر!</h1>
+  <p class="f" style="font-size:52px;color:#C9D2E6">كان مختبئًا في كل جملة… ولا يتمّ المعنى إلا به 🔍</p>
+ </div>
+</section>
+
+<!-- CONFESSION WALL -->
+<section class="slide">
+ <div class="row" style="align-items:flex-start;gap:60px">
+  <div style="flex:1">
+   <h2>🟨 جدار الاعترافات</h2>
+   <p>1. خذ ملصقًا، وانظر إلى <b>رقم النوع</b> المكتوب عليه.</p>
+   <p>2. اكتب جملة <b>من تأليفك</b> خبرها من هذا النوع.</p>
+   <p>3. اعرضها على زميلك: هل النوع صحيح؟</p>
+   <p>4. ألصقها حول صورة المحقق.</p>
+   <div class="row" style="gap:14px;flex-wrap:wrap;margin-top:20px">
+    <span class="pill" style="--c:var(--c1)">1 مفرد</span><span class="pill" style="--c:var(--c2)">2 فعلية</span><span class="pill" style="--c:var(--c3)">3 اسمية</span><span class="pill" style="--c:var(--c4)">4 جار ومجرور</span><span class="pill" style="--c:var(--c5)">5 ظرف</span>
+   </div>
+  </div>
+  <div style="width:520px;text-align:center"><div class="clock" data-timer="420" style="font-size:150px;color:var(--ink);text-shadow:none">7:00</div>
+   <div class="row" style="gap:14px;justify-content:center"><button class="btn" data-act="tStart">▶︎ ابدأ</button><button class="btn alt" data-act="tPause">⏸</button><button class="btn alt" data-act="tReset">↺</button></div>
+   <svg style="width:260px;height:330px;margin-top:20px;color:var(--ink)"><use href="#i-detective"/></svg></div>
+ </div>
+</section>
+
+<!-- SCOREBOARD -->
+<section class="slide dark">
+ <div class="row" style="justify-content:space-between"><h2 style="margin:0">🏆 لوحة نتائج المحققين</h2>
+  <div class="row" style="gap:16px"><button class="btn" data-act="win">🏅 أعلن الفائز</button><button class="btn alt" data-act="scReset">تصفير</button></div></div>
+ <div class="grid5" id="board" style="margin-top:40px"></div>
+ <div style="margin-top:40px;display:grid;grid-template-columns:repeat(3,1fr);gap:20px;font-size:30px;color:#C9D2E6">
+  <div>✅ دليل صحيح مع البصمة: <b style="color:var(--tape)">+2</b></div><div>☑️ دليل صحيح بلا تعليل: <b style="color:var(--tape)">+1</b></div><div>🔐 فكّ الشيفرة صحيحًا: <b style="color:var(--tape)">+5</b></div>
+  <div>🥇 أول فريق يفكّ الشيفرة: <b style="color:var(--tape)">+3</b></div><div>🟨 كل ملصق صحيح: <b style="color:var(--tape)">+1</b></div><div>🤝 الالتزام بالقواعد والأدوار: <b style="color:var(--tape)">0–5</b></div>
+ </div>
+ <p style="font-size:26px;color:#6E7A94;margin-top:16px">عند التعادل يفوز الفريق صاحب العدد الأكبر من التعليلات الصحيحة (البصمة).</p>
+ <div id="winner"><p style="font-size:60px;margin:0">🏅 فريق المحققين الأوائل</p><h1 id="wname" style="font-size:200px;color:var(--tape)"></h1><p id="wscore" style="font-size:54px"></p><button class="btn" data-act="winClose" style="margin-top:30px">إغلاق</button></div>
+</section>
+
+<!-- EXIT TICKET -->
+<section class="slide">
+ <div class="row" style="align-items:flex-start;gap:60px">
+  <div style="flex:1">
+   <h2>🎫 تقرير المحقق الفردي</h2>
+   <p>حُلّ بطاقة الخروج <b>وحدك</b>:</p>
+   <p>• ضع خطًّا تحت الخبر، واكتب نوعه.</p>
+   <p>• اكتب <b>البصمة</b> التي دلّتك.</p>
+   <p>• اكتب جملة خبرها <b>جملة اسمية</b>.</p>
+   <p style="margin-top:30px">قيّم نفسك: 🟢 أستطيع وحدي · 🟡 أحتاج تذكيرًا · 🔴 أحتاج مساعدة</p>
+  </div>
+  <div style="width:520px;text-align:center"><div class="clock" data-timer="300" style="font-size:150px;color:var(--ink);text-shadow:none">5:00</div>
+   <div class="row" style="gap:14px;justify-content:center"><button class="btn" data-act="tStart">▶︎ ابدأ</button><button class="btn alt" data-act="tPause">⏸</button><button class="btn alt" data-act="tReset">↺</button></div></div>
+ </div>
+</section>
+
+<!-- CLOSED -->
+<section class="slide dark">
+ <div class="tape" style="top:120px"><span>أُغلقت القضية ✔</span></div>
+ <div class="tc" style="margin-top:300px">
+  <span class="stamp ar" style="font-size:80px;background:#fff">القضية مغلقة</span>
+  <p style="font-size:56px;margin-top:60px">شكرًا يا فريق المحققين! 🕵️‍♀️🕵️‍♂️</p>
+  <p style="font-size:44px;color:#C9D2E6">تذكّروا: لا يتمّ المعنى… إلا بالخبر.</p>
+ </div>
+</section>
+
+</div>
+<div id="nav"><button data-act="prev">→ السابق</button><span id="cnt"></span><button data-act="next">التالي ←</button><button data-act="fs">⛶ ملء الشاشة</button></div>
+
+<script>
+const stage=document.getElementById('stage'),slides=[...document.querySelectorAll('.slide')];
+let cur=0;
+function fit(){const s=Math.min(innerWidth/1920,innerHeight/1080);stage.style.transform=`translate(-50%,-50%) scale(${s})`}
+addEventListener('resize',fit);fit();
+slides.forEach((s,i)=>{const f=document.createElement('div');f.className='foot';f.innerHTML=`<span>قضية الخبر المختفي 🔍</span><span>${i+1} / ${slides.length}</span>`;s.appendChild(f)});
+function frags(s){return [...s.querySelectorAll('.f,.cf')]}
+function show(i,back){cur=Math.max(0,Math.min(slides.length-1,i));slides.forEach((s,k)=>s.classList.toggle('on',k===cur));
+ frags(slides[cur]).forEach(f=>f.classList.toggle('v',!!back));
+ document.getElementById('cnt').textContent=`${cur+1} / ${slides.length}`;
+ document.getElementById('prog').style.width=((cur+1)/slides.length*100)+'%';location.hash=cur+1}
+function next(){const h=frags(slides[cur]).find(f=>!f.classList.contains('v'));if(h){h.classList.add('v');if(h.classList.contains('cf'))beep(880,.15)}else show(cur+1)}
+function prev(){const v=frags(slides[cur]).filter(f=>f.classList.contains('v'));if(v.length)v.pop().classList.remove('v');else show(cur-1,true)}
+addEventListener('keydown',e=>{if(e.target.tagName==='INPUT')return;
+ if(['ArrowLeft','PageDown',' ','Enter','ArrowDown'].includes(e.key)){e.preventDefault();next()}
+ else if(['ArrowRight','PageUp','Backspace','ArrowUp'].includes(e.key)){e.preventDefault();prev()}
+ else if(e.key==='f'||e.key==='F'||e.key==='ب')fs();else if(e.key==='Home')show(0)});
+function fs(){document.fullscreenElement?document.exitFullscreen():document.documentElement.requestFullscreen()}
+// audio
+let ac;function beep(f=660,d=.25){try{ac=ac||new AudioContext();const o=ac.createOscillator(),g=ac.createGain();o.frequency.value=f;o.connect(g);g.connect(ac.destination);g.gain.setValueAtTime(.25,ac.currentTime);g.gain.exponentialRampToValueAtTime(.001,ac.currentTime+d);o.start();o.stop(ac.currentTime+d)}catch(e){}}
+function bell(){[0,250,500].forEach((t,i)=>setTimeout(()=>beep(i==2?1046:784,.4),t))}
+const fmt=s=>`${Math.floor(s/60)}:${String(s%60).padStart(2,'0')}`;
+// generic timers
+const timers=new Map();
+function tEl(btn){return btn.closest('.slide').querySelector('[data-timer]')}
+function tStart(el){let t=timers.get(el)||{left:+el.dataset.timer};if(t.id)return;t.id=setInterval(()=>{t.left--;el.textContent=fmt(Math.max(0,t.left));el.classList.toggle('warn',t.left<=30);if(t.left<=0){clearInterval(t.id);t.id=null;bell();el.textContent='انتهى!'}},1000);timers.set(el,t)}
+function tPause(el){const t=timers.get(el);if(t&&t.id){clearInterval(t.id);t.id=null}}
+function tReset(el){tPause(el);timers.delete(el);el.textContent=fmt(+el.dataset.timer);el.classList.remove('warn')}
+// rotation
+let rnd=1,rotLeft=180,rotId=null;const R=180;
+function rotDraw(){document.getElementById('rnd').textContent=rnd;const c=document.getElementById('rotClock');c.textContent=fmt(rotLeft);c.classList.toggle('warn',rotLeft<=30);
+ let h='<tr><th>الفريق</th><th>المحطة الآن</th></tr>';for(let t=1;t<=5;t++){const s=((t-1+rnd-1)%5)+1;h+=`<tr><td>فريق ${t}</td><td class="${s==1?'s1':''}">المحطة ${s}${s==1?' ⭐':''}</td></tr>`}
+ document.getElementById('rotTable').innerHTML=h}
+function rotStart(){if(rotId)return;document.getElementById('rotMsg').textContent='';rotId=setInterval(()=>{rotLeft--;rotDraw();if(rotLeft<=0){clearInterval(rotId);rotId=null;bell();
+ document.getElementById('rotMsg').textContent=rnd<5?'🔔 انتقلوا إلى المحطة التالية!':'🔐 انتهى التحقيق! إلى فكّ الشيفرة';}},1000)}
+function rotPause(){clearInterval(rotId);rotId=null}
+function rotNext(){rotPause();if(rnd<5){rnd++;rotLeft=R;document.getElementById('rotMsg').textContent=rnd==3?'🔄 تبادلوا الأدوار الآن!':'';rotDraw();rotStart()}}
+function rotReset(){rotPause();rnd=1;rotLeft=R;document.getElementById('rotMsg').textContent='';rotDraw()}
+rotDraw();
+// scoreboard
+let sc=JSON.parse(localStorage.getItem('khabarScore')||'[0,0,0,0,0]');
+function drawBoard(){const mx=Math.max(...sc);document.getElementById('board').innerHTML=sc.map((v,i)=>`<div class="team ${v>0&&v===mx?'lead':''}"><h3>فريق ${i+1}</h3><div class="sc">${v}</div><div class="bs">${[1,2,3,5].map(n=>`<button class="plus" data-act="add" data-t="${i}" data-n="${n}">+${n}</button>`).join('')}<button class="minus" data-act="add" data-t="${i}" data-n="-1">−1</button></div></div>`).join('');localStorage.setItem('khabarScore',JSON.stringify(sc))}
+drawBoard();
+function win(){const mx=Math.max(...sc);if(mx<=0)return;const w=sc.map((v,i)=>v===mx?i+1:0).filter(Boolean);
+ document.getElementById('wname').textContent=w.length>1?'تعادل: فريق '+w.join(' و'):'فريق '+w[0];document.getElementById('wscore').textContent=mx+' نقطة'+(w.length>1?' · احسموا بعدد التعليلات الصحيحة':'');
+ const W=document.getElementById('winner');W.classList.add('on');bell();
+ for(let k=0;k<90;k++){const c=document.createElement('div');c.className='conf';c.style.left=Math.random()*1920+'px';c.style.background=['#FFD21F','#2F9BF0','#22B866','#E0457B','#8E5CF7','#FF8A1F'][k%6];c.style.animationDuration=(2+Math.random()*2.5)+'s';c.style.animationDelay=Math.random()+'s';W.appendChild(c);setTimeout(()=>c.remove(),5000)}}
+document.addEventListener('click',e=>{const b=e.target.closest('[data-act]');if(!b)return;const a=b.dataset.act;e.stopPropagation();
+ ({prev,next,fs,rotStart,rotPause,rotNext,rotReset,win,
+  winClose:()=>document.getElementById('winner').classList.remove('on'),
+  scReset:()=>{if(confirm('تصفير النقاط؟')){sc=[0,0,0,0,0];drawBoard()}},
+  add:()=>{sc[+b.dataset.t]=Math.max(0,sc[+b.dataset.t]+ +b.dataset.n);drawBoard()},
+  tStart:()=>tStart(tEl(b)),tPause:()=>tPause(tEl(b)),tReset:()=>tReset(tEl(b))})[a]?.()});
+show((+location.hash.slice(1)||1)-1);
+</script>
+</body></html>
