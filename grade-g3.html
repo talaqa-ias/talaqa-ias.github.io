@@ -325,7 +325,7 @@ function rcX(code,sec,s){var k=rcStream(code,sec,s.length),r='';for(var i=0;i<s.
 function rcDec(code,sec,x){return decodeURIComponent(escape(rcX(code,sec,atob(x))))}
 function rcHash(sec,code){return fnv('rc|'+sec+'|'+code)}
 function toast(m){var t=document.createElement('div');t.className='toast';t.textContent=m;document.body.appendChild(t);setTimeout(function(){t.remove()},2800)}
-var AV=['🦁','🐼','🦊','🐸','🐨','🦄','🐯','🐵','🐧','🐢','🦋','🐬','🦒','🐝','🦉','🐙','🦖','🐣','🐳','🦔'];
+var AV=['🦁','🐼','🦊','🐸','🐨','🐪','🐯','🐵','🐧','🐢','🦋','🐬','🦒','🐝','🦉','🐙','🦖','🐣','🐳','🦔'];
 var GK='gs_me_'+S.grade,GT='gs_tab_'+S.grade;var ME=store.get(GK,null),tab=store.get(GT,'read'),sec=null,names=null;if(ME&&ME.sec!=='معاينة'&&S.secs&&!S.secs[ME.sec]&&!/(^|[?#&])pv=/.test(location.hash+location.search)){ME=null;store.set(GK,null);try{localStorage.removeItem('tq_auth')}catch(e){}}
 window.__shellMe=function(){return {grade:S.grade,sec:(ME&&ME.sec)||'',name:(ME&&ME.name)||''}};
 (function(){try{var pt=store.get('pt_me',null);if(!pt||!pt.c||!pt.p||!S.secs[pt.sec])return;var c=rcNorm(pt.c),L=S.secs[pt.sec];if(L.h!==rcHash(pt.sec,c))return;var P=JSON.parse(rcDec(c,pt.sec,L.p));var nm=Object.keys(P).filter(function(n){return String(P[n])===String(pt.p)})[0];if(nm&&(!ME||ME.name!==nm||ME.sec!==pt.sec)){ME={name:nm,sec:pt.sec,av:AV[Math.abs(parseInt(fnv(nm),16))%AV.length]};store.set(GK,ME)}}catch(e){}})();
@@ -398,8 +398,8 @@ render();
 <script id="appjs-read">
 (function(){
 var PASS=66,MAXQ=4;
-var AV=['🦁','🐯','🐼','🐨','🐰','🦊','🐸','🐵','🐧','🦒','🐢','🦋','🐬','🦉','🐙','🦄','🐞','🐳','🦓','🐘','🐥','🦜','🐠','🐝','🐮','🐱','🦔','🐻'];
-var STK=['🌟','🎈','🦄','🍭','🚀','🐣','🐠','🍦','🎨','🧸','🦋','🍉','⚽','🎁','🐬','🌻','🍓','🪁','🐞','🎠','🍩','🦖','🌙','🎉'];
+var AV=['🦁','🐯','🐼','🐨','🐰','🦊','🐸','🐵','🐧','🦒','🐢','🦋','🐬','🦉','🐙','🐪','🐞','🐳','🦓','🐘','🐥','🦜','🐠','🐝','🐮','🐱','🦔','🐻'];
+var STK=['🌟','🎈','🐪','🍭','🚀','🐣','🐠','🍦','🎨','🧸','🦋','🍉','⚽','🎁','🐬','🌻','🍓','🪁','🐞','🎠','🍩','🦖','🌙','🎉'];
 document.documentElement.lang='ar';document.documentElement.dir='rtl';
 var $app=document.getElementById('app-read');
 var DATA;try{DATA=JSON.parse(document.getElementById('seed-read').textContent)}catch(e){DATA={units:[],audio:{},roster:''}}
@@ -1064,8 +1064,8 @@ render();
 })();
 </script>
 <script id="appjs-speak">(function(){
-var AV=['🦁','🐯','🐼','🐨','🐰','🦊','🐸','🐵','🐧','🦒','🐢','🦋','🐬','🦉','🐙','🦄','🐞','🐳','🦓','🐘','🐥','🦜','🐠','🐝','🐮','🐱','🦔','🐻'];
-var STK=['🌟','🎈','🦄','🍭','🚀','🐣','🐠','🍦','🎨','🧸','🦋','🍉','⚽','🎁','🐬','🌻','🍓','🪁','🐞','🎠','🍩','🦖','🌙','🎉','🐳','🍪','🧁','🎺','🦜','🌵','🥁','🪀'];
+var AV=['🦁','🐯','🐼','🐨','🐰','🦊','🐸','🐵','🐧','🦒','🐢','🦋','🐬','🦉','🐙','🐪','🐞','🐳','🦓','🐘','🐥','🦜','🐠','🐝','🐮','🐱','🦔','🐻'];
+var STK=['🌟','🎈','🐪','🍭','🚀','🐣','🐠','🍦','🎨','🧸','🦋','🍉','⚽','🎁','🐬','🌻','🍓','🪁','🐞','🎠','🍩','🦖','🌙','🎉','🐳','🍪','🧁','🎺','🦜','🌵','🥁','🪀'];
 var TIERS=[['1','🥉','أُرَدِّدُ النَّمُوذَجَ'],['2','🥈','أُغَيِّرُ كَلِمَةً أَوْ كَلِمَتَيْنِ'],['3','🥇','أَتَكَلَّمُ بِكَلِمَاتِي']];
 var STL=['أَوَّلًا','ثُمَّ','بَعْدَ ذٰلِكَ','أَخِيرًا'];
 var PH=[['listen','🎧','أسمع النموذج'],['words','🧺','كلماتي'],['frame','🧩','قوالب الجمل'],['speak','🗣️','دوري: أتكلّم'],['self','✅','أقيّم نفسي']];
@@ -1315,7 +1315,7 @@ function tGroup(id){var g=DATA.talk.groups;for(var i=0;i<g.length;i++)if(g[i].id
 function phr(ref){var p=ref.split(':'),g=tGroup(p[0]);return g?{g:g,p:g.phrases[+p[1]]}:null}
 function vTalk(){
  var T=DATA.talk,tab=view.tab||'cards',h=top()+'<p class="crumb"><button class="linkb" data-a="home">المستويات</button> ← '+esc(T.title)+'</p><h1>🗣️ '+esc(T.title)+'</h1><p class="lead">'+esc(T.intro)+'</p>';
- h+='<div class="tabs" role="tablist"><button class="tab'+(tab==='cards'?' on':'')+'" data-a="ttalk" data-t="cards">🃏 بِطَاقَاتُ الْعِبَارَاتِ</button><button class="tab'+(tab==='scenes'?' on':'')+'" data-a="ttalk" data-t="scenes">🎭 مَوَاقِفُ صَفِّيَّةٌ ('+talkDone()+'/'+T.scenes.length+')</button></div>';
+ h+='<div class="tabs" role="tablist"><button class="tab'+(tab==='cards'?' on':'')+'" data-a="ttalk" data-t="cards">📇 بِطَاقَاتُ الْعِبَارَاتِ</button><button class="tab'+(tab==='scenes'?' on':'')+'" data-a="ttalk" data-t="scenes">🎭 مَوَاقِفُ صَفِّيَّةٌ ('+talkDone()+'/'+T.scenes.length+')</button></div>';
  if(tab==='cards'){
   h+='<p class="parent">المس العبارة لتسمعها، ثم قلها بصوتك. العبارة الملوّنة تُقال كما هي، ومكان الفراغ تضع كلماتك.</p><div class="stack">';
   T.groups.forEach(function(g){h+='<section class="tgroup" style="--gc:'+g.color+'"><h2><span class="gi" aria-hidden="true">'+g.icon+'</span>'+esc(g.name)+'<small>'+esc(g.when)+'</small></h2><div class="plist">'+g.phrases.map(function(p){return '<button class="pcard" data-a="play" data-t="'+esc(p.ex)+'"><span class="pt">'+esc(p.t).replace(/___/g,'<span class="blank">…</span>')+'</span><span class="pe">'+esc(p.ex)+'</span>'+(hasA(p.ex)?'<span class="sp">'+I.spk+'</span>':'')+'</button>'}).join('')+'</div></section>'});

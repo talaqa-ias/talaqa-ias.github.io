@@ -1,3 +1,4 @@
+/* replace any saved unicorn avatar/sticker with a camel */try{for(var _i=0;_i<localStorage.length;_i++){var _k=localStorage.key(_i),_v=localStorage.getItem(_k);if(_v&&_v.indexOf('\\ud83e\\udd84')+_v.indexOf('🦄')>-2)localStorage.setItem(_k,_v.split('🦄').join('🐪').split('\\ud83e\\udd84').join('\\ud83d\\udc2a'))}}catch(e){}
 /* طلاقة · زر الرجوع الموحّد (nav.js)
    يحفظ تسلسل الشاشات داخل الصفحة (البوابة، وتبويبات الصف، وداخل أداتي القراءة والتحدث)
    ويعيد خطوة واحدة فقط عند الضغط على «رجوع» أو زر الرجوع في الهاتف/المتصفح.

@@ -116,7 +116,7 @@ function vHome(){
  if(ME)return h+'<p class="lead" style="text-align:center">مرحبًا '+esc(ME.name)+' · '+esc(ME.sec)+'</p><div class="row" style="justify-content:center"><button class="btn" data-a="me">🚀 أدواتي</button><button class="btn ghost" data-a="notme">لستُ '+esc(ME.name)+'</button></div>'+foot();
  return h+'<p class="lead" style="text-align:center">اكتب رقمك المدرسي كما في بطاقتك.'+(TB?'<br><span dir="ltr">Enter your school student number (IAS…).</span>':'')+'</p><form class="panel stack" id="fSec" style="max-width:420px;margin-inline:auto"><label class="f" for="pinIn">رقمي المدرسي<input class="in code" id="pinIn" dir="ltr" autocomplete="off" required maxlength="12" placeholder="IAS000000" style="text-align:center;letter-spacing:.08em;font-weight:800;font-size:1.2rem"></label><button class="btn" type="submit">ابدأ</button></form><p class="note" style="text-align:center">رقمك المدرسي يبدأ بـ IAS. إن لم تجده اطلبه من معلمك.</p>'+foot();
 }
-var AV=['🦁','🐼','🦊','🐸','🐨','🦄','🐯','🐵','🐧','🐢','🦋','🐬','🦒','🐝','🦉','🐙','🦖','🐣','🐳','🦔'];
+var AV=['🦁','🐼','🦊','🐸','🐨','🐪','🐯','🐵','🐧','🐢','🦋','🐬','🦒','🐝','🦉','🐙','🦖','🐣','🐳','🦔'];
 function foot(){return '<p class="foot"><button data-a="tin">👩‍🏫 للمعلم</button> · <button data-a="pvin">👀 معاينة</button>'+(canEdit?' · <button data-a="own">🛠️ لوحة المنسق</button>':(DATA.own&&!TB?' · <button data-a="oin">🛠️ المنسق</button>':''))+'</p>'}
 function vMe(){
  var g=secOf(ME.sec),G=gradeOf(g),ts=toolsFor(g),p=planFor(ME);
