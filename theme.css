@@ -1,6 +1,6 @@
 /* طلاقة · الهوية البصرية الموحّدة (theme.css)
    هوية إماراتية عربية مستمدة من صورة الواجهة: كحلي الليل، ذهب الصقر، رمل الصحراء، أخضر النخيل،
-   مع شريط سدو أعلى الصفحة وزخرفة نجمة ثُمانية خفيفة في الخلفية.
+   مع شريط سدو أعلى الصفحة وأفق من معالم الدولة أسفل الشاشة.
    يعيد تعريف متغيرات الألوان مع لمسات قليلة على المكوّنات المشتركة. كل القواعد مسبوقة بـ html
    لتتقدّم على أنماط الصفحة أينما وُضعت (بعض الصفحات تضع أنماطها داخل body).
    لا يغيّر أي وظيفة أو بيانات. */
@@ -15,16 +15,19 @@ html:root{
  --tq-night:#14204A;--tq-gold:#C8963E;--tq-sand:#FBF5E9;--tq-palm:#14804A;--tq-palm-d:#0C5A33;--tq-red:#C8102E;
 }
 
-/* الخلفية: رمل + نجمة ثُمانية، وشريط سدو أعلى الصفحة */
+/* الخلفية: رمل، وشريط سدو أعلى الصفحة، وأفق من معالم الدولة أسفل الشاشة
+   (برج خليفة، متحف المستقبل، برج العرب) */
 html:root{
  background-color:var(--bg);
  background-image:
   url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='14' viewBox='0 0 28 14'%3E%3Crect width='28' height='14' fill='%23A8151F'/%3E%3Cpath d='M14 1l6 6-6 6-6-6z' fill='%23FFF8E7'/%3E%3Cpath d='M14 4.4l2.6 2.6-2.6 2.6-2.6-2.6z' fill='%2314204A'/%3E%3Cpath d='M0 3l4 4-4 4zM28 3l-4 4 4 4z' fill='%2314204A'/%3E%3C/svg%3E"),
-  url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='96' height='96' viewBox='0 0 96 96'%3E%3Cg fill='none' stroke='%23C8963E' stroke-opacity='.15' stroke-width='1.2'%3E%3Crect x='30' y='30' width='36' height='36'/%3E%3Crect x='30' y='30' width='36' height='36' transform='rotate(45 48 48)'/%3E%3Cpath d='M0 48h22.5M73.5 48H96M48 0v22.5M48 73.5V96'/%3E%3C/g%3E%3C/svg%3E");
- background-repeat:repeat-x,repeat;
- background-position:top center,center 10px;
- background-size:auto 10px,96px 96px;
+  url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='640' height='160' viewBox='0 0 640 160'%3E%3Cg fill='%2314204A' fill-opacity='.1'%3E%3Cpath d='M0 157h640v3H0z'/%3E%3Cpath d='M18 160v-48h26v48zM48 160V84l22 10v66zM222 160V92h24v68zM250 160v-44h22v44zM362 160v-58h26v58zM394 160V78l24-14v96zM556 160v-52h30v52zM592 160v-34h28v34z'/%3E%3Cpath d='M296 160l5-42h5l3-30h4l3-30h3l2-26 2-27 2 27 2 26h3l3 30h4l3 30h5l5 42z'/%3E%3Cpath d='M88 160q62-34 124 0z'/%3E%3Cg transform='rotate(-14 150 108)'%3E%3Cpath fill-rule='evenodd' d='M102 108a48 31 0 1 0 96 0a48 31 0 1 0-96 0zM126 104a23 13 0 1 0 46 0a23 13 0 1 0-46 0z'/%3E%3C/g%3E%3Cpath d='M474 160V58q54 36 58 102zM471 160V46h3v114z'/%3E%3C/g%3E%3C/svg%3E");
+ background-repeat:repeat-x,repeat-x;
+ background-position:top center,bottom center;
+ background-size:auto 10px,auto 150px;
+ background-attachment:scroll,fixed;
 }
+@media(max-width:600px){html:root{background-size:auto 10px,auto 105px}}
 html body{background:none;border-top:10px solid transparent}
 
 /* الأزرار: أخضر النخيل بتباين كافٍ مع النص الأبيض */
