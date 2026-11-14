@@ -1,0 +1,57 @@
+/* طلاقة · الهوية البصرية الموحّدة (theme.css)
+   هوية إماراتية عربية مستمدة من صورة الواجهة: كحلي الليل، ذهب الصقر، رمل الصحراء، أخضر النخيل،
+   مع شريط سدو أعلى الصفحة وزخرفة نجمة ثُمانية خفيفة في الخلفية.
+   يعيد تعريف متغيرات الألوان مع لمسات قليلة على المكوّنات المشتركة. كل القواعد مسبوقة بـ html
+   لتتقدّم على أنماط الصفحة أينما وُضعت (بعض الصفحات تضع أنماطها داخل body).
+   لا يغيّر أي وظيفة أو بيانات. */
+html:root{
+ /* الصفحات الرئيسية */
+ --bg:#FBF5E9;--card:#FFFFFF;--ink:#14204A;--muted:#575E7A;--line:#E9DCC0;--soft:#FFF1CC;
+ --sky:#24509E;--navy:#16306B;--grass:#14804A;--sun:#E9B44C;--coral:#C8102E;--grape:#6B4BB8;--tang:#C96F1E;
+ --ok-soft:#DDF3E4;--bad-soft:#FBE1E1;
+ /* أدوات الاستماع والتسجيل */
+ --blue:#24509E;--teal:#167F86;--gold:#C8963E;--cream:#FFF4DA;--mut:#575E7A;
+ /* رموز الهوية */
+ --tq-night:#14204A;--tq-gold:#C8963E;--tq-sand:#FBF5E9;--tq-palm:#14804A;--tq-palm-d:#0C5A33;--tq-red:#C8102E;
+}
+
+/* الخلفية: رمل + نجمة ثُمانية، وشريط سدو أعلى الصفحة */
+html:root{
+ background-color:var(--bg);
+ background-image:
+  url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='14' viewBox='0 0 28 14'%3E%3Crect width='28' height='14' fill='%23A8151F'/%3E%3Cpath d='M14 1l6 6-6 6-6-6z' fill='%23FFF8E7'/%3E%3Cpath d='M14 4.4l2.6 2.6-2.6 2.6-2.6-2.6z' fill='%2314204A'/%3E%3Cpath d='M0 3l4 4-4 4zM28 3l-4 4 4 4z' fill='%2314204A'/%3E%3C/svg%3E"),
+  url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='96' height='96' viewBox='0 0 96 96'%3E%3Cg fill='none' stroke='%23C8963E' stroke-opacity='.15' stroke-width='1.2'%3E%3Crect x='30' y='30' width='36' height='36'/%3E%3Crect x='30' y='30' width='36' height='36' transform='rotate(45 48 48)'/%3E%3Cpath d='M0 48h22.5M73.5 48H96M48 0v22.5M48 73.5V96'/%3E%3C/g%3E%3C/svg%3E");
+ background-repeat:repeat-x,repeat;
+ background-position:top center,center 10px;
+ background-size:auto 10px,96px 96px;
+}
+html body{background:none;border-top:10px solid transparent}
+
+/* الأزرار: أخضر النخيل بتباين كافٍ مع النص الأبيض */
+html .btn{box-shadow:0 5px 0 var(--tq-palm-d)}
+html .btn.small{box-shadow:0 3px 0 var(--tq-palm-d)}
+html .btn.ghost{box-shadow:0 5px 0 var(--line)}
+html .btn.small.ghost{box-shadow:0 3px 0 var(--line)}
+html .btn.danger{box-shadow:0 3px 0 #8E0B20}
+
+/* البطاقات وحقول الإدخال */
+html .panel,html .kpi,html .kid,html details{border:1px solid #F0E6CF}
+html .in,html select.in,html textarea.in{background:#FFFDF8}
+html .in:focus{border-color:var(--tq-gold);outline:0;box-shadow:0 0 0 4px #E9B44C55}
+html .sec,html .chk{background:#FBF5E9}
+html th{background:var(--tq-night);color:#FFF4DA}
+html .tw{border:1px solid #F0E6CF}
+
+/* الواجهة: إطار ذهبي للصورة وشعاران بحلقة ذهبية */
+html .banner{box-shadow:0 0 0 3px var(--tq-gold),0 12px 30px rgba(20,32,74,.22);border-radius:22px}
+html .logos img{box-shadow:0 0 0 3px var(--tq-gold),0 4px 0 var(--line)}
+html .hero .school{color:var(--tq-night)}
+html .foot button,html .linkb{color:var(--navy)}
+html .toast,html .savebar{background:var(--tq-night)}
+
+/* البوابة: عناوين المجموعات بخط ذهبي، وشريط الهوية بإطار ذهبي */
+html .tqi-sec{color:var(--ink)}
+html .tqi-sec i{height:2px;background:linear-gradient(to left,var(--tq-gold),transparent)}
+html .tqbrand{box-shadow:0 0 0 2px var(--tq-gold),0 4px 0 rgba(20,32,74,.18)}
+
+@media print{html{background:#fff}html body{border-top:0}}
