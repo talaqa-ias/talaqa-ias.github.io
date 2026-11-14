@@ -1,6 +1,5 @@
 /* طلاقة · الهوية البصرية الموحّدة (theme.css)
-   هوية إماراتية ليلية: خلفية زرقاء ملكية عميقة تتكرر عليها رسومات تراثية بخطوط ذهبية
-   (الدلّة، النخلة، المحارة، المحمل، البرجيل، وحروف عربية)،
+   هوية إماراتية ليلية: صورة لمعالم دبي ليلًا (img/bg-dubai.jpg) ثابتة خلف المحتوى،
    وشريط سدو أعلى الصفحة، وبطاقات فاتحة واضحة فوق الخلفية الليلية.
    لا يغيّر أي وظيفة أو بيانات.
 
@@ -15,19 +14,22 @@ html:root{
  --tq-night:#0E1838;--tq-night-d:#0A1230;--tq-gold:#C8963E;--tq-gold-l:#F6CF6B;--tq-sand:#FBF5E9;--tq-palm:#14804A;--tq-palm-d:#0C5A33;--tq-red:#C8102E;
  --ink:#FFF6DF;--muted:#D3D7EA;--mut:#D3D7EA;--navy:#F6CF6B;
  color-scheme:light;
- background-color:#0E1838;
- background-image:
-  url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='14' viewBox='0 0 28 14'%3E%3Crect width='28' height='14' fill='%23A8151F'/%3E%3Cpath d='M14 1l6 6-6 6-6-6z' fill='%23FFF8E7'/%3E%3Cpath d='M14 4.4l2.6 2.6-2.6 2.6-2.6-2.6z' fill='%2314204A'/%3E%3Cpath d='M0 3l4 4-4 4zM28 3l-4 4 4 4z' fill='%2314204A'/%3E%3C/svg%3E"),
-  url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300' viewBox='0 0 300 300'%3E%3Cg fill='none' stroke='%23F0C566' stroke-opacity='.3' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cg transform='translate%2818 14%29'%3E%3Cpath d='M20 60h30M23 60C12 46 20 35 27 31h16c7 4 15 15 4 29M27 31l2-9h12l2 9M29 22q6-13 12 0M35 14V8M28 27L10 17l13 16M45 33c14-2 14 18 3 20'/%3E%3Cpath stroke-width='1' d='M24 46h22M22 52h26'/%3E%3C/g%3E%3Cg transform='translate%28176 8%29'%3E%3Cpath d='M32 76Q29 50 33 30M22 76h22M33 30Q19 14 5 22M33 30Q20 27 9 39M33 30Q48 14 61 22M33 30Q46 27 57 39M33 30Q32 13 29 5M33 30Q24 16 15 10M33 30Q42 16 50 10'/%3E%3Cpath stroke-width='1' d='M31 64h4M31 54h4M32 44h3'/%3E%3C/g%3E%3Cg transform='translate%28110 100%29'%3E%3Cpath d='M26 46L4 22Q26-8 48 22zM26 46V7M26 46L14 11M26 46L38 11M26 46L7 17M26 46L45 17M20 46h12v5H20z'/%3E%3C/g%3E%3Cg transform='translate%2814 168%29'%3E%3Cpath d='M4 52Q34 68 70 50l-8 14H16zM32 54V8M32 10l32 36-32 4zM32 16L14 44l18 4'/%3E%3Cpath stroke-width='1' d='M2 76q6-6 12 0t12 0 12 0 12 0 12 0 12 0'/%3E%3C/g%3E%3Cg transform='translate%28186 160%29'%3E%3Cpath d='M20 84V26h28v58M15 26h38M15 26v-6h6v6M27 26v-6h6v6M35 26v-6h6v6M47 26v-6h6v6M4 84V56h16M48 56h16v28M0 84h68'/%3E%3Cpath stroke-width='1' d='M26 34v22M34 34v22M42 34v22M9 66h6v8H9zM53 66h6v8h-6zM28 84V70q6-7 12 0v14'/%3E%3C/g%3E%3C/g%3E%3Cg fill='%23F0C566' fill-opacity='.15' font-family='Noto Naskh Arabic,Traditional Arabic,serif' font-size='40' font-weight='700' text-anchor='middle'%3E%3Ctext x='130' y='60'%3E%D8%B6%3C/text%3E%3Ctext x='142' y='232'%3E%D8%B9%3C/text%3E%3Ctext x='272' y='140' font-size='32'%3E%D9%82%3C/text%3E%3Ctext x='30' y='140' font-size='32'%3E%D9%84%3C/text%3E%3C/g%3E%3C/svg%3E"),
-  radial-gradient(ellipse 120% 55% at 50% 0%,rgba(63,96,190,.55),rgba(63,96,190,0) 70%),
-  radial-gradient(ellipse 90% 320px at 50% 100%,rgba(233,180,76,.22),rgba(233,180,76,0) 70%),
-  linear-gradient(180deg,#0B1436 0%,#0E1B47 50%,#14235A 100%);
- background-repeat:repeat-x,repeat,no-repeat,no-repeat,no-repeat;
- background-position:top center,center 10px,center,bottom center,center;
- background-size:auto 10px,300px 300px,100% 100%,100% 100%,100% 100%;
- background-attachment:scroll,scroll,fixed,fixed,fixed;
+ background-color:#060B22;
+ background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='14' viewBox='0 0 28 14'%3E%3Crect width='28' height='14' fill='%23A8151F'/%3E%3Cpath d='M14 1l6 6-6 6-6-6z' fill='%23FFF8E7'/%3E%3Cpath d='M14 4.4l2.6 2.6-2.6 2.6-2.6-2.6z' fill='%2314204A'/%3E%3Cpath d='M0 3l4 4-4 4zM28 3l-4 4 4 4z' fill='%2314204A'/%3E%3C/svg%3E");
+ background-repeat:repeat-x;
+ background-position:top center;
+ background-size:auto 10px;
 }
-html body{background:none;border-top:10px solid transparent;color:var(--ink)}
+/* صورة معالم دبي ليلًا: طبقة ثابتة خلف المحتوى (تعمل على الهواتف أيضًا)، فوقها تدرّج داكن
+   من الأعلى ليبقى النص مقروءًا وتبقى المعالم واضحة في أسفل الشاشة */
+html body::before{content:"";position:fixed;inset:10px 0 0 0;z-index:-1;pointer-events:none;
+ background:
+  linear-gradient(180deg,rgba(6,11,34,.88) 0%,rgba(6,11,34,.62) 38%,rgba(6,11,34,.18) 72%,rgba(6,11,34,0) 100%),
+  #060B22 url(/img/bg-dubai.jpg) center bottom/cover no-repeat}
+@media(max-aspect-ratio:1/1){html body::before{background:
+  linear-gradient(180deg,rgba(6,11,34,.92) 0%,rgba(6,11,34,.7) 45%,rgba(6,11,34,.2) 78%,rgba(6,11,34,0) 100%),
+  #060B22 url(/img/bg-dubai.jpg) 50% 100%/auto 56% no-repeat}}
+html body{background:none;border-top:10px solid transparent;color:var(--ink);text-shadow:0 0 3px #030618,0 0 7px #030618,0 1px 14px #030618}
 
 /* ===== الأسطح الفاتحة: النص داخلها داكن (قائمة مولَّدة) ===== */
 html body :where(
@@ -215,34 +217,34 @@ tr.st-no td),
 [style*="background:var(--card)"],
 [style*="background:var(--soft)"],
 [style*="background:#FFF"],
-[style*="background:#ffffff"]{--ink:#14204A;--muted:#575E7A;--mut:#575E7A;--navy:#16306B;color:var(--ink)}
+[style*="background:#ffffff"]{--ink:#14204A;--muted:#575E7A;--mut:#575E7A;--navy:#16306B;text-shadow:none;color:var(--ink)}
 /* محدِّدات تختلف وظيفتها بين الصفحات: تُقيَّد بصفحتها عبر data-tq على وسم html */
-:is(html[data-tq="ws"]) body :where(.bad){--ink:#14204A;--muted:#575E7A;--mut:#575E7A;--navy:#16306B;color:var(--ink)}
-:is(html[data-tq="bsk"],html[data-tq="kgw"]) body :where(.ck .bx){--ink:#14204A;--muted:#575E7A;--mut:#575E7A;--navy:#16306B;color:var(--ink)}
-:is(html[data-tq="games"]) body :where(.code){--ink:#14204A;--muted:#575E7A;--mut:#575E7A;--navy:#16306B;color:var(--ink)}
-:is(html[data-tq="write"]) body :where(.fb.bad){--ink:#14204A;--muted:#575E7A;--mut:#575E7A;--navy:#16306B;color:var(--ink)}
-:is(html[data-tq="imla"]) body :where(.fb.no){--ink:#14204A;--muted:#575E7A;--mut:#575E7A;--navy:#16306B}
-:is(html[data-tq="imla"],html[data-tq="write"]) body :where(.fb.ok){--ink:#14204A;--muted:#575E7A;--mut:#575E7A;--navy:#16306B}
-:is(html[data-tq="imla"]) body :where(.hl){--ink:#14204A;--muted:#575E7A;--mut:#575E7A;--navy:#16306B}
-:is(html[data-tq="aal"],html[data-tq="aal-r"],html[data-tq="listen"]) body :where(.mini){--ink:#14204A;--muted:#575E7A;--mut:#575E7A;--navy:#16306B;color:var(--ink)}
-:is(html[data-tq="rec"],html[data-tq="rec-b"],html[data-tq="rec-r"]) body :where(.note){--ink:#14204A;--muted:#575E7A;--mut:#575E7A;--navy:#16306B}
-:is(html[data-tq="grade"]) body :where(.opt.right){--ink:#14204A;--muted:#575E7A;--mut:#575E7A;--navy:#16306B;color:var(--ink)}
-:is(html[data-tq="grade"]) body :where(.opt.wrong){--ink:#14204A;--muted:#575E7A;--mut:#575E7A;--navy:#16306B;color:var(--ink)}
-:is(html[data-tq="aal"],html[data-tq="aal-r"],html[data-tq="bsk"],html[data-tq="grade"]) body :where(.pic){--ink:#14204A;--muted:#575E7A;--mut:#575E7A;--navy:#16306B;color:var(--ink)}
-:is(html[data-tq="b"],html[data-tq="index"],html[data-tq="listen"]) body :where(.pill){--ink:#14204A;--muted:#575E7A;--mut:#575E7A;--navy:#16306B}
-:is(html[data-tq="grade"]) body :where(.planbox){--ink:#14204A;--muted:#575E7A;--mut:#575E7A;--navy:#16306B;color:var(--ink)}
-:is(html[data-tq="bsk"],html[data-tq="write"]) body :where(.prog){--ink:#14204A;--muted:#575E7A;--mut:#575E7A;--navy:#16306B;color:var(--ink)}
-:is(html[data-tq="aal"],html[data-tq="aal-r"]) body :where(.scene){--ink:#14204A;--muted:#575E7A;--mut:#575E7A;--navy:#16306B;color:var(--ink)}
-:is(html[data-tq="grade"]) body :where(.shbar button){--ink:#14204A;--muted:#575E7A;--mut:#575E7A;--navy:#16306B;color:var(--ink)}
-:is(html[data-tq="bsk"],html[data-tq="grade"],html[data-tq="kgw"]) body :where(.slot){--ink:#14204A;--muted:#575E7A;--mut:#575E7A;--navy:#16306B;color:var(--ink)}
-:is(html[data-tq="games"]) body :where(.slots){--ink:#14204A;--muted:#575E7A;--mut:#575E7A;--navy:#16306B;color:var(--ink)}
-:is(html[data-tq="aal"],html[data-tq="aal-r"],html[data-tq="ws"]) body :where(.st){--ink:#14204A;--muted:#575E7A;--mut:#575E7A;--navy:#16306B}
-:is(html[data-tq="grade"]) body :where(.story){--ink:#14204A;--muted:#575E7A;--mut:#575E7A;--navy:#16306B;color:var(--ink)}
-:is(html[data-tq="imla"]) body :where(.tip){--ink:#14204A;--muted:#575E7A;--mut:#575E7A;--navy:#16306B;color:var(--ink)}
-:is(html[data-tq="b"],html[data-tq="index"]) body :where(details){--ink:#14204A;--muted:#575E7A;--mut:#575E7A;--navy:#16306B;color:var(--ink)}
-:is(html[data-tq="rec"],html[data-tq="rec-b"],html[data-tq="rec-r"]) body :where(header img){--ink:#14204A;--muted:#575E7A;--mut:#575E7A;--navy:#16306B;color:var(--ink)}
-:is(html[data-tq="b"],html[data-tq="grade"],html[data-tq="index"]) body :where(textarea.in){--ink:#14204A;--muted:#575E7A;--mut:#575E7A;--navy:#16306B;color:var(--ink)}
-:is(html[data-tq="b"],html[data-tq="grade"],html[data-tq="index"]) body :where(th){--ink:#14204A;--muted:#575E7A;--mut:#575E7A;--navy:#16306B;color:var(--ink)}
+:is(html[data-tq="ws"]) body :where(.bad){--ink:#14204A;--muted:#575E7A;--mut:#575E7A;--navy:#16306B;text-shadow:none;color:var(--ink)}
+:is(html[data-tq="bsk"],html[data-tq="kgw"]) body :where(.ck .bx){--ink:#14204A;--muted:#575E7A;--mut:#575E7A;--navy:#16306B;text-shadow:none;color:var(--ink)}
+:is(html[data-tq="games"]) body :where(.code){--ink:#14204A;--muted:#575E7A;--mut:#575E7A;--navy:#16306B;text-shadow:none;color:var(--ink)}
+:is(html[data-tq="write"]) body :where(.fb.bad){--ink:#14204A;--muted:#575E7A;--mut:#575E7A;--navy:#16306B;text-shadow:none;color:var(--ink)}
+:is(html[data-tq="imla"]) body :where(.fb.no){--ink:#14204A;--muted:#575E7A;--mut:#575E7A;--navy:#16306B;text-shadow:none}
+:is(html[data-tq="imla"],html[data-tq="write"]) body :where(.fb.ok){--ink:#14204A;--muted:#575E7A;--mut:#575E7A;--navy:#16306B;text-shadow:none}
+:is(html[data-tq="imla"]) body :where(.hl){--ink:#14204A;--muted:#575E7A;--mut:#575E7A;--navy:#16306B;text-shadow:none}
+:is(html[data-tq="aal"],html[data-tq="aal-r"],html[data-tq="listen"]) body :where(.mini){--ink:#14204A;--muted:#575E7A;--mut:#575E7A;--navy:#16306B;text-shadow:none;color:var(--ink)}
+:is(html[data-tq="rec"],html[data-tq="rec-b"],html[data-tq="rec-r"]) body :where(.note){--ink:#14204A;--muted:#575E7A;--mut:#575E7A;--navy:#16306B;text-shadow:none}
+:is(html[data-tq="grade"]) body :where(.opt.right){--ink:#14204A;--muted:#575E7A;--mut:#575E7A;--navy:#16306B;text-shadow:none;color:var(--ink)}
+:is(html[data-tq="grade"]) body :where(.opt.wrong){--ink:#14204A;--muted:#575E7A;--mut:#575E7A;--navy:#16306B;text-shadow:none;color:var(--ink)}
+:is(html[data-tq="aal"],html[data-tq="aal-r"],html[data-tq="bsk"],html[data-tq="grade"]) body :where(.pic){--ink:#14204A;--muted:#575E7A;--mut:#575E7A;--navy:#16306B;text-shadow:none;color:var(--ink)}
+:is(html[data-tq="b"],html[data-tq="index"],html[data-tq="listen"]) body :where(.pill){--ink:#14204A;--muted:#575E7A;--mut:#575E7A;--navy:#16306B;text-shadow:none}
+:is(html[data-tq="grade"]) body :where(.planbox){--ink:#14204A;--muted:#575E7A;--mut:#575E7A;--navy:#16306B;text-shadow:none;color:var(--ink)}
+:is(html[data-tq="bsk"],html[data-tq="write"]) body :where(.prog){--ink:#14204A;--muted:#575E7A;--mut:#575E7A;--navy:#16306B;text-shadow:none;color:var(--ink)}
+:is(html[data-tq="aal"],html[data-tq="aal-r"]) body :where(.scene){--ink:#14204A;--muted:#575E7A;--mut:#575E7A;--navy:#16306B;text-shadow:none;color:var(--ink)}
+:is(html[data-tq="grade"]) body :where(.shbar button){--ink:#14204A;--muted:#575E7A;--mut:#575E7A;--navy:#16306B;text-shadow:none;color:var(--ink)}
+:is(html[data-tq="bsk"],html[data-tq="grade"],html[data-tq="kgw"]) body :where(.slot){--ink:#14204A;--muted:#575E7A;--mut:#575E7A;--navy:#16306B;text-shadow:none;color:var(--ink)}
+:is(html[data-tq="games"]) body :where(.slots){--ink:#14204A;--muted:#575E7A;--mut:#575E7A;--navy:#16306B;text-shadow:none;color:var(--ink)}
+:is(html[data-tq="aal"],html[data-tq="aal-r"],html[data-tq="ws"]) body :where(.st){--ink:#14204A;--muted:#575E7A;--mut:#575E7A;--navy:#16306B;text-shadow:none}
+:is(html[data-tq="grade"]) body :where(.story){--ink:#14204A;--muted:#575E7A;--mut:#575E7A;--navy:#16306B;text-shadow:none;color:var(--ink)}
+:is(html[data-tq="imla"]) body :where(.tip){--ink:#14204A;--muted:#575E7A;--mut:#575E7A;--navy:#16306B;text-shadow:none;color:var(--ink)}
+:is(html[data-tq="b"],html[data-tq="index"]) body :where(details){--ink:#14204A;--muted:#575E7A;--mut:#575E7A;--navy:#16306B;text-shadow:none;color:var(--ink)}
+:is(html[data-tq="rec"],html[data-tq="rec-b"],html[data-tq="rec-r"]) body :where(header img){--ink:#14204A;--muted:#575E7A;--mut:#575E7A;--navy:#16306B;text-shadow:none;color:var(--ink)}
+:is(html[data-tq="b"],html[data-tq="grade"],html[data-tq="index"]) body :where(textarea.in){--ink:#14204A;--muted:#575E7A;--mut:#575E7A;--navy:#16306B;text-shadow:none;color:var(--ink)}
+:is(html[data-tq="b"],html[data-tq="grade"],html[data-tq="index"]) body :where(th){--ink:#14204A;--muted:#575E7A;--mut:#575E7A;--navy:#16306B;text-shadow:none;color:var(--ink)}
 
 html body :where(
 .badge,
@@ -282,7 +284,7 @@ html body :where(
 .tqs .b.ghost,
 .tqs .n,
 .tts,
-.who button){--ink:#14204A;--muted:#575E7A;--mut:#575E7A;--navy:#16306B}
+.who button){--ink:#14204A;--muted:#575E7A;--mut:#575E7A;--navy:#16306B;text-shadow:none}
 /* ===== الأسطح الداكنة ===== */
 html body :where(
 .banner,
@@ -291,7 +293,7 @@ html body :where(
 .tqbrand){--ink:#FFF6DF;--muted:#D3D7EA;--mut:#D3D7EA;--navy:#F6CF6B}
 html .toast,html .savebar,html .chip.dark,html .chip.t,html .qlist .num,html .shbar button.on,html [style*="background:var(--ink)"]{background:#0A1230;color:#FFF6DF;--ink:#FFF6DF;--muted:#D3D7EA;--mut:#D3D7EA;--navy:#F6CF6B}
 html .toast,html .savebar{box-shadow:0 0 0 1.5px var(--tq-gold)}
-html .mini{background:var(--tq-sand);--ink:#14204A;--muted:#575E7A;--mut:#575E7A;--navy:#16306B;color:var(--ink)}
+html .mini{background:var(--tq-sand);--ink:#14204A;--muted:#575E7A;--mut:#575E7A;--navy:#16306B;text-shadow:none;color:var(--ink)}
 html .shbar{background:rgba(11,20,54,.9);border-radius:16px;--ink:#FFF6DF;--muted:#D3D7EA;--mut:#D3D7EA;--navy:#F6CF6B}
 
 /* الأزرار */
@@ -327,4 +329,4 @@ html[data-tq^="aal"],html[data-tq^="rec"]{--ok:#14804A}
 html .shbar button.on{box-shadow:0 0 0 2px var(--tq-gold)}
 html .foot{width:fit-content;max-width:100%;margin-inline:auto;background:rgba(10,18,48,.78);border-radius:14px;padding:8px 14px}
 
-@media print{html:root{background:#fff;--ink:#14204A;--muted:#575E7A;--mut:#575E7A;--navy:#16306B}html body{border-top:0}}
+@media print{html:root{background:#fff;--ink:#14204A;--muted:#575E7A;--mut:#575E7A;--navy:#16306B;text-shadow:none}html body{border-top:0}}
