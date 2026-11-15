@@ -230,7 +230,7 @@ function tRes(){var saved=store.get('pt_codes','');return '<p class="lead">âœ… Ù
 /* ---- live progress (Google Apps Script) ---- */
 var LIVE=null,LIVEX={recs:{},folders:{},ev:{},recl:{}},LIVEC='',LIVEQ=null,LIVEAT='',LIVEERR='';
 if(window.TQScore)TQScore.init({render:function(){render()},auth:function(){return LIVEQ},ctx:function(){return LIVEX},student:function(){return view&&view.stu},isB:false});
-function liveLoad(q){LIVEQ=q;LIVEERR='';fetch('send-config.json',{cache:'no-store'}).then(function(r){return r.json()}).then(function(c){var u=String(c.progress||'');if(!u){LIVEERR='off';render();return null}
+function liveLoad(q){LIVEQ=q;window.__tqLQ=q;LIVEERR='';fetch('send-config.json',{cache:'no-store'}).then(function(r){return r.json()}).then(function(c){var u=String(c.progress||'');if(!u){LIVEERR='off';render();return null}
  return fetch(u+'?'+Object.keys(q).map(function(k){return k+'='+encodeURIComponent(q[k])}).join('&')).then(function(r){return r.json()})}).then(function(j){if(!j)return;if(!j.ok){LIVEERR=j.err||'err';render();return}
  var SID={};Object.keys(DATA.secs).forEach(function(sec){var c=(T&&T.codes&&T.codes[sec])||KN[sec];if(!c)return;(secOpen(sec,c)||[]).forEach(function(n){SID[sec+'|'+fnv('sid|'+sec+'|'+n+'|'+rcNorm(c))]=n})});
  var NM={};Object.keys(SID).forEach(function(k){NM[k.split('|')[0]+'|'+nkey(SID[k])]=1});
@@ -422,7 +422,7 @@ $app.addEventListener('click',function(e){var b=e.target.closest('[data-a]');if(
  case 'oin':view={n:OWN||canEdit?'owner':'oin'};render();break;
  case 'live':if(LIVEQ)liveLoad(LIVEQ);break;
  case 'evrep':evidenceReport();break;
- case 'oout':LIVE=null;LIVEQ=null;OWN=false;view={n:'home'};render();break;
+ case 'oout':LIVE=null;LIVEQ=null;window.__tqLQ=null;OWN=false;view={n:'home'};render();break;
  case 'otab':otab=b.dataset.t;delete view.stu;render();break;
  case 'copy':copyText(b.dataset.v);break;
  case 'pbsec':PB.sec=b.dataset.s;PB.sel={};store.set('pt_pb',PB);view.plan=null;render();break;
@@ -479,4 +479,5 @@ render();
 <script src="plus.js" defer></script>
 <script src="sync.js" defer></script>
 <script src="/brand.js"></script>
+<script src="/freeze.js?v=1" defer></script>
 </body></html>
