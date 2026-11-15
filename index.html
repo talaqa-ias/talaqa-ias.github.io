@@ -1,5 +1,7 @@
 <!doctype html>
 <html lang="ar" dir="rtl" data-tq="index"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#0E1838"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta name="apple-mobile-web-app-title" content="طلاقة"><link rel="apple-touch-icon" href="/img/app-180.png">
+<script>/* أيقونة التطبيق على آبل تفتح بـ ?id=رقم الطالب: نحوّله إلى صيغة رابط البطاقة قبل تشغيل الصفحة */(function(){try{var m=/[?&]id=([A-Za-z0-9]+)/.exec(location.search);if(m&&!/(id|me)=/.test(location.hash))history.replaceState(null,'',location.pathname+'#id='+m[1])}catch(e){}})()</script>
 <title>طلاقة · Talaqa</title>
 <meta name="description" content="طلاقة: مكان واحد لأدوات القراءة والتحدث في قسم اللغة العربية: الطالب يجد أدواته وخطته، والمعلم يعيّن المستويات ويقرأ النتائج.">
 <style>
@@ -230,7 +232,7 @@ function tRes(){var saved=store.get('pt_codes','');return '<p class="lead">✅ �
 /* ---- live progress (Google Apps Script) ---- */
 var LIVE=null,LIVEX={recs:{},folders:{},ev:{},recl:{}},LIVEC='',LIVEQ=null,LIVEAT='',LIVEERR='';
 if(window.TQScore)TQScore.init({render:function(){render()},auth:function(){return LIVEQ},ctx:function(){return LIVEX},student:function(){return view&&view.stu},isB:false});
-function liveLoad(q){LIVEQ=q;LIVEERR='';fetch('send-config.json',{cache:'no-store'}).then(function(r){return r.json()}).then(function(c){var u=String(c.progress||'');if(!u){LIVEERR='off';render();return null}
+function liveLoad(q){LIVEQ=q;window.__tqLQ=q;LIVEERR='';fetch('send-config.json',{cache:'no-store'}).then(function(r){return r.json()}).then(function(c){var u=String(c.progress||'');if(!u){LIVEERR='off';render();return null}
  return fetch(u+'?'+Object.keys(q).map(function(k){return k+'='+encodeURIComponent(q[k])}).join('&')).then(function(r){return r.json()})}).then(function(j){if(!j)return;if(!j.ok){LIVEERR=j.err||'err';render();return}
  var SID={};Object.keys(DATA.secs).forEach(function(sec){var c=(T&&T.codes&&T.codes[sec])||KN[sec];if(!c)return;(secOpen(sec,c)||[]).forEach(function(n){SID[sec+'|'+fnv('sid|'+sec+'|'+n+'|'+rcNorm(c))]=n})});
  var NM={};Object.keys(SID).forEach(function(k){NM[k.split('|')[0]+'|'+nkey(SID[k])]=1});
@@ -422,7 +424,7 @@ $app.addEventListener('click',function(e){var b=e.target.closest('[data-a]');if(
  case 'oin':view={n:OWN||canEdit?'owner':'oin'};render();break;
  case 'live':if(LIVEQ)liveLoad(LIVEQ);break;
  case 'evrep':evidenceReport();break;
- case 'oout':LIVE=null;LIVEQ=null;OWN=false;view={n:'home'};render();break;
+ case 'oout':LIVE=null;LIVEQ=null;window.__tqLQ=null;OWN=false;view={n:'home'};render();break;
  case 'otab':otab=b.dataset.t;delete view.stu;render();break;
  case 'copy':copyText(b.dataset.v);break;
  case 'pbsec':PB.sec=b.dataset.s;PB.sel={};store.set('pt_pb',PB);view.plan=null;render();break;
@@ -479,4 +481,6 @@ render();
 <script src="plus.js" defer></script>
 <script src="sync.js" defer></script>
 <script src="/brand.js"></script>
+<script src="/freeze.js?v=1" defer></script>
+<script src="/app.js?v=1" defer></script>
 </body></html>

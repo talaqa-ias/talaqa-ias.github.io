@@ -197,6 +197,7 @@ function saveImg(b,sec,who){
 function doGet(e){
   var q=e.parameter||{},S=seed(),allowed=null;
   if(q.a==='ping')return out({ok:true});
+  if(q.a==='fz')return out({ok:true,fz:fzRead()});   /* حالة التجميد: عامة، لا بيانات شخصية فيها */
   /* حماية من تخمين الرموز: 10 محاولات خاطئة تقفل 15 دقيقة */
   var C=CacheService.getScriptCache(),fk='f_'+(q.r||'')+'_'+(q.id||''),fails=Number(C.get(fk)||0);
   if(fails>=10)return out({ok:false,err:'locked'});
@@ -204,6 +205,11 @@ function doGet(e){
   if(q.r==='own'){if(!S.own||fnv('own|'+String(q.k||''))!==S.own.h)return bad();allowed=null}
   else if(q.r==='t'){var t=(S.teachers||[]).filter(function(x){return x.id===q.id})[0];if(!t||fnv('tp|'+t.id+'|'+String(q.k||''))!==t.h)return bad();allowed={};t.secs.forEach(function(s){allowed[s]=1})}
   else return out({ok:false,err:'role'});
+  if(q.a==='fzset'){                                  /* تغيير التجميد: للمنسق فقط */
+    if(q.r!=='own')return out({ok:false,err:'role'});
+    var nf;try{nf=fzClean(JSON.parse(q.v||'{}'))}catch(er){return out({ok:false,err:'json'})}
+    PropertiesService.getScriptProperties().setProperty('FREEZE',JSON.stringify(nf));
+    return out({ok:true,fz:nf})}
   var v=sheet().getDataRange().getValues(),st={};
   for(var i=1;i<v.length;i++){var r=v[i],sec=r[2],nm=r[3];if(allowed&&!allowed[sec])continue;
     var key=sec+'|'+nm,o=st[key]||(st[key]={c:sec,n:nm,days:{},last:'',t:{}}),d=r[1]instanceof Date?Utilities.formatDate(r[1],'Asia/Dubai','yyyy-MM-dd'):String(r[1]);
@@ -230,6 +236,14 @@ function doGet(e){
     res.sc=sc.slice(-3000)}
   return out(res);
 }
+
+/* ---------- تجميد الأدوات ----------
+   المنسق يوقف أداة أو أكثر مؤقتًا: للمنصة كلها (all)، أو لصف (G4)، أو لشعبة (G4-C).
+   الحالة محفوظة في خصائص السكربت (FREEZE)، وتقرؤها صفحات الطلاب عبر ‎?a=fz‎ */
+function fzRead(){try{var v=PropertiesService.getScriptProperties().getProperty('FREEZE'),o=v?JSON.parse(v):null;return o&&Array.isArray(o.rules)?o:{rules:[]}}catch(e){return {rules:[]}}}
+function fzClean(o){var T={read:1,speak:1,listen:1,imla:1,ws:1,write:1,games:1,'*':1};
+  var rules=(o&&Array.isArray(o.rules)?o.rules:[]).slice(0,60).map(function(r){return {s:String(r.s||'').slice(0,40),t:(Array.isArray(r.t)?r.t:[]).map(String).filter(function(x){return T[x]}).slice(0,8),m:String(r.m||'').slice(0,200),at:String(r.at||'').slice(0,30)}}).filter(function(r){return r.s&&r.t.length});
+  return {rules:rules,at:new Date().toISOString()}}
 
 /* ---------- الاحتفاظ: حذف ما قبل بداية العام الدراسي (يُشغَّل يدويًا أو بمؤقّت سنوي) ---------- */
 function purgeBefore(dateStr){var sh=sheet(),v=sh.getDataRange().getValues(),keep=[v[0]];for(var i=1;i<v.length;i++){var d=v[i][1] instanceof Date?Utilities.formatDate(v[i][1],'Asia/Dubai','yyyy-MM-dd'):String(v[i][1]);if(d>=dateStr)keep.push(v[i])}sh.clearContents();sh.getRange(1,1,keep.length,keep[0].length).setValues(keep)}
