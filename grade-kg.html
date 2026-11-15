@@ -527,10 +527,16 @@ function vUnits(){
  var s=me();
  var pl=s.pl?'<p class="note" style="margin:-8px 0 12px">📌 خطتك من المعلم'+(s.pl.by?' ('+esc(s.pl.by)+')':'')+': '+esc(DATA.units[s.pl.lv]?DATA.units[s.pl.lv].title:'')+(s.pl.st&&s.pl.lv===0?' · من المحطة '+s.pl.st:'')+'</p>':'';
  var ban=DATA.place&&s.sl==null?'<div class="place"><h2>🧭 اختبار قصير لتحديد مستواك</h2><p>اقرأ الكلمة أو الجملة، ثم المس الصورة المناسبة. يفتح لك الاختبار المستوى المناسب.</p><button class="btn" style="background:#fff;color:var(--grape);box-shadow:0 5px 0 rgba(0,0,0,.18)" data-a="place">ابدأ الاختبار</button></div>':'';
- return top()+'<h1>'+(s.av?s.av+' ':'')+'مرحبًا '+esc(s.name)+'!</h1><p class="lead">'+W.pick+'</p>'+pl+ban+'<div class="units">'+
- DATA.units.map(function(u,k){var d=unitDone(u),n=u.stages.length,op=unitOpen(k);
-  return '<button class="ucard C'+(k%6)+(op?'':' locked')+'" data-a="'+(op?'unit':'')+'" data-u="'+esc(u.id)+'"'+(op?'':' aria-disabled="true"')+'>'+(u.term?'<span class="term">'+esc(u.term)+(u.ind?' · '+esc(u.ind):'')+'</span>':'')+(op?'':'<span class="cup" style="width:28px;color:#fff;top:auto;bottom:10px">'+I.lock+'</span>')+(n&&d===n?'<span class="cup" aria-label="أنهيت '+W.u+'">🏆</span>':'')+'<span class="lt"><span class="big">'+esc(u.letter||'')+'</span>'+picHTML(u.pic,u.picWord)+'</span><strong>'+esc(u.title)+'</strong><span class="dots" aria-hidden="true">'+u.stages.map(function(st,i){var x=lv(u.id,i);return '<i class="'+(x&&x.done?'on':'')+'"></i>'}).join('')+'</span></button>'}).join('')+
- '</div><div class="row" style="margin-top:24px">'+(DATA.place&&s.sl!=null?'<button class="btn ghost" data-a="place">أعد اختبار تحديد المستوى</button>':'')+'<button class="btn" style="background:var(--sun);color:#5A3A00;box-shadow:0 5px 0 #D9A21C" data-a="album">⭐ صندوق جوائزي</button><button class="btn ghost" data-a="code">رمز إنجازي للمعلم</button></div><details style="margin-top:14px"><summary class="note">لديك رمز خطة من معلمك؟</summary><form class="row" id="fPl" style="margin-top:8px"><input class="in" id="plIn" dir="ltr" autocomplete="off" placeholder="PL...." style="flex:1;min-width:200px"><button class="btn small" type="submit">طبّق الخطة</button></form></details>';
+ /* عرض مركّز: يظهر للطالب مستواه الحالي وما أنجزه فقط، ويُفتح المستوى التالي عند إنهاء السابق.
+    المعلم في وضع المعاينة يرى كل المستويات، وكذلك صفحات الحروف (غير المقسّمة إلى مستويات). */
+ var focus=LV&&!window.__pv,st0=sl(),hid=0;
+ var cards=DATA.units.map(function(u,k){var d=unitDone(u),n=u.stages.length,op=unitOpen(k);
+  return '<button class="ucard C'+(k%6)+(op?'':' locked')+'" data-a="'+(op?'unit':'')+'" data-u="'+esc(u.id)+'"'+(op?'':' aria-disabled="true"')+'>'+(u.term?'<span class="term">'+esc(u.term)+(u.ind?' · '+esc(u.ind):'')+'</span>':'')+(op?'':'<span class="cup" style="width:28px;color:#fff;top:auto;bottom:10px">'+I.lock+'</span>')+(n&&d===n?'<span class="cup" aria-label="أنهيت '+W.u+'">🏆</span>':'')+'<span class="lt"><span class="big">'+esc(u.letter||'')+'</span>'+picHTML(u.pic,u.picWord)+'</span><strong>'+esc(u.title)+'</strong><span class="dots" aria-hidden="true">'+u.stages.map(function(st,i){var x=lv(u.id,i);return '<i class="'+(x&&x.done?'on':'')+'"></i>'}).join('')+'</span></button>'});
+ var shown=cards;
+ if(focus){shown=cards.filter(function(c,k){var v=unitOpen(k)&&(k>=st0||unitDone(DATA.units[k])>0);if(!v)hid++;return v});if(!shown.length){shown=[cards[0]];hid=cards.length-1}}
+ return top()+'<h1>'+(s.av?s.av+' ':'')+'مرحبًا '+esc(s.name)+'!</h1><p class="lead">'+(focus?'هذا مستواك الآن. أنهِه بنجاح ليُفتح لك المستوى التالي.':W.pick)+'</p>'+pl+ban+'<div class="units'+(focus?' focus':'')+'">'+shown.join('')+'</div>'+
+ (focus&&hid?'<p class="note" style="margin:14px 0 0">🔒 بقية المستويات تُفتح واحدًا بعد الآخر كلما أنهيت مستواك بنجاح.</p><details class="allv" style="margin-top:10px"><summary class="note">عرض كل المستويات</summary><div class="units" style="margin-top:12px">'+cards.join('')+'</div></details>':'')+
+ '<div class="row" style="margin-top:24px">'+(DATA.place&&s.sl!=null?'<button class="btn ghost" data-a="place">أعد اختبار تحديد المستوى</button>':'')+'<button class="btn" style="background:var(--sun);color:#5A3A00;box-shadow:0 5px 0 #D9A21C" data-a="album">⭐ صندوق جوائزي</button><button class="btn ghost" data-a="code">رمز إنجازي للمعلم</button></div><details style="margin-top:14px"><summary class="note">لديك رمز خطة من معلمك؟</summary><form class="row" id="fPl" style="margin-top:8px"><input class="in" id="plIn" dir="ltr" autocomplete="off" placeholder="PL...." style="flex:1;min-width:200px"><button class="btn small" type="submit">طبّق الخطة</button></form></details>';
 }
 
 function vAlbum(){
@@ -544,13 +550,17 @@ function vAlbum(){
 
 function vUnit(){
  var u=unit(view.u);if(!u)return vUnits();
- var n=u.stages.length,h=top()+'<p class="crumb">'+esc(u.title)+'</p><h1>اصعد الهرم درجةً درجة 🧗</h1><p class="lead">ابدأ من الأسفل. كل درجة تنهيها تعطيك ملصقًا.</p><div class="pyr">';
+ var n=u.stages.length,h=top()+'<p class="crumb">'+esc(u.title)+'</p><h1>اصعد الهرم درجةً درجة 🧗</h1><p class="lead">'+(window.__pv?'ابدأ من الأسفل. كل درجة تنهيها تعطيك ملصقًا.':'ابدأ من الدرجة المكتوب عليها «ابدأ». كل درجة تنهيها تفتح الدرجة التي بعدها وتعطيك ملصقًا.')+'</p><div class="pyr">';
+ /* يظهر للطالب ما أنجزه + درجته الحالية + الدرجة التالية مقفلة؛ فتكون درجته أعلى الهرم دون تمرير */
+ var cur=-1,lim=n-1;if(!window.__pv){for(var q=0;q<n;q++){var xq=lv(u.id,q);if(!(xq&&xq.done)){cur=q;break}}if(cur>=0)lim=Math.min(n-1,cur+1)}
  u.stages.forEach(function(st,i){
+  if(i>lim)return;
   var x=lv(u.id,i),op=open_(u.id,i),cnt=items(u,i).length,w=100-Math.round(i*(42/Math.max(1,n-1)));
   if(st.station&&(i===0||u.stages[i-1].station!==st.station))h+='<div class="stn" style="width:'+w+'%">'+esc(u.stNames&&u.stNames[st.station]||('المحطة '+st.station))+'</div>';
   var s=!op?I.lock:x&&x.done?(x.by==='n'?'✓':stickerFor(u.id,i))+(x.score!=null?' '+x.score+'%':''):'ابدأ';
   h+='<button class="step K-'+esc(st.kind||'mix')+(st.kind==='pass'||st.kind==='harf'?' P'+(u.stages.slice(0,i).filter(function(x){return x.kind===st.kind}).length%5):'')+(st.gate?' gate':'')+(op?'':' locked')+'" style="width:'+Math.max(72,w)+'%" data-a="'+(op&&cnt?'start':'')+'" data-l="'+i+'"'+(op&&cnt?'':' aria-disabled="true"')+'><span><span class="n">الدرجة '+(i+1)+'</span><br>'+esc(st.name)+'</span><span class="st">'+s+'</span></button>';
  });
+ if(lim<n-1)h+='<p class="note center" style="margin:0 0 4px">⬆️ بقيت '+(n-1-lim)+' درجة، تُفتح واحدة بعد الأخرى</p>';
  var bests=[],labs=[];u.stages.forEach(function(st,i){if(st.kind==='pass'){var hh=wHist(u.id,i);if(hh.length){bests.push(Math.max.apply(null,hh.map(function(x){return x.v})));labs.push('ن'+(bests.length))}}});
  if(bests.length)h+='</div><div class="panel"><h2 class="center">⏱️ سرعتي في القراءة (كلمة/دقيقة)</h2>'+chartHTML(bests,u.goal)+'</div><div>';
  return h+'</div><button class="btn ghost" data-a="home">كل '+W.all+'</button>';

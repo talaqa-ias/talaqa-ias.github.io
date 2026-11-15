@@ -284,7 +284,14 @@ html body :where(
 .tqs .b.ghost,
 .tqs .n,
 .tts,
-.who button){--ink:#14204A;--muted:#575E7A;--mut:#575E7A;--navy:#16306B;text-shadow:none}
+.who button){--ink:#14204A;--muted:#575E7A;--mut:#575E7A;--navy:#16306B;text-shadow:none;color:var(--ink)}
+/* لون النص داخل الأسطح المقيّدة بصفحتها، بأولوية منخفضة حتى لا يغلب ألوان الصفحة نفسها */
+html body :where(html[data-tq="imla"] .fb.no){color:var(--ink)}
+html body :where(html[data-tq="imla"] .fb.ok,html[data-tq="write"] .fb.ok){color:var(--ink)}
+html body :where(html[data-tq="imla"] .hl){color:var(--ink)}
+html body :where(html[data-tq="rec"] .note,html[data-tq="rec-b"] .note,html[data-tq="rec-r"] .note){color:var(--ink)}
+html body :where(html[data-tq="b"] .pill,html[data-tq="index"] .pill,html[data-tq="listen"] .pill){color:var(--ink)}
+html body :where(html[data-tq="aal"] .st,html[data-tq="aal-r"] .st,html[data-tq="ws"] .st){color:var(--ink)}
 /* ===== الأسطح الداكنة ===== */
 html body :where(
 .banner,
@@ -330,3 +337,8 @@ html .shbar button.on{box-shadow:0 0 0 2px var(--tq-gold)}
 html .foot{width:fit-content;max-width:100%;margin-inline:auto;background:rgba(10,18,48,.78);border-radius:14px;padding:8px 14px}
 
 @media print{html:root{background:#fff;--ink:#14204A;--muted:#575E7A;--mut:#575E7A;--navy:#16306B;text-shadow:none}html body{border-top:0}}
+
+/* سلّم القراءة: بطاقة المستوى الحالي أكبر وفي الوسط */
+html .units.focus{grid-template-columns:repeat(auto-fit,minmax(190px,260px));justify-content:center}
+/* البوابة: صناديق المهارات زجاجية داكنة فوق الصورة */
+html .tqi-grp{background:rgba(8,14,40,.62);border-color:rgba(233,180,76,.6)}

@@ -1,5 +1,6 @@
 /* طلاقة · عرض الأدوات أيقونات (icons.js)
-   يحوّل بطاقات الأدوات (a.tool) في صفحة «أدواتي» إلى أيقونات مثل تطبيقات الجوال، مجمّعة حسب المهارة.
+   يحوّل بطاقات الأدوات (a.tool) في صفحة «أدواتي» إلى أيقونات مثل تطبيقات الجوال، مجمّعة حسب المهارة،
+   وكل مهارة في صندوق، والصناديق متجاورة (عمودان على الهاتف وصف واحد على الشاشات العريضة).
    لا يغيّر الروابط ولا الخطط؛ يعيد ترتيب العرض فقط. */
 (function(){'use strict';
 var S='fill="none" stroke="#fff" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"',F='rgba(255,255,255,.2)';
@@ -30,7 +31,10 @@ function kind(a){var h=a.getAttribute('href')||'',c=a.className||'';
  if(/\bwrite\b/.test(c))return ['write','pencil','write'];
  return ['read','book','read']}
 var css='.tqi-sec{margin:18px 0 8px;display:flex;align-items:center;gap:8px;font-weight:800;color:#5B6B8C;font-size:1rem}.tqi-sec i{flex:1;height:2px;background:#D3E4F5}.tqi-sec .en{font-size:.8rem;font-weight:600;opacity:.8}'+
-'.tqi-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(96px,1fr));gap:18px 10px}'+
+'.tqi-wrap{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));grid-auto-flow:dense;gap:12px;margin-top:6px}'+
+'.tqi-grp{border-radius:22px;padding:10px 8px 14px;background:rgba(255,255,255,.08);border:1.5px solid rgba(200,150,62,.55)}.tqi-grp.w2{grid-column:span 2}'+
+'.tqi-grp .tqi-sec{margin:0 0 10px;justify-content:center}.tqi-grp .tqi-sec i{display:none}'+
+'.tqi-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(96px,1fr));gap:18px 10px;justify-items:center}'+
 '.tqi{display:flex;flex-direction:column;align-items:center;gap:6px;text-decoration:none;color:inherit;position:relative;padding:2px;border-radius:20px}'+
 '.tqi:focus-visible{outline:4px solid #FFC83D;outline-offset:2px}'+
 '.tqi .ic{width:84px;height:84px;border-radius:24px;display:grid;place-items:center;box-shadow:0 6px 0 rgba(0,0,0,.13),0 10px 18px rgba(29,43,79,.12);position:relative;overflow:hidden;transition:transform .12s}'+
@@ -50,7 +54,7 @@ function apply(root){var box=root.querySelector('.tools');var all=[].slice.call(
   n.innerHTML=(badge?'<span class="bd">'+badge+'</span>':'')+'<span class="ic" style="background:'+COL[k[2]]+'">'+SVG[k[1]]+'</span><b>'+(t?t.innerHTML:'')+'</b>'+(sub?'<small>'+sub.replace(/</g,'&lt;')+'</small>':'')+plan;
   groups[k[0]].push(n)});
  var wrap=document.createElement('div');wrap.className='tqi-wrap';
- ['read','speak','listen','write','play'].forEach(function(g){if(!groups[g].length)return;var h=document.createElement('div');h.className='tqi-sec';h.innerHTML=GR[g][0]+' '+GR[g][1]+' <span class="en">· '+GR[g][2]+'</span><i></i>';wrap.appendChild(h);var gr=document.createElement('div');gr.className='tqi-grid';groups[g].forEach(function(x){gr.appendChild(x)});wrap.appendChild(gr)});
+ ['read','speak','listen','write','play'].forEach(function(g){if(!groups[g].length)return;var h=document.createElement('div');h.className='tqi-sec';h.innerHTML=GR[g][0]+' '+GR[g][1]+' <span class="en">· '+GR[g][2]+'</span><i></i>';var box2=document.createElement('div');box2.className='tqi-grp'+(groups[g].length>1?' w2':'');box2.appendChild(h);var gr=document.createElement('div');gr.className='tqi-grid';groups[g].forEach(function(x){gr.appendChild(x)});box2.appendChild(gr);wrap.appendChild(box2)});
  var first=box||all[0];first.parentNode.insertBefore(wrap,first);
  all.forEach(function(a){a.remove()});if(box&&!box.children.length)box.remove()}
 function run(){var r=document.getElementById('app')||document.body;try{apply(r)}catch(e){}}
