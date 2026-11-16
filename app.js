@@ -33,11 +33,13 @@ function staffIn(role){var r=rootEl();if(!r)return false;
  if(role==='t')return !r.querySelector('#fTeach')&&!!r.querySelector('[data-a="tout"]');
  var h=r.querySelector('h1');return !r.querySelector('#fOwn')&&!!h&&/لوحة المنسق/.test(h.textContent)}
 try{var go=/[?&]go=(t|own)\b/.exec(location.search);if(go)put('tq_role',go[1])}catch(e){}   /* أيقونة آبل للمعلم/المنسق */
+/* رموز QR للعرض والتوزيع: ‎#t‎ يفتح دخول المعلم، و‎#o‎ يفتح دخول المنسق (مرة واحدة، دون حفظ أي رمز) */
+var qrRole=null;try{var hq=/^#(t|o)$/.exec(location.hash);if(hq){qrRole=hq[1]==='t'?'t':'own';history.replaceState(history.state,'',location.pathname+location.search)}}catch(e){}
 if(window.__qr)del('tq_role');                                                               /* الجهاز استُخدم ببطاقة طالب */
 var routed=false,tried={},pending=null;
 function staff(){var r=rootEl();if(!r)return;
  /* 1) الأيقونة تفتح على شاشة الدخول مباشرة */
- if(!routed){var role=get('tq_role',null),b=role&&r.querySelector('.foot [data-a="'+(role==='t'?'tin':'oin')+'"]');
+ if(!routed){var role=qrRole||get('tq_role',null),b=role&&r.querySelector('.foot [data-a="'+(role==='t'?'tin':'oin')+'"]');
   if(b){routed=true;b.click();return}if(r.querySelector('.foot')||staffView())routed=true}
  /* 2) خانة «تذكّرني» + الدخول التلقائي إن كان الرمز محفوظًا */
  var f=r.querySelector('#fTeach,#fOwn');if(!f)return;var fr=f.id==='fTeach'?'t':'own',saved=get('tq_staff',{})||{},c=saved[fr];
