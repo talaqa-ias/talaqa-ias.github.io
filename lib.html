@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="ar" dir="rtl" data-tq="lib"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>طلاقة · مكتبة طلاقة</title>
+<link rel="icon" href="img/icon.png">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Baloo+Bhaijaan+2:wght@500;700;800&family=Noto+Naskh+Arabic:wght@500;700&display=swap');
+:root{--bg:#EAF6FF;--card:#fff;--ink:#1D2B4F;--muted:#5B6B8C;--line:#D3E4F5;--soft:#FFF4D1;--sky:#2F9BF0;--grass:#22B866;--sun:#FFC83D;--ok-soft:#DDF7E8;--bad-soft:#FFE3E3;
+--ui:"Baloo Bhaijaan 2","Segoe UI",Tahoma,sans-serif;--read:"Noto Naskh Arabic","Traditional Arabic",serif;color-scheme:light}
+html,body{background:var(--bg);color:var(--ink)}
+body{margin:0;font-family:var(--ui);font-size:17px;line-height:1.55;direction:rtl;padding-inline:16px;padding-block:0 100px;padding-left:max(16px,env(safe-area-inset-left));padding-right:max(16px,env(safe-area-inset-right))}
+*{box-sizing:border-box}#app{max-width:860px;margin-inline:auto}
+button{font:inherit;color:inherit;cursor:pointer}
+:focus-visible{outline:4px solid var(--sun);outline-offset:2px}
+h1{font-size:1.8rem;margin:6px 0 2px;font-weight:800}h2{font-size:1.3rem;margin:0 0 8px;font-weight:800}
+.lead{color:var(--muted);margin:0 0 14px}
+.note{background:var(--soft);border:2px dashed #E7C25A;border-radius:14px;padding:8px 12px;margin:12px 0;font-size:.95rem}
+.top{display:flex;align-items:center;gap:8px;padding-block:14px;flex-wrap:wrap}
+.chip{border:2px solid var(--line);background:#fff;border-radius:999px;padding:6px 14px;font-weight:700;text-decoration:none;color:var(--ink)}
+.card{background:#fff;border:2px solid var(--line);border-radius:22px;padding:16px;margin:12px 0;box-shadow:0 5px 0 var(--line)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:0;border-radius:18px;padding:10px 22px;font-weight:800;font-size:1.1rem;background:var(--grass);color:#fff;min-height:52px;box-shadow:0 5px 0 #168A4B;text-decoration:none}
+.btn.alt{background:#fff;color:var(--ink);border:2px solid var(--line);box-shadow:0 4px 0 var(--line)}
+.btn.sky{background:var(--sky);box-shadow:0 5px 0 #1B6FB3}
+.row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.lvls{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:12px}
+.lv{border:3px solid var(--line);border-radius:20px;background:#fff;padding:12px;text-align:center;box-shadow:0 5px 0 var(--line)}
+.lv .n{display:inline-grid;place-items:center;width:44px;height:44px;border-radius:50%;background:#E8F0E0;color:#3F6B2A;font-weight:800;font-size:1.3rem}
+.lv b{display:block;font-family:var(--read);font-size:1.2rem;margin-top:4px}.lv small{color:var(--muted)}
+.lv.cur{border-color:var(--grass);background:#F2FBF5}.lv.lock{opacity:.5;cursor:default}
+.shelf{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:14px}
+.book{border:3px solid var(--line);border-radius:20px;background:#fff;overflow:hidden;text-align:right;padding:0;box-shadow:0 5px 0 var(--line)}
+.book img{width:100%;aspect-ratio:4/3;object-fit:cover;display:block;background:#f3ead8}
+.book div{padding:10px 12px}.book b{font-family:var(--read);font-size:1.3rem}
+.book .st{float:left;color:#168A4B;font-weight:800}
+.page img{width:100%;border-radius:16px;display:block;aspect-ratio:4/3;object-fit:cover;background:#f3ead8}
+.txt{font-family:var(--read);font-size:1.75rem;line-height:2.25;margin:14px 4px}
+.txt span{cursor:pointer;border-radius:8px}.txt span.on{background:var(--soft)}
+.dots{display:flex;gap:6px;justify-content:center;margin:8px 0}.dots i{width:12px;height:12px;border-radius:50%;background:var(--line)}.dots i.on{background:var(--grass)}
+.q{font-family:var(--read);font-size:1.45rem;margin:4px 0 10px}
+.opt{display:block;width:100%;text-align:right;font-family:var(--read);font-size:1.35rem;border:3px solid var(--line);background:#fff;border-radius:16px;padding:10px 14px;margin:8px 0}
+.opt.ok{border-color:var(--grass);background:var(--ok-soft)}.opt.no{border-color:#E05A5A;background:var(--bad-soft)}
+textarea{width:100%;min-height:110px;font-family:var(--read);font-size:1.3rem;border:3px solid var(--line);border-radius:16px;padding:10px}
+.stars{font-size:2.6rem;text-align:center;letter-spacing:6px}
+table{width:100%;border-collapse:collapse}td,th{border-bottom:1px solid var(--line);padding:6px;text-align:right;vertical-align:top}
+@media (max-width:560px){.txt{font-size:1.5rem;line-height:2.1}h1{font-size:1.5rem}}
+</style><link rel="stylesheet" href="/theme.css?v=20261115"></head><body>
+<div id="app"></div>
+<script src="nav.js"></script>
+<script src="back.js"></script>
+<script>
+/* طلاقة · مكتبة طلاقة (lib.html)
+   قصص قصيرة مشكولة بمستويات قرائية (1 النواة … 9 النجمة)، لكل قصة 3 صور وصوت لكل جملة و3 أسئلة اختيار وسؤال مفتوح.
+   البيانات: lib/l{رقم المستوى}.json، والصور lib/img، والصوت lib/audio ({id}-{رقم الجملة}.mp3).
+   يُرسل إلى خادم المدرسة حدثًا واحدًا لكل قصة أنهاها الطالب: {t:'lb', k:رمز القصة, v:عدد الإجابات الصحيحة من المحاولة الأولى (0–3)}.
+   المعاينة: lib.html?pv=1 (لا تحفظ ولا ترسل). */
+(function(){'use strict';
+function get(k,d){try{var v=localStorage.getItem(k);return v?JSON.parse(v):d}catch(e){return d}}
+function put(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}
+function esc(s){return String(s==null?'':s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
+function fnv(s){var h=0x811c9dc5;for(var i=0;i<s.length;i++){h^=s.charCodeAt(i);h=Math.imul(h,16777619)>>>0}return h.toString(16)}
+function ymd(){var d=new Date();return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0')}
+
+/* المستويات التسعة؛ ready = فيه قصص منشورة */
+var LV=[['النَّوَاةُ'],['الْبُرْعُمُ'],['الْفَسِيلَةُ'],['النَّخْلَةُ',1],['الْمَحَارَةُ'],['اللُّؤْلُؤَةُ'],['الْقَافِلَةُ'],['الصَّقْرُ'],['النَّجْمَةُ']];
+var AV='?v=2';
+
+var qs=new URLSearchParams(location.search),PREV=qs.get('pv')==='1';
+var ME=PREV?null:get('pt_me',null);if(ME&&ME.pv){PREV=true;ME=null}
+var KEY='lb|'+(PREV?'preview':(ME?ME.sec+'|'+ME.name:''));
+var LOG=PREV?{}:(get(KEY,null)||{});
+function save(){if(!PREV&&ME)put(KEY,LOG)}
+
+/* ---------- الإرسال إلى خادم المدرسة (على نمط أداة الاستماع) ---------- */
+var URL_=null;
+function cfg(){if(URL_!==null)return Promise.resolve(URL_);return fetch('send-config.json',{cache:'no-store'}).then(function(r){return r.json()}).then(function(c){URL_=String(c.progress||'');return URL_}).catch(function(){URL_='';return ''})}
+var Q=get('lb_q',[]);
+function gr(){var s=String(ME&&ME.sec||'').toUpperCase(),m=/^G(\d)/.exec(s);return /^KG/.test(s)?'KG':m?'G'+m[1]:''}
+function send(ev){if(PREV||!ME||!ME.c||!ME.p)return;ev.d=ymd();Q.push(ev);put('lb_q',Q);flush()}
+var busy=false;
+function flush(){if(busy||!Q.length||!ME||!ME.c)return;busy=true;var batch=Q.slice(0,50);
+ cfg().then(function(url){if(!url){busy=false;return}
+  return fetch(url,{method:'POST',headers:{'Content-Type':'text/plain;charset=utf-8'},keepalive:true,body:JSON.stringify({port:'A',sec:ME.sec,sid:fnv('sid|'+ME.sec+'|'+ME.name+'|'+ME.c),pf:fnv('ap|'+ME.sec+'|'+ME.name+'|'+ME.c+'|'+ME.p),g:gr(),ev:batch})})
+   .then(function(r){return r.json()}).then(function(j){if(j&&j.ok){Q=Q.slice(batch.length);put('lb_q',Q)}}).catch(function(){}).then(function(){busy=false})})}
+setInterval(flush,30000);document.addEventListener('visibilitychange',function(){if(document.visibilityState==='hidden')flush()});flush();
+
+/* ---------- الحالة والعرض ---------- */
+var $app=document.getElementById('app'),DATA={},S={v:'home',lv:4,st:null,pg:0,qi:0,score:0,first:[]};
+function $(h){$app.innerHTML=h;window.scrollTo(0,0)}
+function hdr(back){return '<div class="top">'+(window.TQB?TQB.btn('chip'):'')+'<a class="chip" href="index.html">→ أدواتي</a>'+(back?'<button class="chip" data-a="go" data-v="'+back+'">📚 '+(back==='home'?'المستويات':'القصص')+'</button>':'')+'<span class="chip" style="margin-inline-start:auto">'+(PREV?'معاينة':esc(ME&&ME.name||''))+'</span></div>'}
+function go(v){stop();S.v=v;render()}
+function load(n){if(DATA[n])return Promise.resolve(DATA[n]);return fetch('lib/l'+n+'.json',{cache:'no-cache'}).then(function(r){return r.json()}).then(function(d){DATA[n]=d;return d})}
+
+function vHome(){
+ var h=hdr()+'<h1>📚 مكتبة طلاقة</h1><p class="lead">اختر مستواك، ثم اختر قصة واقرأها. اضغط على أي جملة لتسمعها.</p><div class="lvls">';
+ LV.forEach(function(l,i){var n=i+1,open=!!l[1],done=open?Object.keys(LOG).filter(function(k){return k.indexOf('l'+n+'-')===0}).length:0;
+  h+='<button class="lv'+(open?(n===S.lv?' cur':''):' lock')+'" '+(open?'data-a="lv" data-n="'+n+'"':'disabled aria-disabled="true"')+'><span class="n">'+n+'</span><b>'+l[0]+'</b><small>'+(open?(done?'قرأتَ '+done+' من 5':'5 قصص'):'قريبًا')+'</small></button>'});
+ h+='</div><div class="row" style="margin-top:16px"><button class="btn alt" data-a="go" data-v="log">📒 سجلّ قراءتي</button></div>';
+ if(!ME&&!PREV)h+='<p class="note">ادخل من «أدواتي» برمزك حتى يُحفظ تقدّمك ويصل إلى معلمك.</p>';
+ $(h)}
+function vShelf(){var d=DATA[S.lv];
+ var h=hdr('home')+'<h1>المستوى '+S.lv+' · <span style="font-family:var(--read)">'+LV[S.lv-1][0]+'</span></h1><p class="lead">اقرأ القصة، ثم أجب عن الأسئلة.</p><div class="shelf">';
+ d.stories.forEach(function(s,i){var L=LOG[s.id];h+='<button class="book" data-a="open" data-i="'+i+'"><img src="lib/img/'+esc(s.img[0])+'" alt="" loading="lazy"><div>'+(L?'<span class="st">⭐ '+L.score+'/3</span>':'')+'<b>'+esc(s.t)+'</b></div></button>'});
+ $(h+'</div>')}
+function pages(s){var n=s.lines.length,a=Math.ceil(n/3),b=Math.ceil((n-a)/2);return [s.lines.slice(0,a),s.lines.slice(a,a+b),s.lines.slice(a+b)]}
+function vRead(){var s=S.st,P=pages(s),p=P[S.pg],d='';for(var k=0;k<3;k++)d+='<i class="'+(k<=S.pg?'on':'')+'"></i>';
+ $(hdr('shelf')+'<h1 style="font-family:var(--read)">'+esc(s.t)+'</h1><div class="card page"><img src="lib/img/'+esc(s.img[S.pg])+'" alt=""><div class="txt" id="tx">'+p.map(function(l,j){return '<span data-a="say" data-j="'+j+'">'+esc(l)+'</span>'}).join(' ')+'</div><div class="dots">'+d+'</div></div>'+
+ '<div class="row"><button class="btn sky" data-a="listen">🔊 اسمعني</button>'+(S.pg>0?'<button class="btn alt" data-a="pg" data-d="-1">الصفحة السابقة</button>':'')+
+ (S.pg<2?'<button class="btn" data-a="pg" data-d="1">الصفحة التالية ←</button>':'<button class="btn" data-a="go" data-v="quiz">انتهيت، إلى الأسئلة ←</button>')+'</div>')}
+function vQuiz(){var s=S.st;
+ if(S.qi<3){var q=s.q[S.qi];$(hdr('shelf')+'<h2>السؤال '+(S.qi+1)+' من 4</h2><div class="card"><div class="q">'+esc(q.t)+'</div>'+q.o.map(function(o,j){return '<button class="opt" data-a="pick" data-j="'+j+'">'+esc(o)+'</button>'}).join('')+'</div><div class="row"><button class="btn alt" data-a="back2read">↩ أعود إلى القصة</button></div>')}
+ else $(hdr('shelf')+'<h2>السؤال 4 من 4</h2><div class="card"><div class="q">'+esc(s.open)+'</div><textarea id="op" placeholder="اكتب إجابتك هنا…"></textarea><p class="lead" style="margin:6px 0 0">اكتب جملة أو جملتين بلغتك.</p></div><div class="row"><button class="btn" data-a="finish">أنهيت ✓</button></div>')}
+function vDone(){var st='';for(var k=0;k<3;k++)st+=k<S.score?'⭐':'☆';
+ $(hdr('shelf')+'<div class="card" style="text-align:center"><h1>أحسنت!</h1><div class="stars">'+st+'</div><p class="lead">أجبتَ عن '+S.score+' من 3 أسئلة من المحاولة الأولى.'+(PREV?' (معاينة: لا يُحفظ شيء)':' تقدّمك يصل إلى معلمك.')+'</p><div class="row" style="justify-content:center"><button class="btn" data-a="go" data-v="shelf">قصة أخرى</button><button class="btn alt" data-a="go" data-v="log">📒 سجلّ قراءتي</button></div></div>')}
+function vLog(){var rows='',n=0;
+ LV.forEach(function(l,i){var d=DATA[i+1];if(!d)return;d.stories.forEach(function(s){var L=LOG[s.id];if(!L)return;n++;rows+='<tr><td style="font-family:var(--read)">'+esc(s.t)+'<br><small style="color:var(--muted)">المستوى '+(i+1)+'</small></td><td>'+esc(L.d)+'</td><td>'+L.score+' / 3</td><td style="font-family:var(--read)">'+esc(L.open||'—')+'</td></tr>'})});
+ $(hdr('home')+'<h1>📒 سجلّ قراءتي</h1><div class="card" style="overflow-x:auto"><table><tr><th>القصة</th><th>التاريخ</th><th>الأسئلة</th><th>إجابتي عن السؤال الأخير</th></tr>'+(n?rows:'<tr><td colspan="4">لم تقرأ أي قصة بعد.</td></tr>')+'</table></div>')}
+function render(){({home:vHome,shelf:vShelf,read:vRead,quiz:vQuiz,done:vDone,log:vLog})[S.v]()}
+
+/* ---------- الصوت: ملف لكل جملة، وتظليل الجملة المقروءة ---------- */
+var PL=new Audio(),RUN=0;
+function stop(){RUN++;try{PL.pause()}catch(e){}var sp=document.querySelectorAll('#tx span');for(var i=0;i<sp.length;i++)sp[i].classList.remove('on')}
+function off(){var P=pages(S.st),o=0;for(var k=0;k<S.pg;k++)o+=P[k].length;return o}
+function playLine(j,run,next){var sp=document.querySelectorAll('#tx span');if(run!==RUN||j>=sp.length){stop();return}
+ for(var i=0;i<sp.length;i++)sp[i].classList.remove('on');sp[j].classList.add('on');
+ PL.src='lib/audio/'+S.st.id+'-'+(off()+j+1)+'.mp3'+AV;
+ PL.onended=function(){if(next)setTimeout(function(){playLine(j+1,run,true)},350);else stop()};
+ var p=PL.play();if(p&&p.catch)p.catch(function(){stop()})}
+
+/* ---------- الأحداث ---------- */
+var LOCK=false;
+$app.addEventListener('click',function(e){var b=e.target.closest('[data-a]');if(!b)return;var a=b.getAttribute('data-a');
+ if(a==='go'){var v=b.getAttribute('data-v');if(v==='log'){Promise.all(LV.map(function(l,i){return l[1]?load(i+1):null})).then(function(){go('log')})}else go(v)}
+ else if(a==='lv'){S.lv=+b.getAttribute('data-n');load(S.lv).then(function(){go('shelf')}).catch(function(){$(hdr('home')+'<p class="note">تعذّر تحميل القصص. تأكد من الاتصال ثم حاول مرة أخرى.</p>')})}
+ else if(a==='open'){S.st=DATA[S.lv].stories[+b.getAttribute('data-i')];S.pg=0;S.qi=0;S.score=0;S.first=[];go('read')}
+ else if(a==='pg'){S.pg=Math.max(0,Math.min(2,S.pg+(+b.getAttribute('data-d'))));go('read')}
+ else if(a==='listen'){stop();playLine(0,RUN,true)}
+ else if(a==='say'){stop();playLine(+b.getAttribute('data-j'),RUN,false)}
+ else if(a==='back2read'){S.pg=0;go('read')}
+ else if(a==='pick'){if(LOCK)return;var q=S.st.q[S.qi],j=+b.getAttribute('data-j'),ok=j===q.a;
+  if(S.first[S.qi]===undefined){S.first[S.qi]=j;if(ok)S.score++}
+  if(ok){LOCK=true;b.classList.add('ok');setTimeout(function(){LOCK=false;S.qi++;go('quiz')},900)}else{b.classList.add('no');b.disabled=true}}
+ else if(a==='finish'){var t=(document.getElementById('op')||{}).value||'';t=t.trim().slice(0,400);
+  if(!PREV&&ME){var old=LOG[S.st.id];LOG[S.st.id]={score:old?Math.max(old.score,S.score):S.score,open:t||(old&&old.open)||'',d:ymd(),n:(old&&old.n||0)+1};save();send({t:'lb',k:S.st.id,v:S.score})}
+  go('done')}
+});
+load(S.lv).catch(function(){});render();
+})();
+</script>
+<script src="brand.js"></script>
+<script src="/freeze.js?v=1" defer></script>
+</body></html>

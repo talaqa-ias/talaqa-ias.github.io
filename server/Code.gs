@@ -34,7 +34,7 @@ function sheet(){var ss=SpreadsheetApp.getActive(),sh=ss.getSheetByName(SHEET);
   if(!sh){sh=ss.insertSheet(SHEET);sh.appendRow(['وقت الاستلام','التاريخ','الشعبة','الطالب','الأداة','المفتاح','القيمة','الصف','النشاط']);sh.setFrozenRows(1);sh.setRightToLeft(true)}
   else if(sh.getRange(1,4).getValue()!=='الطالب'){sh.getRange(1,4).setValue('الطالب');sh.getRange(1,9).setValue('النشاط')}
   return sh}
-var KIND={v:'زيارة',r:'قراءة',s:'تحدث',g:'ألعاب',a:'تسجيل صوتي',ls:'استماع',im:'إملاء',ws:'ورشة الكتابة',kw:'كتابة الروضة',i:'رسم/صورة'};
+var KIND={v:'زيارة',r:'قراءة',s:'تحدث',g:'ألعاب',a:'تسجيل صوتي',ls:'استماع',im:'إملاء',ws:'ورشة الكتابة',kw:'كتابة الروضة',lb:'مكتبة القصص',i:'رسم/صورة'};
 /* رموز الإنجاز التفصيلية (سرعة القراءة، طريقة التحقق، القياس الصفي، تقييم التحدث) تُحفظ آخر نسخة منها */
 function codeSheet(){var ss=SpreadsheetApp.getActive(),sh=ss.getSheetByName('codes');if(!sh){sh=ss.insertSheet('codes');sh.appendRow(['وقت الاستلام','الشعبة','الطالب','النوع','الرمز التفصيلي']);sh.setFrozenRows(1);sh.setRightToLeft(true)}else if(sh.getRange(1,3).getValue()!=='الطالب')sh.getRange(1,3).setValue('الطالب');return sh}
 function out(o){return ContentService.createTextOutput(JSON.stringify(o)).setMimeType(ContentService.MimeType.JSON)}
@@ -172,7 +172,7 @@ function evidence(x,sec,who,g){var o={};try{o=JSON.parse(x.c)}catch(e){return}va
   else if(k==='KGC')skAdd('kgw',[d,gradeName(sec),sec,who,'بطاقتي الشخصية','','أكملها ونسخها في الدفتر',Object.keys(o).filter(function(q){return q[0]!=='_'}).map(function(q){return o[q]}).join(' · '),''])}
 var KGN={ln:'خطوط قبل الكتابة',tr:'تتبّع الحرف',fm:'أين الحرف',bd:'أركّب الكلمة',tw:'أكتب الكلمة',st:'رتّب القصة',told:'حكى القصة'};
 function kgEvidence(x,sec,who){var k=String(x.k||''),p=k.split('-'),t=p.shift(),rest=p.join('-'),v=Number(x.v)||0;
-  var res=t==='ln'||t==='tr'||t==='tw'?(v?'⭐'.repeat(v):'—'):t==='fm'?(v?'صحيح':'خطأ'):'أنجز';
+  var res=t==='ln'||t==='tr'||t==='tw'||t==='lb'?(v?'⭐'.repeat(v):'—'):t==='fm'?(v?'صحيح':'خطأ'):'أنجز';
   skAdd('kgw',[String(x.d||today()),gradeName(sec),sec,who,(KGN[t]||t)+(rest?' · '+rest:''),'',res,'',''])}
 function writeDoc(o,sec,who,d){try{
   var dir=studentDir(sec,who,'الكتابة'),name=clean((o.title||'نص')+' · '+(LVN[o.lvl]||'')+' · '+d);
