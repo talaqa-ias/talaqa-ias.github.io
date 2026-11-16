@@ -57,11 +57,12 @@ function get(k,d){try{var v=localStorage.getItem(k);return v?JSON.parse(v):d}cat
 function put(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}
 function esc(s){return String(s==null?'':s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
 function fnv(s){var h=0x811c9dc5;for(var i=0;i<s.length;i++){h^=s.charCodeAt(i);h=Math.imul(h,16777619)>>>0}return h.toString(16)}
+function shuf(a){a=a.slice();for(var i=a.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1)),t=a[i];a[i]=a[j];a[j]=t}return a}
 function ymd(){var d=new Date();return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0')}
 
 /* المستويات التسعة؛ ready = فيه قصص منشورة */
-var LV=[['النَّوَاةُ'],['الْبُرْعُمُ'],['الْفَسِيلَةُ'],['النَّخْلَةُ',1],['الْمَحَارَةُ'],['اللُّؤْلُؤَةُ'],['الْقَافِلَةُ'],['الصَّقْرُ'],['النَّجْمَةُ']];
-var AV='?v=2';
+var LV=[['النَّوَاةُ',1],['الْبُرْعُمُ',1],['الْفَسِيلَةُ',1],['النَّخْلَةُ',1],['الْمَحَارَةُ',1],['اللُّؤْلُؤَةُ',1],['الْقَافِلَةُ',1],['الصَّقْرُ',1],['النَّجْمَةُ',1]];
+var AV='?v=3';
 
 var qs=new URLSearchParams(location.search),PREV=qs.get('pv')==='1';
 var ME=PREV?null:get('pt_me',null);if(ME&&ME.pv){PREV=true;ME=null}
@@ -83,7 +84,7 @@ function flush(){if(busy||!Q.length||!ME||!ME.c)return;busy=true;var batch=Q.sli
 setInterval(flush,30000);document.addEventListener('visibilitychange',function(){if(document.visibilityState==='hidden')flush()});flush();
 
 /* ---------- الحالة والعرض ---------- */
-var $app=document.getElementById('app'),DATA={},S={v:'home',lv:4,st:null,pg:0,qi:0,score:0,first:[]};
+var $app=document.getElementById('app'),DATA={},S={v:'home',lv:4,st:null,pg:0,qi:0,score:0,first:[],ord:[]};
 function $(h){$app.innerHTML=h;window.scrollTo(0,0)}
 function hdr(back){return '<div class="top">'+(window.TQB?TQB.btn('chip'):'')+'<a class="chip" href="index.html">→ أدواتي</a>'+(back?'<button class="chip" data-a="go" data-v="'+back+'">📚 '+(back==='home'?'المستويات':'القصص')+'</button>':'')+'<span class="chip" style="margin-inline-start:auto">'+(PREV?'معاينة':esc(ME&&ME.name||''))+'</span></div>'}
 function go(v){stop();S.v=v;render()}
@@ -102,11 +103,11 @@ function vShelf(){var d=DATA[S.lv];
  $(h+'</div>')}
 function pages(s){var n=s.lines.length,a=Math.ceil(n/3),b=Math.ceil((n-a)/2);return [s.lines.slice(0,a),s.lines.slice(a,a+b),s.lines.slice(a+b)]}
 function vRead(){var s=S.st,P=pages(s),p=P[S.pg],d='';for(var k=0;k<3;k++)d+='<i class="'+(k<=S.pg?'on':'')+'"></i>';
- $(hdr('shelf')+'<h1 style="font-family:var(--read)">'+esc(s.t)+'</h1><div class="card page"><img src="lib/img/'+esc(s.img[S.pg])+'" alt=""><div class="txt" id="tx">'+p.map(function(l,j){return '<span data-a="say" data-j="'+j+'">'+esc(l)+'</span>'}).join(' ')+'</div><div class="dots">'+d+'</div></div>'+
+ $(hdr('shelf')+'<h1 style="font-family:var(--read)">'+esc(s.t)+'</h1><div class="card page">'+(s.img[S.pg]?'<img src="lib/img/'+esc(s.img[S.pg])+'" alt="">':'')+'<div class="txt" id="tx">'+p.map(function(l,j){return '<span data-a="say" data-j="'+j+'">'+esc(l)+'</span>'}).join(' ')+'</div><div class="dots">'+d+'</div></div>'+
  '<div class="row"><button class="btn sky" data-a="listen">🔊 اسمعني</button>'+(S.pg>0?'<button class="btn alt" data-a="pg" data-d="-1">الصفحة السابقة</button>':'')+
  (S.pg<2?'<button class="btn" data-a="pg" data-d="1">الصفحة التالية ←</button>':'<button class="btn" data-a="go" data-v="quiz">انتهيت، إلى الأسئلة ←</button>')+'</div>')}
 function vQuiz(){var s=S.st;
- if(S.qi<3){var q=s.q[S.qi];$(hdr('shelf')+'<h2>السؤال '+(S.qi+1)+' من 4</h2><div class="card"><div class="q">'+esc(q.t)+'</div>'+q.o.map(function(o,j){return '<button class="opt" data-a="pick" data-j="'+j+'">'+esc(o)+'</button>'}).join('')+'</div><div class="row"><button class="btn alt" data-a="back2read">↩ أعود إلى القصة</button></div>')}
+ if(S.qi<3){var q=s.q[S.qi];if(!S.ord[S.qi])S.ord[S.qi]=shuf(q.o.map(function(_,j){return j}));$(hdr('shelf')+'<h2>السؤال '+(S.qi+1)+' من 4</h2><div class="card"><div class="q">'+esc(q.t)+'</div>'+S.ord[S.qi].map(function(j){return '<button class="opt" data-a="pick" data-j="'+j+'">'+esc(q.o[j])+'</button>'}).join('')+'</div><div class="row"><button class="btn alt" data-a="back2read">↩ أعود إلى القصة</button></div>')}
  else $(hdr('shelf')+'<h2>السؤال 4 من 4</h2><div class="card"><div class="q">'+esc(s.open)+'</div><textarea id="op" placeholder="اكتب إجابتك هنا…"></textarea><p class="lead" style="margin:6px 0 0">اكتب جملة أو جملتين بلغتك.</p></div><div class="row"><button class="btn" data-a="finish">أنهيت ✓</button></div>')}
 function vDone(){var st='';for(var k=0;k<3;k++)st+=k<S.score?'⭐':'☆';
  $(hdr('shelf')+'<div class="card" style="text-align:center"><h1>أحسنت!</h1><div class="stars">'+st+'</div><p class="lead">أجبتَ عن '+S.score+' من 3 أسئلة من المحاولة الأولى.'+(PREV?' (معاينة: لا يُحفظ شيء)':' تقدّمك يصل إلى معلمك.')+'</p><div class="row" style="justify-content:center"><button class="btn" data-a="go" data-v="shelf">قصة أخرى</button><button class="btn alt" data-a="go" data-v="log">📒 سجلّ قراءتي</button></div></div>')}
@@ -130,7 +131,7 @@ var LOCK=false;
 $app.addEventListener('click',function(e){var b=e.target.closest('[data-a]');if(!b)return;var a=b.getAttribute('data-a');
  if(a==='go'){var v=b.getAttribute('data-v');if(v==='log'){Promise.all(LV.map(function(l,i){return l[1]?load(i+1):null})).then(function(){go('log')})}else go(v)}
  else if(a==='lv'){S.lv=+b.getAttribute('data-n');load(S.lv).then(function(){go('shelf')}).catch(function(){$(hdr('home')+'<p class="note">تعذّر تحميل القصص. تأكد من الاتصال ثم حاول مرة أخرى.</p>')})}
- else if(a==='open'){S.st=DATA[S.lv].stories[+b.getAttribute('data-i')];S.pg=0;S.qi=0;S.score=0;S.first=[];go('read')}
+ else if(a==='open'){S.st=DATA[S.lv].stories[+b.getAttribute('data-i')];S.pg=0;S.qi=0;S.score=0;S.first=[];S.ord=[];go('read')}
  else if(a==='pg'){S.pg=Math.max(0,Math.min(2,S.pg+(+b.getAttribute('data-d'))));go('read')}
  else if(a==='listen'){stop();playLine(0,RUN,true)}
  else if(a==='say'){stop();playLine(+b.getAttribute('data-j'),RUN,false)}
