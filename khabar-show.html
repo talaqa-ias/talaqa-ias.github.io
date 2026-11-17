@@ -271,6 +271,23 @@ table.rot td.s1{background:var(--red)}
  <div class="f tc" style="margin-top:50px"><span class="pill" style="--c:var(--red);font-size:46px">⭐ كل فريق يجب أن يمرّ بالمحطة 1 (أدلة الشيفرة)</span></div>
 </section>
 
+
+<!-- HINTS & GOLDEN -->
+<section class="slide">
+ <h2>🟡⭐ في كل محطة مفاجأتان</h2>
+ <div style="display:grid;grid-template-columns:1fr 1fr;gap:50px;margin-top:30px">
+  <div class="f" style="border:10px solid #FF8A1F;border-radius:36px;padding:30px 40px;background:#FFF6E8">
+   <p style="font-size:56px;font-weight:800;margin:0">✉️ ظرف التلميحات</p>
+   <p>🟡 <b>التلميح 1:</b> خطوات عامة</p><p>🟠 <b>التلميح 2:</b> سؤال يساعدكم في كل دليل</p>
+   <p style="color:#B05A00;font-weight:800">افتحوه فقط عند الحاجة.<br>محطة دون فتح الظرف = <span style="font-size:60px">+1</span></p></div>
+  <div class="f" style="border:10px solid #C9A227;border-radius:36px;padding:30px 40px;background:linear-gradient(135deg,#FFF8D6,#FFE9A8)">
+   <p style="font-size:56px;font-weight:800;margin:0">⭐ البطاقة الذهبية</p>
+   <p>بطاقة مقلوبة أصعب من الأدلة: فخّ أو محتال أو تنكّر جديد!</p><p>تُقلب <b>بعد</b> حلّ أدلة المحطة، ويقودها <b>المدقّق</b>.</p>
+   <p style="color:#8A6A00;font-weight:800">إجابة صحيحة مع البصمة = <span style="font-size:60px">+4</span></p></div>
+ </div>
+ <p class="f tc" style="margin-top:30px;color:var(--muted)">✍️ اكتبوا إجابة البطاقة الذهبية في سطر ⭐ في دفتر المحقق، وضعوا ✓ إن فتحتم ظرف التلميحات.</p>
+</section>
+
 <!-- STATIONS MAP -->
 <section class="slide">
  <h2>🗺️ محطات التحقيق <span style="font-size:40px;color:var(--muted)">(كل جولة: انتقل إلى المحطة التالية ← 1 ← 2 ← 3 ← 4 ← 5 ← 1)</span></h2>
@@ -298,7 +315,7 @@ table.rot td.s1{background:var(--red)}
   <div style="flex:1"><div class="clock" id="rotClock">3:00</div><p id="rotMsg" class="tc" style="font-size:54px;color:var(--tape);min-height:80px"></p></div>
   <table class="rot" id="rotTable"></table>
  </div>
- <p class="tc" style="color:#9AA3B5;font-size:32px">🔄 بعد الجولة الثانية: تبادلوا الأدوار · المحطة 1 ⭐ بالأحمر</p>
+ <p class="tc" style="color:#9AA3B5;font-size:32px">🔄 بعد الجولة الثانية: تبادلوا الأدوار · المحطة 1 ⭐ بالأحمر · انتهيتم؟ اقلبوا ⭐ البطاقة الذهبية</p>
 </section>
 
 <!-- PAUSE -->
@@ -356,9 +373,10 @@ table.rot td.s1{background:var(--red)}
  <div class="row" style="justify-content:space-between"><h2 style="margin:0">🏆 لوحة نتائج المحققين</h2>
   <div class="row" style="gap:16px"><button class="btn" data-act="win">🏅 أعلن الفائز</button><button class="btn alt" data-act="scReset">تصفير</button></div></div>
  <div class="grid5" id="board" style="margin-top:40px"></div>
- <div style="margin-top:40px;display:grid;grid-template-columns:repeat(3,1fr);gap:20px;font-size:30px;color:#C9D2E6">
+ <div style="margin-top:30px;display:grid;grid-template-columns:repeat(3,1fr);gap:14px;font-size:28px;color:#C9D2E6">
   <div>✅ دليل صحيح مع البصمة: <b style="color:var(--tape)">+2</b></div><div>☑️ دليل صحيح بلا تعليل: <b style="color:var(--tape)">+1</b></div><div>🔐 فكّ الشيفرة صحيحًا: <b style="color:var(--tape)">+5</b></div>
   <div>🥇 أول فريق يفكّ الشيفرة: <b style="color:var(--tape)">+3</b></div><div>🟨 كل ملصق صحيح: <b style="color:var(--tape)">+1</b></div><div>🤝 الالتزام بالقواعد والأدوار: <b style="color:var(--tape)">0–5</b></div>
+  <div>⭐ بطاقة ذهبية صحيحة: <b style="color:var(--tape)">+4</b></div><div>🟡 محطة دون فتح التلميحات: <b style="color:var(--tape)">+1</b></div><div></div>
  </div>
  <p style="font-size:26px;color:#6E7A94;margin-top:16px">عند التعادل يفوز الفريق صاحب العدد الأكبر من التعليلات الصحيحة (البصمة).</p>
  <div id="winner"><p style="font-size:60px;margin:0">🏅 فريق المحققين الأوائل</p><h1 id="wname" style="font-size:200px;color:var(--tape)"></h1><p id="wscore" style="font-size:54px"></p><button class="btn" data-act="winClose" style="margin-top:30px">إغلاق</button></div>
@@ -434,7 +452,7 @@ function rotReset(){rotPause();rnd=1;rotLeft=R;document.getElementById('rotMsg')
 rotDraw();
 // scoreboard
 let sc=JSON.parse(localStorage.getItem('khabarScore')||'[0,0,0,0,0]');
-function drawBoard(){const mx=Math.max(...sc);document.getElementById('board').innerHTML=sc.map((v,i)=>`<div class="team ${v>0&&v===mx?'lead':''}"><h3>فريق ${i+1}</h3><div class="sc">${v}</div><div class="bs">${[1,2,3,5].map(n=>`<button class="plus" data-act="add" data-t="${i}" data-n="${n}">+${n}</button>`).join('')}<button class="minus" data-act="add" data-t="${i}" data-n="-1">−1</button></div></div>`).join('');localStorage.setItem('khabarScore',JSON.stringify(sc))}
+function drawBoard(){const mx=Math.max(...sc);document.getElementById('board').innerHTML=sc.map((v,i)=>`<div class="team ${v>0&&v===mx?'lead':''}"><h3>فريق ${i+1}</h3><div class="sc">${v}</div><div class="bs">${[1,2,3,4,5].map(n=>`<button class="plus" data-act="add" data-t="${i}" data-n="${n}">+${n}</button>`).join('')}<button class="minus" data-act="add" data-t="${i}" data-n="-1">−1</button></div></div>`).join('');localStorage.setItem('khabarScore',JSON.stringify(sc))}
 drawBoard();
 function win(){const mx=Math.max(...sc);if(mx<=0)return;const w=sc.map((v,i)=>v===mx?i+1:0).filter(Boolean);
  document.getElementById('wname').textContent=w.length>1?'تعادل: فريق '+w.join(' و'):'فريق '+w[0];document.getElementById('wscore').textContent=mx+' نقطة'+(w.length>1?' · احسموا بعدد التعليلات الصحيحة':'');
