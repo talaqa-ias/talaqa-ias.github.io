@@ -42,6 +42,7 @@ textarea{width:100%;min-height:110px;font-family:var(--read);font-size:1.3rem;bo
 .stars{font-size:2.6rem;text-align:center;letter-spacing:6px}
 table{width:100%;border-collapse:collapse}td,th{border-bottom:1px solid var(--line);padding:6px;text-align:right;vertical-align:top}
 @media (max-width:560px){.txt{font-size:1.5rem;line-height:2.1}h1{font-size:1.5rem}}
+.srcl{margin:-6px 0 10px;font-size:.85rem;opacity:.75;text-align:center}
 </style><link rel="stylesheet" href="/theme.css?v=20261115"></head><body>
 <div id="app"></div>
 <script src="nav.js"></script>
@@ -62,7 +63,7 @@ function ymd(){var d=new Date();return d.getFullYear()+'-'+String(d.getMonth()+1
 
 /* المستويات التسعة؛ ready = فيه قصص منشورة */
 var LV=[['النَّوَاةُ',1],['الْبُرْعُمُ',1],['الْفَسِيلَةُ',1],['النَّخْلَةُ',1],['الْمَحَارَةُ',1],['اللُّؤْلُؤَةُ',1],['الْقَافِلَةُ',1],['الصَّقْرُ',1],['النَّجْمَةُ',1]];
-var AV='?v=3';
+var AV='?v=4';
 
 var qs=new URLSearchParams(location.search),PREV=qs.get('pv')==='1';
 var ME=PREV?null:get('pt_me',null);if(ME&&ME.pv){PREV=true;ME=null}
@@ -103,7 +104,7 @@ function vShelf(){var d=DATA[S.lv];
  $(h+'</div>')}
 function pages(s){var n=s.lines.length,a=Math.ceil(n/3),b=Math.ceil((n-a)/2);return [s.lines.slice(0,a),s.lines.slice(a,a+b),s.lines.slice(a+b)]}
 function vRead(){var s=S.st,P=pages(s),p=P[S.pg],d='';for(var k=0;k<3;k++)d+='<i class="'+(k<=S.pg?'on':'')+'"></i>';
- $(hdr('shelf')+'<h1 style="font-family:var(--read)">'+esc(s.t)+'</h1><div class="card page">'+(s.img[S.pg]?'<img src="lib/img/'+esc(s.img[S.pg])+'" alt="">':'')+'<div class="txt" id="tx">'+p.map(function(l,j){return '<span data-a="say" data-j="'+j+'">'+esc(l)+'</span>'}).join(' ')+'</div><div class="dots">'+d+'</div></div>'+
+ $(hdr('shelf')+'<h1 style="font-family:var(--read)">'+esc(s.t)+'</h1>'+(s.src&&s.src!=='تأليف'?'<p class="srcl">المصدر: '+esc(s.src)+'</p>':'')+'<div class="card page">'+(s.img[S.pg]?'<img src="lib/img/'+esc(s.img[S.pg])+'" alt="">':'')+'<div class="txt" id="tx">'+p.map(function(l,j){return '<span data-a="say" data-j="'+j+'">'+esc(l)+'</span>'}).join(' ')+'</div><div class="dots">'+d+'</div></div>'+
  '<div class="row"><button class="btn sky" data-a="listen">🔊 اسمعني</button>'+(S.pg>0?'<button class="btn alt" data-a="pg" data-d="-1">الصفحة السابقة</button>':'')+
  (S.pg<2?'<button class="btn" data-a="pg" data-d="1">الصفحة التالية ←</button>':'<button class="btn" data-a="go" data-v="quiz">انتهيت، إلى الأسئلة ←</button>')+'</div>')}
 function vQuiz(){var s=S.st;
