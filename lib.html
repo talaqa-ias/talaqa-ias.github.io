@@ -42,6 +42,8 @@ textarea{width:100%;min-height:110px;font-family:var(--read);font-size:1.3rem;bo
 .stars{font-size:2.6rem;text-align:center;letter-spacing:6px}
 table{width:100%;border-collapse:collapse}td,th{border-bottom:1px solid var(--line);padding:6px;text-align:right;vertical-align:top}
 @media (max-width:560px){.txt{font-size:1.5rem;line-height:2.1}h1{font-size:1.5rem}}
+.gl{display:inline-grid;place-items:center;width:1.5em;height:1.5em;margin:0 .2em;padding:0;border:1px solid currentColor;border-radius:50%;background:transparent;color:inherit;font:700 .6em/1 inherit;opacity:.7;cursor:pointer;vertical-align:middle}
+.glt{font-size:.75em;opacity:.8}
 .srcl{margin:-6px 0 10px;font-size:.85rem;opacity:.75;text-align:center}
 </style><link rel="stylesheet" href="/theme.css?v=20261115"></head><body>
 <div id="app"></div>
@@ -102,9 +104,11 @@ function vShelf(){var d=DATA[S.lv];
  var h=hdr('home')+'<h1>المستوى '+S.lv+' · <span style="font-family:var(--read)">'+LV[S.lv-1][0]+'</span></h1><p class="lead">اقرأ القصة، ثم أجب عن الأسئلة.</p><div class="shelf">';
  d.stories.forEach(function(s,i){var L=LOG[s.id];h+='<button class="book" data-a="open" data-i="'+i+'"><img src="lib/img/'+esc(s.img[0])+'" alt="" loading="lazy"><div>'+(L?'<span class="st">⭐ '+L.score+'/3</span>':'')+'<b>'+esc(s.t)+'</b></div></button>'});
  $(h+'</div>')}
+/* الشرح بين قوسين لا يُقرأ في الصوت: يُخفى خلف زر «؟» حتى لا يقطع القراءة */
+function gl(t){return t.replace(/\s*\(([^()]*)\)/g,'<button type="button" class="gl" data-a="gl" aria-label="معنى الكلمة">؟</button><small class="glt" hidden> ($1)</small>')}
 function pages(s){var n=s.lines.length,a=Math.ceil(n/3),b=Math.ceil((n-a)/2);return [s.lines.slice(0,a),s.lines.slice(a,a+b),s.lines.slice(a+b)]}
 function vRead(){var s=S.st,P=pages(s),p=P[S.pg],d='';for(var k=0;k<3;k++)d+='<i class="'+(k<=S.pg?'on':'')+'"></i>';
- $(hdr('shelf')+'<h1 style="font-family:var(--read)">'+esc(s.t)+'</h1>'+(s.src&&s.src!=='تأليف'?'<p class="srcl">المصدر: '+esc(s.src)+'</p>':'')+'<div class="card page">'+(s.img[S.pg]?'<img src="lib/img/'+esc(s.img[S.pg])+'" alt="">':'')+'<div class="txt" id="tx">'+p.map(function(l,j){return '<span data-a="say" data-j="'+j+'">'+esc(l)+'</span>'}).join(' ')+'</div><div class="dots">'+d+'</div></div>'+
+ $(hdr('shelf')+'<h1 style="font-family:var(--read)">'+esc(s.t)+'</h1>'+(s.src&&s.src!=='تأليف'?'<p class="srcl">المصدر: '+esc(s.src)+'</p>':'')+'<div class="card page">'+(s.img[S.pg]?'<img src="lib/img/'+esc(s.img[S.pg])+'" alt="">':'')+'<div class="txt" id="tx">'+p.map(function(l,j){return '<span data-a="say" data-j="'+j+'">'+gl(esc(l))+'</span>'}).join(' ')+'</div><div class="dots">'+d+'</div></div>'+
  '<div class="row"><button class="btn sky" data-a="listen">🔊 اسمعني</button>'+(S.pg>0?'<button class="btn alt" data-a="pg" data-d="-1">الصفحة السابقة</button>':'')+
  (S.pg<2?'<button class="btn" data-a="pg" data-d="1">الصفحة التالية ←</button>':'<button class="btn" data-a="go" data-v="quiz">انتهيت، إلى الأسئلة ←</button>')+'</div>')}
 function vQuiz(){var s=S.st;
@@ -130,6 +134,7 @@ function playLine(j,run,next){var sp=document.querySelectorAll('#tx span');if(ru
 /* ---------- الأحداث ---------- */
 var LOCK=false;
 $app.addEventListener('click',function(e){var b=e.target.closest('[data-a]');if(!b)return;var a=b.getAttribute('data-a');
+ if(a==='gl'){var g=b.nextElementSibling;if(g)g.hidden=!g.hidden;return}
  if(a==='go'){var v=b.getAttribute('data-v');if(v==='log'){Promise.all(LV.map(function(l,i){return l[1]?load(i+1):null})).then(function(){go('log')})}else go(v)}
  else if(a==='lv'){S.lv=+b.getAttribute('data-n');load(S.lv).then(function(){go('shelf')}).catch(function(){$(hdr('home')+'<p class="note">تعذّر تحميل القصص. تأكد من الاتصال ثم حاول مرة أخرى.</p>')})}
  else if(a==='open'){S.st=DATA[S.lv].stories[+b.getAttribute('data-i')];S.pg=0;S.qi=0;S.score=0;S.first=[];S.ord=[];go('read')}
