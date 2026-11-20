@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>طلاقة · تسجيل التعليق الصوتي</title>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#14204A;color:#fff;font-family:Tahoma,"Segoe UI",Arial,sans-serif;line-height:1.7}
+main{max-width:820px;margin:0 auto;padding:24px 16px 60px}
+h1{font-size:1.6rem;margin:0 0 6px;color:#F2C14E}p.lead{margin:0 0 18px;color:#DCE3F5}
+.tips{background:#1B2A63;border:1px solid #C8963E;border-radius:14px;padding:12px 16px;margin-bottom:18px;font-size:.95rem}
+.tips b{color:#F2C14E}
+.line{background:#fff;color:#14204A;border-radius:16px;padding:14px 16px;margin-bottom:12px}
+.line .n{display:inline-block;background:#F2C14E;color:#14204A;font-weight:700;border-radius:50%;width:1.9em;height:1.9em;text-align:center;line-height:1.9em;margin-inline-end:8px}
+.line .sc{color:#6B7280;font-size:.85rem}
+.line .t{font-size:1.35rem;font-weight:700;margin:8px 0 10px}
+.row{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+button{font:inherit;font-weight:700;border:0;border-radius:12px;padding:9px 18px;cursor:pointer}
+.rec{background:#C8102E;color:#fff}.rec.on{background:#14204A;color:#fff;animation:p 1s infinite}
+@keyframes p{50%{opacity:.6}}
+.ok{color:#168A4B;font-weight:700}.wait{color:#6B7280}
+audio{height:36px;max-width:260px}
+#dl{background:#F2C14E;color:#14204A;font-size:1.15rem;padding:14px 26px;margin-top:10px}#dl:disabled{opacity:.45;cursor:not-allowed}
+#st{margin-top:12px;color:#F2C14E;min-height:1.7em}
+</style></head><body><main>
+<h1>🎙️ تسجيل التعليق الصوتي لفيديو «طلاقة»</h1>
+<p class="lead">سجّل كل جملة وحدها. تستطيع إعادة أي جملة قبل التنزيل. لا يُرسل شيء إلى أي مكان: التسجيل يبقى على جهازك حتى تنزّل الملف.</p>
+<div class="tips"><b>لتسجيل حماسي واضح:</b> اجلس في مكان هادئ، وقرّب الميكروفون نحو شبر من فمك، وابتسم وأنت تتكلم، وارفع نبرتك قليلًا في أول كل جملة. اقرأ بسرعة طبيعية؛ سأضبط توقيت المشاهد على صوتك.</div>
+<div id="lines"></div>
+<button id="dl" disabled>⬇️ تنزيل ملف التسجيل</button>
+<div id="st"></div>
+<script>
+(function(){'use strict';
+var L=[
+ ['البداية','مِنَصَّةُ طَلَاقَة: لِسَانِي عَرَبِيٌّ مُبِينٌ!'],
+ ['الدخول','يَدْخُلُ الطَّالِبُ بِرَقْمِهِ الْمَدْرَسِيِّ مَرَّةً وَاحِدَةً، فَتَظْهَرُ أَدَوَاتُهُ.'],
+ ['سلّم القراءة','سُلَّمُ الْقِرَاءَةِ يَفْتَحُ دَرَجَةً بَعْدَ دَرَجَةٍ.'],
+ ['مكتبة طلاقة','وَفِي مَكْتَبَةِ طَلَاقَة، قِصَصٌ مُصَوَّرَةٌ بِمُسْتَوَيَاتٍ مُخْتَلِفَةٍ، يَقْرَؤُهَا الطَّالِبُ وَيَسْمَعُهَا جُمْلَةً جُمْلَةً.'],
+ ['التحدث','وَفِي التَّحَدُّثِ: يَسْمَعُ الطَّالِبُ النَّمُوذَجَ، ثُمَّ يُحَاكِيهِ، ثُمَّ يَتَكَلَّمُ بِالْفُصْحَى!'],
+ ['ركن المعلم','وَالْمُعَلِّمُ يَرَى مَنْ بَدَأَ، وَمَنْ تَوَقَّفَ.'],
+ ['الختام','جَرِّبُوهَا الْآنَ!']];
+var clips=[],stream=null,rec=null,cur=-1,chunks=[];
+var $l=document.getElementById('lines'),$dl=document.getElementById('dl'),$st=document.getElementById('st');
+function st(t){$st.textContent=t||''}
+function mime(){var m=['audio/webm;codecs=opus','audio/webm','audio/mp4','audio/ogg;codecs=opus'];for(var i=0;i<m.length;i++)if(window.MediaRecorder&&MediaRecorder.isTypeSupported&&MediaRecorder.isTypeSupported(m[i]))return m[i];return ''}
+L.forEach(function(x,i){var d=document.createElement('div');d.className='line';
+ d.innerHTML='<span class="n">'+(i+1)+'</span><span class="sc">مشهد: '+x[0]+'</span><div class="t">'+x[1]+'</div><div class="row"><button class="rec" data-i="'+i+'">⏺ سجّل</button><span class="wait" id="s'+i+'">لم تُسجَّل بعد</span><audio id="a'+i+'" controls hidden></audio></div>';
+ $l.appendChild(d)});
+function refresh(){var n=clips.filter(Boolean).length;$dl.disabled=n<L.length;st(n<L.length?'سجّلتَ '+n+' من '+L.length+' جمل.':'اكتملت الجمل السبع. اضغط «تنزيل ملف التسجيل»، ثم ارفع الملف في المحادثة.')}
+function stop(){if(rec&&rec.state!=='inactive')rec.stop()}
+$l.addEventListener('click',function(e){var b=e.target.closest('button.rec');if(!b)return;var i=+b.getAttribute('data-i');
+ if(cur===i){stop();return}
+ if(cur>=0){st('أوقف التسجيل الجاري أولًا.');return}
+ if(!navigator.mediaDevices||!window.MediaRecorder){st('هذا المتصفح لا يدعم التسجيل. جرّب Chrome أو Edge.');return}
+ (stream?Promise.resolve(stream):navigator.mediaDevices.getUserMedia({audio:{echoCancellation:true,noiseSuppression:true}})).then(function(s){stream=s;var mt=mime();chunks=[];
+  try{rec=new MediaRecorder(s,mt?{mimeType:mt,audioBitsPerSecond:128000}:undefined)}catch(err){st('تعذّر بدء التسجيل.');return}
+  rec.ondataavailable=function(ev){if(ev.data&&ev.data.size)chunks.push(ev.data)};
+  rec.onstop=function(){var blob=new Blob(chunks,{type:rec.mimeType||mt||'audio/webm'});clips[i]=blob;var a=document.getElementById('a'+i);a.src=URL.createObjectURL(blob);a.hidden=false;
+   var s2=document.getElementById('s'+i);s2.className='ok';s2.textContent='✓ سُجّلت';b.classList.remove('on');b.textContent='↺ أعد التسجيل';cur=-1;refresh()};
+  cur=i;b.classList.add('on');b.textContent='⏹ أوقف';st('جارٍ التسجيل… اقرأ الجملة '+(i+1)+' ثم اضغط «أوقف».');rec.start()
+ }).catch(function(){st('لم يُسمح باستخدام الميكروفون. اسمح به من شريط العنوان ثم أعد المحاولة.')})});
+function b64(blob){return new Promise(function(res){var r=new FileReader();r.onload=function(){res(String(r.result).split(',')[1])};r.readAsDataURL(blob)})}
+$dl.addEventListener('click',function(){st('جارٍ تجهيز الملف…');Promise.all(clips.map(b64)).then(function(a){
+ var out={app:'talaqa-voiceover',v:1,made:new Date().toISOString(),clips:a.map(function(d,i){return {i:i,type:clips[i].type,data:d}})};
+ var u=URL.createObjectURL(new Blob([JSON.stringify(out)],{type:'application/json'})),x=document.createElement('a');x.href=u;x.download='talaqa-voice.json';document.body.appendChild(x);x.click();x.remove();
+ st('نُزّل الملف talaqa-voice.json. ارفعه الآن في المحادثة.')})});
+refresh();
+})();
+</script></main></body></html>
